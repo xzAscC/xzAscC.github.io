@@ -1,0 +1,77 @@
+{
+  "basics": {
+    "name": "Xudong Zhu",
+    "email": "zhu.3944@osu.edu",
+    "website": "https://xudongzhu.github.io",
+    "summary": "I am a PhD student in Computer Science at The Ohio State University, advised by Prof. <a href=\"https://zhihuizhu.github.io/\" target=\"_blank\">Zhihui Zhu</a>. My research interests lie in the <a href=\"https://en.wikipedia.org/wiki/Mechanistic_interpretability\" target=\"_blank\">mechanistic interpretability</a> of large language models, with a current focus on exploring Sparse Autoencoders (SAEs) as tools for feature discovery and representation analysis. Recently, I have been investigating how difference-in-means techniques can be combined with SAEs to better characterize and validate the learned features. My goal is to advance methods that not only improve the interpretability of model internals but also provide insights into their geometry and reasoning processes.",
+    "location": {
+      "address": "Columbus, OH",
+      "postalCode": "43210",
+      "city": "Columbus",
+      "countryCode": "US",
+      "region": "Ohio" 
+    },
+    "profiles": [
+      {
+        "network": "Google Scholar",
+        "username": "xzAscC",
+        "url": "https://scholar.google.com/citations?user=U55yracAAAAJ"
+      },
+      {
+        "network": "ORCID",
+        "username": "",
+        "url": "http://orcid.org/0009-0000-3068-0754"
+      },
+      {
+        "network": "GitHub",
+        "username": "xzAscC",
+        "url": "https://github.com/xzAscC"
+      }
+    ]
+  },
+  "work": [],
+  "education": [
+    {
+      "institution": "The Ohio State University",
+      "area": "Ph.D in Computer Science",
+      "studyType": "Ph.D",
+      "startDate": "2024",
+      "endDate": "2029",
+      "gpa": null,
+      "courses": []
+    },
+    {
+      "institution": "University of Electronic Science and Technology of China",
+      "area": "B.S. in Computer Science",
+      "studyType": "B.S.",
+      "startDate": "2020",
+      "endDate": "2024",
+      "gpa": 3.98,
+      "courses": []
+    }
+  ],
+  "publications": [
+    {
+      "name": "From Emergence to Control: Probing and Modulating Self-Reflection in Language Models", 
+      "publisher": "arxiv 2025",
+      "releaseDate": "2025-06-13",
+      "website": "https://arxiv.org/abs/2506.12217",
+      "summary": "We study the emergence and control of self-reflection in large language models. Our probing method reveals that pretrained models already contain a latent capacity for reflection, which can be amplified without additional training. By identifying and manipulating a “self-reflection vector” in activation space, we achieve bidirectional control over reflective behavior, improving reasoning accuracy or reducing computation as needed. This work deepens understanding of self-reflection and demonstrates how model internals can enable precise behavioral control."
+    },
+    {
+      "name": "Alleviating subgraph-induced oversmoothing in link prediction via coarse graining",
+      "publisher": "Neurocomputing 2025",
+      "releaseDate": "2025-06-20",
+      "website": "https://www.sciencedirect.com/science/article/abs/pii/S0925231225013384",
+      "summary": "We address the oversmoothing problem in link prediction caused by repetitive high-degree nodes across subgraphs. Our method introduces a coarse-graining strategy that merges strongly correlated nodes, yielding more diverse receptive fields and reducing subgraph size. This not only mitigates oversmoothing but also improves scalability and efficiency of GNN-based link prediction."
+    },
+    {
+      "name": "FCDS: Fusing Constituency and Dependency Syntax into Document-Level Relation Extraction",
+      "publisher": "Coling 2024",
+      "releaseDate": "2024-03-04",
+      "website": "https://arxiv.org/abs/2403.01886",
+      "summary": "We introduce FCDS, a document-level relation extraction model that fuses constituency and dependency syntax. By combining sentence-level aggregation from constituency trees with dependency-based graph reasoning, FCDS better captures cross-sentence relations between entities. Experiments across multiple domains show significant performance gains, highlighting the effectiveness of integrating both syntactic views."
+    }
+  ]
+
+}
