@@ -1,34 +1,36 @@
 ---
-layout: about
-title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
-
-profile:
-  align: right
-  image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
-
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
-
-announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
-
-latest_posts:
-  enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+title: ""
+author_profile: true
+redirect_from: 
+  - /about/
+  - /about.html
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+# Xudong Zhu
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+I am a PhD student in Computer Science at The Ohio State University, advised by Prof. [Zhihui Zhu](https://zhihuizhu.github.io/). My research interests lie in the mechanistic interpretability of large language models, with a current focus on exploring novel tools for feature discovery and representation analysis.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+## Research Interests
+
+My current research focuses on:
+- **Mechanistic Interpretability**: Understanding how large language models work internally
+- **Sparse Autoencoders (SAEs)**: Using SAEs for feature discovery and representation analysis
+- **Difference-in-Means Techniques**: Combining statistical methods with SAEs to better characterize and validate learned features
+- **Model Geometry**: Exploring the internal geometry and reasoning processes of neural networks
+
+## Recent Work
+
+I have been investigating how difference-in-means techniques can be combined with SAEs to better characterize and validate the learned features. My goal is to advance methods that not only improve the interpretability of model internals but also provide insights into their geometry and reasoning processes.
+
+## Background
+
+I received my B.S. in Computer Science from the University of Electronic Science and Technology of China in 2024, where I graduated with a GPA of 3.98. I am currently pursuing my Ph.D. at The Ohio State University, expected to complete in 2029.
+
+## Contact
+
+- **Email**: zhu.3944@osu.edu
+- **Location**: Columbus, OH
+- **GitHub**: [xzAscC](https://github.com/xzAscC)
+- **[Google Scholar](https://scholar.google.com/citations?user=U55yracAAAAJ)**
+- **[ORCID](http://orcid.org/0009-0000-3068-0754)**
