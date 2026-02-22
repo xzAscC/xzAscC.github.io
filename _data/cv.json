@@ -3,7 +3,7 @@
     "name": "Xudong Zhu",
     "email": "zhu.3944@osu.edu",
     "website": "https://xudongzhu.github.io",
-    "summary": "I am a PhD student in Computer Science at The Ohio State University, advised by Prof. <a href=\"https://zhihuizhu.github.io/\" target=\"_blank\">Zhihui Zhu</a>. My research interests lie in the <a href=\"https://en.wikipedia.org/wiki/Mechanistic_interpretability\" target=\"_blank\">mechanistic interpretability</a> of large language models, with a current focus on exploring Sparse Autoencoders (SAEs) as tools for feature discovery and representation analysis. Recently, I have been investigating how difference-in-means techniques can be combined with SAEs to better characterize and validate the learned features. My goal is to advance methods that not only improve the interpretability of model internals but also provide insights into their geometry and reasoning processes.",
+    "summary": "I am a PhD student in Computer Science at The Ohio State University, advised by Prof. <a href=\"https://zhihuizhu.github.io/\" target=\"_blank\">Zhihui Zhu</a>. My research focuses on the mechanistic interpretability of large language models, with particular interest in understanding the Linear Representation Hypothesis and the geometric structure of learned representations. I investigate why semantic features and behaviors align with linear directions in representation space, and how this structure enables effective interpretation and control through linear steering. My work combines sparse autoencoders and geometric analysis to uncover and characterize the internal structure of model representations.",
     "location": {
       "address": "Columbus, OH",
       "postalCode": "43210",
@@ -51,6 +51,13 @@
     }
   ],
   "publications": [
+    {
+      "name": "AbsTopK: Rethinking Sparse Autoencoders For Bidirectional Features",
+      "publisher": "ICLR 2026",
+      "releaseDate": "2026-01-01",
+      "website": "https://openreview.net/forum?id=EEs6I4cO7S&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3DICLR.cc%2F2026%2FConference%2FAuthors%23your-submissions)",
+      "summary": "Sparse autoencoders (SAEs) are widely used for LLM interpretability, but existing variants often impose non-negativity that prevents single features from representing bidirectional concepts. We derive SAE variants from unrolled proximal gradient updates, identify this structural limitation, and propose AbsTopK SAE with magnitude-based hard thresholding. Across four LLMs and seven probing/steering tasks, AbsTopK improves reconstruction and interpretability while enabling single features to encode contrasting concepts. OpenReview: https://openreview.net/forum?id=EEs6I4cO7S"
+    },
     {
       "name": "From Emergence to Control: Probing and Modulating Self-Reflection in Language Models", 
       "publisher": "arxiv 2025",
