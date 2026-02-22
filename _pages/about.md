@@ -14,14 +14,14 @@ I am a PhD student in Computer Science at The Ohio State University, advised by 
 ## Research Interests
 
 My current research focuses on:
-- **Mechanistic Interpretability**: Understanding how large language models work internally
-- **Sparse Autoencoders (SAEs)**: Using SAEs for feature discovery and representation analysis
-- **Difference-in-Means Techniques**: Combining statistical methods with SAEs to better characterize and validate learned features
-- **Model Geometry**: Exploring the internal geometry and reasoning processes of neural networks
+- **Mechanistic Interpretability**: Understanding internal representations and circuits in large language models
+- **Linear Representation Hypothesis**: Investigating whether model features and behaviors can be explained and manipulated through linear structure in representation space
+- **Representation Geometry**: Studying the structure and organization of learned features in neural networks
+- **Sparse Autoencoders (SAEs)**: Feature discovery, disentanglement, and representation analysis
 
 ## Recent Work
 
-I have been investigating how difference-in-means techniques can be combined with SAEs to better characterize and validate the learned features. My goal is to advance methods that not only improve the interpretability of model internals but also provide insights into their geometry and reasoning processes.
+My recent work investigates why the Linear Representation Hypothesis holds widely in large language models, and why linear steering directions can reliably control model behavior. I study how semantic features emerge as linear structure in representation space, enabling both interpretation and intervention through simple linear operations.
 
 ## Background
 
