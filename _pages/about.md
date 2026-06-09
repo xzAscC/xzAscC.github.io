@@ -23,6 +23,11 @@ My current research focuses on:
 
 My recent work investigates why the Linear Representation Hypothesis holds widely in large language models, and why linear steering directions can reliably control model behavior. I study how semantic features emerge as linear structure in representation space, enabling both interpretation and intervention through simple linear operations.
 
+## Awards & Service
+
+- **MMLS 2026 Traveling Award** — [Midwest Machine Learning Symposium (MMLS)](https://midwest-ml.org/2026/)
+- Assisted in completing **NAIRR Pilot Project NAIRR260106**: [Geometry and Training Dynamics of Representations in Large Language Models](https://nairrpilot.org/projects/awarded?_requestNumber=NAIRR260106)
+
 ## Background
 
 I received my B.S. in Computer Science from the University of Electronic Science and Technology of China in 2024, where I graduated with a GPA of 3.98. I am currently pursuing my Ph.D. at The Ohio State University, expected to complete in 2029.
