@@ -13,7 +13,7 @@ title                    : "Xudong Zhu"
 title_separator          : "-"
 name                     : &name "Xudong Zhu"
 description              : &description "Second-year PhD student in Ohio State University"
-url                      : https://xzAscC.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io" or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
+url                      : https://xudongzhu.com
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "xzAscC/xzAscC.github.io"
 
@@ -28,7 +28,7 @@ author:
   bio              : "Second-year PhD student in Ohio State University"
   location         : "Columbus, OH"
   employer         : "The Ohio State University"
-  uri              : "https://xzAscC.github.io/"
+  uri              : "https://xudongzhu.com/"
   email            : "zhu.3944@osu.edu" 
 
   # Academic websites
