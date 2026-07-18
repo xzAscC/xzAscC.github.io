@@ -62,12 +62,29 @@ end
 nav_source = File.read(File.join(ROOT, '_includes', 'editorial-nav.html'))
 scripts_source = File.read(File.join(ROOT, '_includes', 'scripts.html'))
 archive_item_source = File.read(File.join(ROOT, '_includes', 'archive-single.html'))
+citation_source = File.read(File.join(ROOT, '_includes', 'citation.html'))
+dark_toggle_source = File.read(File.join(ROOT, 'assets', 'js', 'dark-toggle.js'))
+plotly_source = File.read(File.join(ROOT, 'assets', 'js', 'plotly-render.js'))
+config_source = File.read(File.join(ROOT, '_config.yml'))
 assert !nav_source.include?('<script>'), 'Theme behavior must live in the shared dark-toggle module'
 assert nav_source.include?('site-nav__menu'), 'Primary navigation must provide a mobile disclosure menu'
+assert nav_source.scan('{% for link in site.data.navigation.main %}').length == 1,
+       'Desktop and mobile navigation must share one generated link list'
 assert scripts_source.scan('dark-toggle.js').length == 1, 'Dark toggle module must load exactly once'
 assert !scripts_source.include?('main.min.js'), 'Editorial pages must not load the legacy theme bundle'
 assert !archive_item_source.include?('class="fa'),
        'Active archive markup must not depend on removed Font Awesome assets'
+assert !citation_source.include?('{% elsif'), 'Citation links must be composed without subset branches'
+%w[page.paperurl page.slidesurl page.bibtexurl].each do |citation_link|
+  assert citation_source.include?(citation_link), "Citation include lost optional link: #{citation_link}"
+end
+assert plotly_source.include?('catch (error)'), 'Invalid Plotly JSON must not stop later blocks from rendering'
+assert dark_toggle_source.include?('addEventListener("change"'),
+       'Unsaved themes must follow operating-system preference changes'
+assert !dark_toggle_source.include?('const preferredTheme'),
+       'Theme module must use the pre-paint theme instead of recomputing it'
+assert !config_source.match?(/^\s+share:\s+true\s*$/), 'Removed share integration must not remain enabled'
+assert !config_source.match?(/^\s+comments:\s+true\s*$/), 'Removed comments integration must not remain enabled'
 
 active_layouts = %w[default.html single.html archive.html].map do |name|
   File.read(File.join(ROOT, '_layouts', name))
