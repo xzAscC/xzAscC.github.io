@@ -1,14 +1,17 @@
 const root = document.documentElement;
-let savedTheme;
+const colorScheme = window.matchMedia("(prefers-color-scheme: dark)");
+let followsSystem = true;
 
 try {
-  savedTheme = localStorage.getItem("theme");
+  const savedTheme = localStorage.getItem("theme");
+  followsSystem = savedTheme !== "dark" && savedTheme !== "light";
 } catch (error) {
   console.warn("Could not read the saved theme.", error);
 }
 
-const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-root.dataset.theme = savedTheme === "dark" || savedTheme === "light" ? savedTheme : preferredTheme;
+if (root.dataset.theme !== "dark" && root.dataset.theme !== "light") {
+  root.dataset.theme = colorScheme.matches ? "dark" : "light";
+}
 
 const toggle = document.querySelector("#theme-toggle");
 
@@ -22,6 +25,7 @@ if (toggle) {
   updateToggle();
   toggle.addEventListener("click", () => {
     root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+    followsSystem = false;
 
     try {
       localStorage.setItem("theme", root.dataset.theme);
@@ -30,5 +34,12 @@ if (toggle) {
     }
 
     updateToggle();
+  });
+
+  colorScheme.addEventListener("change", (event) => {
+    if (followsSystem) {
+      root.dataset.theme = event.matches ? "dark" : "light";
+      updateToggle();
+    }
   });
 }
