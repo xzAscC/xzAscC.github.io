@@ -61,16 +61,32 @@ end
 
 nav_source = File.read(File.join(ROOT, '_includes', 'editorial-nav.html'))
 scripts_source = File.read(File.join(ROOT, '_includes', 'scripts.html'))
+archive_item_source = File.read(File.join(ROOT, '_includes', 'archive-single.html'))
 assert !nav_source.include?('<script>'), 'Theme behavior must live in the shared dark-toggle module'
 assert nav_source.include?('site-nav__menu'), 'Primary navigation must provide a mobile disclosure menu'
 assert scripts_source.scan('dark-toggle.js').length == 1, 'Dark toggle module must load exactly once'
 assert !scripts_source.include?('main.min.js'), 'Editorial pages must not load the legacy theme bundle'
+assert !archive_item_source.include?('class="fa'),
+       'Active archive markup must not depend on removed Font Awesome assets'
 
 active_layouts = %w[default.html single.html archive.html].map do |name|
   File.read(File.join(ROOT, '_layouts', name))
 end.join("\n")
 %w[sidebar.html page__hero.html breadcrumbs.html browser-upgrade.html].each do |legacy_include|
   assert !active_layouts.include?(legacy_include), "Active layouts still depend on legacy include: #{legacy_include}"
+end
+
+%w[
+  _sass/vendor
+  _sass/layout
+  _sass/theme
+  assets/js/main.min.js
+  assets/js/_main.js
+  assets/js/plugins
+  assets/webfonts
+  package.json
+].each do |legacy_path|
+  assert !File.exist?(File.join(ROOT, legacy_path)), "Dormant legacy path must be removed: #{legacy_path}"
 end
 
 single_layout = File.read(File.join(ROOT, '_layouts', 'single.html'))
