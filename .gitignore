@@ -18,3 +18,11 @@ package-lock.json
 
 # Ignore folders related to IDEs
 .vscode/
+
+.omo/
+.playwright-mcp/
+.jekyll-cache/
+.jekyll-metadata
+qa-*.png
+*-actual.png
+*-reference.png
