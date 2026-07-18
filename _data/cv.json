@@ -2,7 +2,7 @@
   "basics": {
     "name": "Xudong Zhu",
     "email": "zhu.3944@osu.edu",
-    "website": "https://xudongzhu.github.io",
+    "website": "https://xudongzhu.com",
     "summary": "I am a PhD student in Computer Science at The Ohio State University, advised by Prof. <a href=\"https://zhihuizhu.github.io/\" target=\"_blank\">Zhihui Zhu</a>. My research focuses on the mechanistic interpretability of large language models, with particular interest in understanding the Linear Representation Hypothesis and the geometric structure of learned representations. I investigate why semantic features and behaviors align with linear directions in representation space, and how this structure enables effective interpretation and control through linear steering. My work combines sparse autoencoders and geometric analysis to uncover and characterize the internal structure of model representations.",
     "location": {
       "address": "Columbus, OH",

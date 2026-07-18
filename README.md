@@ -1,6 +1,6 @@
 # Xudong Zhu - Academic Website
 
-[![Website](https://img.shields.io/badge/Website-xzAscC.github.io-blue?style=flat-square)](https://xzAscC.github.io)
+[![Website](https://img.shields.io/badge/Website-xudongzhu.com-blue?style=flat-square)](https://xudongzhu.com)
 [![GitHub](https://img.shields.io/badge/GitHub-xzAscC-green?style=flat-square)](https://github.com/xzAscC)
 [![Google Scholar](https://img.shields.io/badge/Google_Scholar-Citations-blue?style=flat-square)](https://scholar.google.com/citations?user=U55yracAAAAJ)
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0000--3068--0754-green?style=flat-square)](http://orcid.org/0009-0000-3068-0754)
