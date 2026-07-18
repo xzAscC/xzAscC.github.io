@@ -1,25 +1,9 @@
-{% if page.citation and page.paperurl and page.slidesurl and page.bibtexurl %}
-  <p class="page__meta">Recommended citation: {{ page.citation }}<br><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-{% elsif page.citation and page.paperurl and page.slidesurl %}
-  <p class="page__meta">Recommended citation: {{ page.citation }}<br><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.slidesurl }}">Download Slides</a></p>
-{% elsif page.citation and page.paperurl and page.bibtexurl %}
-  <p class="page__meta">Recommended citation: {{ page.citation }}<br><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-{% elsif page.citation and page.paperurl %}
-  <p class="page__meta">Recommended citation: {{ page.citation }}<br><a href="{{ page.paperurl }}">Download Paper</a></p>
-{% elsif page.citation and page.slidesurl and page.bibtexurl %}
-  <p class="page__meta">Recommended citation: {{ page.citation }}<br><a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-{% elsif page.citation and page.slidesurl %}
-  <p class="page__meta">Recommended citation: {{ page.citation }}<br><a href="{{ page.slidesurl }}">Download Slides</a></p>
-{% elsif page.slidesurl and page.bibtexurl %}
-  <p class="page__meta"><a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-{% elsif page.paperurl and page.bibtexurl %}
-  <p class="page__meta"><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-{% elsif page.citation and page.bibtexurl %}
-  <p class="page__meta">Recommended citation: {{ page.citation }}<br><a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-{% elsif page.citation %}
-  <p class="page__meta">Recommended citation: {{ page.citation }}</p>
-{% elsif page.slidesurl %}
-  <p class="page__meta"><a href="{{ page.slidesurl }}">Download Slides</a></p>
-{% elsif page.bibtexurl %}
-  <p class="page__meta"><a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
+{% if page.citation or page.paperurl or page.slidesurl or page.bibtexurl %}
+  <p class="page__meta">
+    {% if page.citation %}Recommended citation: {{ page.citation }}{% if page.paperurl or page.slidesurl or page.bibtexurl %}<br>{% endif %}{% endif %}
+    {% assign link_separator = '' %}
+    {% if page.paperurl %}<a href="{{ page.paperurl }}">Download Paper</a>{% assign link_separator = ' | ' %}{% endif %}
+    {% if page.slidesurl %}{{ link_separator }}<a href="{{ page.slidesurl }}">Download Slides</a>{% assign link_separator = ' | ' %}{% endif %}
+    {% if page.bibtexurl %}{{ link_separator }}<a href="{{ page.bibtexurl }}">Download Bibtex</a>{% endif %}
+  </p>
 {% endif %}
