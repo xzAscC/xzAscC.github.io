@@ -11,18 +11,22 @@ if (plotlyBlocks.length > 0) {
       : plotlyLightLayout;
 
     plotlyBlocks.forEach((block) => {
-      const figure = JSON.parse(block.textContent);
-      const source = block.parentElement;
-      const chart = document.createElement("div");
+      try {
+        const figure = JSON.parse(block.textContent);
+        const source = block.parentElement;
+        const chart = document.createElement("div");
 
-      source.hidden = true;
-      source.after(chart);
-      figure.layout = figure.layout || {};
-      figure.layout.template = figure.layout.template
-        ? { ...template, ...figure.layout.template }
-        : template;
+        source.hidden = true;
+        source.after(chart);
+        figure.layout = figure.layout || {};
+        figure.layout.template = figure.layout.template
+          ? { ...template, ...figure.layout.template }
+          : template;
 
-      window.Plotly.react(chart, figure.data, figure.layout);
+        window.Plotly.react(chart, figure.data, figure.layout);
+      } catch (error) {
+        console.error("Could not render Plotly block.", error);
+      }
     });
   }
 }
