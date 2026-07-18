@@ -2,14 +2,20 @@
 permalink: /
 title: ""
 author_profile: true
+intro: >-
+  I am a PhD student in Computer Science at The Ohio State University, advised by
+  Prof. [Zhihui Zhu](https://zhihuizhu.github.io/). My research interests lie in
+  the mechanistic interpretability of large language models, with a current focus
+  on exploring novel tools for feature discovery and representation analysis.
+interests:
+  - Mechanistic Interpretability
+  - Linear Representations
+  - Representation Geometry
+  - Sparse Autoencoders
 redirect_from: 
   - /about/
   - /about.html
 ---
-
-# Xudong Zhu
-
-I am a PhD student in Computer Science at The Ohio State University, advised by Prof. [Zhihui Zhu](https://zhihuizhu.github.io/). My research interests lie in the mechanistic interpretability of large language models, with a current focus on exploring novel tools for feature discovery and representation analysis.
 
 ## Research Interests
 
