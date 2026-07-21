@@ -1,0 +1,15 @@
+- name: LLMUsage
+  url: https://github.com/xzAscC/LLMUsage
+  description: Local-first LLM subscription usage for Hyprland, OpenAI, GLM, Grok, and Claude in your bar.
+  language: TypeScript
+  tags:
+    - CLI
+    - Quickshell
+
+- name: dotfiles
+  url: https://github.com/xzAscC/dotfiles
+  description: Personal dotfiles for fish, Neovim, and OpenCode, managed with GNU Stow.
+  language: Lua
+  tags:
+    - Neovim
+    - OpenCode

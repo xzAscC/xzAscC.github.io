@@ -1,0 +1,19 @@
+{% assign project = include.project %}
+
+<article class="project-card" itemscope itemtype="https://schema.org/SoftwareSourceCode">
+  <div class="project-card__content">
+    <h3 class="project-card__title" itemprop="name">
+      <a href="{{ project.url }}" rel="external">{{ project.name }}</a>
+    </h3>
+    <p class="project-card__description" itemprop="description">{{ project.description }}</p>
+  </div>
+
+  <footer class="project-card__meta">
+    <span class="project-card__language" itemprop="programmingLanguage">{{ project.language }}</span>
+    <ul class="project-card__tags" aria-label="Project tags">
+      {% for tag in project.tags %}
+        <li itemprop="keywords">{{ tag }}</li>
+      {% endfor %}
+    </ul>
+  </footer>
+</article>
