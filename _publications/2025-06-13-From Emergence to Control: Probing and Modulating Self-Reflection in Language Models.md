@@ -5,7 +5,14 @@ category: conferences
 excerpt: 'We study the emergence and control of self-reflection in large language models. Our probing method reveals that pretrained models already contain a latent capacity for reflection, which can be amplified without additional training. By identifying and manipulating a “self-reflection vector” in activation space, we achieve bidirectional control over reflective behavior, improving reasoning accuracy or reducing computation as needed. This work deepens understanding of self-reflection and demonstrates how model internals can enable precise behavioral modulation.'
 date: 2025-06-13
 venue: 'arxiv preprint'
+authors:
+  - Xudong Zhu
+  - Jiachen Jiang
+  - Mohammad Mahdi Khalili
+  - Zhihui Zhu
+cover: /assets/images/publications/self-reflection.png
 paperurl: 'https://arxiv.org/abs/2506.12217'
+codeurl: 'https://github.com/xzAscC/ProbingReflection'
 citation: 'Zhu X, Jiang J, Khalili M M, et al. From Emergence to Control: Probing and Modulating Self-Reflection in Language Models[J]. arXiv preprint arXiv:2506.12217, 2025.'
 ---
 
