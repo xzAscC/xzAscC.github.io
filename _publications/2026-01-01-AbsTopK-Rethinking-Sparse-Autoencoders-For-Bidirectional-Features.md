@@ -5,7 +5,13 @@ category: conferences
 excerpt: 'Sparse autoencoders (SAEs) are widely used for LLM interpretability, but existing variants often impose non-negativity that prevents single features from representing bidirectional concepts. We derive SAE variants from unrolled proximal gradient updates, identify this structural limitation, and propose AbsTopK SAE with magnitude-based hard thresholding. Across four LLMs and seven probing/steering tasks, AbsTopK improves reconstruction and interpretability while enabling single features to encode contrasting concepts.'
 date: 2026-01-01
 venue: 'ICLR 2026'
-paperurl: 'https://openreview.net/forum?id=EEs6I4cO7S&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3DICLR.cc%2F2026%2FConference%2FAuthors%23your-submissions)'
+authors:
+  - Xudong Zhu
+  - Mohammad Mahdi Khalili
+  - Zhihui Zhu
+cover: /assets/images/publications/abstopk.png
+paperurl: 'https://openreview.net/forum?id=EEs6I4cO7S'
+codeurl: 'https://github.com/GoXzascc/AbsTopK-SAE'
 citation: 'Zhu X, Khalili M M, Zhu Z. AbsTopK: Rethinking Sparse Autoencoders For Bidirectional Features. ICLR 2026.'
 ---
 
