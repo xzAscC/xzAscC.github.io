@@ -8,7 +8,6 @@ layout: default
   <main role="main">
     <section class="site-hero" aria-labelledby="site-hero-title">
       <div class="site-hero__content">
-        <p class="eyebrow">Researcher &amp; PhD student</p>
         <h1 id="site-hero-title">{{ site.author.name | default: "Xudong Zhu" }}</h1>
         {% if site.author.pronouns %}
           <p class="page__meta">{{ site.author.pronouns }}</p>
@@ -17,13 +16,34 @@ layout: default
           <p class="site-hero__lead">{{ page.intro | markdownify | remove: "<p>" | remove: "</p>" }}</p>
         {% endif %}
 
-        <p>
-          {% if site.author.email %}<a href="mailto:{{ site.author.email }}">Email</a>{% endif %}
-          {% if site.author.github %} · <a href="https://github.com/{{ site.author.github }}">GitHub</a>{% endif %}
-          {% if site.author.googlescholar %} · <a href="{{ site.author.googlescholar }}">Google Scholar</a>{% endif %}
-          {% if site.author.orcid %} · <a href="{{ site.author.orcid }}">ORCID</a>{% endif %}
-          {% if site.author.arxiv %} · <a href="{{ site.author.arxiv }}">arXiv</a>{% endif %}
-        </p>
+        <nav class="social-links" aria-label="Social links">
+          {% if site.author.github %}
+            <a class="social-links__item" href="https://github.com/{{ site.author.github }}" aria-label="GitHub" title="GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z"></path>
+              </svg>
+            </a>
+          {% endif %}
+          {% if site.author.googlescholar %}
+            <a class="social-links__item" href="{{ site.author.googlescholar }}" aria-label="Google Scholar" title="Google Scholar">
+              <img src="{{ base_path }}/assets/images/google-scholar.svg" alt="">
+            </a>
+          {% endif %}
+          {% if site.author.email %}
+            <a class="social-links__item" href="mailto:{{ site.author.email }}" aria-label="Email" title="Email">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M3 5.5h18v13H3zM3.5 6l8.5 7 8.5-7"></path>
+              </svg>
+            </a>
+          {% endif %}
+          {% if site.author.twitter %}
+            <a class="social-links__item" href="{{ site.author.twitter }}" aria-label="X" title="X">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M18.2 2.3h3.3l-7.2 8.3 8.5 11.2h-6.7l-5.2-6.8-6 6.8H1.6l7.8-8.9L1.2 2.3h6.8l4.7 6.2 5.5-6.2Zm-1.2 17.5h1.8L7 4.2H5.1L17 19.8Z"></path>
+              </svg>
+            </a>
+          {% endif %}
+        </nav>
 
         {% if page.interests %}
           <ul class="interest-list" aria-label="Research interests">
@@ -35,7 +55,7 @@ layout: default
       </div>
 
       <figure class="site-hero__portrait">
-        <img src="{{ base_path }}/images/profile.jpg" alt="Portrait of {{ site.author.name | default: "Xudong Zhu" }}">
+        <img src="{{ base_path }}/images/profile-upscaled.png" width="512" height="512" alt="Portrait of {{ site.author.name | default: "Xudong Zhu" }}">
       </figure>
     </section>
 
@@ -54,7 +74,7 @@ layout: default
   </main>
 {% else %}
   <main id="main" role="main">
-    <article class="article page" itemscope itemtype="http://schema.org/CreativeWork">
+    <article class="article page{% if page.collection == 'publications' %} publication-detail{% endif %}" itemscope itemtype="http://schema.org/CreativeWork">
       {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
       {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
       {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">{% endif %}
