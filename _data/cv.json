@@ -50,6 +50,21 @@
       "courses": []
     }
   ],
+  "awards": [
+    {
+      "title": "MMLS 2026 Traveling Award",
+      "date": "2026",
+      "awarder": "Midwest Machine Learning Symposium",
+      "website": "https://midwest-ml.org/2026/"
+    },
+    {
+      "title": "Assisted in completing NAIRR Pilot Project NAIRR260106",
+      "date": "2026",
+      "awarder": "National Artificial Intelligence Research Resource Pilot",
+      "summary": "Geometry and Training Dynamics of Representations in Large Language Models",
+      "website": "https://nairrpilot.org/projects/awarded?_requestNumber=NAIRR260106"
+    }
+  ],
   "publications": [
     {
       "name": "AbsTopK: Rethinking Sparse Autoencoders For Bidirectional Features",
