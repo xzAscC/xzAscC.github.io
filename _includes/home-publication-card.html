@@ -1,0 +1,44 @@
+{% include base_path %}
+{% assign post = include.post %}
+{% assign paper_title = post.title | markdownify | strip_html | strip_newlines %}
+{% assign publication_year = post.date | date: "%Y" %}
+
+<article class="home-publication-card" itemscope itemtype="https://schema.org/ScholarlyArticle">
+  {% if post.cover %}
+  <figure class="home-publication-card__cover">
+    <img src="{{ base_path }}{{ post.cover }}" alt="Cover of {{ paper_title | escape }}" itemprop="image" loading="lazy" decoding="async">
+  </figure>
+  {% endif %}
+
+  <div class="home-publication-card__content">
+    <p class="home-publication-card__badge">
+      <span itemprop="isPartOf" itemscope itemtype="https://schema.org/PublicationIssue"><span itemprop="name">{{ post.venue }}</span></span>
+      {% if post.venue contains publication_year %}
+        <meta itemprop="datePublished" content="{{ post.date | date: '%Y-%m-%d' }}">
+      {% else %}
+        <span aria-hidden="true">/</span>
+        <time datetime="{{ post.date | date: '%Y-%m-%d' }}" itemprop="datePublished">{{ publication_year }}</time>
+      {% endif %}
+    </p>
+
+    <h3 class="home-publication-card__title" itemprop="headline">
+      <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title | markdownify | remove: "<p>" | remove: "</p>" }}</a>
+    </h3>
+
+    <p class="home-publication-card__authors">
+      {% for author in post.authors %}
+        <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">{{ author }}</span></span>{% unless forloop.last %}, {% endunless %}
+      {% endfor %}
+    </p>
+
+    {% if post.excerpt %}
+      <div class="home-publication-card__excerpt" itemprop="description">{{ post.excerpt | markdownify }}</div>
+    {% endif %}
+
+    <nav class="home-publication-card__links" aria-label="Links for {{ paper_title | escape }}">
+      {% if post.paperurl %}<a href="{{ post.paperurl }}" rel="external">Paper</a>{% endif %}
+      {% if post.codeurl %}<a href="{{ post.codeurl }}" rel="external">Code</a>{% endif %}
+      <a href="{{ base_path }}{{ post.url }}" rel="permalink">Details</a>
+    </nav>
+  </div>
+</article>

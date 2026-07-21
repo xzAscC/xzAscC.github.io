@@ -5,25 +5,37 @@ layout: compress
 {% include base_path %}
 
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js"{% if site.site_theme == "dark" %} data-theme="dark"{% endif %}>
+<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
   <head>
+    <script>
+      (function () {
+        var theme;
+
+        try {
+          theme = window.localStorage.getItem('theme');
+        } catch (error) {
+          theme = null;
+        }
+
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        document.documentElement.setAttribute('data-theme', theme);
+      }());
+    </script>
     {% include head.html %}
     {% include head/custom.html %}
   </head>
 
   <body>
 
-    {% include browser-upgrade.html %}
-    {% include masthead.html %}
+    {% include editorial-nav.html %}
 
     {{ content }}
 
-    <div class="page__footer">
-      <footer>
-        {% include footer/custom.html %}
-        {% include footer.html %}
-      </footer>
-    </div>
+    {% include editorial-footer.html %}
+    {% include footer/custom.html %}
 
     {% include scripts.html %}
 
