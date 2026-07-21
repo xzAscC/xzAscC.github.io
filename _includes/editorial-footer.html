@@ -1,0 +1,15 @@
+{% include base_path %}
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__copyright">&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}</p>
+
+    <nav class="site-footer__nav" aria-label="Footer navigation">
+      <ul>
+        <li><a href="https://github.com/{{ site.author.github }}">GitHub</a></li>
+        <li><a href="{{ site.author.googlescholar }}">Scholar</a></li>
+        <li><a href="mailto:{{ site.author.email }}">Email</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>

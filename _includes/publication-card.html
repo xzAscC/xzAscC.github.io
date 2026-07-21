@@ -1,0 +1,32 @@
+{% include base_path %}
+
+<article class="publication-card" itemscope itemtype="https://schema.org/ScholarlyArticle">
+  {% if post.date %}
+    <time class="publication-card__year" datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
+      {{ post.date | date: "%Y" }}
+    </time>
+  {% endif %}
+
+  <div class="publication-card__content">
+    {% if post.venue %}
+      <p class="publication-card__meta">{{ post.venue }}</p>
+    {% endif %}
+
+    <h3 class="publication-card__title" itemprop="headline">
+      <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title | markdownify | remove: "<p>" | remove: "</p>" }}</a>
+    </h3>
+
+    {% if post.excerpt %}
+      <div class="publication-card__excerpt" itemprop="description">{{ post.excerpt | markdownify }}</div>
+    {% endif %}
+
+    {% if post.citation %}
+      <p class="small" itemprop="citation">{{ post.citation }}</p>
+    {% endif %}
+
+    <p>
+      {% if post.paperurl %}<a class="button" href="{{ post.paperurl }}" rel="external">Paper</a>{% endif %}
+      <a class="button button--secondary" href="{{ base_path }}{{ post.url }}" rel="permalink">Details</a>
+    </p>
+  </div>
+</article>

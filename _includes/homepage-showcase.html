@@ -1,0 +1,51 @@
+<div class="homepage-showcase">
+  <section class="showcase-section showcase-section--publications" aria-labelledby="homepage-publications-title">
+    <header class="showcase-section__header">
+      <div>
+        <p class="section-label">Peer-reviewed work</p>
+        <h2 id="homepage-publications-title">Publications</h2>
+      </div>
+    </header>
+
+    <div class="home-publication-list">
+      {% for post in site.publications reversed %}
+        {% unless post.venue == 'arxiv preprint' %}
+          {% include home-publication-card.html post=post %}
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="showcase-section showcase-section--preprints" aria-labelledby="homepage-preprints-title">
+    <header class="showcase-section__header">
+      <div>
+        <p class="section-label">Working papers</p>
+        <h2 id="homepage-preprints-title">Preprints</h2>
+      </div>
+    </header>
+
+    <div class="home-publication-list">
+      {% for post in site.publications reversed %}
+        {% if post.venue == 'arxiv preprint' %}
+          {% include home-publication-card.html post=post %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="showcase-section showcase-section--projects" aria-labelledby="building-in-public-title">
+    <header class="showcase-section__header">
+      <div>
+        <p class="section-label">Selected repositories</p>
+        <h2 id="building-in-public-title">Building in Public</h2>
+      </div>
+      <a class="showcase-section__more" href="https://github.com/xzAscC?tab=repositories" rel="external">View projects</a>
+    </header>
+
+    <div class="project-grid">
+      {% for project in site.data.projects %}
+        {% include project-card.html project=project %}
+      {% endfor %}
+    </div>
+  </section>
+</div>

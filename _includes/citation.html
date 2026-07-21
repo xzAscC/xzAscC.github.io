@@ -1,0 +1,9 @@
+{% if page.citation or page.paperurl or page.slidesurl or page.bibtexurl %}
+  <p class="page__meta">
+    {% if page.citation %}Recommended citation: {{ page.citation }}{% if page.paperurl or page.slidesurl or page.bibtexurl %}<br>{% endif %}{% endif %}
+    {% assign link_separator = '' %}
+    {% if page.paperurl %}<a href="{{ page.paperurl }}">Download Paper</a>{% assign link_separator = ' | ' %}{% endif %}
+    {% if page.slidesurl %}{{ link_separator }}<a href="{{ page.slidesurl }}">Download Slides</a>{% assign link_separator = ' | ' %}{% endif %}
+    {% if page.bibtexurl %}{{ link_separator }}<a href="{{ page.bibtexurl }}">Download Bibtex</a>{% endif %}
+  </p>
+{% endif %}

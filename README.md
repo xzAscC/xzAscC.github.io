@@ -43,6 +43,34 @@ I am a PhD student in Computer Science at The Ohio State University, advised by 
 
 ---
 
+## 🚀 本地预览
+
+使用 Docker 启动本地 Jekyll 预览服务：
+
+```bash
+docker start xzascc-preview
+```
+
+浏览器访问 **http://0.0.0.0:4000/** 即可。
+
+常用命令：
+
+```bash
+# 查看运行状态
+docker ps --filter name=xzascc-preview
+
+# 查看构建日志
+docker logs -f xzascc-preview
+
+# 停止服务
+docker stop xzascc-preview
+
+# 再次启动
+docker start xzascc-preview
+```
+
+---
+
 <div align="center">
   <p>Built with ❤️ using <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/alshedivat/al-folio">al-folio</a></p>
   <p>Hosted on <a href="https://pages.github.com/">GitHub Pages</a></p>

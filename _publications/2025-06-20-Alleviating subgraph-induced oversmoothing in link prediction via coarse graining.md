@@ -5,7 +5,14 @@ category: manuscripts
 excerpt: 'We address the oversmoothing problem in link prediction caused by repetitive high-degree nodes across subgraphs. Our method introduces a coarse-graining strategy that merges strongly correlated nodes, yielding more diverse receptive fields and reducing subgraph size. This not only mitigates oversmoothing but also improves scalability and efficiency of GNN-based link prediction.'
 date: 2025-06-20
 venue: 'Neurocomputing, 2025'
+authors:
+  - Xudong Zhu
+  - Dong Hao
+  - Ziqin Gao
+  - Liming Pan
+cover: /assets/images/publications/coarse-graining.svg
 paperurl: 'https://www.sciencedirect.com/science/article/abs/pii/S0925231225013384'
+codeurl: 'https://github.com/xzAscC/coarsen'
 citation: 'Zhu X, Hao D, Gao Z, et al. Alleviating subgraph-induced oversmoothing in link prediction via coarse graining[J]. Neurocomputing, 2025: 130666.'
 ---
 
