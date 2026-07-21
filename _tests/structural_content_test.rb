@@ -64,10 +64,21 @@ end
 end
 assert cv_page.scan(/class="cv-award-card"/).length == 2, 'CV must render exactly two honor cards'
 assert cv_page.scan(/class="cv-publication-card"/).length == 4, 'CV must render exactly four publication cards'
+assert cv_page.include?('Sparse autoencoders (SAEs) are widely used'),
+       'CV publication cards must retain their research summaries'
+cv_style_source = File.read(File.join(ROOT, '_sass', 'editorial', '_cv.scss'))
+assert cv_style_source.include?(".cv-timeline__content {\n    grid-row: 2;"),
+       'Mobile CV timeline content must render below its date row'
 
 assert blog_page.include?('<h1 id="archive-title" class="page__title">Blog</h1>'),
        'Blog route must render its page title'
 assert !blog_page.include?('<article'), 'Blog must remain empty until content is added'
+blog_source = File.read(File.join(ROOT, '_pages', 'blog.md'))
+assert blog_source.include?('{% for post in site.posts reversed %}'),
+       'Blog must render future posts without requiring a template rewrite'
+home_publication_source = File.read(File.join(ROOT, '_includes', 'home-publication-card.html'))
+assert home_publication_source.include?('{% if post.cover %}'),
+       'Homepage publication cards must guard optional cover images'
 
 desktop_nav = homepage[%r{<div class="site-nav__links">.*?</div>}m]
 assert desktop_nav, 'Primary desktop navigation is missing'

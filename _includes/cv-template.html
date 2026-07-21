@@ -97,6 +97,7 @@
           <div>
             <h3 itemprop="headline"><a href="{{ publication.website }}" rel="external">{{ publication.name }}</a></h3>
             <p class="cv-card__meta" itemprop="publisher">{{ publication.publisher }}</p>
+            {% if publication.summary %}<p class="cv-card__description" itemprop="description">{{ publication.summary }}</p>{% endif %}
           </div>
         </article>
       </li>

@@ -239,7 +239,12 @@
   }
 
   .cv-timeline__dates {
+    grid-row: 1;
     padding-top: 0;
+  }
+
+  .cv-timeline__content {
+    grid-row: 2;
   }
 
   .cv-card-grid {
