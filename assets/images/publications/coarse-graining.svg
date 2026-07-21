@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 935 1210" role="img" aria-labelledby="title desc">
+  <title id="title">Alleviating subgraph-induced oversmoothing paper cover</title>
+  <desc id="desc">A paper-style title cover for the Neurocomputing 2025 article.</desc>
+  <rect width="935" height="1210" fill="#fff"/>
+  <rect x="0" y="0" width="935" height="18" fill="#404b91"/>
+  <text x="468" y="160" fill="#29231f" font-family="Georgia, serif" font-size="43" font-weight="700" text-anchor="middle">
+    <tspan x="468" dy="0">Alleviating subgraph-induced</tspan>
+    <tspan x="468" dy="58">oversmoothing in link prediction</tspan>
+    <tspan x="468" dy="58">via coarse graining</tspan>
+  </text>
+  <text x="468" y="385" fill="#6f655d" font-family="Arial, sans-serif" font-size="23" text-anchor="middle">Xudong Zhu · Dong Hao · Ziqin Gao · Liming Pan</text>
+  <text x="468" y="440" fill="#b65f45" font-family="Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="3" text-anchor="middle">NEUROCOMPUTING · 2025</text>
+  <line x1="150" y1="500" x2="785" y2="500" stroke="#d8d0c4" stroke-width="2"/>
+  <g transform="translate(468 730)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#404b91" stroke-width="6">
+      <path d="M-210-90-95-175 30-105 155-175 230-45 120 65 205 180 30 155-110 200-225 95-135-20Z"/>
+      <path d="M-95-175-135-20 30-105 120 65 30 155-135-20-225 95M30-105 155-175M120 65 230-45M30 155 205 180"/>
+    </g>
+    <g fill="#b65f45" stroke="#fff" stroke-width="5">
+      <circle cx="-210" cy="-90" r="18"/><circle cx="-95" cy="-175" r="18"/><circle cx="30" cy="-105" r="18"/>
+      <circle cx="155" cy="-175" r="18"/><circle cx="230" cy="-45" r="18"/><circle cx="120" cy="65" r="18"/>
+      <circle cx="205" cy="180" r="18"/><circle cx="30" cy="155" r="18"/><circle cx="-110" cy="200" r="18"/>
+      <circle cx="-225" cy="95" r="18"/><circle cx="-135" cy="-20" r="18"/>
+    </g>
+  </g>
+  <text x="468" y="1070" fill="#6f655d" font-family="Arial, sans-serif" font-size="22" text-anchor="middle">Coarse-grained structural learning for robust link prediction</text>
+  <text x="468" y="1140" fill="#29231f" font-family="Georgia, serif" font-size="20" font-style="italic" text-anchor="middle">Article 130666</text>
+</svg>
