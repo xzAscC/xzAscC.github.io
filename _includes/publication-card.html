@@ -17,7 +17,7 @@
     </h3>
 
     {% if post.excerpt %}
-      <div itemprop="description">{{ post.excerpt | markdownify }}</div>
+      <div class="publication-card__excerpt" itemprop="description">{{ post.excerpt | markdownify }}</div>
     {% endif %}
 
     {% if post.citation %}

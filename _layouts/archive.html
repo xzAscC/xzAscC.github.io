@@ -5,7 +5,7 @@ layout: default
 {% include base_path %}
 
 <main id="main" role="main">
-  <section class="archive" aria-labelledby="archive-title">
+  <section class="archive{% if page.url == '/publications/' %} publications-archive{% endif %}" aria-labelledby="archive-title">
     {% if page.title %}<h1 id="archive-title" class="page__title">{{ page.title }}</h1>{% endif %}
 
     {{ content }}
