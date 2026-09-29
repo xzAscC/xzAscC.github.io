@@ -1,0 +1,60 @@
+_data/navigation.yml
+  s_f05a9579ded952::t_3e7a27bb3d0277 5-7
+_sass/editorial/_components.scss
+  s_f05a9579ded952::t_8b20402627e4b0 28,35-36,41-42,44,73-76,299-312,393
+  s_f05a9579ded952::t_a3ff471bec54f8 37
+_pages/blog.md
+  s_f05a9579ded952::t_5e8c26bb74edf8 5,10-33
+_sass/editorial/_blog.scss
+  s_f05a9579ded952::t_f2e4783fae1826 326-327
+  s_f05a9579ded952::t_b4b0cf3efc3332 313-314,354-356,359-365,368-375
+  s_f05a9579ded952::t_c8a5565f0709c6 1-312,315-325,328-353,357-358,366-367,376-523
+_tests/structural_content_test.rb
+  s_f05a9579ded952::t_f2e4783fae1826 76-80,87-100,130,132-133,199,248
+_includes/editorial-footer.html
+  s_f05a9579ded952::t_77ece07850fbbb 12
+assets/css/main.scss
+  s_f05a9579ded952::t_8b20402627e4b0 11
+_sass/editorial/_tokens.scss
+  s_f05a9579ded952::t_8b20402627e4b0 25-26
+_includes/editorial-nav.html
+  s_f05a9579ded952::t_77ece07850fbbb 4,11
+_layouts/post.html
+  s_f05a9579ded952::t_b4b0cf3efc3332 6,17
+  s_f05a9579ded952::t_d12aa806f0d970 1-5,7-16,18-59
+README.md
+  s_f05a9579ded952::t_b9b08e02720f69 72-86
+_drafts/post-template.md
+  s_f05a9579ded952::t_012ff77063eb11 1-62
+_config.yml
+  s_f05a9579ded952::t_3e7a27bb3d0277 110,138,182-188
+_includes/homepage-showcase.html
+  s_f05a9579ded952::t_77ece07850fbbb 1,37-49
+  s_f05a9579ded952::t_368bb10f0b2a6a 53
+  s_f05a9579ded952::t_d154b2d3aa1314 50-52,54
+_layouts/default.html
+  s_f05a9579ded952::t_3e7a27bb3d0277 8
+_sass/editorial/_layout.scss
+  s_f05a9579ded952::t_8b20402627e4b0 52,60-74,192,201-218
+  s_f05a9579ded952::t_9bbe751411d304 219
+_includes/post-list-item.html
+  s_f05a9579ded952::t_5e8c26bb74edf8 1-22
+_includes/post-read-time.html
+  s_f05a9579ded952::t_5e8c26bb74edf8 1-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8dd5802637674d8ed1c59ec50a78f70f96d7fa92",
+  "prompts": {},
+  "sessions": {
+    "s_f05a9579ded952": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a13c72ca-c958-4851-b054-d3f7e81c3f25",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
