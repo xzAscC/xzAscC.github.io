@@ -9,7 +9,7 @@ authors:
   - Xudong Zhu
   - Zhao Kang
   - Bei Hui
-cover: /assets/images/publications/fcds.png
+cover: /assets/images/publications/fcds.webp
 paperurl: 'https://aclanthology.org/2024.lrec-main.627/'
 codeurl: 'https://github.com/xzAscC/FCDS'
 citation: 'Xudong Zhu, Zhao Kang, and Bei Hui. 2024. FCDS: Fusing Constituency and Dependency Syntax into Document-Level Relation Extraction. In Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), pages 7141–7152, Torino, Italia. ELRA and ICCL.'

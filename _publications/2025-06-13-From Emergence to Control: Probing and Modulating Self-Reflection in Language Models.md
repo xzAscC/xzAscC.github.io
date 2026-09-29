@@ -10,7 +10,7 @@ authors:
   - Jiachen Jiang
   - Mohammad Mahdi Khalili
   - Zhihui Zhu
-cover: /assets/images/publications/self-reflection.png
+cover: /assets/images/publications/self-reflection.webp
 paperurl: 'https://arxiv.org/abs/2506.12217'
 codeurl: 'https://github.com/xzAscC/ProbingReflection'
 citation: 'Zhu X, Jiang J, Khalili M M, et al. From Emergence to Control: Probing and Modulating Self-Reflection in Language Models[J]. arXiv preprint arXiv:2506.12217, 2025.'

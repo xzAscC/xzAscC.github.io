@@ -9,7 +9,7 @@ authors:
   - Xudong Zhu
   - Mohammad Mahdi Khalili
   - Zhihui Zhu
-cover: /assets/images/publications/abstopk.png
+cover: /assets/images/publications/abstopk.webp
 paperurl: 'https://openreview.net/forum?id=EEs6I4cO7S'
 codeurl: 'https://github.com/GoXzascc/AbsTopK-SAE'
 citation: 'Zhu X, Khalili M M, Zhu Z. AbsTopK: Rethinking Sparse Autoencoders For Bidirectional Features. ICLR 2026.'

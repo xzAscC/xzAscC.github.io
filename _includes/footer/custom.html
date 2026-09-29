@@ -1,17 +1,25 @@
 <!-- start custom footer snippets -->
+{% comment %}
+  Heavy client libraries load only on pages that use them. Detection runs on the
+  rendered page HTML; front matter flags (math, plotly, mermaid) force a library on.
+{% endcomment %}
 
-<!-- Support for MatJax -->
-<script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+{% if page.math or content contains '\(' or content contains '\[' %}
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+{% endif %}
 
-<!-- Support for Plotly -->
-<script defer src='https://cdnjs.cloudflare.com/ajax/libs/plotly.js/3.0.1/plotly.min.js'></script>
+{% if page.plotly or content contains 'language-plotly' %}
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/3.0.1/plotly.min.js"></script>
+<script type="module" src="{{ base_path }}/assets/js/plotly-render.js"></script>
+{% endif %}
 
-<!-- Support for Mermaid -->
+{% if page.mermaid or content contains 'language-mermaid' %}
 <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({startOnLoad:true, theme:'default'});
-    await mermaid.run({querySelector:'code.language-mermaid'});
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  const theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'neutral';
+  mermaid.initialize({ startOnLoad: false, theme });
+  await mermaid.run({ querySelector: 'code.language-mermaid' });
 </script>
+{% endif %}
 
 <!-- end custom footer snippets -->
