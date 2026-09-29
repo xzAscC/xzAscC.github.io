@@ -25,19 +25,23 @@ a:focus-visible {
 
 .social-links {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-2);
   align-items: center;
   margin: var(--space-4) 0;
 }
 
 .social-links__item {
   display: inline-flex;
-  width: var(--space-5);
-  height: var(--space-5);
+  width: calc(var(--space-6) + var(--space-3));
+  height: calc(var(--space-6) + var(--space-3));
+  padding: 0.625rem;
   align-items: center;
   justify-content: center;
   color: var(--color-ink-soft);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-pill);
   text-decoration: none;
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .social-links__item svg {
@@ -66,7 +70,10 @@ a:focus-visible {
 
 .social-links__item:hover,
 .social-links__item:focus-visible {
-  color: var(--color-accent);
+  color: var(--color-accent-strong);
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+  transform: translateY(calc(var(--border-width) * -1));
 }
 
 .site-nav a,
@@ -289,6 +296,20 @@ input[type='submit']:focus-visible {
   border: var(--border-width) solid var(--color-border);
   border-top-color: var(--color-accent);
   border-radius: var(--radius-md);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.project-card:hover,
+.project-card:focus-within,
+.home-publication-card:hover,
+.home-publication-card:focus-within {
+  border-color: var(--color-warm);
+  box-shadow: var(--shadow-card);
+}
+
+.project-card:hover,
+.home-publication-card:hover {
+  transform: translateY(calc(var(--space-1) * -1));
 }
 
 .project-card__title {
@@ -369,6 +390,7 @@ input[type='submit']:focus-visible {
   background: var(--color-surface);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-md);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
 }
 
 .home-publication-card__cover {

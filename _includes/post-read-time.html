@@ -1,0 +1,10 @@
+{%- assign post = include.post | default: page -%}
+{%- assign text = post.content | strip_html | strip_newlines -%}
+{%- assign lang = post.lang | default: site.locale | slice: 0, 2 -%}
+{%- if lang == 'zh' or lang == 'ja' -%}
+  {%- assign minutes = text | size | divided_by: 400 -%}
+{%- else -%}
+  {%- assign minutes = text | number_of_words | divided_by: site.words_per_minute -%}
+{%- endif -%}
+{%- if minutes < 1 -%}{%- assign minutes = 1 -%}{%- endif -%}
+{{ minutes }} min read

@@ -72,21 +72,32 @@ assert cv_style_source.include?(".cv-timeline__content {\n    grid-row: 2;"),
 
 assert blog_page.include?('<h1 id="archive-title" class="page__title">Blog</h1>'),
        'Blog route must render its page title'
-assert !blog_page.include?('<article'), 'Blog must remain empty until content is added'
 blog_source = File.read(File.join(ROOT, '_pages', 'blog.md'))
-assert blog_source.include?('{% for post in site.posts reversed %}'),
-       'Blog must render future posts without requiring a template rewrite'
+assert blog_source.include?('site.posts'), 'Blog must list posts from _posts/'
+assert blog_source.include?('empty-state'), 'Blog must render an empty state before the first post'
+assert File.file?(File.join(ROOT, '_layouts', 'post.html')), 'Posts must have a dedicated layout'
+config_yaml = File.read(File.join(ROOT, '_config.yml'))
+assert config_yaml.include?('permalink: /blog/:year/:title/'), 'Posts must live under /blog/'
 home_publication_source = File.read(File.join(ROOT, '_includes', 'home-publication-card.html'))
 assert home_publication_source.include?('{% if post.cover %}'),
        'Homepage publication cards must guard optional cover images'
 
 desktop_nav = homepage[%r{<div class="site-nav__links">.*?</div>}m]
 assert desktop_nav, 'Primary desktop navigation is missing'
-nav_positions = ['/publications/', '/cv-json/'].map { |path| desktop_nav.index(path) }
-assert nav_positions.all?, 'Primary navigation must include Publications and CV'
-assert nav_positions == nav_positions.sort, 'Primary navigation must keep Publications before CV'
-assert !homepage.match?(%r{href="[^"]*/blog/"}),
-       'Blog must stay hidden from navigation until content is published'
+nav_positions = ['/publications/', '/blog/', '/cv-json/'].map { |path| desktop_nav.index(path) }
+assert nav_positions.all?, 'Primary navigation must include Publications, Blog, and CV'
+assert nav_positions == nav_positions.sort, 'Primary navigation must order Publications, Blog, then CV'
+
+# Issue #2: pages must not load client libraries they do not use.
+[homepage, publications_page, cv_page, blog_page].each do |html|
+  %w[mathjax plotly mermaid polyfill academicons].each do |library|
+    assert !html.downcase.include?(library), "Page without #{library} content still loads it"
+  end
+end
+footer_custom_source = File.read(File.join(ROOT, '_includes', 'footer', 'custom.html'))
+%w[language-plotly language-mermaid page.math].each do |trigger|
+  assert footer_custom_source.include?(trigger), "Library loading lost its on-demand trigger: #{trigger}"
+end
 
 publication_pages = Dir.glob(site_file('publications/*/index.html'))
 assert publication_pages.length == 4, "Expected 4 publication detail pages, found #{publication_pages.length}"
@@ -116,10 +127,10 @@ assert homepage.scan(/<article class="project-card"/).length == 2,
        'Homepage must render exactly two project cards'
 
 cover_paths = %w[
-  /assets/images/publications/abstopk.png
+  /assets/images/publications/abstopk.webp
   /assets/images/publications/coarse-graining.svg
-  /assets/images/publications/self-reflection.png
-  /assets/images/publications/fcds.png
+  /assets/images/publications/self-reflection.webp
+  /assets/images/publications/fcds.webp
 ]
 cover_paths.each do |cover_path|
   assert homepage.match?(/<img\b[^>]*src="[^"]*#{Regexp.escape(cover_path)}"[^>]*alt="Cover of [^"]+"/),
@@ -185,6 +196,7 @@ assert nav_source.include?('site-nav__menu'), 'Primary navigation must provide a
 assert nav_source.scan('{% for link in site.data.navigation.main %}').length == 1,
        'Desktop and mobile navigation must share one generated link list'
 assert scripts_source.scan('dark-toggle.js').length == 1, 'Dark toggle module must load exactly once'
+assert !scripts_source.include?('plotly-render.js'), 'Plotly renderer must load only on pages with Plotly blocks'
 assert !scripts_source.include?('main.min.js'), 'Editorial pages must not load the legacy theme bundle'
 assert !archive_item_source.include?('class="fa'),
        'Active archive markup must not depend on removed Font Awesome assets'
@@ -233,7 +245,7 @@ assert about_front_matter.include?('advance mechanistic interpretability'),
 assert about_body.strip == '{% include homepage-showcase.html %}',
        'Homepage body must only invoke the homepage showcase include'
 assert !single_layout.include?('Researcher &amp; PhD student'), 'Homepage must not render the removed eyebrow'
-assert single_layout.include?('images/profile-upscaled.png'), 'Homepage must use the high-resolution portrait'
+assert single_layout.include?('images/profile.webp'), 'Homepage must use the compressed portrait'
 assert !about_body.match?(/^## Contact\s*$/), 'Homepage body must not render a Contact section'
 footer_source = File.read(File.join(ROOT, '_includes', 'editorial-footer.html'))
 assert !footer_source.include?('Sitemap'), 'Footer must not render a Sitemap link'

@@ -69,6 +69,21 @@ docker stop xzascc-preview
 docker start xzascc-preview
 ```
 
+## ✍️ 写博客
+
+1. 复制模板：`cp _drafts/post-template.md _posts/2026-10-01-my-post.md`（文件名中的日期即发布日期）。
+2. 修改 front matter：`title`、可选的 `description`、`tags`；中文文章加 `lang: zh`（用于字体和阅读时长估算）。
+3. 文章地址为 `/blog/<年份>/<slug>/`，会自动出现在 Blog 页、首页 Writing 栏目和 RSS（`/feed.xml`）中。
+4. 草稿放在 `_drafts/`，不会发布；本地预览草稿需给 `jekyll serve` 加 `--drafts`。
+
+支持的写作功能（模板里都有示例）：
+
+- 公式：`$$...$$`（行内和独立成行均可），只有含公式的页面才会加载 MathJax。
+- 代码高亮、表格、脚注 `[^1]`、带说明的图片 `<figure>`。
+- Mermaid（```` ```mermaid ````）和 Plotly（```` ```plotly ````）代码块，同样按需加载。
+- 提示框：在引用块后加一行 `{: .note }` 或 `{: .warning }`。
+- 博客图片放在 `assets/images/blog/`，建议使用 WebP 格式。
+
 ---
 
 <div align="center">

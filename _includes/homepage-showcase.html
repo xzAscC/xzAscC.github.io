@@ -1,3 +1,4 @@
+{% include base_path %}
 <div class="homepage-showcase">
   <section class="showcase-section showcase-section--publications" aria-labelledby="homepage-publications-title">
     <header class="showcase-section__header">
@@ -32,6 +33,24 @@
       {% endfor %}
     </div>
   </section>
+
+  {% if site.posts.size > 0 %}
+  <section class="showcase-section showcase-section--writing" aria-labelledby="homepage-writing-title">
+    <header class="showcase-section__header">
+      <div>
+        <p class="section-label">Notes &amp; essays</p>
+        <h2 id="homepage-writing-title">Writing</h2>
+      </div>
+      <a class="showcase-section__more" href="{{ base_path }}/blog/">All posts</a>
+    </header>
+
+    <div class="post-list">
+      {% for post in site.posts limit: 3 %}
+        {% include post-list-item.html post=post show_year=true %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
 
   <section class="showcase-section showcase-section--projects" aria-labelledby="building-in-public-title">
     <header class="showcase-section__header">
