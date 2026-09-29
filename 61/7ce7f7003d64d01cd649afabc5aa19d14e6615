@@ -1,0 +1,30 @@
+_includes/head/custom.html
+  s_f05a9579ded952::t_02d43ad951f4d9 15-16
+_publications/2026-01-01-AbsTopK-Rethinking-Sparse-Autoencoders-For-Bidirectional-Features.md
+  s_f05a9579ded952::t_8939a24d24fd87 12
+_layouts/single.html
+  s_f05a9579ded952::t_8939a24d24fd87 60
+  s_f05a9579ded952::t_77ece07850fbbb 12-16
+"_publications/2024-03-04-FCDS: Fusing Constituency and Dependency Syntax into Document-Level Relation Extraction copy 2.md"
+  s_f05a9579ded952::t_8939a24d24fd87 12
+"_publications/2025-06-13-From Emergence to Control: Probing and Modulating Self-Reflection in Language Models.md"
+  s_f05a9579ded952::t_8939a24d24fd87 13
+_includes/footer/custom.html
+  s_f05a9579ded952::t_573feac85babf7 2-5,7,9,11-14,16,18-21,23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "617ce7f7003d64d01cd649afabc5aa19d14e6615",
+  "prompts": {},
+  "sessions": {
+    "s_f05a9579ded952": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a13c72ca-c958-4851-b054-d3f7e81c3f25",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
