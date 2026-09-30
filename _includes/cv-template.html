@@ -9,6 +9,10 @@
     </div>
 
     <div class="cv-header__details">
+      <a class="button cv-download" href="{{ base_path }}/files/Xudong_Zhu_CV.pdf" download>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"></path></svg>
+        Download PDF
+      </a>
       {% if cv.basics.email %}<a href="mailto:{{ cv.basics.email }}">{{ cv.basics.email }}</a>{% endif %}
       {% if cv.basics.website %}<a href="{{ cv.basics.website }}" rel="external">{{ cv.basics.website | remove: "https://" }}</a>{% endif %}
       {% if cv.basics.location.city %}<span>{{ cv.basics.location.city }}{% if cv.basics.location.region %}, {{ cv.basics.location.region }}{% endif %}</span>{% endif %}

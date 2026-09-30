@@ -35,6 +35,22 @@
   font-size: var(--text-sm);
 }
 
+.cv-header__details > .cv-download {
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  color: var(--color-surface-raised);
+}
+
+.cv-download svg {
+  width: 1.1em;
+  height: 1.1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
 .cv-header__details > a,
 .cv-profiles a {
   font-weight: 600;

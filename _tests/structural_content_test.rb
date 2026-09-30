@@ -50,6 +50,9 @@ end
   assert cv_page.include?(content.tr('\\', '')), "CV lost required content: #{content}"
 end
 
+assert cv_page.include?('/files/Xudong_Zhu_CV.pdf'), 'CV page must offer the PDF download'
+assert File.file?(site_file('files/Xudong_Zhu_CV.pdf')), 'CV PDF must be published with the site'
+
 cv_section_ids = %w[cv-experience-title cv-honors-title cv-open-source-title cv-publications-title]
 cv_section_positions = cv_section_ids.map { |id| cv_page.index(%(id="#{id}")) }
 assert cv_section_positions.all?, 'CV must render Experience, Honors, Open Source, and Publications sections'

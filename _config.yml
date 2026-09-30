@@ -132,6 +132,7 @@ exclude:
   - .devcontainer
   - .github
   - .omo
+  - 650af75be807be2aa3c0c0bb
   - .playwright-mcp
   - .sass-cache
   - _tests
