@@ -1,0 +1,21 @@
+_includes/cv-template.html
+  s_a35c230be6af40::t_046d5f7d938d42 73-75
+_data/cv.json
+  s_a35c230be6af40::t_046d5f7d938d42 40-47,51-63,67-74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "80a170abed9fb824dc44b19fd3817d8f21a462ea",
+  "prompts": {},
+  "sessions": {
+    "s_a35c230be6af40": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f070-e1f7-75f1-b70b-72a4b9b1a94f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
