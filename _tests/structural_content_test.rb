@@ -321,3 +321,9 @@ abstopk_page = CGI.unescapeHTML(File.read(site_file('publications/abstopk/index.
 assert abstopk_page.include?('@inproceedings{zhu2026abstopk'), 'Paper pages must show BibTeX'
 assert abstopk_page.include?('<iframe'), 'Paper pages with a PDF must embed it'
 assert abstopk_page.include?('mathjax'), 'Paper pages with math must load MathJax'
+
+['University of Electronic Science and Technology of China', 'Zhao Kang', 'Dong Hao'].each do |content|
+  assert homepage.include?(content), "Homepage intro must mention: #{content}"
+  assert cv_page.include?(content), "CV summary must mention: #{content}"
+end
+assert !cv_page.include?('Linear Representation Hypothesis'), 'CV must not show the outdated summary'

@@ -7,7 +7,8 @@
     <div class="cv-header__identity">
       <p class="section-label">Curriculum Vitae</p>
       <h2>{{ cv.basics.name }}</h2>
-      {% if cv.basics.summary %}<p class="cv-header__summary">{{ cv.basics.summary }}</p>{% endif %}
+      {% assign home_page = site.pages | where: "url", "/" | first %}
+      {% if home_page.intro %}<p class="cv-header__summary">{{ home_page.intro | markdownify | remove: "<p>" | remove: "</p>" | strip }}</p>{% endif %}
     </div>
 
     <div class="cv-header__details">
