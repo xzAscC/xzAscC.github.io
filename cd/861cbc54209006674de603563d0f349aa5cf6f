@@ -1,0 +1,27 @@
+.gitignore
+  s_f05a9579ded952::t_e972b6bc621758 23-25
+_tests/structural_content_test.rb
+  s_f05a9579ded952::t_9ba10cd677175d 53-55
+_includes/cv-template.html
+  s_f05a9579ded952::t_e972b6bc621758 12-15
+_config.yml
+  s_f05a9579ded952::t_e972b6bc621758 135
+_sass/editorial/_cv.scss
+  s_f05a9579ded952::t_e972b6bc621758 38-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "cd861cbc54209006674de603563d0f349aa5cf6f",
+  "prompts": {},
+  "sessions": {
+    "s_f05a9579ded952": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a13c72ca-c958-4851-b054-d3f7e81c3f25",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
