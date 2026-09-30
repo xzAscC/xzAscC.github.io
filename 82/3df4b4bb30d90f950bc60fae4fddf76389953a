@@ -1,0 +1,27 @@
+_tests/structural_content_test.rb
+  s_a35c230be6af40::t_40c894bf131934 252-255,325
+_pages/about.md
+  s_a35c230be6af40::t_40c894bf131934 5,7-14
+_layouts/single.html
+  s_a35c230be6af40::t_40c894bf131934 18
+_data/cv.json
+  s_a35c230be6af40::t_40c894bf131934 6
+_includes/cv-template.html
+  s_a35c230be6af40::t_40c894bf131934 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "823df4b4bb30d90f950bc60fae4fddf76389953a",
+  "prompts": {},
+  "sessions": {
+    "s_a35c230be6af40": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f070-e1f7-75f1-b70b-72a4b9b1a94f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
