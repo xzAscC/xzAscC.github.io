@@ -19,6 +19,7 @@
 }
 
 .cv-header__summary {
+  text-wrap: pretty;
   max-width: 48rem;
   margin: 0;
   color: var(--color-ink-soft);
@@ -33,6 +34,22 @@
   border-left: calc(var(--border-width) * 2) solid var(--color-warm-soft);
   color: var(--color-ink-soft);
   font-size: var(--text-sm);
+}
+
+.cv-header__details > .cv-download {
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  color: var(--color-surface-raised);
+}
+
+.cv-download svg {
+  width: 1.1em;
+  height: 1.1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
 }
 
 .cv-header__details > a,
@@ -143,10 +160,34 @@
   font-weight: 650;
 }
 
+.cv-card__authors {
+  margin: var(--space-2) 0 0;
+  color: var(--color-ink-soft);
+  font-size: var(--text-sm);
+}
+
+.cv-card__authors strong {
+  color: var(--color-ink);
+  font-weight: 650;
+}
+
+.cv-publication-card .paper-links {
+  padding-top: var(--space-3);
+}
+
 .cv-timeline__detail,
 .cv-card__description {
   margin: var(--space-3) 0 0;
   color: var(--color-ink-soft);
+}
+
+.cv-timeline__detail {
+  margin-top: var(--space-1);
+  font-size: var(--text-sm);
+}
+
+.cv-timeline__institution + .cv-timeline__detail {
+  margin-top: var(--space-2);
 }
 
 .cv-card-grid {

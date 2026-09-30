@@ -1,0 +1,153 @@
+---
+layout: default
+---
+
+{% include base_path %}
+{% assign paper_title = page.title | markdownify | strip_html | strip_newlines %}
+{% capture publication_year %}{% include paper-year.html post=page %}{% endcapture %}
+{% if page.pdfurl %}
+  {% if page.pdfurl contains "://" %}{% assign pdf_href = page.pdfurl %}{% else %}{% assign pdf_href = base_path | append: page.pdfurl %}{% endif %}
+  {% assign pdf_filename = site.author.name | split: " " | last | append: publication_year | append: "-" | append: page.slug | append: ".pdf" %}
+{% endif %}
+
+<main id="main" role="main">
+  <article class="paper article page publication-detail" itemscope itemtype="https://schema.org/ScholarlyArticle">
+    <header class="paper__header">
+      <a class="post__back" href="{{ base_path }}/publications/">Publications</a>
+
+      <p class="home-publication-card__badge paper__badge">
+        <span itemprop="isPartOf">{{ page.venue }}</span>
+        {% unless page.venue contains publication_year %}
+          <span aria-hidden="true">/</span>
+          <time datetime="{{ page.date | date: '%Y-%m-%d' }}" itemprop="datePublished">{{ publication_year }}</time>
+        {% endunless %}
+      </p>
+
+      <h1 class="page__title paper__title" itemprop="headline">{{ page.title }}</h1>
+
+      {% if page.authors %}
+        <p class="paper__authors">
+          {% for author in page.authors %}
+            <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">{% if author == site.author.name %}<strong>{{ author }}</strong>{% else %}{{ author }}{% endif %}</span></span>{% unless forloop.last %}<span class="paper__author-sep" aria-hidden="true">,</span> {% endunless %}
+          {% endfor %}
+        </p>
+      {% endif %}
+
+      <nav class="paper__actions" aria-label="Paper resources">
+        {% if page.paperurl %}
+          <a class="button" href="{{ page.paperurl }}" rel="external">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3h7l5 5v13H7zM14 3v5h5"></path></svg>
+            Paper
+          </a>
+        {% endif %}
+        {% if page.pdfurl %}
+          <a class="button button--secondary" href="{{ pdf_href }}" download="{{ pdf_filename }}">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"></path></svg>
+            PDF
+          </a>
+        {% endif %}
+        {% if page.codeurl %}
+          <a class="button button--secondary" href="{{ page.codeurl }}" rel="external">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"></path></svg>
+            Code
+          </a>
+        {% endif %}
+        {% if page.bibtex %}
+          <button class="button button--secondary" type="button" data-copy-target="paper-bibtex" aria-describedby="copy-status">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 7h4v4c0 3-2 5-4 6M15 7h4v4c0 3-2 5-4 6"></path></svg>
+            Cite
+          </button>
+        {% endif %}
+      </nav>
+    </header>
+
+    <section class="paper__section" aria-labelledby="paper-abstract-title">
+      <h2 id="paper-abstract-title" class="paper__section-title">Abstract</h2>
+      <div class="paper__abstract prose" itemprop="abstract">
+        {{ content }}
+      </div>
+    </section>
+
+    {% if page.pdfurl %}
+      <section class="paper__section" aria-labelledby="paper-pdf-title">
+        <div class="paper__section-head">
+          <h2 id="paper-pdf-title" class="paper__section-title">Paper</h2>
+          <a href="{{ pdf_href }}" target="_blank" rel="noopener">Open in a new tab</a>
+        </div>
+        <div class="paper__pdf">
+          <iframe src="{{ pdf_href }}#view=FitH" title="PDF of {{ paper_title | escape }}" loading="lazy"></iframe>
+        </div>
+      </section>
+    {% elsif page.cover %}
+      <section class="paper__section" aria-labelledby="paper-pdf-title">
+        <div class="paper__section-head">
+          <h2 id="paper-pdf-title" class="paper__section-title">Paper</h2>
+          {% if page.paperurl %}<a href="{{ page.paperurl }}" rel="external">Read at the publisher</a>{% endif %}
+        </div>
+        <a class="paper__cover" href="{{ page.paperurl | default: '#' }}" rel="external">
+          <img src="{{ base_path }}{{ page.cover }}" alt="First page of {{ paper_title | escape }}" loading="lazy">
+        </a>
+      </section>
+    {% endif %}
+
+    {% if page.bibtex %}
+      <section class="paper__section" id="citation" aria-labelledby="paper-citation-title">
+        <div class="paper__section-head">
+          <h2 id="paper-citation-title" class="paper__section-title">Citation</h2>
+          <button class="paper__copy" type="button" data-copy-target="paper-bibtex">Copy BibTeX</button>
+        </div>
+        <pre class="paper__bibtex"><code id="paper-bibtex">{{ page.bibtex | strip | escape }}</code></pre>
+      </section>
+    {% endif %}
+  </article>
+</main>
+
+{% if page.bibtex %}
+<div class="toast" id="copy-status" role="status" aria-live="polite" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+  <span class="toast__text">BibTeX copied to clipboard</span>
+</div>
+<script>
+  (function () {
+    var toast = document.getElementById('copy-status');
+    var toastText = toast.querySelector('.toast__text');
+    var hideTimer;
+
+    function showToast(message, isError) {
+      toastText.textContent = message;
+      toast.classList.toggle('toast--error', Boolean(isError));
+      toast.hidden = false;
+      requestAnimationFrame(function () { toast.classList.add('toast--visible'); });
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () {
+        toast.classList.remove('toast--visible');
+        setTimeout(function () { toast.hidden = true; }, 250);
+      }, 2400);
+    }
+
+    function selectText(node) {
+      var range = document.createRange();
+      range.selectNodeContents(node);
+      var selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+
+    document.querySelectorAll('[data-copy-target]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var source = document.getElementById(button.dataset.copyTarget);
+        if (!source) return;
+        var fallback = function () {
+          source.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          selectText(source);
+          showToast('Press Ctrl+C (⌘C) to copy the selected BibTeX', true);
+        };
+        if (!navigator.clipboard || !window.isSecureContext) { fallback(); return; }
+        navigator.clipboard.writeText(source.textContent).then(function () {
+          showToast('BibTeX copied to clipboard');
+        }, fallback);
+      });
+    });
+  }());
+</script>
+{% endif %}

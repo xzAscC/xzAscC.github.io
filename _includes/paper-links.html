@@ -1,0 +1,5 @@
+{% comment %} Paper / Code / Project Page links shared by every paper listing. {% endcomment %}
+{% assign paper = include.post %}
+{% if paper.paperurl %}<a href="{{ paper.paperurl }}" rel="external">Paper</a>{% endif %}
+{% if paper.codeurl %}<a href="{{ paper.codeurl }}" rel="external">Code</a>{% endif %}
+{% if paper.projecturl %}<a href="{{ paper.projecturl }}" rel="external">Project Page</a>{% else %}<a href="{{ base_path }}{{ paper.url }}" rel="bookmark">Project Page</a>{% endif %}

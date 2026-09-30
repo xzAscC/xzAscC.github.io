@@ -3,13 +3,13 @@
     "name": "Xudong Zhu",
     "email": "zhu.3944@osu.edu",
     "website": "https://xudongzhu.com",
-    "summary": "I am a PhD student in Computer Science at The Ohio State University, advised by Prof. <a href=\"https://zhihuizhu.github.io/\" target=\"_blank\">Zhihui Zhu</a>. My research focuses on the mechanistic interpretability of large language models, with particular interest in understanding the Linear Representation Hypothesis and the geometric structure of learned representations. I investigate why semantic features and behaviors align with linear directions in representation space, and how this structure enables effective interpretation and control through linear steering. My work combines sparse autoencoders and geometric analysis to uncover and characterize the internal structure of model representations.",
+    "summary": "My research examines how large language models represent concepts and how these representations evolve during generation and training. I focus on the linear structure of these representations and its role in understanding and steering model behavior, as well as how different training methods, such as SFT and RL, reshape these learned representations.",
     "location": {
       "address": "Columbus, OH",
       "postalCode": "43210",
       "city": "Columbus",
       "countryCode": "US",
-      "region": "Ohio" 
+      "region": "Ohio"
     },
     "profiles": [
       {
@@ -29,25 +29,77 @@
       }
     ]
   },
-  "work": [],
+  "work": [
+    {
+      "name": "The Ohio State University",
+      "position": "Doctoral Research",
+      "advisor": "Prof. Zhihui Zhu",
+      "highlights": [
+        {
+          "title": "Concept representations",
+          "description": "Study how LLMs represent concepts, focusing on their linear structure, bidirectional features, and connections to model interpretability and behavioral control.",
+          "related": [
+            {
+              "title": "AbsTopK",
+              "status": "ICLR 2026",
+              "url": "https://xudongzhu.com/publications/abstopk/"
+            }
+          ]
+        },
+        {
+          "title": "Generation dynamics",
+          "description": "Study how concept representations evolve during generation and how steering propagates their influence on subsequent model behavior.",
+          "related": [
+            {
+              "title": "Self-reflection",
+              "status": "TMLR 2026",
+              "url": "https://xudongzhu.com/publications/self-reflection/"
+            },
+            {
+              "title": "Prefix Steering",
+              "status": "ongoing",
+              "url": "https://github.com/xzAscC/RobustDiM-PrefixSteering"
+            }
+          ]
+        },
+        {
+          "title": "Training dynamics",
+          "description": "Study how training methods such as SFT and RL reshape concept representations, their linear structure, and their influence on behavior over the course of training.",
+          "related": [
+            {
+              "title": "Post-training Dynamics",
+              "status": "ongoing",
+              "url": "https://github.com/xzAscC/PostDyn"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "education": [
     {
       "institution": "The Ohio State University",
-      "area": "Ph.D in Computer Science",
-      "studyType": "Ph.D",
+      "url": "https://www.osu.edu/",
+      "area": "Ph.D. in Computer Science and Engineering",
+      "studyType": "Ph.D.",
       "startDate": "2024",
       "endDate": "2029",
       "gpa": null,
-      "courses": []
+      "courses": [],
+      "location": "Columbus, OH, USA",
+      "summary": "Department of Computer Science and Engineering. Advised by Prof. Zhihui Zhu."
     },
     {
       "institution": "University of Electronic Science and Technology of China",
+      "url": "https://en.uestc.edu.cn/",
       "area": "B.S. in Computer Science",
       "studyType": "B.S.",
       "startDate": "2020",
       "endDate": "2024",
       "gpa": 3.98,
-      "courses": []
+      "courses": [],
+      "location": "Chengdu, Sichuan, China",
+      "summary": "School of Computer Science and Engineering."
     }
   ],
   "awards": [
@@ -74,8 +126,8 @@
       "summary": "Sparse autoencoders (SAEs) are widely used for LLM interpretability, but existing variants often impose non-negativity that prevents single features from representing bidirectional concepts. We derive SAE variants from unrolled proximal gradient updates, identify this structural limitation, and propose AbsTopK SAE with magnitude-based hard thresholding. Across four LLMs and seven probing/steering tasks, AbsTopK improves reconstruction and interpretability while enabling single features to encode contrasting concepts. OpenReview: https://openreview.net/forum?id=EEs6I4cO7S"
     },
     {
-      "name": "From Emergence to Control: Probing and Modulating Self-Reflection in Language Models", 
-      "publisher": "arxiv 2025",
+      "name": "From Emergence to Control: Probing and Modulating Self-Reflection in Language Models",
+      "publisher": "TMLR 2026",
       "releaseDate": "2025-06-13",
       "website": "https://arxiv.org/abs/2506.12217",
       "summary": "We study the emergence and control of self-reflection in large language models. Our probing method reveals that pretrained models already contain a latent capacity for reflection, which can be amplified without additional training. By identifying and manipulating a “self-reflection vector” in activation space, we achieve bidirectional control over reflective behavior, improving reasoning accuracy or reducing computation as needed. This work deepens understanding of self-reflection and demonstrates how model internals can enable precise behavioral control."
@@ -94,6 +146,20 @@
       "website": "https://arxiv.org/abs/2403.01886",
       "summary": "We introduce FCDS, a document-level relation extraction model that fuses constituency and dependency syntax. By combining sentence-level aggregation from constituency trees with dependency-based graph reasoning, FCDS better captures cross-sentence relations between entities. Experiments across multiple domains show significant performance gains, highlighting the effectiveness of integrating both syntactic views."
     }
+  ],
+  "teaching": [
+    {
+      "institution": "The Ohio State University",
+      "role": "Teaching Assistant",
+      "course": "CSE 3521: Introduction to Artificial Intelligence",
+      "term": "Autumn 2025"
+    }
+  ],
+  "service": [
+    {
+      "role": "Reviewer",
+      "venues": "NeurIPS, ICLR, ICML",
+      "year": "2026"
+    }
   ]
-
 }

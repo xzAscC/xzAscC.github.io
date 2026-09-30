@@ -107,7 +107,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 :  # Social media default site image
+og_image                 : "profile-upscaled.png" # Social media default site image
 og_description           :  # Social media default site image description
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
@@ -132,9 +132,11 @@ exclude:
   - .devcontainer
   - .github
   - .omo
+  - 650af75be807be2aa3c0c0bb
   - .playwright-mcp
   - .sass-cache
   - _tests
+  - _site
   - Dockerfile
   - docker-compose.yaml
   - Gemfile
@@ -178,16 +180,13 @@ collections:
 # These settings control how pages and collections are included in the site
 defaults:
   # _posts
-  # - scope:
-  #     path: ""
-  #     type: posts
-  #   values:
-  #     layout: single
-  #     author_profile: true
-  #     read_time: true
-  #     comments: true
-  #     share: true
-  #     related: true
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      read_time: true
+      permalink: /blog/:year/:title/
   # _pages
   - scope:
       path: ""
@@ -200,7 +199,7 @@ defaults:
       path: ""
       type: publications
     values:
-      layout: single
+      layout: publication
       author_profile: true
 
 

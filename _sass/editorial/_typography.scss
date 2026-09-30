@@ -145,6 +145,11 @@ pre code {
 }
 
 .site-hero__lead {
+  text-wrap: pretty;
   font-family: var(--font-body);
   font-size: var(--text-lg);
+}
+
+.intro-phrase {
+  white-space: nowrap;
 }

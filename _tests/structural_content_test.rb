@@ -50,11 +50,14 @@ end
   assert cv_page.include?(content.tr('\\', '')), "CV lost required content: #{content}"
 end
 
-cv_section_ids = %w[cv-experience-title cv-honors-title cv-open-source-title cv-publications-title]
+assert cv_page.include?('/files/Xudong_Zhu_CV.pdf'), 'CV page must offer the PDF download'
+assert File.file?(site_file('files/Xudong_Zhu_CV.pdf')), 'CV PDF must be published with the site'
+
+cv_section_ids = %w[cv-experience-title cv-research-title cv-publications-title cv-teaching-title cv-service-title cv-honors-title cv-open-source-title]
 cv_section_positions = cv_section_ids.map { |id| cv_page.index(%(id="#{id}")) }
-assert cv_section_positions.all?, 'CV must render Experience, Honors, Open Source, and Publications sections'
+assert cv_section_positions.all?, 'CV must render education, research, publications, teaching, service, honors, and open source'
 assert cv_section_positions == cv_section_positions.sort,
-       'CV section order must be Experience, Honors, Open Source, then Publications'
+       'CV sections must follow the academic CV order'
 ['MMLS 2026 Traveling Award', 'NAIRR Pilot Project NAIRR260106',
  'Geometry and Training Dynamics of Representations in Large Language Models'].each do |content|
   assert cv_page.include?(content), "CV lost honor content: #{content}"
@@ -72,23 +75,36 @@ assert cv_style_source.include?(".cv-timeline__content {\n    grid-row: 2;"),
 
 assert blog_page.include?('<h1 id="archive-title" class="page__title">Blog</h1>'),
        'Blog route must render its page title'
-assert !blog_page.include?('<article'), 'Blog must remain empty until content is added'
 blog_source = File.read(File.join(ROOT, '_pages', 'blog.md'))
-assert blog_source.include?('{% for post in site.posts reversed %}'),
-       'Blog must render future posts without requiring a template rewrite'
+assert blog_source.include?('site.posts'), 'Blog must list posts from _posts/'
+assert blog_source.include?('empty-state'), 'Blog must render an empty state before the first post'
+assert File.file?(File.join(ROOT, '_layouts', 'post.html')), 'Posts must have a dedicated layout'
+config_yaml = File.read(File.join(ROOT, '_config.yml'))
+assert config_yaml.include?('permalink: /blog/:year/:title/'), 'Posts must live under /blog/'
 home_publication_source = File.read(File.join(ROOT, '_includes', 'home-publication-card.html'))
 assert home_publication_source.include?('{% if post.cover %}'),
        'Homepage publication cards must guard optional cover images'
 
 desktop_nav = homepage[%r{<div class="site-nav__links">.*?</div>}m]
 assert desktop_nav, 'Primary desktop navigation is missing'
-nav_positions = ['/publications/', '/cv-json/'].map { |path| desktop_nav.index(path) }
-assert nav_positions.all?, 'Primary navigation must include Publications and CV'
-assert nav_positions == nav_positions.sort, 'Primary navigation must keep Publications before CV'
-assert !homepage.match?(%r{href="[^"]*/blog/"}),
-       'Blog must stay hidden from navigation until content is published'
+nav_positions = ['/publications/', '/blog/', '/cv-json/'].map { |path| desktop_nav.index(path) }
+assert nav_positions.all?, 'Primary navigation must include Publications, Blog, and CV'
+assert nav_positions == nav_positions.sort, 'Primary navigation must order Publications, Blog, then CV'
 
-publication_pages = Dir.glob(site_file('publications/*/index.html'))
+# Issue #2: pages must not load client libraries they do not use.
+[homepage, publications_page, cv_page, blog_page].each do |html|
+  %w[mathjax plotly mermaid polyfill academicons].each do |library|
+    assert !html.downcase.include?(library), "Page without #{library} content still loads it"
+  end
+end
+footer_custom_source = File.read(File.join(ROOT, '_includes', 'footer', 'custom.html'))
+%w[language-plotly language-mermaid page.math].each do |trigger|
+  assert footer_custom_source.include?(trigger), "Library loading lost its on-demand trigger: #{trigger}"
+end
+
+publication_pages = Dir.glob(site_file('publications/*/index.html')).reject do |path|
+  File.read(path).include?('http-equiv="refresh"')
+end
 assert publication_pages.length == 4, "Expected 4 publication detail pages, found #{publication_pages.length}"
 publication_html = publication_pages.map { |path| CGI.unescapeHTML(File.read(path)) }
 
@@ -116,10 +132,10 @@ assert homepage.scan(/<article class="project-card"/).length == 2,
        'Homepage must render exactly two project cards'
 
 cover_paths = %w[
-  /assets/images/publications/abstopk.png
+  /assets/images/publications/abstopk.webp
   /assets/images/publications/coarse-graining.svg
-  /assets/images/publications/self-reflection.png
-  /assets/images/publications/fcds.png
+  /assets/images/publications/self-reflection.webp
+  /assets/images/publications/fcds.webp
 ]
 cover_paths.each do |cover_path|
   assert homepage.match?(/<img\b[^>]*src="[^"]*#{Regexp.escape(cover_path)}"[^>]*alt="Cover of [^"]+"/),
@@ -128,26 +144,32 @@ cover_paths.each do |cover_path|
 end
 
 publications_section = homepage[%r{<section class="showcase-section showcase-section--publications".*?</section>}m]
-preprints_section = homepage[%r{<section class="showcase-section showcase-section--preprints".*?</section>}m]
 projects_section = homepage[%r{<section class="showcase-section showcase-section--projects".*?</section>}m]
 assert publications_section, 'Homepage must include a Publications section'
-assert preprints_section, 'Homepage must include a Preprints section'
 assert projects_section, 'Homepage must include a Building in Public section'
-showcase_positions = %w[publications preprints projects].map do |section|
+assert !homepage.include?('showcase-section--preprints'),
+       'Homepage must hide the Preprints section when there are no preprints'
+showcase_positions = %w[publications projects].map do |section|
   homepage.index(%(showcase-section--#{section}))
 end
 assert showcase_positions == showcase_positions.sort,
-       'Homepage showcase order must be Publications, Preprints, then Building in Public'
-assert preprints_section.include?(paper_titles[2]), 'Self-Reflection must be classified as a preprint'
-assert !publications_section.include?(paper_titles[2]), 'Self-Reflection must not be classified as a publication'
-[paper_titles[0], paper_titles[1], paper_titles[3]].each do |title|
+       'Homepage showcase order must be Publications, then Building in Public'
+paper_titles.each do |title|
   assert publications_section.include?(title), "Publications section lost paper: #{title}"
-  assert !preprints_section.include?(title), "Preprints section incorrectly includes: #{title}"
 end
-publication_positions = [paper_titles[0], paper_titles[1], paper_titles[3]].map do |title|
-  publications_section.index(title)
+featured_order = [paper_titles[0], paper_titles[2], paper_titles[3], paper_titles[1]]
+publication_positions = featured_order.map { |title| publications_section.index(title) }
+assert publication_positions == publication_positions.sort,
+       'Homepage publications must follow the curated order: AbsTopK, Self-Reflection, FCDS, coarse graining'
+assert publications_section.include?('TMLR'), 'Self-Reflection must be listed under its TMLR venue'
+education_section = homepage[%r{<section class="showcase-section showcase-section--education".*?</section>}m]
+assert education_section, 'Homepage must include an Education section'
+['The Ohio State University', 'University of Electronic Science and Technology of China', 'GPA 3.98'].each do |content|
+  assert education_section.include?(content), "Homepage education lost: #{content}"
 end
-assert publication_positions == publication_positions.sort, 'Homepage publications must remain newest first'
+assert homepage.index('showcase-section--projects') < homepage.index('showcase-section--education'),
+       'Education must follow Building in Public on the homepage'
+assert homepage.scan('>Project Page</a>').length == 4, 'Every homepage paper card must link its project page'
 
 assert publications_page.scan(/<article class="publication-card"/).length == 4,
        'Dedicated publications page must retain exactly four shared publication cards'
@@ -164,7 +186,7 @@ paper_titles.each do |title|
 end
 assert !publications_page.include?('home-publication-card'),
        'Dedicated publications page must not use homepage-only research cards'
-assert publication_html.all? { |html| html.include?('class="article page publication-detail"') },
+assert publication_html.all? { |html| html.match?(/class="[^"]*\bpublication-detail\b[^"]*"/) },
        'Publication detail pages must expose a scoped title style hook'
 
 Dir.glob(File.join(ROOT, '_publications', '*.md')).each do |source|
@@ -185,6 +207,7 @@ assert nav_source.include?('site-nav__menu'), 'Primary navigation must provide a
 assert nav_source.scan('{% for link in site.data.navigation.main %}').length == 1,
        'Desktop and mobile navigation must share one generated link list'
 assert scripts_source.scan('dark-toggle.js').length == 1, 'Dark toggle module must load exactly once'
+assert !scripts_source.include?('plotly-render.js'), 'Plotly renderer must load only on pages with Plotly blocks'
 assert !scripts_source.include?('main.min.js'), 'Editorial pages must not load the legacy theme bundle'
 assert !archive_item_source.include?('class="fa'),
        'Active archive markup must not depend on removed Font Awesome assets'
@@ -226,14 +249,14 @@ about_front_matter, about_body = about_source.split(/^---\s*$\n?/, 3).last(2)
 assert single_layout.include?('page.intro'), 'Homepage hero must read its introduction from page front matter'
 assert about_front_matter.include?('intro:'), 'Homepage front matter must define its hero introduction'
 assert about_front_matter.include?('interests:'), 'Homepage front matter must define research interest pills'
-assert about_front_matter.include?('representation learning and training dynamics'),
-       'Homepage introduction must prioritize representation learning and training dynamics'
-assert about_front_matter.include?('advance mechanistic interpretability'),
-       'Homepage introduction must connect its main directions to mechanistic interpretability'
+assert about_front_matter.include?('representations evolve during'),
+       'Homepage introduction must describe how representations evolve'
+assert about_front_matter.include?('understanding and steering model behavior'),
+       'Homepage introduction must connect representations to understanding and steering behavior'
 assert about_body.strip == '{% include homepage-showcase.html %}',
        'Homepage body must only invoke the homepage showcase include'
 assert !single_layout.include?('Researcher &amp; PhD student'), 'Homepage must not render the removed eyebrow'
-assert single_layout.include?('images/profile-upscaled.png'), 'Homepage must use the high-resolution portrait'
+assert single_layout.include?('images/profile.webp'), 'Homepage must use the compressed portrait'
 assert !about_body.match?(/^## Contact\s*$/), 'Homepage body must not render a Contact section'
 footer_source = File.read(File.join(ROOT, '_includes', 'editorial-footer.html'))
 assert !footer_source.include?('Sitemap'), 'Footer must not render a Sitemap link'
@@ -259,8 +282,8 @@ assert social_links.scan(/<a\b/).length == 4, 'Homepage social navigation must c
 assert social_links.include?('/assets/images/google-scholar.svg'), 'Homepage must use the requested Google Scholar logo'
 assert social_links.include?('href="https://x.com/XudongZhu3944"'), 'Homepage must use the configured X profile'
 assert !social_links.match?(/ORCID|arXiv/), 'Homepage social navigation must not include ORCID or arXiv'
-expected_interests = ['Representation Learning', 'Mechanistic Interpretability', 'Representation Geometry',
-                      'Training Dynamics']
+expected_interests = ['Representation Learning', 'Interpretability', 'Representation & Behavior Steering',
+                      'Training Dynamics', 'Agent Behavior Control']
 interest_positions = expected_interests.map { |interest| homepage.index(%(<li class="interest-pill">#{interest}</li>)) }
 assert interest_positions.all?, 'Homepage must include every requested research interest pill'
 assert interest_positions == interest_positions.sort,
@@ -283,3 +306,36 @@ assert main_css.include?('64rem'), 'Missing 1024px container'
 assert main_css.include?('overflow-x:hidden'), 'Missing horizontal overflow guard'
 
 puts 'Structural and content regression checks passed'
+
+news_section = homepage[%r{<section class="showcase-section showcase-section--news".*?</section>}m]
+assert news_section, 'Homepage must include a News section'
+assert homepage.index('showcase-section--news') < homepage.index('showcase-section--publications'),
+       'News must appear before Publications'
+assert !blog_page.include?('archive__lead'), 'Blog page must not render a subtitle line'
+
+assert publications_page.scan('>Code</a>').length == 4, 'Publications page must link code for every paper'
+assert cv_page.scan('>Project Page</a>').length == 4, 'CV publications must link each project page'
+assert cv_page.include?('id="cv-experience-title">Education</h2>'), 'CV must label its education section'
+
+abstopk_page = CGI.unescapeHTML(File.read(site_file('publications/abstopk/index.html')))
+assert abstopk_page.include?('@inproceedings{zhu2026abstopk'), 'Paper pages must show BibTeX'
+assert abstopk_page.include?('<iframe'), 'Paper pages with a PDF must embed it'
+assert abstopk_page.include?('mathjax'), 'Paper pages with math must load MathJax'
+
+['UESTC', 'Zhao Kang', 'Dong Hao'].each do |content|
+  assert homepage.include?(content), "Homepage intro must mention: #{content}"
+  assert cv_page.include?(content), "CV summary must mention: #{content}"
+end
+assert !cv_page.include?('Linear Representation Hypothesis'), 'CV must not show the outdated summary'
+
+self_reflection_page = CGI.unescapeHTML(File.read(site_file('publications/self-reflection/index.html')))
+assert self_reflection_page.match?(%r{<a [^>]*href="[^"]*/files/papers/self-reflection\.pdf"[^>]*download=}),
+       'PDF action must download the self-hosted paper'
+assert self_reflection_page.match?(/<button [^>]*data-copy-target="paper-bibtex"[^>]*>\s*<svg/),
+       'Cite action must copy the BibTeX'
+assert self_reflection_page.include?('id="copy-status" role="status"'), 'Copying must announce a status toast'
+assert !self_reflection_page.include?('TMLR 2026</span> <span aria-hidden="true">/</span>'),
+       'Venue badges must not repeat a second year'
+%w[abstopk self-reflection fcds].each do |slug|
+  assert File.file?(site_file("files/papers/#{slug}.pdf")), "Missing hosted paper PDF: #{slug}"
+end

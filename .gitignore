@@ -20,6 +20,9 @@ package-lock.json
 .vscode/
 
 .omo/
+
+# Local clone of the Overleaf CV source (the built PDF lives in files/)
+650af75be807be2aa3c0c0bb/
 .playwright-mcp/
 .jekyll-cache/
 .jekyll-metadata

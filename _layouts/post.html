@@ -1,0 +1,59 @@
+---
+layout: default
+---
+
+{% include base_path %}
+{% assign post_date = page.date | default: site.time %}
+
+<main id="main" role="main">
+  <article class="post" itemscope itemtype="https://schema.org/BlogPosting">
+    <header class="post__header">
+      <a class="post__back" href="{{ base_path }}/blog/">Blog</a>
+      <h1 class="post__title" itemprop="headline">{{ page.title }}</h1>
+      {% if page.description %}
+        <p class="post__lede" itemprop="description">{{ page.description }}</p>
+      {% endif %}
+      <p class="post__meta">
+        <time datetime="{{ post_date | date_to_xmlschema }}" itemprop="datePublished">{{ post_date | date: "%B %-d, %Y" }}</time>
+        {% if page.read_time %}<span aria-hidden="true">·</span><span>{% include post-read-time.html %}</span>{% endif %}
+        {% if page.last_modified_at %}
+          <span aria-hidden="true">·</span>
+          <span>Updated <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y" }}</time></span>
+        {% endif %}
+      </p>
+      {% if page.tags.size > 0 %}
+        <ul class="post__tags" aria-label="Tags">
+          {% for tag in page.tags %}<li class="post-tag" itemprop="keywords">{{ tag }}</li>{% endfor %}
+        </ul>
+      {% endif %}
+    </header>
+
+    <div class="post__content prose" itemprop="articleBody">
+      {{ content }}
+    </div>
+
+    <footer class="post__footer">
+      <p class="post__signoff">
+        Written by <span itemprop="author" itemscope itemtype="https://schema.org/Person"><a href="{{ base_path }}/" itemprop="url"><span itemprop="name">{{ site.author.name }}</span></a></span>.
+        Thoughts or corrections? <a href="mailto:{{ site.author.email }}?subject={{ page.title | uri_escape }}">Email me</a>.
+      </p>
+
+      {% if page.previous or page.next %}
+        <nav class="post-pager" aria-label="More posts">
+          {% if page.previous %}
+            <a class="post-pager__link post-pager__link--prev" href="{{ base_path }}{{ page.previous.url }}" rel="prev">
+              <span class="post-pager__label">Older</span>
+              <span class="post-pager__title">{{ page.previous.title }}</span>
+            </a>
+          {% endif %}
+          {% if page.next %}
+            <a class="post-pager__link post-pager__link--next" href="{{ base_path }}{{ page.next.url }}" rel="next">
+              <span class="post-pager__label">Newer</span>
+              <span class="post-pager__title">{{ page.next.title }}</span>
+            </a>
+          {% endif %}
+        </nav>
+      {% endif %}
+    </footer>
+  </article>
+</main>
