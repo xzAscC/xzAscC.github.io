@@ -4,7 +4,11 @@ layout: default
 
 {% include base_path %}
 {% assign paper_title = page.title | markdownify | strip_html | strip_newlines %}
-{% assign publication_year = page.date | date: "%Y" %}
+{% capture publication_year %}{% include paper-year.html post=page %}{% endcapture %}
+{% if page.pdfurl %}
+  {% if page.pdfurl contains "://" %}{% assign pdf_href = page.pdfurl %}{% else %}{% assign pdf_href = base_path | append: page.pdfurl %}{% endif %}
+  {% assign pdf_filename = site.author.name | split: " " | last | append: publication_year | append: "-" | append: page.slug | append: ".pdf" %}
+{% endif %}
 
 <main id="main" role="main">
   <article class="paper article page publication-detail" itemscope itemtype="https://schema.org/ScholarlyArticle">
@@ -37,7 +41,7 @@ layout: default
           </a>
         {% endif %}
         {% if page.pdfurl %}
-          <a class="button button--secondary" href="{{ page.pdfurl }}" rel="external">
+          <a class="button button--secondary" href="{{ pdf_href }}" download="{{ pdf_filename }}">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"></path></svg>
             PDF
           </a>
@@ -49,10 +53,10 @@ layout: default
           </a>
         {% endif %}
         {% if page.bibtex %}
-          <a class="button button--secondary" href="#citation">
+          <button class="button button--secondary" type="button" data-copy-target="paper-bibtex" aria-describedby="copy-status">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 7h4v4c0 3-2 5-4 6M15 7h4v4c0 3-2 5-4 6"></path></svg>
             Cite
-          </a>
+          </button>
         {% endif %}
       </nav>
     </header>
@@ -68,10 +72,10 @@ layout: default
       <section class="paper__section" aria-labelledby="paper-pdf-title">
         <div class="paper__section-head">
           <h2 id="paper-pdf-title" class="paper__section-title">Paper</h2>
-          <a href="{{ page.pdfurl }}" rel="external">Open in a new tab</a>
+          <a href="{{ pdf_href }}" target="_blank" rel="noopener">Open in a new tab</a>
         </div>
         <div class="paper__pdf">
-          <iframe src="{{ page.pdfurl }}#view=FitH" title="PDF of {{ paper_title | escape }}" loading="lazy"></iframe>
+          <iframe src="{{ pdf_href }}#view=FitH" title="PDF of {{ paper_title | escape }}" loading="lazy"></iframe>
         </div>
       </section>
     {% elsif page.cover %}
@@ -99,16 +103,51 @@ layout: default
 </main>
 
 {% if page.bibtex %}
+<div class="toast" id="copy-status" role="status" aria-live="polite" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+  <span class="toast__text">BibTeX copied to clipboard</span>
+</div>
 <script>
-  document.querySelectorAll('[data-copy-target]').forEach(function (button) {
-    button.addEventListener('click', function () {
-      var source = document.getElementById(button.dataset.copyTarget);
-      if (!source || !navigator.clipboard) return;
-      navigator.clipboard.writeText(source.textContent).then(function () {
-        button.textContent = 'Copied';
-        setTimeout(function () { button.textContent = 'Copy BibTeX'; }, 1600);
+  (function () {
+    var toast = document.getElementById('copy-status');
+    var toastText = toast.querySelector('.toast__text');
+    var hideTimer;
+
+    function showToast(message, isError) {
+      toastText.textContent = message;
+      toast.classList.toggle('toast--error', Boolean(isError));
+      toast.hidden = false;
+      requestAnimationFrame(function () { toast.classList.add('toast--visible'); });
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () {
+        toast.classList.remove('toast--visible');
+        setTimeout(function () { toast.hidden = true; }, 250);
+      }, 2400);
+    }
+
+    function selectText(node) {
+      var range = document.createRange();
+      range.selectNodeContents(node);
+      var selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+
+    document.querySelectorAll('[data-copy-target]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var source = document.getElementById(button.dataset.copyTarget);
+        if (!source) return;
+        var fallback = function () {
+          source.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          selectText(source);
+          showToast('Press Ctrl+C (⌘C) to copy the selected BibTeX', true);
+        };
+        if (!navigator.clipboard || !window.isSecureContext) { fallback(); return; }
+        navigator.clipboard.writeText(source.textContent).then(function () {
+          showToast('BibTeX copied to clipboard');
+        }, fallback);
       });
     });
-  });
+  }());
 </script>
 {% endif %}

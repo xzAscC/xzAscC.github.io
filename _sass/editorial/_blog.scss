@@ -672,3 +672,46 @@ article.paper {
     height: 70vh;
   }
 }
+
+// Copy confirmation toast
+
+.toast {
+  position: fixed;
+  z-index: calc(var(--z-nav) + 1);
+  bottom: var(--space-6);
+  left: 50%;
+  display: inline-flex;
+  gap: var(--space-2);
+  align-items: center;
+  padding: var(--space-3) var(--space-5);
+  color: var(--color-surface-raised);
+  background: var(--color-ink);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-card);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  opacity: 0;
+  transform: translate(-50%, var(--space-3));
+  transition: opacity var(--transition-base), transform var(--transition-base);
+  pointer-events: none;
+}
+
+.toast--visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.toast svg {
+  width: 1.1em;
+  height: 1.1em;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: #7fc79a;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.5;
+}
+
+.toast--error svg {
+  display: none;
+}

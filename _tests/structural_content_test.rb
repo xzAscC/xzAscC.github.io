@@ -327,3 +327,15 @@ assert abstopk_page.include?('mathjax'), 'Paper pages with math must load MathJa
   assert cv_page.include?(content), "CV summary must mention: #{content}"
 end
 assert !cv_page.include?('Linear Representation Hypothesis'), 'CV must not show the outdated summary'
+
+self_reflection_page = CGI.unescapeHTML(File.read(site_file('publications/self-reflection/index.html')))
+assert self_reflection_page.match?(%r{<a [^>]*href="[^"]*/files/papers/self-reflection\.pdf"[^>]*download=}),
+       'PDF action must download the self-hosted paper'
+assert self_reflection_page.match?(/<button [^>]*data-copy-target="paper-bibtex"[^>]*>\s*<svg/),
+       'Cite action must copy the BibTeX'
+assert self_reflection_page.include?('id="copy-status" role="status"'), 'Copying must announce a status toast'
+assert !self_reflection_page.include?('TMLR 2026</span> <span aria-hidden="true">/</span>'),
+       'Venue badges must not repeat a second year'
+%w[abstopk self-reflection fcds].each do |slug|
+  assert File.file?(site_file("files/papers/#{slug}.pdf")), "Missing hosted paper PDF: #{slug}"
+end

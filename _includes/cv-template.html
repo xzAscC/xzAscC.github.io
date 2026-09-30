@@ -103,7 +103,7 @@
       {% for post in cv_publications %}
       <li>
         <article class="cv-publication-card" itemscope itemtype="https://schema.org/ScholarlyArticle">
-          <time class="cv-card__date" datetime="{{ post.date | date: '%Y-%m-%d' }}" itemprop="datePublished">{{ post.date | date: "%Y" }}</time>
+          <time class="cv-card__date" datetime="{{ post.date | date: '%Y-%m-%d' }}" itemprop="datePublished">{% include paper-year.html post=post %}</time>
           <div>
             <h3 itemprop="headline"><a href="{{ base_path }}{{ post.url }}" rel="bookmark">{{ post.title }}</a></h3>
             <p class="cv-card__meta" itemprop="publisher">{{ post.venue }}</p>

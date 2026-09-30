@@ -3,7 +3,7 @@
 <article class="publication-card" itemscope itemtype="https://schema.org/ScholarlyArticle">
   {% if post.date %}
     <time class="publication-card__year" datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
-      {{ post.date | date: "%Y" }}
+      {% include paper-year.html post=post %}
     </time>
   {% endif %}
 

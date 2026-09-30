@@ -17,7 +17,7 @@ codeurl: 'https://github.com/xzAscC/ProbingReflection'
 permalink: /publications/self-reflection/
 redirect_from:
   - "/publications/2025-06-13-From Emergence to Control: Probing and Modulating Self-Reflection in Language Models/"
-pdfurl: 'https://arxiv.org/pdf/2506.12217'
+pdfurl: /files/papers/self-reflection.pdf
 bibtex: |
   @article{zhu2026probing,
     title   = {Probing and Controlling Self-Reflection in Language Models},
