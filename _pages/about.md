@@ -10,7 +10,8 @@ intro: >-
   how a concept propagates during generation and whether it stays linearly represented along the way, and how
   training methods such as SFT and RLVR shape these structures. Before OSU, I received my B.S. in Computer Science from the
   [University of Electronic Science and Technology of China](https://en.uestc.edu.cn/) (UESTC), where I worked with
-  Prof. Zhao Kang on document-level relation extraction and Prof. Dong Hao on graph learning.
+  Prof. [Zhao Kang](https://scholar.google.com/citations?user=T_yCaN4AAAAJ&hl=en){: .link--person } on document-level
+  relation extraction and Prof. [Dong Hao](https://scholar.google.com/citations?user=aUBGG_sAAAAJ&hl=en){: .link--person } on graph learning.
 interests:
   - Representation Learning
   - Interpretability
