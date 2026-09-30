@@ -37,7 +37,7 @@
       "highlights": [
         {
           "title": "Concept representations",
-          "description": "Study how LLMs encode concepts, focusing on linear structure and bidirectional features.",
+          "description": "Study how LLMs represent concepts, focusing on their linear structure, bidirectional features, and connections to model interpretability and behavioral control.",
           "related": [
             {
               "title": "AbsTopK",
@@ -48,7 +48,7 @@
         },
         {
           "title": "Generation dynamics",
-          "description": "Study how concept representations evolve and propagate during generation under steering.",
+          "description": "Study how concept representations evolve during generation and how steering propagates their influence on subsequent model behavior.",
           "related": [
             {
               "title": "Self-reflection",
@@ -64,10 +64,10 @@
         },
         {
           "title": "Training dynamics",
-          "description": "Study how training methods such as SFT and RL reshape concept representations.",
+          "description": "Study how training methods such as SFT and RL reshape concept representations, their linear structure, and their influence on behavior over the course of training.",
           "related": [
             {
-              "title": "PostDyn",
+              "title": "Post-training Dynamics",
               "status": "ongoing",
               "url": "https://github.com/xzAscC/PostDyn"
             }
