@@ -1,0 +1,25 @@
+_pages/about.md
+  s_a35c230be6af40::t_d1ac076edcd3a4 14
+  s_a35c230be6af40::t_b4f2819d8f238a 5
+_sass/editorial/_cv.scss
+  s_a35c230be6af40::t_b4f2819d8f238a 22
+_sass/editorial/_typography.scss
+  s_a35c230be6af40::t_b4f2819d8f238a 148
+  s_a35c230be6af40::t_d1ac076edcd3a4 152-155
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a52e9cfc18fd7d0a4bf64ea6af9454d5fac4baf4",
+  "prompts": {},
+  "sessions": {
+    "s_a35c230be6af40": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f070-e1f7-75f1-b70b-72a4b9b1a94f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
