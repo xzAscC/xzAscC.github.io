@@ -1,0 +1,38 @@
+_publications/2026-01-01-AbsTopK-Rethinking-Sparse-Autoencoders-For-Bidirectional-Features.md
+  s_f05a9579ded952::t_d98e727dbc91ac 7
+"_publications/2025-06-20-Alleviating subgraph-induced oversmoothing in link prediction via coarse graining.md"
+  s_f05a9579ded952::t_d98e727dbc91ac 7
+_pages/publications.html
+  s_f05a9579ded952::t_d98e727dbc91ac 13,18,37
+"_publications/2024-03-04-FCDS: Fusing Constituency and Dependency Syntax into Document-Level Relation Extraction copy 2.md"
+  s_f05a9579ded952::t_d98e727dbc91ac 7
+_includes/homepage-showcase.html
+  s_f05a9579ded952::t_d98e727dbc91ac 2,13,32
+  s_f05a9579ded952::t_e18ce7e6c0345a 74-104
+_tests/structural_content_test.rb
+  s_f05a9579ded952::t_672687a3624e77 160-166
+  s_f05a9579ded952::t_bc2ce3c93ce9c0 155-158
+_sass/editorial/_components.scss
+  s_f05a9579ded952::t_e18ce7e6c0345a 611-616,623-687
+  s_f05a9579ded952::t_d98e727dbc91ac 617-622
+"_publications/2025-06-13-From Emergence to Control: Probing and Modulating Self-Reflection in Language Models.md"
+  s_f05a9579ded952::t_d98e727dbc91ac 7
+_data/cv.json
+  s_f05a9579ded952::t_9984d945840123 12,36-38,46,79
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d70d43ab878de7dff8ab88c7f1e4df99378d989d",
+  "prompts": {},
+  "sessions": {
+    "s_f05a9579ded952": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a13c72ca-c958-4851-b054-d3f7e81c3f25",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
