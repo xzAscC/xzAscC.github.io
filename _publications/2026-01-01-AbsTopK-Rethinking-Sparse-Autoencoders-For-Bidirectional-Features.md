@@ -4,6 +4,7 @@ collection: publications
 category: conferences
 excerpt: 'Sparse autoencoders (SAEs) are widely used for LLM interpretability, but existing variants often impose non-negativity that prevents single features from representing bidirectional concepts. We derive SAE variants from unrolled proximal gradient updates, identify this structural limitation, and propose AbsTopK SAE with magnitude-based hard thresholding. Across four LLMs and seven probing/steering tasks, AbsTopK improves reconstruction and interpretability while enabling single features to encode contrasting concepts.'
 date: 2026-01-01
+order: 1
 venue: 'ICLR 2026'
 authors:
   - Xudong Zhu

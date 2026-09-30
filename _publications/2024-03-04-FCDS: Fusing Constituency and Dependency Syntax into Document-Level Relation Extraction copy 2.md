@@ -4,6 +4,7 @@ collection: publications
 category: conferences
 excerpt: 'We introduce FCDS, a document-level relation extraction model that fuses constituency and dependency syntax. By combining sentence-level aggregation from constituency trees with dependency-based graph reasoning, FCDS better captures cross-sentence relations between entities. Experiments across multiple domains show significant performance gains, highlighting the effectiveness of integrating both syntactic views.'
 date: 2024-03-04
+order: 3
 venue: 'LREC-COLING 2024'
 authors:
   - Xudong Zhu

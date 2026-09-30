@@ -9,7 +9,7 @@
       "postalCode": "43210",
       "city": "Columbus",
       "countryCode": "US",
-      "region": "Ohio" 
+      "region": "Ohio"
     },
     "profiles": [
       {
@@ -33,8 +33,9 @@
   "education": [
     {
       "institution": "The Ohio State University",
-      "area": "Ph.D in Computer Science",
-      "studyType": "Ph.D",
+      "url": "https://www.osu.edu/",
+      "area": "Ph.D. in Computer Science",
+      "studyType": "Ph.D.",
       "startDate": "2024",
       "endDate": "2029",
       "gpa": null,
@@ -42,6 +43,7 @@
     },
     {
       "institution": "University of Electronic Science and Technology of China",
+      "url": "https://en.uestc.edu.cn/",
       "area": "B.S. in Computer Science",
       "studyType": "B.S.",
       "startDate": "2020",
@@ -74,7 +76,7 @@
       "summary": "Sparse autoencoders (SAEs) are widely used for LLM interpretability, but existing variants often impose non-negativity that prevents single features from representing bidirectional concepts. We derive SAE variants from unrolled proximal gradient updates, identify this structural limitation, and propose AbsTopK SAE with magnitude-based hard thresholding. Across four LLMs and seven probing/steering tasks, AbsTopK improves reconstruction and interpretability while enabling single features to encode contrasting concepts. OpenReview: https://openreview.net/forum?id=EEs6I4cO7S"
     },
     {
-      "name": "From Emergence to Control: Probing and Modulating Self-Reflection in Language Models", 
+      "name": "From Emergence to Control: Probing and Modulating Self-Reflection in Language Models",
       "publisher": "TMLR",
       "releaseDate": "2025-06-13",
       "website": "https://arxiv.org/abs/2506.12217",
@@ -95,5 +97,4 @@
       "summary": "We introduce FCDS, a document-level relation extraction model that fuses constituency and dependency syntax. By combining sentence-level aggregation from constituency trees with dependency-based graph reasoning, FCDS better captures cross-sentence relations between entities. Experiments across multiple domains show significant performance gains, highlighting the effectiveness of integrating both syntactic views."
     }
   ]
-
 }

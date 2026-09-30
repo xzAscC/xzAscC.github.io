@@ -10,11 +10,12 @@ author_profile: true
 {% endif %}
 
 {% include base_path %}
+{% assign ordered_publications = site.publications | sort: "order" %}
 
 {% if site.publication_category %}
   {% for category in site.publication_category  %}
     {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
+    {% for post in ordered_publications %}
       {% if post.category != category[0] %}
         {% continue %}
       {% endif %}
@@ -33,7 +34,7 @@ author_profile: true
   {% endfor %}
 {% else %}
   <div class="publication-list">
-    {% for post in site.publications reversed %}
+    {% for post in ordered_publications %}
       {% include publication-card.html %}
     {% endfor %}
   </div>

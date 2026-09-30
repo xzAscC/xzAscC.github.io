@@ -4,6 +4,7 @@ collection: publications
 category: manuscripts
 excerpt: 'We address the oversmoothing problem in link prediction caused by repetitive high-degree nodes across subgraphs. Our method introduces a coarse-graining strategy that merges strongly correlated nodes, yielding more diverse receptive fields and reducing subgraph size. This not only mitigates oversmoothing but also improves scalability and efficiency of GNN-based link prediction.'
 date: 2025-06-20
+order: 4
 venue: 'Neurocomputing, 2025'
 authors:
   - Xudong Zhu

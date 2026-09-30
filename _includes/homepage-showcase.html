@@ -1,4 +1,5 @@
 {% include base_path %}
+{% assign ordered_publications = site.publications | sort: "order" %}
 <div class="homepage-showcase">
   <section class="showcase-section showcase-section--publications" aria-labelledby="homepage-publications-title">
     <header class="showcase-section__header">
@@ -9,7 +10,7 @@
     </header>
 
     <div class="home-publication-list">
-      {% for post in site.publications reversed %}
+      {% for post in ordered_publications %}
         {% unless post.venue == 'arxiv preprint' %}
           {% include home-publication-card.html post=post %}
         {% endunless %}
@@ -28,7 +29,7 @@
     </header>
 
     <div class="home-publication-list">
-      {% for post in site.publications reversed %}
+      {% for post in ordered_publications %}
         {% if post.venue == 'arxiv preprint' %}
           {% include home-publication-card.html post=post %}
         {% endif %}
@@ -69,5 +70,36 @@
         {% include project-card.html project=project %}
       {% endfor %}
     </div>
+  </section>
+
+  <section class="showcase-section showcase-section--education" aria-labelledby="homepage-education-title">
+    <header class="showcase-section__header">
+      <div>
+        <p class="section-label">Academic path</p>
+        <h2 id="homepage-education-title">Education</h2>
+      </div>
+      <a class="showcase-section__more" href="{{ base_path }}/cv-json/">Full CV</a>
+    </header>
+
+    {% assign current_year = site.time | date: "%Y" | plus: 0 %}
+    <ol class="edu-list">
+      {% for school in site.data.cv.education %}
+        {% assign end_year = school.endDate | plus: 0 %}
+        <li class="edu-item" itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
+          <p class="edu-item__years">
+            <time datetime="{{ school.startDate }}">{{ school.startDate }}</time>
+            <span aria-hidden="true">–</span>
+            {% if end_year > current_year %}<span>Present</span>{% else %}<time datetime="{{ school.endDate }}">{{ school.endDate }}</time>{% endif %}
+          </p>
+          <div class="edu-item__body">
+            <h3 class="edu-item__degree" itemprop="name">{{ school.area }}</h3>
+            <p class="edu-item__school" itemprop="recognizedBy" itemscope itemtype="https://schema.org/CollegeOrUniversity">
+              {% if school.url %}<a href="{{ school.url }}" rel="external" itemprop="url"><span itemprop="name">{{ school.institution }}</span></a>{% else %}<span itemprop="name">{{ school.institution }}</span>{% endif %}
+            </p>
+            {% if school.gpa %}<p class="edu-item__note">GPA {{ school.gpa }} / 4.00</p>{% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ol>
   </section>
 </div>

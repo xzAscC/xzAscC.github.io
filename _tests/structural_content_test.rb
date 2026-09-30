@@ -152,9 +152,18 @@ assert showcase_positions == showcase_positions.sort,
 paper_titles.each do |title|
   assert publications_section.include?(title), "Publications section lost paper: #{title}"
 end
-publication_positions = paper_titles.map { |title| publications_section.index(title) }
-assert publication_positions == publication_positions.sort, 'Homepage publications must remain newest first'
+featured_order = [paper_titles[0], paper_titles[2], paper_titles[3], paper_titles[1]]
+publication_positions = featured_order.map { |title| publications_section.index(title) }
+assert publication_positions == publication_positions.sort,
+       'Homepage publications must follow the curated order: AbsTopK, Self-Reflection, FCDS, coarse graining'
 assert publications_section.include?('TMLR'), 'Self-Reflection must be listed under its TMLR venue'
+education_section = homepage[%r{<section class="showcase-section showcase-section--education".*?</section>}m]
+assert education_section, 'Homepage must include an Education section'
+['The Ohio State University', 'University of Electronic Science and Technology of China', 'GPA 3.98'].each do |content|
+  assert education_section.include?(content), "Homepage education lost: #{content}"
+end
+assert homepage.index('showcase-section--projects') < homepage.index('showcase-section--education'),
+       'Education must follow Building in Public on the homepage'
 assert homepage.scan('>Project Page</a>').length == 4, 'Every homepage paper card must link its project page'
 
 assert publications_page.scan(/<article class="publication-card"/).length == 4,

@@ -4,6 +4,7 @@ collection: publications
 category: manuscripts
 excerpt: 'We study the emergence and control of self-reflection in large language models. Our probing method reveals that pretrained models already contain a latent capacity for reflection, which can be amplified without additional training. By identifying and manipulating a “self-reflection vector” in activation space, we achieve bidirectional control over reflective behavior, improving reasoning accuracy or reducing computation as needed. This work deepens understanding of self-reflection and demonstrates how model internals can enable precise behavioral modulation.'
 date: 2025-06-13
+order: 2
 venue: 'TMLR'
 authors:
   - Xudong Zhu
