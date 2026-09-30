@@ -37,19 +37,41 @@
       "highlights": [
         {
           "title": "Concept representations",
-          "description": "Study how large language models encode concepts, with a focus on linear structure, bidirectional features, and interpretable representations."
+          "description": "Study how LLMs encode concepts, focusing on linear structure and bidirectional features.",
+          "related": [
+            {
+              "title": "AbsTopK",
+              "status": "ICLR 2026",
+              "url": "https://xudongzhu.com/publications/abstopk/"
+            }
+          ]
         },
         {
           "title": "Generation dynamics",
-          "description": "Investigate how concept representations evolve during generation and how steering interventions propagate and modulate model behavior.",
-          "project": "Prefix Steering",
-          "url": "https://github.com/xzAscC/RobustDiM-PrefixSteering"
+          "description": "Study how concept representations evolve and propagate during generation under steering.",
+          "related": [
+            {
+              "title": "Self-reflection",
+              "status": "TMLR 2026",
+              "url": "https://xudongzhu.com/publications/self-reflection/"
+            },
+            {
+              "title": "Prefix Steering",
+              "status": "ongoing",
+              "url": "https://github.com/xzAscC/RobustDiM-PrefixSteering"
+            }
+          ]
         },
         {
           "title": "Training dynamics",
-          "description": "Investigate how training methods such as SFT and RL reshape concept representations and their structure.",
-          "project": "PostDyn",
-          "url": "https://github.com/xzAscC/PostDyn"
+          "description": "Study how training methods such as SFT and RL reshape concept representations.",
+          "related": [
+            {
+              "title": "PostDyn",
+              "status": "ongoing",
+              "url": "https://github.com/xzAscC/PostDyn"
+            }
+          ]
         }
       ]
     }

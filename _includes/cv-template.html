@@ -70,7 +70,9 @@
       <p class="cv-card__meta">Advisor: {{ work.advisor }}</p>
       <ul>
         {% for highlight in work.highlights %}
-        <li><strong>{{ highlight.title }}.</strong> {{ highlight.description }}{% if highlight.project %} Ongoing: <a href="{{ highlight.url }}" rel="external">{{ highlight.project }}</a>.{% endif %}</li>
+        <li><strong>{{ highlight.title }}.</strong> {{ highlight.description }}
+          {% if highlight.related.size > 0 %}<br>Related work: {% for project in highlight.related %}<a href="{{ project.url }}" rel="external">{{ project.title }}</a> ({{ project.status }}){% unless forloop.last %}; {% endunless %}{% endfor %}.{% endif %}
+        </li>
         {% endfor %}
       </ul>
     </article>
