@@ -36,24 +36,20 @@
       "advisor": "Prof. Zhihui Zhu",
       "highlights": [
         {
-          "title": "Prefix Steering",
-          "status": "Ongoing",
-          "url": "https://github.com/xzAscC/RobustDiM-PrefixSteering",
-          "description": "Investigating how steered concepts propagate during generation."
+          "title": "Concept representations",
+          "description": "Study how large language models encode concepts, with a focus on linear structure, bidirectional features, and interpretable representations."
         },
         {
-          "title": "PostDyn",
-          "status": "Ongoing",
-          "url": "https://github.com/xzAscC/PostDyn",
-          "description": "Investigating how training methods such as SFT and RL shape learned representations."
+          "title": "Generation dynamics",
+          "description": "Investigate how concept representations evolve during generation and how steering interventions propagate and modulate model behavior.",
+          "project": "Prefix Steering",
+          "url": "https://github.com/xzAscC/RobustDiM-PrefixSteering"
         },
         {
-          "title": "AbsTopK",
-          "description": "Developed a sparse autoencoder for bidirectional features, deriving its formulation from sparse coding and evaluating reconstruction, concept probing, and activation steering."
-        },
-        {
-          "title": "Self-reflection and behavioral control",
-          "description": "Designed probing and activation interventions to reveal latent self-reflection and control reflective behavior in pretrained and fine-tuned language models without additional training."
+          "title": "Training dynamics",
+          "description": "Investigate how training methods such as SFT and RL reshape concept representations and their structure.",
+          "project": "PostDyn",
+          "url": "https://github.com/xzAscC/PostDyn"
         }
       ]
     }
