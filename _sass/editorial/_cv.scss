@@ -19,6 +19,7 @@
 }
 
 .cv-header__summary {
+  text-wrap: pretty;
   max-width: 48rem;
   margin: 0;
   color: var(--color-ink-soft);
