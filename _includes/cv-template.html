@@ -68,10 +68,9 @@
     <article>
       <h3>{{ work.position }} · {{ work.name }}</h3>
       <p class="cv-card__meta">Advisor: {{ work.advisor }}</p>
-      <p>{{ work.summary }}</p>
       <ul>
         {% for highlight in work.highlights %}
-        <li><strong>{{ highlight.title }}.</strong> {{ highlight.description }}</li>
+        <li><strong>{% if highlight.url %}<a href="{{ highlight.url }}" rel="external">{{ highlight.title }}</a>{% else %}{{ highlight.title }}{% endif %}{% if highlight.status %} ({{ highlight.status | downcase }}){% endif %}.</strong> {{ highlight.description }}</li>
         {% endfor %}
       </ul>
     </article>
