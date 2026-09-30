@@ -1,0 +1,33 @@
+_data/cv.json
+  s_a35c230be6af40::t_2a56ffaa758311 32-49,120-134
+_includes/cv-template.html
+  s_a35c230be6af40::t_2a56ffaa758311 61-134,139
+_tests/structural_content_test.rb
+  s_a35c230be6af40::t_2a56ffaa758311 56,58,60
+_layouts/single.html
+  s_f05a9579ded952::t_36102ac9c34614 60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "13aa6cbcb2cf1d126996b75c2d5a2a2f0e880aa0",
+  "prompts": {},
+  "sessions": {
+    "s_a35c230be6af40": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f070-e1f7-75f1-b70b-72a4b9b1a94f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    },
+    "s_f05a9579ded952": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a13c72ca-c958-4851-b054-d3f7e81c3f25",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
