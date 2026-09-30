@@ -1,0 +1,19 @@
+_data/cv.json
+  s_a35c230be6af40::t_8cfc3e1200d092 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a37db16e630d303e83a23ae57a09e6db18b05fae",
+  "prompts": {},
+  "sessions": {
+    "s_a35c230be6af40": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f070-e1f7-75f1-b70b-72a4b9b1a94f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
