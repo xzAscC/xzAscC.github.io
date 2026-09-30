@@ -249,10 +249,10 @@ about_front_matter, about_body = about_source.split(/^---\s*$\n?/, 3).last(2)
 assert single_layout.include?('page.intro'), 'Homepage hero must read its introduction from page front matter'
 assert about_front_matter.include?('intro:'), 'Homepage front matter must define its hero introduction'
 assert about_front_matter.include?('interests:'), 'Homepage front matter must define research interest pills'
-assert about_front_matter.include?('representation learning and training dynamics'),
-       'Homepage introduction must prioritize representation learning and training dynamics'
-assert about_front_matter.include?('advance mechanistic interpretability'),
-       'Homepage introduction must connect its main directions to mechanistic interpretability'
+assert about_front_matter.include?('representations evolve during'),
+       'Homepage introduction must describe how representations evolve'
+assert about_front_matter.include?('understanding and steering model behavior'),
+       'Homepage introduction must connect representations to understanding and steering behavior'
 assert about_body.strip == '{% include homepage-showcase.html %}',
        'Homepage body must only invoke the homepage showcase include'
 assert !single_layout.include?('Researcher &amp; PhD student'), 'Homepage must not render the removed eyebrow'
@@ -322,7 +322,7 @@ assert abstopk_page.include?('@inproceedings{zhu2026abstopk'), 'Paper pages must
 assert abstopk_page.include?('<iframe'), 'Paper pages with a PDF must embed it'
 assert abstopk_page.include?('mathjax'), 'Paper pages with math must load MathJax'
 
-['University of Electronic Science and Technology of China', 'Zhao Kang', 'Dong Hao'].each do |content|
+['UESTC', 'Zhao Kang', 'Dong Hao'].each do |content|
   assert homepage.include?(content), "Homepage intro must mention: #{content}"
   assert cv_page.include?(content), "CV summary must mention: #{content}"
 end

@@ -15,7 +15,7 @@ layout: default
           {% if site.author.location %}<span>{{ site.author.location }}</span>{% endif %}
         </p>
         {% if page.intro %}
-          <p class="site-hero__lead">{{ page.intro | markdownify | remove: "<p>" | remove: "</p>" }}</p>
+          <div class="site-hero__lead">{{ page.intro | markdownify }}</div>
         {% endif %}
 
         <nav class="social-links" aria-label="Social links">
