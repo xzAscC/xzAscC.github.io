@@ -53,11 +53,11 @@ end
 assert cv_page.include?('/files/Xudong_Zhu_CV.pdf'), 'CV page must offer the PDF download'
 assert File.file?(site_file('files/Xudong_Zhu_CV.pdf')), 'CV PDF must be published with the site'
 
-cv_section_ids = %w[cv-experience-title cv-honors-title cv-open-source-title cv-publications-title]
+cv_section_ids = %w[cv-experience-title cv-research-title cv-publications-title cv-teaching-title cv-service-title cv-honors-title cv-open-source-title]
 cv_section_positions = cv_section_ids.map { |id| cv_page.index(%(id="#{id}")) }
-assert cv_section_positions.all?, 'CV must render Experience, Honors, Open Source, and Publications sections'
+assert cv_section_positions.all?, 'CV must render education, research, publications, teaching, service, honors, and open source'
 assert cv_section_positions == cv_section_positions.sort,
-       'CV section order must be Experience, Honors, Open Source, then Publications'
+       'CV sections must follow the academic CV order'
 ['MMLS 2026 Traveling Award', 'NAIRR Pilot Project NAIRR260106',
  'Geometry and Training Dynamics of Representations in Large Language Models'].each do |content|
   assert cv_page.include?(content), "CV lost honor content: #{content}"

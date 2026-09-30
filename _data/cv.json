@@ -29,7 +29,24 @@
       }
     ]
   },
-  "work": [],
+  "work": [
+    {
+      "name": "The Ohio State University",
+      "position": "Doctoral Research",
+      "advisor": "Prof. Zhihui Zhu",
+      "summary": "Led research design, method development, theoretical analysis, experiments, implementation, and manuscript writing for the following projects.",
+      "highlights": [
+        {
+          "title": "AbsTopK",
+          "description": "Developed a sparse autoencoder for bidirectional features, deriving its formulation from sparse coding and evaluating reconstruction, concept probing, and activation steering."
+        },
+        {
+          "title": "Self-reflection and behavioral control",
+          "description": "Designed probing and activation interventions to reveal latent self-reflection and control reflective behavior in pretrained and fine-tuned language models without additional training."
+        }
+      ]
+    }
+  ],
   "education": [
     {
       "institution": "The Ohio State University",
@@ -99,6 +116,21 @@
       "releaseDate": "2024-03-04",
       "website": "https://arxiv.org/abs/2403.01886",
       "summary": "We introduce FCDS, a document-level relation extraction model that fuses constituency and dependency syntax. By combining sentence-level aggregation from constituency trees with dependency-based graph reasoning, FCDS better captures cross-sentence relations between entities. Experiments across multiple domains show significant performance gains, highlighting the effectiveness of integrating both syntactic views."
+    }
+  ],
+  "teaching": [
+    {
+      "institution": "The Ohio State University",
+      "role": "Teaching Assistant",
+      "course": "CSE 3521: Introduction to Artificial Intelligence",
+      "term": "Autumn 2025"
+    }
+  ],
+  "service": [
+    {
+      "role": "Reviewer",
+      "venues": "NeurIPS, ICLR, ICML",
+      "year": "2026"
     }
   ]
 }
