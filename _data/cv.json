@@ -3,7 +3,7 @@
     "name": "Xudong Zhu",
     "email": "zhu.3944@osu.edu",
     "website": "https://xudongzhu.com",
-    "summary": "My research examines how large language models represent concepts and how these representations evolve during generation and training. I focus on their linear structure, how training reshapes it, and its role in understanding and steering model behavior.",
+    "summary": "My research examines how large language models represent concepts and how these representations evolve during generation and training. I focus on the linear structure of these representations and its role in understanding and steering model behavior, as well as how different training methods, such as SFT and RL, reshape these learned representations.",
     "location": {
       "address": "Columbus, OH",
       "postalCode": "43210",
