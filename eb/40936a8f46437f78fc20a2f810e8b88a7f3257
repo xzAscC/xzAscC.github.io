@@ -1,0 +1,34 @@
+_layouts/single.html
+  s_f05a9579ded952::t_cc5c5565ed3a6b 60
+"_publications/2025-06-13-From Emergence to Control: Probing and Modulating Self-Reflection in Language Models.md"
+  s_f05a9579ded952::t_cc5c5565ed3a6b 4,7,16
+_includes/publication-card.html
+  s_f05a9579ded952::t_cc5c5565ed3a6b 29
+_tests/structural_content_test.rb
+  s_f05a9579ded952::t_7da131c8f23f69 145-147,151-152,155,157-158
+  s_f05a9579ded952::t_32e9ce5153580b 271-272
+_includes/homepage-showcase.html
+  s_f05a9579ded952::t_cc5c5565ed3a6b 20-21,38
+_data/cv.json
+  s_f05a9579ded952::t_cc5c5565ed3a6b 78
+_includes/home-publication-card.html
+  s_f05a9579ded952::t_cc5c5565ed3a6b 41
+_pages/about.md
+  s_f05a9579ded952::t_cc5c5565ed3a6b 12-13,15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "eb40936a8f46437f78fc20a2f810e8b88a7f3257",
+  "prompts": {},
+  "sessions": {
+    "s_f05a9579ded952": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a13c72ca-c958-4851-b054-d3f7e81c3f25",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
