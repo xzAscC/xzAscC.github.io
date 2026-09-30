@@ -102,7 +102,9 @@ footer_custom_source = File.read(File.join(ROOT, '_includes', 'footer', 'custom.
   assert footer_custom_source.include?(trigger), "Library loading lost its on-demand trigger: #{trigger}"
 end
 
-publication_pages = Dir.glob(site_file('publications/*/index.html'))
+publication_pages = Dir.glob(site_file('publications/*/index.html')).reject do |path|
+  File.read(path).include?('http-equiv="refresh"')
+end
 assert publication_pages.length == 4, "Expected 4 publication detail pages, found #{publication_pages.length}"
 publication_html = publication_pages.map { |path| CGI.unescapeHTML(File.read(path)) }
 
@@ -184,7 +186,7 @@ paper_titles.each do |title|
 end
 assert !publications_page.include?('home-publication-card'),
        'Dedicated publications page must not use homepage-only research cards'
-assert publication_html.all? { |html| html.include?('class="article page publication-detail"') },
+assert publication_html.all? { |html| html.match?(/class="[^"]*\bpublication-detail\b[^"]*"/) },
        'Publication detail pages must expose a scoped title style hook'
 
 Dir.glob(File.join(ROOT, '_publications', '*.md')).each do |source|
@@ -304,3 +306,18 @@ assert main_css.include?('64rem'), 'Missing 1024px container'
 assert main_css.include?('overflow-x:hidden'), 'Missing horizontal overflow guard'
 
 puts 'Structural and content regression checks passed'
+
+news_section = homepage[%r{<section class="showcase-section showcase-section--news".*?</section>}m]
+assert news_section, 'Homepage must include a News section'
+assert homepage.index('showcase-section--news') < homepage.index('showcase-section--publications'),
+       'News must appear before Publications'
+assert !blog_page.include?('archive__lead'), 'Blog page must not render a subtitle line'
+
+assert publications_page.scan('>Code</a>').length == 4, 'Publications page must link code for every paper'
+assert cv_page.scan('>Project Page</a>').length == 4, 'CV publications must link each project page'
+assert cv_page.include?('id="cv-experience-title">Education</h2>'), 'CV must label its education section'
+
+abstopk_page = CGI.unescapeHTML(File.read(site_file('publications/abstopk/index.html')))
+assert abstopk_page.include?('@inproceedings{zhu2026abstopk'), 'Paper pages must show BibTeX'
+assert abstopk_page.include?('<iframe'), 'Paper pages with a PDF must embed it'
+assert abstopk_page.include?('mathjax'), 'Paper pages with math must load MathJax'

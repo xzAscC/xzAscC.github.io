@@ -1,4 +1,6 @@
 {% assign cv = site.data.cv %}
+{% assign current_year = site.time | date: "%Y" | plus: 0 %}
+{% assign cv_publications = site.publications | sort: "order" %}
 
 <div class="cv-container">
   <header class="cv-header">
@@ -30,7 +32,7 @@
   <section class="cv-section" aria-labelledby="cv-experience-title">
     <header class="cv-section__header">
       <p class="section-label">Academic path</p>
-      <h2 id="cv-experience-title">Experience</h2>
+      <h2 id="cv-experience-title">Education</h2>
     </header>
     <ol class="cv-list cv-timeline">
       {% for education in cv.education %}
@@ -39,12 +41,15 @@
         <div class="cv-timeline__dates">
           <time datetime="{{ education.startDate }}">{{ education.startDate }}</time>
           <span aria-hidden="true">—</span>
-          <time datetime="{{ education.endDate }}">{{ education.endDate }}</time>
+          {% assign end_year = education.endDate | plus: 0 %}
+          {% if end_year > current_year %}<span>Present</span>{% else %}<time datetime="{{ education.endDate }}">{{ education.endDate }}</time>{% endif %}
         </div>
         <div class="cv-timeline__content">
           <h3>{{ education.area }}</h3>
-          <p class="cv-timeline__institution">{{ education.institution }}</p>
-          {% if education.gpa %}<p class="cv-timeline__detail">GPA: {{ education.gpa }}</p>{% endif %}
+          <p class="cv-timeline__institution">{% if education.url %}<a href="{{ education.url }}" rel="external">{{ education.institution }}</a>{% else %}{{ education.institution }}{% endif %}</p>
+          {% if education.location %}<p class="cv-timeline__detail">{{ education.location }}</p>{% endif %}
+          {% if education.summary %}<p class="cv-timeline__detail">{{ education.summary }}</p>{% endif %}
+          {% if education.gpa %}<p class="cv-timeline__detail">GPA {{ education.gpa }} / 4.00</p>{% endif %}
         </div>
       </li>
       {% endfor %}
@@ -87,21 +92,25 @@
   </section>
   {% endif %}
 
-  {% if cv.publications.size > 0 %}
+  {% if cv_publications.size > 0 %}
   <section class="cv-section" aria-labelledby="cv-publications-title">
     <header class="cv-section__header">
       <p class="section-label">Research</p>
       <h2 id="cv-publications-title">Publications</h2>
     </header>
     <ol class="cv-list cv-publication-list">
-      {% for publication in cv.publications %}
+      {% for post in cv_publications %}
       <li>
         <article class="cv-publication-card" itemscope itemtype="https://schema.org/ScholarlyArticle">
-          <time class="cv-card__date" datetime="{{ publication.releaseDate }}" itemprop="datePublished">{{ publication.releaseDate | slice: 0, 4 }}</time>
+          <time class="cv-card__date" datetime="{{ post.date | date: '%Y-%m-%d' }}" itemprop="datePublished">{{ post.date | date: "%Y" }}</time>
           <div>
-            <h3 itemprop="headline"><a href="{{ publication.website }}" rel="external">{{ publication.name }}</a></h3>
-            <p class="cv-card__meta" itemprop="publisher">{{ publication.publisher }}</p>
-            {% if publication.summary %}<p class="cv-card__description" itemprop="description">{{ publication.summary }}</p>{% endif %}
+            <h3 itemprop="headline"><a href="{{ base_path }}{{ post.url }}" rel="bookmark">{{ post.title }}</a></h3>
+            <p class="cv-card__meta" itemprop="publisher">{{ post.venue }}</p>
+            {% if post.authors %}<p class="cv-card__authors">{% include paper-authors.html post=post %}</p>{% endif %}
+            {% if post.excerpt %}<p class="cv-card__description" itemprop="description">{{ post.excerpt | strip_html | strip_newlines }}</p>{% endif %}
+            <nav class="paper-links" aria-label="Links for {{ post.title | escape }}">
+              {% include paper-links.html post=post %}
+            </nav>
           </div>
         </article>
       </li>

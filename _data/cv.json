@@ -34,12 +34,14 @@
     {
       "institution": "The Ohio State University",
       "url": "https://www.osu.edu/",
-      "area": "Ph.D. in Computer Science",
+      "area": "Ph.D. in Computer Science and Engineering",
       "studyType": "Ph.D.",
       "startDate": "2024",
       "endDate": "2029",
       "gpa": null,
-      "courses": []
+      "courses": [],
+      "location": "Columbus, OH, USA",
+      "summary": "Department of Computer Science and Engineering. Advised by Prof. Zhihui Zhu."
     },
     {
       "institution": "University of Electronic Science and Technology of China",
@@ -49,7 +51,9 @@
       "startDate": "2020",
       "endDate": "2024",
       "gpa": 3.98,
-      "courses": []
+      "courses": [],
+      "location": "Chengdu, Sichuan, China",
+      "summary": "School of Computer Science and Engineering."
     }
   ],
   "awards": [

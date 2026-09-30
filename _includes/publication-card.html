@@ -16,17 +16,16 @@
       <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title | markdownify | remove: "<p>" | remove: "</p>" }}</a>
     </h3>
 
+    {% if post.authors %}
+      <p class="publication-card__authors">{% include paper-authors.html post=post %}</p>
+    {% endif %}
+
     {% if post.excerpt %}
       <div class="publication-card__excerpt" itemprop="description">{{ post.excerpt | markdownify }}</div>
     {% endif %}
 
-    {% if post.citation %}
-      <p class="small" itemprop="citation">{{ post.citation }}</p>
-    {% endif %}
-
-    <p>
-      {% if post.paperurl %}<a class="button" href="{{ post.paperurl }}" rel="external">Paper</a>{% endif %}
-      <a class="button button--secondary" href="{% if post.projecturl %}{{ post.projecturl }}{% else %}{{ base_path }}{{ post.url }}{% endif %}"{% unless post.projecturl %} rel="permalink"{% endunless %}>Project Page</a>
-    </p>
+    <nav class="paper-links" aria-label="Links for {{ post.title | escape }}">
+      {% include paper-links.html post=post %}
+    </nav>
   </div>
 </article>

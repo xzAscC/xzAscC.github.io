@@ -1,0 +1,15 @@
+# Homepage news, newest first. `date` is shown as written; `text` accepts Markdown.
+- date: 2026
+  text: Received the **MMLS 2026 Travel Award** from the [Midwest Machine Learning Symposium](https://midwest-ml.org/2026/).
+- date: 2026
+  text: Contributed to NAIRR Pilot project [NAIRR260106](https://nairrpilot.org/projects/awarded?_requestNumber=NAIRR260106), *Geometry and Training Dynamics of Representations in Large Language Models*.
+- date: Jan 2026
+  text: "[AbsTopK](/publications/abstopk/), on sparse autoencoders for bidirectional features, was accepted to **ICLR 2026**."
+- date: Jun 2025
+  text: "[Coarse-graining for link prediction](/publications/coarse-graining/) was published in **Neurocomputing**."
+- date: Jun 2025
+  text: Released [From Emergence to Control](/publications/self-reflection/), on probing and steering self-reflection in LLMs.
+- date: 2024
+  text: Started my Ph.D. at [The Ohio State University](https://www.osu.edu/), advised by Prof. [Zhihui Zhu](https://zhihuizhu.github.io/).
+- date: 2024
+  text: "[FCDS](/publications/fcds/) was published at **LREC-COLING 2024**."

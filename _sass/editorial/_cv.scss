@@ -159,10 +159,34 @@
   font-weight: 650;
 }
 
+.cv-card__authors {
+  margin: var(--space-2) 0 0;
+  color: var(--color-ink-soft);
+  font-size: var(--text-sm);
+}
+
+.cv-card__authors strong {
+  color: var(--color-ink);
+  font-weight: 650;
+}
+
+.cv-publication-card .paper-links {
+  padding-top: var(--space-3);
+}
+
 .cv-timeline__detail,
 .cv-card__description {
   margin: var(--space-3) 0 0;
   color: var(--color-ink-soft);
+}
+
+.cv-timeline__detail {
+  margin-top: var(--space-1);
+  font-size: var(--text-sm);
+}
+
+.cv-timeline__institution + .cv-timeline__detail {
+  margin-top: var(--space-2);
 }
 
 .cv-card-grid {

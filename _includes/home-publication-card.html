@@ -27,7 +27,7 @@
 
     <p class="home-publication-card__authors">
       {% for author in post.authors %}
-        <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">{{ author }}</span></span>{% unless forloop.last %}, {% endunless %}
+        <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">{% if author == site.author.name %}<strong>{{ author }}</strong>{% else %}{{ author }}{% endif %}</span></span>{% unless forloop.last %}, {% endunless %}
       {% endfor %}
     </p>
 
@@ -35,10 +35,8 @@
       <div class="home-publication-card__excerpt" itemprop="description">{{ post.excerpt | markdownify }}</div>
     {% endif %}
 
-    <nav class="home-publication-card__links" aria-label="Links for {{ paper_title | escape }}">
-      {% if post.paperurl %}<a href="{{ post.paperurl }}" rel="external">Paper</a>{% endif %}
-      {% if post.codeurl %}<a href="{{ post.codeurl }}" rel="external">Code</a>{% endif %}
-      <a href="{% if post.projecturl %}{{ post.projecturl }}{% else %}{{ base_path }}{{ post.url }}{% endif %}"{% unless post.projecturl %} rel="permalink"{% endunless %}>Project Page</a>
+    <nav class="paper-links home-publication-card__links" aria-label="Links for {{ paper_title | escape }}">
+      {% include paper-links.html post=post %}
     </nav>
   </div>
 </article>

@@ -2,12 +2,9 @@
 layout: archive
 title: "Blog"
 permalink: /blog/
-description: "Notes on representation learning, interpretability, and research tooling."
 ---
 
 {% include base_path %}
-
-<p class="archive__lead">{{ page.description }}</p>
 
 {% if site.posts.size > 0 %}
   <div class="post-archive">
