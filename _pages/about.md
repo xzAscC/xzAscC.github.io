@@ -9,9 +9,10 @@ intro: >-
   to advance mechanistic interpretability.
 interests:
   - Representation Learning
-  - Mechanistic Interpretability
-  - Representation Geometry
+  - Interpretability
+  - Representation & Behavior Steering
   - Training Dynamics
+  - Agent Behavior Control
 redirect_from: 
   - /about/
   - /about.html

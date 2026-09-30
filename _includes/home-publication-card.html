@@ -38,7 +38,7 @@
     <nav class="home-publication-card__links" aria-label="Links for {{ paper_title | escape }}">
       {% if post.paperurl %}<a href="{{ post.paperurl }}" rel="external">Paper</a>{% endif %}
       {% if post.codeurl %}<a href="{{ post.codeurl }}" rel="external">Code</a>{% endif %}
-      <a href="{{ base_path }}{{ post.url }}" rel="permalink">Details</a>
+      <a href="{% if post.projecturl %}{{ post.projecturl }}{% else %}{{ base_path }}{{ post.url }}{% endif %}"{% unless post.projecturl %} rel="permalink"{% endunless %}>Project Page</a>
     </nav>
   </div>
 </article>

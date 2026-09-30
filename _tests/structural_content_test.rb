@@ -139,26 +139,23 @@ cover_paths.each do |cover_path|
 end
 
 publications_section = homepage[%r{<section class="showcase-section showcase-section--publications".*?</section>}m]
-preprints_section = homepage[%r{<section class="showcase-section showcase-section--preprints".*?</section>}m]
 projects_section = homepage[%r{<section class="showcase-section showcase-section--projects".*?</section>}m]
 assert publications_section, 'Homepage must include a Publications section'
-assert preprints_section, 'Homepage must include a Preprints section'
 assert projects_section, 'Homepage must include a Building in Public section'
-showcase_positions = %w[publications preprints projects].map do |section|
+assert !homepage.include?('showcase-section--preprints'),
+       'Homepage must hide the Preprints section when there are no preprints'
+showcase_positions = %w[publications projects].map do |section|
   homepage.index(%(showcase-section--#{section}))
 end
 assert showcase_positions == showcase_positions.sort,
-       'Homepage showcase order must be Publications, Preprints, then Building in Public'
-assert preprints_section.include?(paper_titles[2]), 'Self-Reflection must be classified as a preprint'
-assert !publications_section.include?(paper_titles[2]), 'Self-Reflection must not be classified as a publication'
-[paper_titles[0], paper_titles[1], paper_titles[3]].each do |title|
+       'Homepage showcase order must be Publications, then Building in Public'
+paper_titles.each do |title|
   assert publications_section.include?(title), "Publications section lost paper: #{title}"
-  assert !preprints_section.include?(title), "Preprints section incorrectly includes: #{title}"
 end
-publication_positions = [paper_titles[0], paper_titles[1], paper_titles[3]].map do |title|
-  publications_section.index(title)
-end
+publication_positions = paper_titles.map { |title| publications_section.index(title) }
 assert publication_positions == publication_positions.sort, 'Homepage publications must remain newest first'
+assert publications_section.include?('TMLR'), 'Self-Reflection must be listed under its TMLR venue'
+assert homepage.scan('>Project Page</a>').length == 4, 'Every homepage paper card must link its project page'
 
 assert publications_page.scan(/<article class="publication-card"/).length == 4,
        'Dedicated publications page must retain exactly four shared publication cards'
@@ -271,8 +268,8 @@ assert social_links.scan(/<a\b/).length == 4, 'Homepage social navigation must c
 assert social_links.include?('/assets/images/google-scholar.svg'), 'Homepage must use the requested Google Scholar logo'
 assert social_links.include?('href="https://x.com/XudongZhu3944"'), 'Homepage must use the configured X profile'
 assert !social_links.match?(/ORCID|arXiv/), 'Homepage social navigation must not include ORCID or arXiv'
-expected_interests = ['Representation Learning', 'Mechanistic Interpretability', 'Representation Geometry',
-                      'Training Dynamics']
+expected_interests = ['Representation Learning', 'Interpretability', 'Representation & Behavior Steering',
+                      'Training Dynamics', 'Agent Behavior Control']
 interest_positions = expected_interests.map { |interest| homepage.index(%(<li class="interest-pill">#{interest}</li>)) }
 assert interest_positions.all?, 'Homepage must include every requested research interest pill'
 assert interest_positions == interest_positions.sort,

@@ -17,6 +17,8 @@
     </div>
   </section>
 
+  {% assign preprints = site.publications | where: "venue", "arxiv preprint" %}
+  {% if preprints.size > 0 %}
   <section class="showcase-section showcase-section--preprints" aria-labelledby="homepage-preprints-title">
     <header class="showcase-section__header">
       <div>
@@ -33,6 +35,7 @@
       {% endfor %}
     </div>
   </section>
+  {% endif %}
 
   {% if site.posts.size > 0 %}
   <section class="showcase-section showcase-section--writing" aria-labelledby="homepage-writing-title">
