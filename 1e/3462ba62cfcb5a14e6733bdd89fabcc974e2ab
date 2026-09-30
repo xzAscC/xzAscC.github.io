@@ -1,0 +1,63 @@
+_sass/editorial/_blog.scss
+  s_f05a9579ded952::t_8e546e3a1907e8 524-674
+_data/news.yml
+  s_f05a9579ded952::t_030569878a5060 1-15
+_publications/2025-06-20-coarse-graining.md
+  s_f05a9579ded952::t_53aa45cf64a908 1-33
+_layouts/publication.html
+  s_f05a9579ded952::t_859a7f0129c8ee 1-114
+_publications/2026-01-01-abstopk.md
+  s_f05a9579ded952::t_53aa45cf64a908 1-18,20-29
+  s_f05a9579ded952::t_2d950aca7b4a3d 30
+  s_f05a9579ded952::t_16f9904ad4ab05 19
+_includes/paper-authors.html
+  s_f05a9579ded952::t_ddeccaa3c844f5 1-3
+_config.yml
+  s_f05a9579ded952::t_8e546e3a1907e8 202
+_data/cv.json
+  s_f05a9579ded952::t_b2fe322606feb8 37,42-44,54-56
+_tests/structural_content_test.rb
+  s_f05a9579ded952::t_d972f69ec08770 309-323
+  s_f05a9579ded952::t_be7b73fb6de239 189
+  s_f05a9579ded952::t_9de8daebf64518 105-107
+_includes/home-publication-card.html
+  s_f05a9579ded952::t_ddeccaa3c844f5 30,38-39
+_sass/editorial/_cv.scss
+  s_f05a9579ded952::t_08a1d2ff4be411 162-176
+  s_f05a9579ded952::t_1ac325e8e468bf 183-191
+_includes/paper-links.html
+  s_f05a9579ded952::t_3a72c44eea958a 1-5
+_publications/2024-03-04-fcds.md
+  s_f05a9579ded952::t_53aa45cf64a908 1-33
+_includes/project-card.html
+  s_f05a9579ded952::t_347394bd5d9273 4,6-11,17-21
+_includes/homepage-showcase.html
+  s_f05a9579ded952::t_030569878a5060 4-13,15-22
+  s_f05a9579ded952::t_1a99c815254ccd 14
+_includes/cv-template.html
+  s_f05a9579ded952::t_b2fe322606feb8 2-3,35,44-45,49-52,95,102,105,107-113
+_includes/publication-card.html
+  s_f05a9579ded952::t_ddeccaa3c844f5 19-20,23-24,27-29
+_sass/editorial/_components.scss
+  s_f05a9579ded952::t_347394bd5d9273 306,340
+  s_f05a9579ded952::t_030569878a5060 670-703
+  s_f05a9579ded952::t_ddeccaa3c844f5 231-243,450,458,472-473,487
+_publications/2025-06-13-self-reflection.md
+  s_f05a9579ded952::t_53aa45cf64a908 1-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1e3462ba62cfcb5a14e6733bdd89fabcc974e2ab",
+  "prompts": {},
+  "sessions": {
+    "s_f05a9579ded952": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a13c72ca-c958-4851-b054-d3f7e81c3f25",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
