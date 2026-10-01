@@ -307,6 +307,14 @@ assert main_css.include?('overflow-x:hidden'), 'Missing horizontal overflow guar
 
 puts 'Structural and content regression checks passed'
 
+assert !File.exist?(site_file('blog/2026/research-templates/index.html')),
+       'Research templates must remain an unpublished draft'
+%w[index.html blog/index.html feed.xml sitemap.xml sitemap/index.html].each do |path|
+  content = File.read(site_file(path))
+  assert !content.include?('research-templates') && !content.include?('Templates for Research'),
+         "Research templates draft leaked into #{path}"
+end
+
 news_section = homepage[%r{<section class="showcase-section showcase-section--news".*?</section>}m]
 assert news_section, 'Homepage must include a News section'
 assert homepage.index('showcase-section--news') < homepage.index('showcase-section--publications'),
