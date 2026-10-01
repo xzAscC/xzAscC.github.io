@@ -18,10 +18,8 @@ I am putting the layouts I use for research in one place, so that each new paper
     <a class="template-action" href="{{ '/files/arxiv-template-example.pdf' | relative_url }}">Read the example PDF <span aria-hidden="true">↗</span></a>
   </div>
   <figure class="template-preview">
-    <a href="{{ '/files/arxiv-template-example.pdf' | relative_url }}" aria-label="Open the full arXiv template example PDF">
-      <img src="{{ '/assets/images/arxiv-template.svg' | relative_url }}" alt="First page of the arXiv template, with a scarlet title, author affiliations, project and code links, a shaded abstract, and a teaser figure." width="612" height="792" fetchpriority="high">
-    </a>
-    <figcaption>The first page. Open the PDF to explore the full seven-page example.</figcaption>
+    <iframe src="{{ '/files/arxiv-template-example.pdf' | relative_url }}#view=FitH&amp;navpanes=0" title="Full seven-page arXiv template example" loading="lazy"></iframe>
+    <figcaption>Explore the full seven-page example. <a href="{{ '/files/arxiv-template-example.pdf' | relative_url }}" target="_blank" rel="noopener">Open in a new tab</a> or <a href="{{ '/files/arxiv-template-example.pdf' | relative_url }}" download="arxiv-template-example.pdf">download the PDF</a>.</figcaption>
   </figure>
   <dl class="template-details">
     <div><dt>A useful first page</dt><dd>Optional links for code, data, models, slides, and more, followed by an abstract box and a teaser figure.</dd></div>
