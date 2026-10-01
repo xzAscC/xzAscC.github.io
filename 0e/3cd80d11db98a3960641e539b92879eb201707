@@ -1,0 +1,39 @@
+_config.yml
+  s_87e45542b43278::t_39475401269452 140,246-250
+_tests/structural_content_test.rb
+  s_87e45542b43278::t_39475401269452 32-33
+README.md
+  s_87e45542b43278::t_641e474e6c8c68 72-77
+_includes/post-comments.html
+  s_87e45542b43278::t_ebc645af6d10b8 1-12
+_includes/post-list-item.html
+  s_87e45542b43278::t_c9e214baa4946a 4-5,20
+_includes/scripts.html
+  s_87e45542b43278::t_eed4594e204f8a 4-5
+_layouts/post.html
+  s_87e45542b43278::t_d4462b1b52dc87 26,36
+_pages/blog.md
+  s_87e45542b43278::t_b75f913e281848 4,10-24,33
+_sass/editorial/_blog.scss
+  s_87e45542b43278::t_b06a8b650ba795 718-755
+assets/js/blog-search.js
+  s_87e45542b43278::t_d7fd82abaaee00 1-61
+assets/js/comments.js
+  s_87e45542b43278::t_87e7de772b374b 1-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0e3cd80d11db98a3960641e539b92879eb201707",
+  "prompts": {},
+  "sessions": {
+    "s_87e45542b43278": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f9c2-afe0-7e11-9689-03835a219da2",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
