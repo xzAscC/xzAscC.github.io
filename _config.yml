@@ -143,6 +143,7 @@ exclude:
   - Gemfile.lock
   - LICENSE
   - README.md
+  - post-template.md
 keep_files:
   - .git
   - .svn

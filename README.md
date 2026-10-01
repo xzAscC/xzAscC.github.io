@@ -64,10 +64,10 @@ docker start xz-blog-preview
 
 ## ✍️ 写博客
 
-1. 创建文章目录并复制模板：`mkdir -p _posts`，然后 `cp _drafts/post-template.md _posts/2026-10-01-my-post.md`（文件名中的日期即发布日期）。
+1. 创建文章目录并复制模板：`mkdir -p _posts`，然后 `cp post-template.md _posts/2026-10-01-my-post.md`（文件名中的日期即发布日期）。
 2. 修改 front matter：`title`、可选的 `description`、`tags`；中文文章加 `lang: zh`（用于字体和阅读时长估算）。
 3. 文章地址为 `/blog/<年份>/<slug>/`，会自动出现在 Blog 页、首页 Writing 栏目和 RSS（`/feed.xml`）中。
-4. 草稿放在 `_drafts/`，不会发布；本地预览草稿需给 `jekyll serve` 加 `--drafts`。
+4. `post-template.md` 仅作为写作参考，已从站点构建中排除；草稿放在 `_drafts/`，不会发布；本地预览草稿需给 `jekyll serve` 加 `--drafts`。
 
 支持的写作功能（模板里都有示例）：
 
