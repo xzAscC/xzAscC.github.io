@@ -15,11 +15,17 @@ I am putting the layouts I use for research in one place, so that each new paper
   <p>A compact LaTeX template for machine learning papers, with a title page that brings the abstract, authors, and research resources together.</p>
   <div class="template-actions">
     <a class="template-action template-action--primary" href="https://github.com/xzAscC/arxiv-template">Get the template <span aria-hidden="true">↗</span></a>
-    <a class="template-action" href="{{ '/files/arxiv-template-example.pdf' | relative_url }}">Read the example PDF <span aria-hidden="true">↗</span></a>
   </div>
   <figure class="template-preview">
-    <iframe src="{{ '/files/arxiv-template-example.pdf' | relative_url }}#view=FitH&amp;navpanes=0" title="Full seven-page arXiv template example" loading="lazy"></iframe>
-    <figcaption>Explore the full seven-page example. <a href="{{ '/files/arxiv-template-example.pdf' | relative_url }}" target="_blank" rel="noopener">Open in a new tab</a> or <a href="{{ '/files/arxiv-template-example.pdf' | relative_url }}" download="arxiv-template-example.pdf">download the PDF</a>.</figcaption>
+    <div class="template-preview__bar">
+      <div class="template-preview__label"><span class="template-preview__title">Inside the template</span><span class="template-preview__meta">PDF · 7 pages</span></div>
+      <div class="template-preview__links">
+        <a href="{{ '/files/arxiv-template-example.pdf' | relative_url }}" target="_blank" rel="noopener" aria-label="Open example PDF in a new tab">Open <span aria-hidden="true">↗</span></a>
+        <a href="{{ '/files/arxiv-template-example.pdf' | relative_url }}" download="arxiv-template-example.pdf">Download <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+    <iframe src="{{ '/files/arxiv-template-example.pdf' | relative_url }}#view=FitH&amp;navpanes=0&amp;toolbar=0" title="Full seven-page arXiv template example" loading="lazy"></iframe>
+    <figcaption>Scroll to explore the complete example.</figcaption>
   </figure>
   <dl class="template-details">
     <div><dt>A useful first page</dt><dd>Optional links for code, data, models, slides, and more, followed by an abstract box and a teaser figure.</dd></div>
