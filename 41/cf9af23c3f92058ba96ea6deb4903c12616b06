@@ -1,0 +1,27 @@
+_tests/structural_content_test.rb
+  s_87e45542b43278::t_d32825d1dc8be3 310-317
+_sass/editorial/_templates.scss
+  s_87e45542b43278::t_d32825d1dc8be3 1-124
+_drafts/research-templates.md
+  s_87e45542b43278::t_ac11e2e8410ec4 1-53
+assets/css/main.scss
+  s_87e45542b43278::t_63fbd2110491b6 12
+assets/images/arxiv-template.svg
+  s_87e45542b43278::t_2d083908363011 1-2737
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "41cf9af23c3f92058ba96ea6deb4903c12616b06",
+  "prompts": {},
+  "sessions": {
+    "s_87e45542b43278": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f9c2-afe0-7e11-9689-03835a219da2",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
