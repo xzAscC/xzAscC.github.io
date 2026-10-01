@@ -1,0 +1,12 @@
+<section class="post-comments" aria-labelledby="comments-title">
+  <h2 id="comments-title">Comments</h2>
+  {% if site.waline.server_url and site.waline.server_url != '' %}
+    <p class="post-comments__intro">Join the conversation. Sign in or leave a comment as a guest.</p>
+    <div id="waline" data-server-url="{{ site.waline.server_url | escape }}" data-path="{{ page.url | escape }}"></div>
+    <p id="comments-error" role="status" hidden>Comments could not load. Please try again later.</p>
+    <noscript>Please enable JavaScript to read and leave comments.</noscript>
+    <script type="module" src="{{ '/assets/js/comments.js' | relative_url }}"></script>
+  {% else %}
+    <p class="post-comments__intro">Comments are not available yet.</p>
+  {% endif %}
+</section>

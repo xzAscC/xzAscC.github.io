@@ -29,6 +29,8 @@ required_files.each do |path|
   assert File.file?(site_file(path)), "Missing generated route: #{path}"
 end
 
+assert !File.exist?(site_file('local')), 'Local service configuration and databases must never be published'
+
 homepage = CGI.unescapeHTML(File.read(site_file('index.html')))
 publications_page = CGI.unescapeHTML(File.read(site_file('publications/index.html')))
 cv_page = CGI.unescapeHTML(File.read(site_file('cv-json/index.html')))

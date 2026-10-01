@@ -69,6 +69,12 @@ docker start xz-blog-preview
 3. 文章地址为 `/blog/<年份>/<slug>/`，会自动出现在 Blog 页、首页 Writing 栏目和 RSS（`/feed.xml`）中。
 4. `post-template.md` 仅作为写作参考，已从站点构建中排除；草稿放在 `_drafts/`，不会发布；本地预览草稿需给 `jekyll serve` 加 `--drafts`。
 
+博客首页支持标题、正文和标签搜索；点击文章标签会进入 `/blog/?tag=...`，搜索链接可直接分享。搜索只包含当前构建的文章，正式构建不会索引草稿。
+
+文章底部使用 [Waline](https://waline.js.org/en/guide/get-started/)，允许登录或以游客身份留言。正式部署后，在 `_config.yml` 中设置 `waline.server_url`，并在服务端限制允许访问的站点域名。地址留空时不加载评论客户端。
+
+本地评论预览使用独立服务 `xz-waline-preview`（`http://localhost:8360`），SQLite 数据和配置位于已忽略的 `local/`，不提交到 Git。`local/comments.yml` 覆盖评论地址；Jekyll 预览使用 `--drafts --config _config.yml,local/comments.yml --port 4001 --destination /tmp/template-preview-site`。已创建的预览容器可用 `docker start xz-waline-preview xz-template-preview` 恢复。
+
 支持的写作功能（模板里都有示例）：
 
 - 公式：`$$...$$`（行内和独立成行均可），只有含公式的页面才会加载 MathJax。
