@@ -11,6 +11,8 @@
   </div>
   <div class="pdf-viewer__document">
     <iframe src="{{ viewer_src | escape }}#view=FitH&amp;navpanes=0&amp;toolbar=0" title="{{ viewer_title | escape }}" loading="lazy"{% if include.height %} style="height: {{ include.height | escape }}"{% endif %}></iframe>
+    <a class="pdf-viewer__fallback" href="{{ viewer_src | escape }}">{% if include.preview %}<img src="{{ include.preview | relative_url }}" alt="First page of {{ viewer_title | escape }}" loading="lazy">{% endif %}<span>Open the PDF <span aria-hidden="true">↗</span></span></a>
   </div>
+  <script>if (navigator.pdfViewerEnabled === false) document.documentElement.classList.add('no-pdf-viewer');</script>
   <figcaption>{{ include.caption | default: 'Scroll to explore the complete document.' | escape }}</figcaption>
 </figure>

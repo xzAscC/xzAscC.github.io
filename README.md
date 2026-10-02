@@ -98,11 +98,11 @@ Use the shared reader in any Jekyll page or layout:
 {% include pdf-viewer.html src="/files/paper.pdf" title="Read the paper" pages=7 %}
 ```
 
-`src` is required and accepts a local path or an external URL. Optional arguments are `title`, `pages`, `caption`, `download_name`, and `height` (a CSS length such as `70vh`). Styles live in `_sass/editorial/_pdf-viewer.scss`; both the website and the project template import them. Blog drafts and publication pages use this same include.
+`src` is required and accepts a local path or an external URL. Optional arguments are `title`, `pages`, `caption`, `download_name`, `preview` (a first-page image shown where the browser cannot display PDFs inline, as on most phones), and `height` (a CSS length such as `70vh`). Styles live in `_sass/editorial/_pdf-viewer.scss`; both the website and the project template import them. Blog drafts and publication pages use this same include.
 
 ## Project page template
 
-The canonical example is `_pages/project-template.md`, using `_layouts/project.html`. It is `published: false`, so it never appears in a normal build. Preview with `--unpublished` at `/templates/project/`; it is a page, not a blog post. Edit the front matter for authors, resources, the teaser, PDF, and citation, then edit the body sections.
+The canonical example is `_pages/project-template.md`, using `_layouts/project.html`. It is `published: false`, so it never appears in a normal build. Preview with `--unpublished` at `/templates/project/`; it is a page, not a blog post. Edit the front matter for authors, resources, the teaser, PDF, and citation, then edit the body sections. The front matter comments document every option: `accent` sets one color that the hover, soft, and dark-mode shades follow; authors take `affiliations`, `equal`, and `corresponding`; `nav` lists the body sections, and Video, Paper, and Cite are added when `video`, `project_pdf`, or `bibtex` is set. Body sections are plain `## Heading` blocks and number themselves. The page follows the system light or dark preference. Run `_tests/project_template_test.rb` after a `--unpublished` build into `local/project-site` (see `_tests/run.sh`).
 
 To export a framework-free download:
 

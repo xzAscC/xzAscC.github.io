@@ -1,13 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="410" viewBox="0 0 1200 410" role="img" aria-labelledby="title desc">
 <title id="title">An overview of your method</title><desc id="desc">Three connected stages: inputs, your method, and outputs. Replace with your own figure.</desc>
-<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 6 3 0 6" fill="none" stroke="#a83024" stroke-width="1.4"/></marker></defs>
+<style>
+svg { --accent: #a83024; --accent-soft: #f0ddd4; --accent-line: #bd7364; --box: #f3efe7; --border: #d8d0c4; --ink: #29231f; --ink-soft: #6f655d; }
+@media (prefers-color-scheme: dark) {
+  svg { --accent: #e0897c; --accent-soft: #4a2d27; --accent-line: #a8645a; --box: #292522; --border: #49413b; --ink: #f1ebe1; --ink-soft: #bdb2a7; }
+}
+.box { fill: var(--box); stroke: var(--border); }
+.box--key { fill: var(--accent-soft); stroke: var(--accent-line); }
+.flow { fill: none; stroke: var(--accent); }
+.label { fill: var(--accent); }
+.name { fill: var(--ink); }
+.note { fill: var(--ink-soft); }
+.rule { stroke: var(--accent-line); }
+</style>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path class="flow" d="M0 0 6 3 0 6" stroke-width="1.4"/></marker></defs>
 <g font-family="Arial,sans-serif" text-anchor="middle">
-<rect x="35" y="76" width="300" height="250" rx="14" fill="#f3efe7" stroke="#d8d0c4"/>
-<rect x="450" y="76" width="300" height="250" rx="14" fill="#f0ddd4" stroke="#bd7364"/>
-<rect x="865" y="76" width="300" height="250" rx="14" fill="#f3efe7" stroke="#d8d0c4"/>
-<g fill="none" stroke="#a83024" stroke-width="2"><path d="M350 201 H430" marker-end="url(#arrow)"/><path d="M765 201 H845" marker-end="url(#arrow)"/></g>
-<g fill="#a83024" font-size="13" letter-spacing="2"><text x="185" y="120">INPUT</text><text x="600" y="120">METHOD</text><text x="1015" y="120">OUTPUT</text></g>
-<g fill="#29231f" font-family="Georgia,serif" font-size="33"><text x="185" y="194">Start here</text><text x="600" y="194">Your key idea</text><text x="1015" y="194">What changes?</text></g>
-<g fill="#6f655d" font-size="16"><text x="185" y="239">Data, context, or a question</text><text x="600" y="239">The central operation</text><text x="1015" y="239">A result the reader can inspect</text></g>
-<g stroke="#bd7364" stroke-width="2"><path d="M130 275 H240"/><path d="M545 275 H655"/><path d="M960 275 H1070"/></g>
+<rect class="box" x="35" y="76" width="300" height="250" rx="14"/>
+<rect class="box box--key" x="450" y="76" width="300" height="250" rx="14"/>
+<rect class="box" x="865" y="76" width="300" height="250" rx="14"/>
+<g class="flow" stroke-width="2"><path d="M350 201 H430" marker-end="url(#arrow)"/><path d="M765 201 H845" marker-end="url(#arrow)"/></g>
+<g class="label" font-size="13" letter-spacing="2"><text x="185" y="120">INPUT</text><text x="600" y="120">METHOD</text><text x="1015" y="120">OUTPUT</text></g>
+<g class="name" font-family="Georgia,serif" font-size="33"><text x="185" y="194">Start here</text><text x="600" y="194">Your key idea</text><text x="1015" y="194">What changes?</text></g>
+<g class="note" font-size="16"><text x="185" y="239">Data, context, or a question</text><text x="600" y="239">The central operation</text><text x="1015" y="239">A result the reader can inspect</text></g>
+<g class="rule" stroke-width="2"><path d="M130 275 H240"/><path d="M545 275 H655"/><path d="M960 275 H1070"/></g>
 </g></svg>

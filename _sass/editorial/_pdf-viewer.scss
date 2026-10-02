@@ -59,6 +59,29 @@ figure.pdf-viewer {
   background: white;
 }
 
+// Browsers without an inline PDF viewer (most phones) get a link instead.
+.pdf-viewer__fallback { display: none; }
+.no-pdf-viewer .pdf-viewer iframe,
+.no-pdf-viewer .pdf-viewer__document::after { display: none; }
+.no-pdf-viewer .pdf-viewer__document { background: var(--color-surface); }
+.no-pdf-viewer .pdf-viewer__fallback {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  color: var(--color-accent-strong);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+}
+.pdf-viewer__fallback img {
+  display: block;
+  width: min(100%, 22rem);
+  height: auto;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 0.5rem 1.5rem var(--color-shadow);
+}
+
 .pdf-viewer figcaption {
   margin: 0;
   padding: var(--space-3) var(--space-4);
