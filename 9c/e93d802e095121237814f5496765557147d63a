@@ -1,0 +1,33 @@
+_tests/structural_content_test.rb
+  s_3c82aa121a713f::t_b16ffcf7000875 302-309
+  s_3c82aa121a713f::t_53a7a2adbfb909 310-312
+_layouts/post.html
+  s_3c82aa121a713f::t_55dd8b315b051d 50
+  s_3c82aa121a713f::t_8a07fd7469f840 31-42
+assets/js/post-toc.js
+  s_3c82aa121a713f::t_63b926cf45a8ee 1-20,22-27,34-37,41
+  s_3c82aa121a713f::t_99d698e5e392be 28-33,38-40
+  s_3c82aa121a713f::t_bb50d20f3c791c 21
+_sass/editorial/_blog.scss
+  s_3c82aa121a713f::t_4f37c72796985b 190-250
+_sass/editorial/_base.scss
+  s_3c82aa121a713f::t_a00918ed8fde09 19
+_drafts/research-templates.md
+  s_3c82aa121a713f::t_06fd76b93dd6eb 13,40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9ce93d802e095121237814f5496765557147d63a",
+  "prompts": {},
+  "sessions": {
+    "s_3c82aa121a713f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "db2fb310-3b8b-4d45-9662-1e937fbd3e5e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
