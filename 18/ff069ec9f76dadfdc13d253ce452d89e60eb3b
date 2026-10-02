@@ -1,0 +1,29 @@
+_tests/project_template_test.rb
+  s_3c82aa121a713f::t_9a4259a9059587 78-86
+_layouts/project.html
+  s_3c82aa121a713f::t_9424cc288f02e4 19-20
+_sass/editorial/_fonts.scss
+  s_3c82aa121a713f::t_2be4c018505254 3,11
+assets/css/project.scss
+  s_3c82aa121a713f::t_5ac83d97b24eb5 4,10,44,62
+assets/images/project-template-overview.svg
+  s_3c82aa121a713f::t_e723b96f8645a4 17,23
+scripts/export_project_template.py
+  s_3c82aa121a713f::t_e670cab2dc5add 24,37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "18ff069ec9f76dadfdc13d253ce452d89e60eb3b",
+  "prompts": {},
+  "sessions": {
+    "s_3c82aa121a713f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "db2fb310-3b8b-4d45-9662-1e937fbd3e5e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
