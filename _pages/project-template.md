@@ -2,7 +2,7 @@
 layout: project
 sitemap: false
 noindex: true                # linked only from the templates blog post
-permalink: /blog/template/
+permalink: /blog/2026/research-templates/project/
 project_name: Project Name
 title: "Your research, in focus."
 description: "A concise statement of your main contribution. One sentence that tells the reader what changed, and why it matters."

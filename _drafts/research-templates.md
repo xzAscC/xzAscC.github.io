@@ -41,7 +41,7 @@ The template code and documentation use the [MIT License](https://github.com/xzA
   <h2>A home for the research.</h2>
   <p>A standalone project page for presenting a paper and its supporting resources. It follows the same restrained style as the paper template, with warm backgrounds, clear typography, and a shared PDF reader.</p>
   <div class="template-actions">
-    <a class="template-action template-action--primary" href="{{ '/blog/template/' | relative_url }}">Preview the project page <span aria-hidden="true">↗</span></a>
+    <a class="template-action template-action--primary" href="{{ '/blog/2026/research-templates/project/' | relative_url }}">Preview the project page <span aria-hidden="true">↗</span></a>
     <a class="template-action" href="{{ '/files/project-template.zip' | relative_url }}" download>Download the template <span aria-hidden="true">↓</span></a>
   </div>
   <dl class="template-details">

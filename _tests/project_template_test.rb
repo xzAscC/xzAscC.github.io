@@ -11,7 +11,7 @@ def read(path)
   File.read(File.join(SITE, path))
 end
 
-page = CGI.unescapeHTML(read('blog/template/index.html'))
+page = CGI.unescapeHTML(read('blog/2026/research-templates/project/index.html'))
 css = read('assets/css/project.css')
 teaser = read('assets/images/project-template-overview.svg')
 

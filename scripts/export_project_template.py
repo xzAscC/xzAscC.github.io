@@ -10,7 +10,7 @@ from zipfile import ZipFile, ZIP_DEFLATED
 
 site = Path(sys.argv[1])
 output = Path(sys.argv[2]) if len(sys.argv) > 2 else Path('files/project-template.zip')
-html = (site / 'blog/template/index.html').read_text()
+html = (site / 'blog/2026/research-templates/project/index.html').read_text()
 html = html.replace('href="/assets/', 'href="assets/').replace('src="/assets/', 'src="assets/')
 html = html.replace('href="/files/', 'href="files/').replace('src="/files/', 'src="files/')
 html = re.sub(r'<meta property="og:url" content="[^"]*">', '<meta property="og:url" content="https://your-project.example/">', html)
