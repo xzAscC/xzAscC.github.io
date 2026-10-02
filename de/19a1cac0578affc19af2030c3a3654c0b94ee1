@@ -1,0 +1,19 @@
+_posts/2026-10-01-research-templates.md
+  s_3ea877b2e23ea5::t_1563563680ab87 1-49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "de19a1cac0578affc19af2030c3a3654c0b94ee1",
+  "prompts": {},
+  "sessions": {
+    "s_3ea877b2e23ea5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0fac8-108e-7621-b7c1-5132f60051aa",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
