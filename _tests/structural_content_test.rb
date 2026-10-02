@@ -299,6 +299,17 @@ assert main_css.include?('.homepage-showcase{') && main_css.include?('padding-bo
        'Homepage showcase must leave breathing room above the footer'
 assert main_css.include?('padding-bottom:var(--space-8)'),
        'Homepage showcase must preserve footer breathing room on mobile'
+post_layout = File.read(File.join(ROOT, '_layouts/post.html'))
+assert post_layout.include?('data-post-toc') && post_layout.include?('post-toc.js'), 'Posts must have an outline sidebar'
+assert post_layout.include?('page.toc != false'), 'Posts must be able to turn the outline off'
+toc_js = File.read(site_file('assets/js/post-toc.js'))
+assert toc_js.include?('h2') && toc_js.include?("addEventListener('scroll'") && toc_js.include?('aria-current'),
+       'Outline must list headings and track the current one while scrolling'
+assert main_css.include?('.post-toc') && main_css.include?('position:sticky'), 'Outline must stay visible while scrolling'
+assert main_css.include?('overflow-x:clip'), 'Body must clip overflow without becoming a scroll container, or sticky breaks'
+assert toc_js.include?('tocLabel'), 'Headings must be able to set a shorter outline label'
+assert !File.read(File.join(ROOT, '_drafts/research-templates.md')).include?('read_time: false'),
+       'Templates post must show its reading time, as the blog list does'
 assert main_css.include?('Crimson Pro'), 'Missing Crimson Pro typography'
 assert main_css.include?('Inter'), 'Missing Inter typography'
 assert main_css.include?('--color-bg'), 'Missing background design token'

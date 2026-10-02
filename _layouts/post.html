@@ -28,8 +28,18 @@ layout: default
       {% endif %}
     </header>
 
-    <div class="post__content prose" itemprop="articleBody">
-      {{ content }}
+    <div class="post__body">
+      {% if page.toc != false %}
+        <aside class="post-toc" aria-labelledby="post-toc-title" data-post-toc hidden>
+          <nav>
+            <p class="post-toc__title" id="post-toc-title">On this page</p>
+            <ol class="post-toc__list"></ol>
+          </nav>
+        </aside>
+      {% endif %}
+      <div class="post__content prose" itemprop="articleBody">
+        {{ content }}
+      </div>
     </div>
 
     <footer class="post__footer">
@@ -37,3 +47,4 @@ layout: default
     </footer>
   </article>
 </main>
+{% if page.toc != false %}<script type="module" src="{{ '/assets/js/post-toc.js' | relative_url }}"></script>{% endif %}

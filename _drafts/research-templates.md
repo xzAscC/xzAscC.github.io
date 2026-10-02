@@ -4,14 +4,13 @@ description: "Templates for the paper and the project page, with slides and post
 date: 2026-10-01
 tags: [template, research-tools]
 permalink: /blog/2026/research-templates/
-read_time: false
 ---
 
 I am putting the layouts I use for research in one place, so that each new project starts with the content. Two templates are available here: a LaTeX paper template and a matching research project page. Use them together to connect the paper, code, and results, or adapt either one on its own.
 
 <div class="template-feature">
   <div class="template-feature__eyebrow"><span>01 / Paper</span><span class="template-status">Available</span></div>
-  <h2>arXiv, with the details in place.</h2>
+  <h2 data-toc-label="Paper template">arXiv, with the details in place.</h2>
   <p>A compact LaTeX template for machine learning papers, with a title page that brings the abstract, authors, and research resources together.</p>
   <div class="template-actions">
     <a class="template-action template-action--primary" href="https://github.com/xzAscC/arxiv-template">Get the template <span aria-hidden="true">↗</span></a>
@@ -38,7 +37,7 @@ The template code and documentation use the [MIT License](https://github.com/xzA
 
 <div class="template-feature" id="project-template">
   <div class="template-feature__eyebrow"><span>02 / Project page</span><span class="template-status">Preview available</span></div>
-  <h2>A home for the research.</h2>
+  <h2 data-toc-label="Project page template">A home for the research.</h2>
   <p>A standalone project page for presenting a paper and its supporting resources. It follows the same restrained style as the paper template, with warm backgrounds, clear typography, and a shared PDF reader.</p>
   <div class="template-actions">
     <a class="template-action template-action--primary" href="{{ '/blog/2026/research-templates/project/' | relative_url }}">Preview the project page <span aria-hidden="true">↗</span></a>
