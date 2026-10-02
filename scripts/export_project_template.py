@@ -1,7 +1,7 @@
-"""Export the built, unpublished project demo as a portable static template.
+"""Export the built project demo as a portable static template.
 
 Usage: python scripts/export_project_template.py BUILT_SITE [OUTPUT_ZIP]
-Build Jekyll with --unpublished first. No server or Jekyll is needed for the export.
+Build Jekyll first. No server or Jekyll is needed for the export.
 """
 from pathlib import Path
 import re
@@ -10,7 +10,7 @@ from zipfile import ZipFile, ZIP_DEFLATED
 
 site = Path(sys.argv[1])
 output = Path(sys.argv[2]) if len(sys.argv) > 2 else Path('files/project-template.zip')
-html = (site / 'templates/project/index.html').read_text()
+html = (site / 'blog/template/index.html').read_text()
 html = html.replace('href="/assets/', 'href="assets/').replace('src="/assets/', 'src="assets/')
 html = html.replace('href="/files/', 'href="files/').replace('src="/files/', 'src="files/')
 html = re.sub(r'<meta property="og:url" content="[^"]*">', '<meta property="og:url" content="https://your-project.example/">', html)

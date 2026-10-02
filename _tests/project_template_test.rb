@@ -1,8 +1,7 @@
 require 'cgi'
 
-# Checks the unpublished project template. Build it first:
-#   bundle exec jekyll build --unpublished --destination "$PROJECT_SITE"
-SITE = ENV.fetch('PROJECT_SITE', File.expand_path('../local/project-site', __dir__))
+# Checks the project page template in the built site (see _tests/run.sh).
+SITE = File.expand_path('../_site', __dir__)
 
 def assert(condition, message)
   abort message unless condition
@@ -12,7 +11,7 @@ def read(path)
   File.read(File.join(SITE, path))
 end
 
-page = CGI.unescapeHTML(read('templates/project/index.html'))
+page = CGI.unescapeHTML(read('blog/template/index.html'))
 css = read('assets/css/project.css')
 teaser = read('assets/images/project-template-overview.svg')
 
@@ -68,6 +67,12 @@ assert page.include?('archivePrefix') && page.include?('eprint'), 'BibTeX must u
 assert page.match?(/<body[^>]*style="--project-accent: #[0-9a-f]{6}"/i), 'Accent color must come from front matter'
 assert css.include?('prefers-color-scheme: dark'), 'Project page must support dark mode'
 assert teaser.include?('prefers-color-scheme: dark'), 'Teaser must support dark mode'
+
+# Readers can switch themes; the choice is shared with the rest of the site
+assert page.match?(/<button[^>]*data-theme-toggle/), 'Project page needs a theme toggle'
+assert page.match?(%r{<head>.*localStorage\.getItem\('theme'\).*</head>}m), 'Saved theme must apply before the page paints'
+assert css.include?("html[data-theme=dark] .project-page") || css.include?("html[data-theme='dark'] .project-page"),
+       'Dark accent must follow the chosen theme'
 assert page.match?(/<img[^>]*width="1200" height="410"/), 'Teaser size must be set to prevent layout shift'
 
 puts 'Project template checks passed.'

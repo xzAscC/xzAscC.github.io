@@ -102,12 +102,12 @@ Use the shared reader in any Jekyll page or layout:
 
 ## Project page template
 
-The canonical example is `_pages/project-template.md`, using `_layouts/project.html`. It is `published: false`, so it never appears in a normal build. Preview with `--unpublished` at `/templates/project/`; it is a page, not a blog post. Edit the front matter for authors, resources, the teaser, PDF, and citation, then edit the body sections. The front matter comments document every option: `accent` sets one color that the hover, soft, and dark-mode shades follow; authors take `affiliations`, `equal`, and `corresponding`; `nav` lists the body sections, and Video, Paper, and Cite are added when `video`, `project_pdf`, or `bibtex` is set. Body sections are plain `## Heading` blocks and number themselves. The page follows the system light or dark preference. Run `_tests/project_template_test.rb` after a `--unpublished` build into `local/project-site` (see `_tests/run.sh`).
+The canonical example is `_pages/project-template.md`, using `_layouts/project.html`. It is served at `/blog/template/`, linked only from the templates blog post, and kept out of the sitemap and search results (`noindex: true`); it is a page, not a blog post. Edit the front matter for authors, resources, the teaser, PDF, and citation, then edit the body sections. The front matter comments document every option: `accent` sets one color that the hover, soft, and dark-mode shades follow; authors take `affiliations`, `equal`, and `corresponding`; `nav` lists the body sections, and Video, Paper, and Cite are added when `video`, `project_pdf`, or `bibtex` is set. Body sections are plain `## Heading` blocks and number themselves. The page starts in the system light or dark preference, and its nav button switches themes, sharing the saved choice with the rest of the site. `_tests/project_template_test.rb` checks the page (see `_tests/run.sh`).
 
 To export a framework-free download:
 
 ```sh
-bundle exec jekyll build --unpublished --destination local/project-export
+bundle exec jekyll build --destination local/project-export
 python scripts/export_project_template.py local/project-export
 ```
 
@@ -117,6 +117,6 @@ The resulting `files/project-template.zip` contains HTML, CSS, JavaScript, and e
 
 Waline enables email verification for ordinary registrations when `SMTP_HOST` or `SMTP_SERVICE` is configured. Its first account is the administrator and bypasses the ordinary verification flow. Password recovery is available through the Login dialog's **Forgot Password** link.
 
-The local preview sends only to Mailpit at http://localhost:8025/; these emails are captured locally and are not delivered to real inboxes. Start the three local services with `docker start xz-mailpit-preview xz-waline-preview xz-template-preview`. The preview command now also uses `--unpublished` for the project page.
+The local preview sends only to Mailpit at http://localhost:8025/; these emails are captured locally and are not delivered to real inboxes. Start the three local services with `docker start xz-mailpit-preview xz-waline-preview xz-template-preview`.
 
 For real delivery, set `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`, `SENDER_NAME`, and `SENDER_EMAIL` in the Waline server environment, then restart it. Also set its public `SERVER_URL`, `SITE_URL`, and `SECURE_DOMAINS`; email links must use the public HTTPS address. Keep secrets in environment files or the hosting platform, never Jekyll configuration. See [Waline email configuration](https://waline.js.org/en/guide/features/notification.html).

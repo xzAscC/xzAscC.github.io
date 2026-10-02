@@ -12,6 +12,27 @@ if (copyButton && navigator.clipboard) {
   });
 }
 
+// Switch themes; the choice is saved under the same key as the rest of the site.
+const themeToggle = document.querySelector('[data-theme-toggle]');
+const root = document.documentElement;
+const updateThemeToggle = () => {
+  const isDark = root.dataset.theme === 'dark';
+  themeToggle.setAttribute('aria-pressed', String(isDark));
+  themeToggle.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} theme`);
+};
+if (themeToggle) {
+  updateThemeToggle();
+  themeToggle.addEventListener('click', () => {
+    root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    updateThemeToggle();
+    try {
+      localStorage.setItem('theme', root.dataset.theme);
+    } catch (error) {
+      // Private browsing can block storage; the theme still applies to this page.
+    }
+  });
+}
+
 // Highlight the navigation link of the section being read.
 const navLinks = [...document.querySelectorAll('.project-nav > div a')];
 const sections = navLinks.map((link) => document.querySelector(link.hash)).filter(Boolean);

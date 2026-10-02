@@ -350,4 +350,7 @@ assert !self_reflection_page.include?('TMLR 2026</span> <span aria-hidden="true"
   assert File.file?(site_file("files/papers/#{slug}.pdf")), "Missing hosted paper PDF: #{slug}"
 end
 
-assert !File.exist?(site_file('templates/project/index.html')), 'Project template demo must remain unpublished'
+project_template = File.read(site_file('blog/template/index.html'))
+assert project_template.include?('noindex'), 'Project template demo must stay out of search results'
+assert !File.read(site_file('sitemap.xml')).include?('/blog/template/'), 'Project template demo must stay out of the sitemap'
+assert !File.exist?(site_file('templates/project/index.html')), 'Project template must live under /blog/template/'

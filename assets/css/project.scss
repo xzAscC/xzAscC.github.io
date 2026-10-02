@@ -2,7 +2,8 @@
 ---
 @import "editorial/tokens";
 @import "editorial/pdf-viewer";
-@media (prefers-color-scheme: dark) { :root { @include dark-tokens; } }
+// The theme script sets data-theme; without JavaScript, follow the system.
+@media (prefers-color-scheme: dark) { html:not([data-theme]) { @include dark-tokens; } }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body { margin: 0; background: var(--color-bg); color: var(--color-ink); font: 16px/1.75 system-ui, sans-serif; }
@@ -14,13 +15,13 @@ body { margin: 0; background: var(--color-bg); color: var(--color-ink); font: 16
   --color-accent-soft: color-mix(in srgb, var(--color-accent) 14%, var(--color-bg));
   --color-on-accent: white;
 }
-@media (prefers-color-scheme: dark) {
-  .project-page {
-    --color-accent: color-mix(in srgb, var(--project-accent, #a83024) 55%, white);
-    --color-accent-strong: color-mix(in srgb, var(--color-accent) 75%, white);
-    --color-on-accent: var(--color-bg);
-  }
+@mixin dark-accent {
+  --color-accent: color-mix(in srgb, var(--project-accent, #a83024) 55%, white);
+  --color-accent-strong: color-mix(in srgb, var(--color-accent) 75%, white);
+  --color-on-accent: var(--color-bg);
 }
+html[data-theme='dark'] .project-page { @include dark-accent; }
+@media (prefers-color-scheme: dark) { html:not([data-theme]) .project-page { @include dark-accent; } }
 a { color: var(--color-accent-strong); text-underline-offset: .2em; }
 button, input { font: inherit; }
 a:focus-visible, button:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 4px; }
@@ -32,7 +33,12 @@ h1,h2,h3 { font-family: var(--font-display); line-height: 1.15; font-weight: 500
 .project-nav > div a { color: var(--color-ink-soft); transition: color var(--transition-fast); }
 .project-nav > div a:hover, .project-nav > div a[aria-current] { color: var(--color-accent-strong); }
 .project-wordmark { font-family: var(--font-display); font-size: 22px; }
-.project-nav > div { display: flex; flex-wrap: wrap; gap: 24px; font-size: 13px; }
+.project-nav > div { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; font-size: 13px; }
+.project-theme-toggle { display: inline-grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 1px solid var(--color-border); border-radius: 50%; background: none; color: var(--color-ink-soft); cursor: pointer; transition: color var(--transition-fast), border-color var(--transition-fast); }
+.project-theme-toggle:hover { color: var(--color-accent-strong); border-color: var(--color-accent); }
+.project-theme-toggle svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.project-theme-toggle__sun, html[data-theme='dark'] .project-theme-toggle__moon { display: none; }
+html[data-theme='dark'] .project-theme-toggle__sun { display: block; }
 .project-hero { text-align: center; padding: 88px 0 58px; max-width: 850px; margin: auto; }
 .project-eyebrow { color: var(--color-accent); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 24px; }
 h1 { font-size: clamp(44px, 7vw, 80px); letter-spacing: -.045em; text-wrap: balance; }
