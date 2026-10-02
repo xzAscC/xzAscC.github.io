@@ -1,4 +1,5 @@
-figure.pdf-viewer {
+figure.pdf-viewer,
+figure.web-viewer {
   margin: 0 0 var(--space-6);
   padding: 0;
   background: var(--color-surface);
@@ -51,7 +52,8 @@ figure.pdf-viewer {
   background: linear-gradient(to left, transparent 15px, white 15px, white 21px, transparent 21px);
 }
 
-.pdf-viewer iframe {
+.pdf-viewer iframe,
+.web-viewer iframe {
   display: block;
   width: 100%;
   height: clamp(30rem, 75vh, 52rem);
@@ -82,11 +84,11 @@ figure.pdf-viewer {
   box-shadow: 0 0.5rem 1.5rem var(--color-shadow);
 }
 
-.pdf-viewer figcaption {
+.pdf-viewer figcaption,
+.web-viewer figcaption {
   margin: 0;
   padding: var(--space-3) var(--space-4);
   border-top: 1px solid var(--color-border);
   text-align: center;
   font-size: var(--text-xs);
 }
-
