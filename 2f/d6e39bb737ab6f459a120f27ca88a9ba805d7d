@@ -1,0 +1,19 @@
+_pages/sitemap.md
+  s_3c82aa121a713f::t_623a2ac881156d 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2fd6e39bb737ab6f459a120f27ca88a9ba805d7d",
+  "prompts": {},
+  "sessions": {
+    "s_3c82aa121a713f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "db2fb310-3b8b-4d45-9662-1e937fbd3e5e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
