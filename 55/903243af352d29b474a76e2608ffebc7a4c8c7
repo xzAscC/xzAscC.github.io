@@ -1,0 +1,49 @@
+README.md
+  s_87e45542b43278::t_bf57f222e8bbea 92-122
+_config.yml
+  s_87e45542b43278::t_3ffc12771a6db2 141
+_drafts/research-templates.md
+  s_87e45542b43278::t_0f36a5f323935b 10,19,39-49
+_includes/pdf-viewer.html
+  s_87e45542b43278::t_c5e40d0129472c 1-16
+_includes/post-comments.html
+  s_87e45542b43278::t_71dfc03ed8d39e 5
+_layouts/project.html
+  s_87e45542b43278::t_ad11534488954e 1-48
+_layouts/publication.html
+  s_87e45542b43278::t_0048f911b132c0 73-74
+_pages/project-template.md
+  s_87e45542b43278::t_6bbfc91362e03f 1-68
+_sass/editorial/_pdf-viewer.scss
+  s_87e45542b43278::t_4bd08ebfdd838f 1-69
+_sass/editorial/_templates.scss
+  s_87e45542b43278::t_4466906d11b8d6 77
+_tests/structural_content_test.rb
+  s_87e45542b43278::t_1fe287f3a73322 352-353
+assets/css/main.scss
+  s_87e45542b43278::t_eabe0f068a4828 13
+assets/css/project.scss
+  s_87e45542b43278::t_c4c7ddc1367d5b 1-68
+assets/images/project-template-overview.svg
+  s_87e45542b43278::t_a610c9cdcfc4f8 1-13
+assets/js/project.js
+  s_87e45542b43278::t_b1033c39857567 1-13
+scripts/export_project_template.py
+  s_87e45542b43278::t_17dc91ab3a99d2 1-44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "55903243af352d29b474a76e2608ffebc7a4c8c7",
+  "prompts": {},
+  "sessions": {
+    "s_87e45542b43278": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f9c2-afe0-7e11-9689-03835a219da2",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
