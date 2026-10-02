@@ -82,6 +82,8 @@ publication_category:
     title: 'Journal Articles'
   books:
     title: 'Books'
+  preprints:
+    title: 'Preprints & Working Papers'
 
 # Site Settings
 teaser                   :

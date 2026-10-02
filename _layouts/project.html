@@ -19,6 +19,7 @@
   <link rel="preload" href="{{ '/assets/fonts/editorial/CrimsonPro-Variable.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{{ '/assets/fonts/editorial/Inter-Variable.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{{ '/assets/css/project.css' | relative_url }}">
+  {% if page.project_stylesheet %}<link rel="stylesheet" href="{{ page.project_stylesheet | relative_url }}">{% endif %}
   <script>
     // Apply the saved or system theme before the page paints.
     try { var theme = localStorage.getItem('theme'); } catch (error) {}
@@ -42,14 +43,15 @@
   </nav>
   <main>
     <header class="project-hero" id="top">
-      <p class="project-eyebrow">{{ page.venue | escape }}</p>
-      <h1>{{ page.title | escape }}</h1>
+      {% if page.venue %}<p class="project-eyebrow">{{ page.venue | escape }}</p>{% endif %}
+      <h1>{{ page.hero_title | default: page.title | escape }}</h1>
+      {% if page.subtitle %}<p class="project-subtitle">{{ page.subtitle | escape }}</p>{% endif %}
       <p class="project-lede">{{ page.description | escape }}</p>
       <ul class="project-authors" aria-label="Authors">
-        {% for author in page.project_authors %}<li>{% if author.url %}<a href="{{ author.url | escape }}">{{ author.name | escape }}</a>{% else %}{{ author.name | escape }}{% endif %}{% if author.affiliations %}<sup>{{ author.affiliations | join: ',' }}</sup>{% endif %}{% if author.equal %}<sup class="project-author-mark">*</sup>{% endif %}{% if author.corresponding %}<sup class="project-author-mark">†</sup>{% endif %}</li>{% endfor %}
+        {% for author in page.project_authors %}<li>{% if author.url %}<a href="{{ author.url | escape }}">{{ author.name | escape }}</a>{% else %}{{ author.name | escape }}{% endif %}{% if author.affiliations and page.affiliations.size > 1 %}<sup>{{ author.affiliations | join: ',' }}</sup>{% endif %}{% if author.equal %}<sup class="project-author-mark">*</sup>{% endif %}{% if author.corresponding %}<sup class="project-author-mark">†</sup>{% endif %}</li>{% endfor %}
       </ul>
       {% if page.affiliations %}<ul class="project-affiliations" aria-label="Affiliations">
-        {% for affiliation in page.affiliations %}<li><sup>{{ forloop.index }}</sup> {{ affiliation | escape }}</li>{% endfor %}
+        {% for affiliation in page.affiliations %}<li>{% if page.affiliations.size > 1 %}<sup>{{ forloop.index }}</sup> {% endif %}{{ affiliation | escape }}</li>{% endfor %}
       </ul>{% endif %}
       {% if equal_authors.size > 0 or corresponding_authors.size > 0 %}<p class="project-author-notes">{% if equal_authors.size > 0 %}<span>* Equal contribution</span>{% endif %}{% if corresponding_authors.size > 0 %}<span>† Corresponding author</span>{% endif %}</p>{% endif %}
       <div class="project-resources">

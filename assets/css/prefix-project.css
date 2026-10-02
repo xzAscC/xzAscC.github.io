@@ -1,0 +1,63 @@
+/* Readable typography for the Prefix Steering project page. */
+body { font-size: 20px; line-height: 1.75; }
+.project-nav, .project-footer, main { max-width: 1160px; }
+.project-nav > div { font-size: 16px; }
+.project-wordmark { font-size: 26px; }
+.project-hero { padding-top: 66px; max-width: 940px; }
+.project-eyebrow { font-size: 14px; }
+.project-subtitle {
+  display: block;
+  margin: 24px auto 0;
+  max-width: 820px;
+  font-size: clamp(26px, 3.3vw, 36px);
+  line-height: 1.3;
+  text-wrap: balance;
+  letter-spacing: -.015em;
+}
+.project-lede { max-width: 800px; font-size: 22px; line-height: 1.65; }
+.project-authors { font-size: 20px; gap: 16px 32px; }
+.project-affiliations { font-size: 18px; }
+sup { font-size: 12px; }
+.project-resource { font-size: 16px; padding: 12px 22px; }
+.project-teaser { background: var(--color-surface); }
+.project-teaser img, .paper-figure { background: white; border-radius: 6px; }
+.project-teaser figcaption, .project-figure figcaption { font-size: 16px; line-height: 1.7; }
+.project-section { max-width: 900px; }
+.project-section > h2 { font-size: 40px; }
+.project-section > h2::before { font-size: 16px; }
+.project-takeaway p { font-size: 28px; }
+.paper-figure {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 14px;
+  border: 1px solid var(--color-border);
+}
+.pdf-viewer__title { font-size: 24px; }
+.pdf-viewer__meta, .pdf-viewer__links a, .pdf-viewer figcaption, .project-footer { font-size: 15px; }
+@media (max-width: 700px) {
+  body { font-size: 18px; }
+  .project-lede { font-size: 20px; }
+  .project-authors { font-size: 19px; }
+  .project-affiliations { font-size: 17px; }
+  .project-subtitle { font-size: 28px; }
+  .project-section > h2 { font-size: 34px; }
+  .project-takeaway p { font-size: 25px; }
+  .paper-figure { padding: 5px; }
+}
+
+.figure-conclusion { border-left: 3px solid var(--color-accent); padding: 12px 22px; background: var(--color-surface); }
+.theory-scope { font-size: 18px; }
+.matching-points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.matching-points > div { padding-top: 14px; border-top: 1px solid var(--color-border); }
+.matching-points span { color: var(--color-accent); font-size: 16px; }
+.matching-points p { margin-top: 12px; font-size: 18px; line-height: 1.55; color: var(--color-ink-soft); }
+.matching-points .matching-equation { color: var(--color-ink); font-family: var(--font-display); font-size: 23px; }
+.dim-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; margin-top: 36px; }
+.dim-comparison h3 { font-size: 32px; margin-bottom: 18px; }
+.dim-comparison p { font-size: 20px; color: var(--color-ink-soft); }
+.dim-comparison .project-figure { margin: 0; }
+@media (max-width: 700px) {
+  .matching-points, .dim-comparison { grid-template-columns: 1fr; }
+  .dim-comparison { gap: 18px; }
+}

@@ -5,3 +5,4 @@ bundle exec jekyll build
 ruby _tests/domain_configuration_test.rb
 ruby _tests/structural_content_test.rb
 ruby _tests/project_template_test.rb
+ruby _tests/prefix_project_test.rb
