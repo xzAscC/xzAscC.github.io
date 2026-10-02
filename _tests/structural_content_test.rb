@@ -308,7 +308,7 @@ assert toc_js.include?('h2') && toc_js.include?("addEventListener('scroll'") && 
 assert main_css.include?('.post-toc') && main_css.include?('position:sticky'), 'Outline must stay visible while scrolling'
 assert main_css.include?('overflow-x:clip'), 'Body must clip overflow without becoming a scroll container, or sticky breaks'
 assert toc_js.include?('tocLabel'), 'Headings must be able to set a shorter outline label'
-assert !File.read(File.join(ROOT, '_drafts/research-templates.md')).include?('read_time: false'),
+assert !File.read(File.join(ROOT, '_posts/2026-10-01-research-templates.md')).include?('read_time: false'),
        'Templates post must show its reading time, as the blog list does'
 assert main_css.include?('Crimson Pro'), 'Missing Crimson Pro typography'
 assert main_css.include?('Inter'), 'Missing Inter typography'
@@ -320,12 +320,12 @@ assert main_css.include?('overflow-x:hidden'), 'Missing horizontal overflow guar
 
 puts 'Structural and content regression checks passed'
 
-assert !File.exist?(site_file('blog/2026/research-templates/index.html')),
-       'Research templates must remain an unpublished draft'
+assert File.exist?(site_file('blog/2026/research-templates/index.html')),
+       'Research templates must be published'
 %w[index.html blog/index.html feed.xml sitemap.xml sitemap/index.html].each do |path|
   content = File.read(site_file(path))
-  assert !content.include?('research-templates') && !content.include?('Templates for Research'),
-         "Research templates draft leaked into #{path}"
+  assert content.include?('/blog/2026/research-templates/'),
+         "Published research templates post is missing from #{path}"
 end
 
 news_section = homepage[%r{<section class="showcase-section showcase-section--news".*?</section>}m]
