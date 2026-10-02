@@ -137,12 +137,15 @@ exclude:
   - .sass-cache
   - _tests
   - _site
+  - local
+  - scripts
   - Dockerfile
   - docker-compose.yaml
   - Gemfile
   - Gemfile.lock
   - LICENSE
   - README.md
+  - post-template.md
 keep_files:
   - .git
   - .svn
@@ -241,3 +244,8 @@ compress_html:
   clippings: all
   ignore:
     envs: development
+
+# Waline: set the deployed HTTPS server URL when comments are ready to publish.
+# Local preview overrides this in ignored local/comments.yml.
+waline:
+  server_url: ""

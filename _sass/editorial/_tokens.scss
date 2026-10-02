@@ -67,7 +67,8 @@ $portrait-column: 200px;
   --z-nav: 100;
 }
 
-html[data-theme='dark'] {
+// Shared by the site's theme toggle and the project page's system preference.
+@mixin dark-tokens {
   color-scheme: dark;
 
   --color-bg: #1e1b19;
@@ -86,6 +87,8 @@ html[data-theme='dark'] {
   --color-shadow: rgba(0, 0, 0, 0.28);
   --color-selection: #34395c;
 }
+
+html[data-theme='dark'] { @include dark-tokens; }
 
 @media (min-width: $breakpoint-medium) {
   :root {

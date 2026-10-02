@@ -16,6 +16,7 @@ body {
   min-height: 100%;
   margin: 0;
   overflow-x: hidden;
+  overflow-x: clip; // unlike hidden, clip keeps sticky elements working
   color: var(--color-ink);
   background: var(--color-bg);
   font-family: var(--font-body);

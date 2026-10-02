@@ -187,6 +187,67 @@
   font-size: var(--text-sm);
 }
 
+.post__meta time { color: var(--color-ink); font-weight: 550; }
+
+// Outline: the text stays centered; the outline sits in the right margin when it fits.
+.post-toc { display: none; }
+
+@media (min-width: 75rem) {
+  .post__body { position: relative; }
+
+  .post__body .post-toc:not([hidden]) {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(100% + 2.5rem);
+    width: 11rem;
+  }
+
+  .post-toc nav {
+    position: sticky;
+    top: calc(var(--nav-height) + var(--space-5));
+    max-height: calc(100vh - var(--nav-height) - var(--space-7));
+    overflow-y: auto;
+  }
+}
+
+.post-toc__title {
+  margin: 0 0 var(--space-3);
+  color: var(--color-warm);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.post-toc__list {
+  margin: 0;
+  padding: 0;
+  border-left: var(--border-width) solid var(--color-border);
+  list-style: none;
+}
+
+.post-toc__item a {
+  display: block;
+  margin-left: calc(var(--border-width) * -1);
+  padding: var(--space-1) 0 var(--space-1) var(--space-4);
+  border-left: 2px solid transparent;
+  color: var(--color-ink-soft);
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  text-decoration: none;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.post-toc__item--h3 a { padding-left: var(--space-6); font-size: var(--text-xs); }
+
+.post-toc__item a:hover,
+.post-toc__item a[aria-current] {
+  color: var(--color-ink);
+  border-left-color: var(--color-warm);
+}
+
 .post__tags {
   display: flex;
   flex-wrap: wrap;
@@ -614,21 +675,6 @@ article.paper {
   max-width: var(--content-width);
 }
 
-.paper__pdf {
-  overflow: hidden;
-  background: var(--color-surface);
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-}
-
-.paper__pdf iframe {
-  display: block;
-  width: 100%;
-  height: min(85vh, 60rem);
-  border: 0;
-}
-
 .paper__cover {
   display: block;
   max-width: 26rem;
@@ -667,11 +713,6 @@ article.paper {
   white-space: pre;
 }
 
-@media (max-width: $breakpoint-small) {
-  .paper__pdf iframe {
-    height: 70vh;
-  }
-}
 
 // Copy confirmation toast
 
@@ -714,4 +755,42 @@ article.paper {
 
 .toast--error svg {
   display: none;
+}
+
+// Search and comments
+.post-tag { text-decoration: none; }
+a.post-tag:hover, a.post-tag:focus-visible { text-decoration: underline; }
+.post-archive [hidden], [data-search-empty][hidden], .blog-search[hidden] { display: none !important; }
+.blog-search { max-width: var(--content-width); margin-bottom: var(--space-6); }
+.blog-search label { display: block; margin-bottom: var(--space-2); font-weight: 600; }
+.blog-search__controls { display: flex; gap: var(--space-2); }
+.blog-search input {
+  flex: 1; min-width: 0; padding: var(--space-3) var(--space-4);
+  color: var(--color-ink); background: var(--color-surface);
+  border: 1px solid var(--color-border); border-radius: var(--radius-sm); font: inherit;
+}
+.blog-search button {
+  padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm); color: var(--color-ink); background: var(--color-surface); cursor: pointer;
+}
+.blog-search__tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
+.blog-search__tags .post-tag { padding: var(--space-1) var(--space-3); }
+.blog-search__tags [aria-current] { color: var(--color-bg); background: var(--color-accent); }
+.blog-search__status { margin-top: var(--space-3); color: var(--color-ink-soft); font-size: var(--text-sm); }
+.post-comments h2 { font-size: var(--text-2xl); }
+.post-comments__intro { color: var(--color-ink-soft); font-size: var(--text-sm); }
+.post-comments {
+  --waline-font-size: 1rem;
+  --waline-theme-color: var(--color-accent);
+  --waline-active-color: var(--color-accent-strong);
+  --waline-text-color: var(--color-ink);
+  --waline-bg-color: var(--color-surface);
+  --waline-bg-color-light: var(--color-bg);
+  --waline-border-color: var(--color-border);
+}
+
+.post-comments .wl-btn {
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1rem;
+  min-height: 2.5rem;
 }

@@ -23,37 +23,28 @@ layout: default
       </p>
       {% if page.tags.size > 0 %}
         <ul class="post__tags" aria-label="Tags">
-          {% for tag in page.tags %}<li class="post-tag" itemprop="keywords">{{ tag }}</li>{% endfor %}
+          {% for tag in page.tags %}<li><a class="post-tag" itemprop="keywords" href="{{ '/blog/' | relative_url }}?tag={{ tag | uri_escape }}">{{ tag }}</a></li>{% endfor %}
         </ul>
       {% endif %}
     </header>
 
-    <div class="post__content prose" itemprop="articleBody">
-      {{ content }}
+    <div class="post__body">
+      {% if page.toc != false %}
+        <aside class="post-toc" aria-labelledby="post-toc-title" data-post-toc hidden>
+          <nav>
+            <p class="post-toc__title" id="post-toc-title">On this page</p>
+            <ol class="post-toc__list"></ol>
+          </nav>
+        </aside>
+      {% endif %}
+      <div class="post__content prose" itemprop="articleBody">
+        {{ content }}
+      </div>
     </div>
 
     <footer class="post__footer">
-      <p class="post__signoff">
-        Written by <span itemprop="author" itemscope itemtype="https://schema.org/Person"><a href="{{ base_path }}/" itemprop="url"><span itemprop="name">{{ site.author.name }}</span></a></span>.
-        Thoughts or corrections? <a href="mailto:{{ site.author.email }}?subject={{ page.title | uri_escape }}">Email me</a>.
-      </p>
-
-      {% if page.previous or page.next %}
-        <nav class="post-pager" aria-label="More posts">
-          {% if page.previous %}
-            <a class="post-pager__link post-pager__link--prev" href="{{ base_path }}{{ page.previous.url }}" rel="prev">
-              <span class="post-pager__label">Older</span>
-              <span class="post-pager__title">{{ page.previous.title }}</span>
-            </a>
-          {% endif %}
-          {% if page.next %}
-            <a class="post-pager__link post-pager__link--next" href="{{ base_path }}{{ page.next.url }}" rel="next">
-              <span class="post-pager__label">Newer</span>
-              <span class="post-pager__title">{{ page.next.title }}</span>
-            </a>
-          {% endif %}
-        </nav>
-      {% endif %}
+      {% include post-comments.html %}
     </footer>
   </article>
 </main>
+{% if page.toc != false %}<script type="module" src="{{ '/assets/js/post-toc.js' | relative_url }}"></script>{% endif %}

@@ -29,6 +29,8 @@ required_files.each do |path|
   assert File.file?(site_file(path)), "Missing generated route: #{path}"
 end
 
+assert !File.exist?(site_file('local')), 'Local service configuration and databases must never be published'
+
 homepage = CGI.unescapeHTML(File.read(site_file('index.html')))
 publications_page = CGI.unescapeHTML(File.read(site_file('publications/index.html')))
 cv_page = CGI.unescapeHTML(File.read(site_file('cv-json/index.html')))
@@ -297,6 +299,17 @@ assert main_css.include?('.homepage-showcase{') && main_css.include?('padding-bo
        'Homepage showcase must leave breathing room above the footer'
 assert main_css.include?('padding-bottom:var(--space-8)'),
        'Homepage showcase must preserve footer breathing room on mobile'
+post_layout = File.read(File.join(ROOT, '_layouts/post.html'))
+assert post_layout.include?('data-post-toc') && post_layout.include?('post-toc.js'), 'Posts must have an outline sidebar'
+assert post_layout.include?('page.toc != false'), 'Posts must be able to turn the outline off'
+toc_js = File.read(site_file('assets/js/post-toc.js'))
+assert toc_js.include?('h2') && toc_js.include?("addEventListener('scroll'") && toc_js.include?('aria-current'),
+       'Outline must list headings and track the current one while scrolling'
+assert main_css.include?('.post-toc') && main_css.include?('position:sticky'), 'Outline must stay visible while scrolling'
+assert main_css.include?('overflow-x:clip'), 'Body must clip overflow without becoming a scroll container, or sticky breaks'
+assert toc_js.include?('tocLabel'), 'Headings must be able to set a shorter outline label'
+assert !File.read(File.join(ROOT, '_drafts/research-templates.md')).include?('read_time: false'),
+       'Templates post must show its reading time, as the blog list does'
 assert main_css.include?('Crimson Pro'), 'Missing Crimson Pro typography'
 assert main_css.include?('Inter'), 'Missing Inter typography'
 assert main_css.include?('--color-bg'), 'Missing background design token'
@@ -306,6 +319,14 @@ assert main_css.include?('64rem'), 'Missing 1024px container'
 assert main_css.include?('overflow-x:hidden'), 'Missing horizontal overflow guard'
 
 puts 'Structural and content regression checks passed'
+
+assert !File.exist?(site_file('blog/2026/research-templates/index.html')),
+       'Research templates must remain an unpublished draft'
+%w[index.html blog/index.html feed.xml sitemap.xml sitemap/index.html].each do |path|
+  content = File.read(site_file(path))
+  assert !content.include?('research-templates') && !content.include?('Templates for Research'),
+         "Research templates draft leaked into #{path}"
+end
 
 news_section = homepage[%r{<section class="showcase-section showcase-section--news".*?</section>}m]
 assert news_section, 'Homepage must include a News section'
@@ -339,3 +360,8 @@ assert !self_reflection_page.include?('TMLR 2026</span> <span aria-hidden="true"
 %w[abstopk self-reflection fcds].each do |slug|
   assert File.file?(site_file("files/papers/#{slug}.pdf")), "Missing hosted paper PDF: #{slug}"
 end
+
+project_template = File.read(site_file('blog/2026/research-templates/project/index.html'))
+assert project_template.include?('noindex'), 'Project template demo must stay out of search results'
+assert !File.read(site_file('sitemap.xml')).include?('/blog/2026/research-templates/project/'), 'Project template demo must stay out of the sitemap'
+assert !File.exist?(site_file('templates/project/index.html')), 'Project template must live under its blog post'
