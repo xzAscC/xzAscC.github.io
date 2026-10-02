@@ -1,0 +1,19 @@
+_tests/structural_content_test.rb
+  s_3ea877b2e23ea5::t_8fe040cc12c20d 311,323-324,327-328
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7742bf84eb9add0d2c979d5e49fab94b909ba079",
+  "prompts": {},
+  "sessions": {
+    "s_3ea877b2e23ea5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0fac8-108e-7621-b7c1-5132f60051aa",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
