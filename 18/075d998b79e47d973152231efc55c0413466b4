@@ -1,0 +1,45 @@
+_config.yml
+  s_accaefca9542a9::t_2b68f4b49bc9a1 85-86
+_includes/homepage-showcase.html
+  s_accaefca9542a9::t_6c78f4ed270bb1 33,40-42,48,54
+_layouts/project.html
+  s_accaefca9542a9::t_ade91c271cbbb0 22,46-48,51,54
+_pages/prefix-steering.md
+  s_accaefca9542a9::t_85cf8a1aa3367b 1-85
+_publications/2026-10-02-prefix-steering.md
+  s_accaefca9542a9::t_433737df15c6ca 1-23
+_tests/prefix_project_test.rb
+  s_accaefca9542a9::t_f3c73aa44f86ce 1-47
+_tests/run.sh
+  s_accaefca9542a9::t_d991ebe429d9c4 8
+_tests/structural_content_test.rb
+  s_accaefca9542a9::t_650cfdec673779 71,110,131-132,152-153,174,176-177,184,337-338
+assets/css/prefix-project.css
+  s_accaefca9542a9::t_930fff9d3ab522 1-63
+assets/images/publications/prefix-attention-matching.svg
+  s_accaefca9542a9::t_faeac53006840e 1-955
+assets/images/publications/prefix-dim-alignment.svg
+  s_accaefca9542a9::t_6ffd6d8634c891 1-472
+assets/images/publications/prefix-duration-strength.svg
+  s_accaefca9542a9::t_8fd211cbec3853 1-858
+assets/images/publications/prefix-models-tasks.svg
+  s_accaefca9542a9::t_1b7d30b400e461 1-3142
+assets/images/publications/prefix-steering.svg
+  s_accaefca9542a9::t_53d9bf0fee4d39 1-1245
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "18075d998b79e47d973152231efc55c0413466b4",
+  "prompts": {},
+  "sessions": {
+    "s_accaefca9542a9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0fad4-8bed-7840-8261-0b8e84c3cf1a",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
