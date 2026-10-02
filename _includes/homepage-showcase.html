@@ -30,26 +30,28 @@
 
     <div class="home-publication-list">
       {% for post in ordered_publications %}
-        {% unless post.venue == 'arxiv preprint' %}
+        {% unless post.category == 'preprints' or post.venue == 'arxiv preprint' %}
           {% include home-publication-card.html post=post %}
         {% endunless %}
       {% endfor %}
     </div>
   </section>
 
-  {% assign preprints = site.publications | where: "venue", "arxiv preprint" %}
+  {% assign working_papers = site.publications | where: "category", "preprints" %}
+  {% assign arxiv_papers = site.publications | where: "venue", "arxiv preprint" %}
+  {% assign preprints = working_papers | concat: arxiv_papers | uniq %}
   {% if preprints.size > 0 %}
   <section class="showcase-section showcase-section--preprints" aria-labelledby="homepage-preprints-title">
     <header class="showcase-section__header">
       <div>
         <p class="section-label">Working papers</p>
-        <h2 id="homepage-preprints-title">Preprints</h2>
+        <h2 id="homepage-preprints-title">Preprints &amp; Working Papers</h2>
       </div>
     </header>
 
     <div class="home-publication-list">
       {% for post in ordered_publications %}
-        {% if post.venue == 'arxiv preprint' %}
+        {% if post.category == 'preprints' or post.venue == 'arxiv preprint' %}
           {% include home-publication-card.html post=post %}
         {% endif %}
       {% endfor %}

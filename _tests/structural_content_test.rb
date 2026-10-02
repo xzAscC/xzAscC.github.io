@@ -68,7 +68,7 @@ end
   assert cv_page.include?(project), "CV lost open-source project: #{project}"
 end
 assert cv_page.scan(/class="cv-award-card"/).length == 2, 'CV must render exactly two honor cards'
-assert cv_page.scan(/class="cv-publication-card"/).length == 4, 'CV must render exactly four publication cards'
+assert cv_page.scan(/class="cv-publication-card"/).length == 5, 'CV must render exactly five publication cards'
 assert cv_page.include?('Sparse autoencoders (SAEs) are widely used'),
        'CV publication cards must retain their research summaries'
 cv_style_source = File.read(File.join(ROOT, '_sass', 'editorial', '_cv.scss'))
@@ -107,7 +107,7 @@ end
 publication_pages = Dir.glob(site_file('publications/*/index.html')).reject do |path|
   File.read(path).include?('http-equiv="refresh"')
 end
-assert publication_pages.length == 4, "Expected 4 publication detail pages, found #{publication_pages.length}"
+assert publication_pages.length == 5, "Expected 5 publication detail pages, found #{publication_pages.length}"
 publication_html = publication_pages.map { |path| CGI.unescapeHTML(File.read(path)) }
 
 paper_titles = [
@@ -128,8 +128,8 @@ legacy_homepage_headings.each do |heading|
          "Homepage still renders removed section: #{heading}"
 end
 
-assert homepage.scan(/<article class="home-publication-card"/).length == 4,
-       'Homepage must render exactly four research cards'
+assert homepage.scan(/<article class="home-publication-card"/).length == 5,
+       'Homepage must render exactly five research cards'
 assert homepage.scan(/<article class="project-card"/).length == 2,
        'Homepage must render exactly two project cards'
 
@@ -149,8 +149,8 @@ publications_section = homepage[%r{<section class="showcase-section showcase-sec
 projects_section = homepage[%r{<section class="showcase-section showcase-section--projects".*?</section>}m]
 assert publications_section, 'Homepage must include a Publications section'
 assert projects_section, 'Homepage must include a Building in Public section'
-assert !homepage.include?('showcase-section--preprints'),
-       'Homepage must hide the Preprints section when there are no preprints'
+assert homepage.include?('showcase-section--preprints'),
+       'Homepage must show working papers separately from peer-reviewed publications'
 showcase_positions = %w[publications projects].map do |section|
   homepage.index(%(showcase-section--#{section}))
 end
@@ -171,17 +171,17 @@ assert education_section, 'Homepage must include an Education section'
 end
 assert homepage.index('showcase-section--projects') < homepage.index('showcase-section--education'),
        'Education must follow Building in Public on the homepage'
-assert homepage.scan('>Project Page</a>').length == 4, 'Every homepage paper card must link its project page'
+assert homepage.scan('>Project Page</a>').length == 5, 'Every homepage paper card must link its project page'
 
-assert publications_page.scan(/<article class="publication-card"/).length == 4,
-       'Dedicated publications page must retain exactly four shared publication cards'
+assert publications_page.scan(/<article class="publication-card"/).length == 5,
+       'Dedicated publications page must retain exactly five shared publication cards'
 assert publications_page.include?('class="archive publications-archive"'),
        'Publications listing must expose a scoped typography hook'
 conference_position = publications_page.index('publications-conferences')
 journal_position = publications_page.index('publications-manuscripts')
 assert conference_position && journal_position && conference_position < journal_position,
        'Conference Papers must appear before Journal Articles'
-assert publications_page.scan(/class="publication-card__excerpt"/).length == 4,
+assert publications_page.scan(/class="publication-card__excerpt"/).length == 5,
        'Every publication card must use the readable excerpt style'
 paper_titles.each do |title|
   assert publications_page.include?(title), "Dedicated publications page lost paper: #{title}"
@@ -334,8 +334,8 @@ assert homepage.index('showcase-section--news') < homepage.index('showcase-secti
        'News must appear before Publications'
 assert !blog_page.include?('archive__lead'), 'Blog page must not render a subtitle line'
 
-assert publications_page.scan('>Code</a>').length == 4, 'Publications page must link code for every paper'
-assert cv_page.scan('>Project Page</a>').length == 4, 'CV publications must link each project page'
+assert publications_page.scan('>Code</a>').length == 5, 'Publications page must link code for every paper'
+assert cv_page.scan('>Project Page</a>').length == 5, 'CV publications must link each project page'
 assert cv_page.include?('id="cv-experience-title">Education</h2>'), 'CV must label its education section'
 
 abstopk_page = CGI.unescapeHTML(File.read(site_file('publications/abstopk/index.html')))
