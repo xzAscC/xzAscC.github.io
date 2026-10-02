@@ -1,0 +1,19 @@
+_drafts/research-templates.md
+  s_87e45542b43278::t_27c20b5a337fdf 3,10,39-52,54,56-64,66,73-74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "08d772c8a962236cf467966b3b30cd7238d31c19",
+  "prompts": {},
+  "sessions": {
+    "s_87e45542b43278": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f9c2-afe0-7e11-9689-03835a219da2",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
