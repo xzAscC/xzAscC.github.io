@@ -1,0 +1,37 @@
+assets/js/project.js
+  s_3c82aa121a713f::t_dcbabb13abdcbd 15-35
+_layouts/project.html
+  s_3c82aa121a713f::t_f473546efa4181 35-38
+  s_3c82aa121a713f::t_bb961807c33cbb 20-24
+  s_3c82aa121a713f::t_278bf8e6c38a9e 11
+README.md
+  s_3c82aa121a713f::t_223c145881c572 105,110,120
+_drafts/research-templates.md
+  s_3c82aa121a713f::t_c7f699ce9af665 44
+_pages/project-template.md
+  s_3c82aa121a713f::t_93d6354400266d 4-5
+_tests/project_template_test.rb
+  s_3c82aa121a713f::t_a08b49a24d94e6 3-4,14,70-75
+_tests/structural_content_test.rb
+  s_3c82aa121a713f::t_c4742691f4210d 353-356
+assets/css/project.scss
+  s_3c82aa121a713f::t_5e05e4dd565e6b 5-6,18-21,23-24,36-41
+scripts/export_project_template.py
+  s_3c82aa121a713f::t_3f345ec4c4bcc1 1,4,13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ef74c63d08d66f45616ea5ae4f1cdcc1ad5d1374",
+  "prompts": {},
+  "sessions": {
+    "s_3c82aa121a713f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "db2fb310-3b8b-4d45-9662-1e937fbd3e5e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
