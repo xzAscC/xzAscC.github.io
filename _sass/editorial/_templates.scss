@@ -94,6 +94,23 @@
 }
 .prose .template-preview__links a:hover { text-decoration: underline; }
 
+.template-preview__document {
+  position: relative;
+  overflow: hidden;
+  background: white;
+}
+
+// The native PDF viewer paints its page shadow inside the iframe.
+// Cover only its thin edges; pointer events still reach the scrollbar.
+.template-preview__document::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 6px 0 white, inset -6px 0 white, inset 0 4px white, inset 0 -4px white;
+  background: linear-gradient(to left, transparent 15px, white 15px, white 21px, transparent 21px);
+}
+
 .template-preview iframe {
   display: block;
   width: 100%;

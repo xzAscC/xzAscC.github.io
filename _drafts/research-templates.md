@@ -24,7 +24,9 @@ I am putting the layouts I use for research in one place, so that each new paper
         <a href="{{ '/files/arxiv-template-example.pdf' | relative_url }}" download="arxiv-template-example.pdf">Download <span aria-hidden="true">↓</span></a>
       </div>
     </div>
-    <iframe src="{{ '/files/arxiv-template-example.pdf' | relative_url }}#view=FitH&amp;navpanes=0&amp;toolbar=0" title="Full seven-page arXiv template example" loading="lazy"></iframe>
+    <div class="template-preview__document">
+      <iframe src="{{ '/files/arxiv-template-example.pdf' | relative_url }}#view=FitH&amp;navpanes=0&amp;toolbar=0" title="Full seven-page arXiv template example" loading="lazy"></iframe>
+    </div>
     <figcaption>Scroll to explore the complete example.</figcaption>
   </figure>
   <dl class="template-details">
