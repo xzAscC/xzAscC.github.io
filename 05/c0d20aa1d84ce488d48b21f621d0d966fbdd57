@@ -1,0 +1,48 @@
+_pages/project-template.md
+  s_3c82aa121a713f::t_0f9d8a328d1e22 10-12,15-16,18-19,21-34,37-38,46-48,50,56-63,68,76,86,90-105
+_layouts/project.html
+  s_3c82aa121a713f::t_09d49155ad9f02 2-4,12-18,21-22,24-30,33,38,40-43,45,48-62,65
+_tests/project_template_test.rb
+  s_3c82aa121a713f::t_2acea134276cc2 53-56
+  s_3c82aa121a713f::t_336811168c845e 1-52,57-73
+_sass/editorial/_tokens.scss
+  s_3c82aa121a713f::t_a1f3f0f385779d 70-71
+  s_3c82aa121a713f::t_746d77cb97125a 91-92
+assets/js/project.js
+  s_3c82aa121a713f::t_e06d0d33081339 14-20,25-28
+  s_3c82aa121a713f::t_86187dc2e5cab6 21-24
+assets/images/project-template-overview.svg
+  s_3c82aa121a713f::t_e31f271f9cd80b 3-16,18-25
+assets/css/project.scss
+  s_3c82aa121a713f::t_1505867f0db771 5,7,9-23,30,32-33,40-44,46-48,52-53,55-56,59,66-75,77-79,81,85,88,90,97,99
+  s_3c82aa121a713f::t_8624157a37a90f 76
+_sass/editorial/_pdf-viewer.scss
+  s_3c82aa121a713f::t_26399ccf1f8641 62-65,67-84
+  s_3c82aa121a713f::t_32e4848e6ecdfa 66
+_includes/pdf-viewer.html
+  s_3c82aa121a713f::t_0b8c1256929319 14,16
+README.md
+  s_3c82aa121a713f::t_14e636dca78654 101,105
+_tests/run.sh
+  s_3c82aa121a713f::t_66193f09ea3e17 7-8
+assets/images/arxiv-template-preview.svg
+  s_3c82aa121a713f::t_b438f2c2c8474c 1-2735
+scripts/export_project_template.py
+  s_3c82aa121a713f::t_2f697e43bc601e 16,22-24,37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "05c0d20aa1d84ce488d48b21f621d0d966fbdd57",
+  "prompts": {},
+  "sessions": {
+    "s_3c82aa121a713f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "db2fb310-3b8b-4d45-9662-1e937fbd3e5e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
