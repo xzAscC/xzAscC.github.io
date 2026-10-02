@@ -1,0 +1,21 @@
+_sass/editorial/_templates.scss
+  s_87e45542b43278::t_57c7e8c8be3082 97-113
+_drafts/research-templates.md
+  s_87e45542b43278::t_57c7e8c8be3082 27-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "43eff6420ee85245fc4cfb347a3e2d541722b285",
+  "prompts": {},
+  "sessions": {
+    "s_87e45542b43278": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f9c2-afe0-7e11-9689-03835a219da2",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
