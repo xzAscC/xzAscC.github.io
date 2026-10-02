@@ -21,7 +21,7 @@ A responsive research project page with a shared PDF viewer and a copyable citat
 
 1. Edit `index.html`: replace the title, authors, affiliations, resource links, text, BibTeX, and the `og:` link-preview tags.
 2. Replace `assets/images/project-template-overview.svg`, `files/arxiv-template-example.pdf`, and its first-page preview `assets/images/arxiv-template-preview.svg` (shown on phones that cannot display PDFs inline).
-3. Change the accent color with `--project-accent` on `<body>`; hover, soft, and dark-mode shades follow. Adjust spacing in `assets/css/project.css`.
+3. Fonts are Crimson Pro and Inter (SIL Open Font License), bundled in `assets/fonts/`. Change the accent color with `--project-accent` on `<body>`; hover, soft, and dark-mode shades follow. Adjust spacing in `assets/css/project.css`.
 4. Preview with `python -m http.server 8000`, then open http://localhost:8000/.
 5. Remove the `noindex, nofollow` meta tag when ready to publish. Upload the folder to any static host.
 
@@ -34,7 +34,7 @@ MIT licensed. The bundled PDF is a sample from https://github.com/xzAscC/arxiv-t
 The Ohio State University logo in that sample is excluded from the license; replace the PDF before publishing your own project.
 '''
 license_text = Path('LICENSE').read_text().replace('Copyright (c) 2016 Michael Rose', 'Copyright (c) 2026 Xudong Zhu\nCopyright (c) 2016 Michael Rose')
-assets = ['assets/css/project.css', 'assets/js/project.js', 'assets/images/project-template-overview.svg', 'assets/images/arxiv-template-preview.svg', 'files/arxiv-template-example.pdf']
+assets = ['assets/css/project.css', 'assets/js/project.js', 'assets/images/project-template-overview.svg', 'assets/images/arxiv-template-preview.svg', 'assets/fonts/editorial/CrimsonPro-Variable.woff2', 'assets/fonts/editorial/Inter-Variable.woff2', 'files/arxiv-template-example.pdf']
 with ZipFile(output, 'w', compression=ZIP_DEFLATED) as archive:
     archive.writestr('index.html', html)
     archive.writestr('README.md', readme)

@@ -14,13 +14,13 @@ svg { --accent: #a83024; --accent-soft: #f0ddd4; --accent-line: #bd7364; --box: 
 .rule { stroke: var(--accent-line); }
 </style>
 <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path class="flow" d="M0 0 6 3 0 6" stroke-width="1.4"/></marker></defs>
-<g font-family="Arial,sans-serif" text-anchor="middle">
+<g font-family="Inter, 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">
 <rect class="box" x="35" y="76" width="300" height="250" rx="14"/>
 <rect class="box box--key" x="450" y="76" width="300" height="250" rx="14"/>
 <rect class="box" x="865" y="76" width="300" height="250" rx="14"/>
 <g class="flow" stroke-width="2"><path d="M350 201 H430" marker-end="url(#arrow)"/><path d="M765 201 H845" marker-end="url(#arrow)"/></g>
 <g class="label" font-size="13" letter-spacing="2"><text x="185" y="120">INPUT</text><text x="600" y="120">METHOD</text><text x="1015" y="120">OUTPUT</text></g>
-<g class="name" font-family="Georgia,serif" font-size="33"><text x="185" y="194">Start here</text><text x="600" y="194">Your key idea</text><text x="1015" y="194">What changes?</text></g>
+<g class="name" font-family="'Crimson Pro', Georgia, serif" font-size="33"><text x="185" y="194">Start here</text><text x="600" y="194">Your key idea</text><text x="1015" y="194">What changes?</text></g>
 <g class="note" font-size="16"><text x="185" y="239">Data, context, or a question</text><text x="600" y="239">The central operation</text><text x="1015" y="239">A result the reader can inspect</text></g>
 <g class="rule" stroke-width="2"><path d="M130 275 H240"/><path d="M545 275 H655"/><path d="M960 275 H1070"/></g>
 </g></svg>

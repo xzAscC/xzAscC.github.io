@@ -16,6 +16,8 @@
   {% if page.social_image %}<meta property="og:image" content="{{ page.social_image | absolute_url }}">{% endif %}
   <meta name="twitter:card" content="{% if page.social_image %}summary_large_image{% else %}summary{% endif %}">
   {% if page.favicon %}<link rel="icon" href="{{ page.favicon | relative_url }}">{% else %}<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='{{ accent | replace: '#', '%23' }}'/%3E%3C/svg%3E">{% endif %}
+  <link rel="preload" href="{{ '/assets/fonts/editorial/CrimsonPro-Variable.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ '/assets/fonts/editorial/Inter-Variable.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{{ '/assets/css/project.css' | relative_url }}">
   <script>
     // Apply the saved or system theme before the page paints.

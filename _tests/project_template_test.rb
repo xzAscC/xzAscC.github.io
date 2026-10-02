@@ -75,4 +75,13 @@ assert css.include?("html[data-theme=dark] .project-page") || css.include?("html
        'Dark accent must follow the chosen theme'
 assert page.match?(/<img[^>]*width="1200" height="410"/), 'Teaser size must be set to prevent layout shift'
 
+# Fonts match the site and ship with the page, so it renders the same everywhere
+%w[CrimsonPro-Variable.woff2 Inter-Variable.woff2].each do |font|
+  assert css.include?(%(url("../fonts/editorial/#{font}"))), "Project CSS must load #{font} with a relative URL"
+  assert File.binread(File.expand_path('../files/project-template.zip', __dir__)).include?("assets/fonts/editorial/#{font}"),
+         "Template download must include #{font}"
+end
+assert css.include?('"Crimson Pro"') && css.include?('"Inter"'), 'Project page must use Crimson Pro and Inter'
+assert !css.include?('Georgia, serif;'), 'Project page must not depend on Georgia being installed'
+
 puts 'Project template checks passed.'
