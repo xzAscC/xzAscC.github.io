@@ -138,6 +138,7 @@ exclude:
   - _tests
   - _site
   - local
+  - scripts
   - Dockerfile
   - docker-compose.yaml
   - Gemfile

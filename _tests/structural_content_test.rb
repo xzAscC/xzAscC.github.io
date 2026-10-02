@@ -349,3 +349,5 @@ assert !self_reflection_page.include?('TMLR 2026</span> <span aria-hidden="true"
 %w[abstopk self-reflection fcds].each do |slug|
   assert File.file?(site_file("files/papers/#{slug}.pdf")), "Missing hosted paper PDF: #{slug}"
 end
+
+assert !File.exist?(site_file('templates/project/index.html')), 'Project template demo must remain unpublished'

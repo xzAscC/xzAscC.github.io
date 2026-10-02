@@ -70,13 +70,8 @@ layout: default
 
     {% if page.pdfurl %}
       <section class="paper__section" aria-labelledby="paper-pdf-title">
-        <div class="paper__section-head">
-          <h2 id="paper-pdf-title" class="paper__section-title">Paper</h2>
-          <a href="{{ pdf_href }}" target="_blank" rel="noopener">Open in a new tab</a>
-        </div>
-        <div class="paper__pdf">
-          <iframe src="{{ pdf_href }}#view=FitH" title="PDF of {{ paper_title | escape }}" loading="lazy"></iframe>
-        </div>
+        <h2 id="paper-pdf-title" class="paper__section-title">Paper</h2>
+        {% include pdf-viewer.html src=pdf_href title=paper_title download_name=pdf_filename %}
       </section>
     {% elsif page.cover %}
       <section class="paper__section" aria-labelledby="paper-pdf-title">

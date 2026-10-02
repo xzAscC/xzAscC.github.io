@@ -614,21 +614,6 @@ article.paper {
   max-width: var(--content-width);
 }
 
-.paper__pdf {
-  overflow: hidden;
-  background: var(--color-surface);
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-}
-
-.paper__pdf iframe {
-  display: block;
-  width: 100%;
-  height: min(85vh, 60rem);
-  border: 0;
-}
-
 .paper__cover {
   display: block;
   max-width: 26rem;
@@ -667,11 +652,6 @@ article.paper {
   white-space: pre;
 }
 
-@media (max-width: $breakpoint-small) {
-  .paper__pdf iframe {
-    height: 70vh;
-  }
-}
 
 // Copy confirmation toast
 

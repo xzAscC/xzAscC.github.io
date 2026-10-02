@@ -89,3 +89,34 @@ docker start xz-blog-preview
   <p>Built with ❤️ using <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/alshedivat/al-folio">al-folio</a></p>
   <p>Hosted on <a href="https://pages.github.com/">GitHub Pages</a></p>
 </div>
+
+## PDF reader component
+
+Use the shared reader in any Jekyll page or layout:
+
+```liquid
+{% include pdf-viewer.html src="/files/paper.pdf" title="Read the paper" pages=7 %}
+```
+
+`src` is required and accepts a local path or an external URL. Optional arguments are `title`, `pages`, `caption`, `download_name`, and `height` (a CSS length such as `70vh`). Styles live in `_sass/editorial/_pdf-viewer.scss`; both the website and the project template import them. Blog drafts and publication pages use this same include.
+
+## Project page template
+
+The canonical example is `_pages/project-template.md`, using `_layouts/project.html`. It is `published: false`, so it never appears in a normal build. Preview with `--unpublished` at `/templates/project/`; it is a page, not a blog post. Edit the front matter for authors, resources, the teaser, PDF, and citation, then edit the body sections.
+
+To export a framework-free download:
+
+```sh
+bundle exec jekyll build --unpublished --destination local/project-export
+python scripts/export_project_template.py local/project-export
+```
+
+The resulting `files/project-template.zip` contains HTML, CSS, JavaScript, and example assets. Its README explains customization and deployment. Re-export after changing the project layout, example, or PDF reader.
+
+## Verification and password recovery
+
+Waline enables email verification for ordinary registrations when `SMTP_HOST` or `SMTP_SERVICE` is configured. Its first account is the administrator and bypasses the ordinary verification flow. Password recovery is available through the Login dialog's **Forgot Password** link.
+
+The local preview sends only to Mailpit at http://localhost:8025/; these emails are captured locally and are not delivered to real inboxes. Start the three local services with `docker start xz-mailpit-preview xz-waline-preview xz-template-preview`. The preview command now also uses `--unpublished` for the project page.
+
+For real delivery, set `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`, `SENDER_NAME`, and `SENDER_EMAIL` in the Waline server environment, then restart it. Also set its public `SERVER_URL`, `SITE_URL`, and `SECURE_DOMAINS`; email links must use the public HTTPS address. Keep secrets in environment files or the hosting platform, never Jekyll configuration. See [Waline email configuration](https://waline.js.org/en/guide/features/notification.html).

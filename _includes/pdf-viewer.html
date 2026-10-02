@@ -1,0 +1,16 @@
+{% assign viewer_src = include.src %}
+{% unless viewer_src contains '://' %}{% assign viewer_src = viewer_src | relative_url %}{% endunless %}
+{% assign viewer_title = include.title | default: 'Document preview' %}
+<figure class="pdf-viewer">
+  <div class="pdf-viewer__bar">
+    <div class="pdf-viewer__label"><span class="pdf-viewer__title">{{ viewer_title | escape }}</span><span class="pdf-viewer__meta">PDF{% if include.pages %} · {{ include.pages | escape }} pages{% endif %}</span></div>
+    <div class="pdf-viewer__links">
+      <a href="{{ viewer_src | escape }}" target="_blank" rel="noopener" aria-label="Open {{ viewer_title | escape }} in a new tab">Open <span aria-hidden="true">↗</span></a>
+      <a href="{{ viewer_src | escape }}" download="{{ include.download_name | default: '' | escape }}">Download <span aria-hidden="true">↓</span></a>
+    </div>
+  </div>
+  <div class="pdf-viewer__document">
+    <iframe src="{{ viewer_src | escape }}#view=FitH&amp;navpanes=0&amp;toolbar=0" title="{{ viewer_title | escape }}" loading="lazy"{% if include.height %} style="height: {{ include.height | escape }}"{% endif %}></iframe>
+  </div>
+  <figcaption>{{ include.caption | default: 'Scroll to explore the complete document.' | escape }}</figcaption>
+</figure>

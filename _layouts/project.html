@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="{{ page.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ page.description | escape }}">
+  <title>{{ page.title | escape }}</title>
+  {% if page.published == false %}<meta name="robots" content="noindex, nofollow">{% endif %}
+  <link rel="stylesheet" href="{{ '/assets/css/project.css' | relative_url }}">
+</head>
+<body class="project-page">
+  <a class="project-skip" href="#overview">Skip to content</a>
+  <nav class="project-nav" aria-label="Project navigation">
+    <a class="project-wordmark" href="#">{{ page.project_name | escape }}</a>
+    <div><a href="#overview">Overview</a><a href="#method">Method</a><a href="#paper">Paper</a><a href="#citation">Cite</a></div>
+  </nav>
+  <main>
+    <header class="project-hero">
+      <p class="project-eyebrow">{{ page.venue | escape }}</p>
+      <h1>{{ page.title | escape }}</h1>
+      <p class="project-lede">{{ page.description | escape }}</p>
+      <ul class="project-authors" aria-label="Authors">
+        {% for author in page.project_authors %}<li>{% if author.url %}<a href="{{ author.url | escape }}">{{ author.name | escape }}</a>{% else %}{{ author.name | escape }}{% endif %}<sup>{{ author.affiliation | escape }}</sup></li>{% endfor %}
+      </ul>
+      <p class="project-affiliations">{{ page.affiliations | escape }}</p>
+      <div class="project-resources">
+        {% for resource in page.resources %}<a class="project-resource{% if forloop.first %} project-resource--primary{% endif %}" href="{% if resource.url contains '://' %}{{ resource.url | escape }}{% else %}{{ resource.url | relative_url }}{% endif %}">{{ resource.label | escape }} <span aria-hidden="true">↗</span></a>{% endfor %}
+      </div>
+    </header>
+    <figure class="project-teaser">
+      <img src="{{ page.teaser | relative_url }}" alt="{{ page.teaser_alt | escape }}" width="1200" height="410">
+      <figcaption>{{ page.teaser_caption | escape }}</figcaption>
+    </figure>
+    <div class="project-body">{{ content }}</div>
+    <section id="paper" class="project-section">
+      <div class="project-section__heading"><span>04</span><h2>Read the paper</h2></div>
+      {% include pdf-viewer.html src=page.project_pdf title=page.pdf_title pages=page.pdf_pages caption=page.pdf_caption download_name="paper.pdf" %}
+    </section>
+    <section id="citation" class="project-section">
+      <div class="project-section__heading"><span>05</span><h2>Citation</h2></div>
+      <div class="project-citation"><button type="button" data-copy-citation hidden>Copy BibTeX</button><pre><code id="project-bibtex">{{ page.bibtex | escape }}</code></pre></div>
+      <p class="project-copy-status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <footer class="project-footer"><span>{{ page.project_name | escape }}</span><span>{{ page.footer_note | escape }}</span></footer>
+  <script src="{{ '/assets/js/project.js' | relative_url }}" defer></script>
+</body>
+</html>
