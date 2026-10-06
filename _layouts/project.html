@@ -18,8 +18,9 @@
   {% if page.favicon %}<link rel="icon" href="{{ page.favicon | relative_url }}">{% else %}<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='{{ accent | replace: '#', '%23' }}'/%3E%3C/svg%3E">{% endif %}
   <link rel="preload" href="{{ '/assets/fonts/editorial/CrimsonPro-Variable.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{{ '/assets/fonts/editorial/Inter-Variable.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="{{ '/assets/css/project.css' | relative_url }}">
-  {% if page.project_stylesheet %}<link rel="stylesheet" href="{{ page.project_stylesheet | relative_url }}">{% endif %}
+  {% assign asset_version = site.time | date: '%s' %}<link rel="stylesheet" href="{{ '/assets/css/project.css' | relative_url }}?v={{ asset_version }}">
+  {% if page.katex %}<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css">{% endif %}
+  {% if page.project_stylesheet %}<link rel="stylesheet" href="{{ page.project_stylesheet | relative_url }}?v={{ asset_version }}">{% endif %}
   <script>
     // Apply the saved or system theme before the page paints.
     try { var theme = localStorage.getItem('theme'); } catch (error) {}
@@ -41,12 +42,21 @@
       </button>
     </div>
   </nav>
+  {% if page.toc %}<aside class="project-toc" aria-label="On this page">
+    <ol>
+      {% for item in page.nav %}<li><a href="#{{ item.id }}"><span>{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>{{ item.toc | default: item.label | escape }}</a></li>{% endfor %}
+      {% assign toc_next = page.nav.size %}
+      {% if page.video %}{% assign toc_next = toc_next | plus: 1 %}<li><a href="#video"><span>{{ toc_next | prepend: '0' | slice: -2, 2 }}</span>Video</a></li>{% endif %}
+      {% if page.project_pdf %}{% assign toc_next = toc_next | plus: 1 %}<li><a href="#paper"><span>{{ toc_next | prepend: '0' | slice: -2, 2 }}</span>Read the paper</a></li>{% endif %}
+      {% if page.bibtex %}{% assign toc_next = toc_next | plus: 1 %}<li><a href="#citation"><span>{{ toc_next | prepend: '0' | slice: -2, 2 }}</span>Cite</a></li>{% endif %}
+    </ol>
+  </aside>{% endif %}
   <main>
     <header class="project-hero" id="top">
       {% if page.venue %}<p class="project-eyebrow">{{ page.venue | escape }}</p>{% endif %}
       <h1>{{ page.hero_title | default: page.title | escape }}</h1>
-      {% if page.subtitle %}<p class="project-subtitle">{{ page.subtitle | escape }}</p>{% endif %}
-      <p class="project-lede">{{ page.description | escape }}</p>
+      {% if page.subtitle %}<p class="project-subtitle">{{ page.subtitle | escape | strip | newline_to_br }}</p>{% endif %}
+      {% unless page.tldr %}<p class="project-lede">{{ page.description | escape }}</p>{% endunless %}
       <ul class="project-authors" aria-label="Authors">
         {% for author in page.project_authors %}<li>{% if author.url %}<a href="{{ author.url | escape }}">{{ author.name | escape }}</a>{% else %}{{ author.name | escape }}{% endif %}{% if author.affiliations and page.affiliations.size > 1 %}<sup>{{ author.affiliations | join: ',' }}</sup>{% endif %}{% if author.equal %}<sup class="project-author-mark">*</sup>{% endif %}{% if author.corresponding %}<sup class="project-author-mark">†</sup>{% endif %}</li>{% endfor %}
       </ul>
@@ -54,9 +64,11 @@
         {% for affiliation in page.affiliations %}<li>{% if page.affiliations.size > 1 %}<sup>{{ forloop.index }}</sup> {% endif %}{{ affiliation | escape }}</li>{% endfor %}
       </ul>{% endif %}
       {% if equal_authors.size > 0 or corresponding_authors.size > 0 %}<p class="project-author-notes">{% if equal_authors.size > 0 %}<span>* Equal contribution</span>{% endif %}{% if corresponding_authors.size > 0 %}<span>† Corresponding author</span>{% endif %}</p>{% endif %}
+      {% if page.status %}<p class="project-status">{{ page.status | escape }}</p>{% endif %}
       <div class="project-resources">
-        {% for resource in page.resources %}{% if resource.url contains '://' %}{% assign external = true %}{% else %}{% assign external = false %}{% endif %}<a class="project-resource{% if forloop.first %} project-resource--primary{% endif %}" href="{% if external %}{{ resource.url | escape }}{% else %}{{ resource.url | relative_url }}{% endif %}">{{ resource.label | escape }}{% if external %} <span aria-hidden="true">↗</span>{% endif %}</a>{% endfor %}
+        {% for resource in page.resources %}{% capture icon %}{% include project-icon.html name=resource.icon %}{% endcapture %}{% assign icon = icon | strip %}{% if resource.pending %}<span class="project-resource project-resource--pending" aria-disabled="true">{{ icon }}{{ resource.label | escape }} <small>In progress</small></span>{% else %}{% if resource.url contains '://' %}{% assign external = true %}{% else %}{% assign external = false %}{% endif %}<a class="project-resource{% if forloop.first %} project-resource--primary{% endif %}" href="{% if external %}{{ resource.url | escape }}{% else %}{{ resource.url | relative_url }}{% endif %}">{{ icon }}{{ resource.label | escape }}{% if external %} <span aria-hidden="true">↗</span>{% endif %}</a>{% endif %}{% endfor %}
       </div>
+      {% if page.tldr %}<div class="project-tldr"><span class="project-tldr__label">TL;DR</span><p>{{ page.tldr | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p></div>{% endif %}
     </header>
     {% if page.teaser %}<figure class="project-teaser">
       <img src="{{ page.teaser | relative_url }}" alt="{{ page.teaser_alt | escape }}" width="{{ page.teaser_width | default: 1200 }}" height="{{ page.teaser_height | default: 410 }}">
@@ -77,7 +89,11 @@
       <p class="project-copy-status" role="status" aria-live="polite"></p>
     </section>{% endif %}
   </main>
-  <footer class="project-footer"><span>{{ page.project_name | escape }}</span><span>{{ page.footer_note | escape }}</span></footer>
-  <script src="{{ '/assets/js/project.js' | relative_url }}" defer></script>
+  <footer class="project-footer"><span>{{ page.project_name | escape }}</span><span class="project-footer__note">{% if page.footer_logo %}<a class="project-footer__home" href="{{ page.footer_link | default: '/' | relative_url }}" aria-label="Home"><img class="project-footer__logo project-footer__logo--light" src="{{ page.footer_logo.light | relative_url }}" alt="" width="22" height="22"><img class="project-footer__logo project-footer__logo--dark" src="{{ page.footer_logo.dark | relative_url }}" alt="" width="22" height="22"></a>{% endif %}{{ page.footer_note | escape }}</span></footer>
+  <script src="{{ '/assets/js/project.js' | relative_url }}?v={{ asset_version }}" defer></script>
+  {% if page.katex %}<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js" defer></script>
+  <script src="{{ '/assets/js/project-math.js' | relative_url }}?v={{ asset_version }}" defer></script>{% endif %}
+  {% for script in page.project_scripts %}<script src="{{ script | relative_url }}?v={{ asset_version }}" defer></script>{% endfor %}
 </body>
 </html>

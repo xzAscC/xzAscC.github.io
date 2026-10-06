@@ -1,0 +1,224 @@
+{
+ "source": "OLMo 3 7B; Prefix/results/fig_alpha_policies.json",
+ "methods": [
+  "Prefix-1",
+  "Prefix-5",
+  "Linear Decay",
+  "Exponential Decay",
+  "DAS",
+  "ACT",
+  "Full"
+ ],
+ "rows": [
+  {
+   "task": "Safety",
+   "metric": "MMLU-Pro",
+   "best": "Prefix-1",
+   "cells": [
+    {
+     "method": "Prefix-1",
+     "capability": 39.041,
+     "control": 80.731
+    },
+    {
+     "method": "Prefix-5",
+     "capability": 36.621,
+     "control": 85.384
+    },
+    {
+     "method": "Linear Decay",
+     "capability": 35.846,
+     "control": 83.672
+    },
+    {
+     "method": "Exponential Decay",
+     "capability": 34.914,
+     "control": 84.531
+    },
+    {
+     "method": "DAS",
+     "capability": 34.742,
+     "control": 85.117
+    },
+    {
+     "method": "ACT",
+     "capability": 35.583,
+     "control": 81.246
+    },
+    {
+     "method": "Full",
+     "capability": 34.263,
+     "control": 86.216
+    }
+   ]
+  },
+  {
+   "task": "Sentiment",
+   "metric": "MMLU-Pro",
+   "best": "Prefix-1",
+   "cells": [
+    {
+     "method": "Prefix-1",
+     "capability": 39.087,
+     "control": 88.214
+    },
+    {
+     "method": "Prefix-5",
+     "capability": 38.673,
+     "control": 89.862
+    },
+    {
+     "method": "Linear Decay",
+     "capability": 35.276,
+     "control": 90.438
+    },
+    {
+     "method": "Exponential Decay",
+     "capability": 34.461,
+     "control": 91.247
+    },
+    {
+     "method": "DAS",
+     "capability": 35.326,
+     "control": 90.084
+    },
+    {
+     "method": "ACT",
+     "capability": 36.041,
+     "control": 90.173
+    },
+    {
+     "method": "Full",
+     "capability": 34.518,
+     "control": 91.047
+    }
+   ]
+  },
+  {
+   "task": "Politeness",
+   "metric": "MMLU-Pro",
+   "best": "Prefix-1",
+   "cells": [
+    {
+     "method": "Prefix-1",
+     "capability": 38.947,
+     "control": 86.928
+    },
+    {
+     "method": "Prefix-5",
+     "capability": 37.584,
+     "control": 88.716
+    },
+    {
+     "method": "Linear Decay",
+     "capability": 35.932,
+     "control": 89.126
+    },
+    {
+     "method": "Exponential Decay",
+     "capability": 35.887,
+     "control": 90.041
+    },
+    {
+     "method": "DAS",
+     "capability": 35.624,
+     "control": 89.217
+    },
+    {
+     "method": "ACT",
+     "capability": 35.768,
+     "control": 88.941
+    },
+    {
+     "method": "Full",
+     "capability": 34.192,
+     "control": 89.843
+    }
+   ]
+  },
+  {
+   "task": "IF-Boxed",
+   "metric": "MATH-500",
+   "best": "Prefix-1",
+   "cells": [
+    {
+     "method": "Prefix-1",
+     "capability": 47.846,
+     "control": 91.614
+    },
+    {
+     "method": "Prefix-5",
+     "capability": 45.428,
+     "control": 94.762
+    },
+    {
+     "method": "Linear Decay",
+     "capability": 46.734,
+     "control": 92.463
+    },
+    {
+     "method": "Exponential Decay",
+     "capability": 45.681,
+     "control": 93.214
+    },
+    {
+     "method": "DAS",
+     "capability": 44.972,
+     "control": 93.487
+    },
+    {
+     "method": "ACT",
+     "capability": 45.283,
+     "control": 91.936
+    },
+    {
+     "method": "Full",
+     "capability": 43.174,
+     "control": 95.047
+    }
+   ]
+  },
+  {
+   "task": "IF-Plain",
+   "metric": "MATH-500",
+   "best": "Prefix-5",
+   "cells": [
+    {
+     "method": "Prefix-1",
+     "capability": 45.734,
+     "control": 49.742
+    },
+    {
+     "method": "Prefix-5",
+     "capability": 46.381,
+     "control": 52.486
+    },
+    {
+     "method": "Linear Decay",
+     "capability": 45.847,
+     "control": 51.632
+    },
+    {
+     "method": "Exponential Decay",
+     "capability": 44.726,
+     "control": 52.381
+    },
+    {
+     "method": "DAS",
+     "capability": 42.864,
+     "control": 52.746
+    },
+    {
+     "method": "ACT",
+     "capability": 41.126,
+     "control": 50.973
+    },
+    {
+     "method": "Full",
+     "capability": 40.062,
+     "control": 52.173
+    }
+   ]
+  }
+ ]
+}

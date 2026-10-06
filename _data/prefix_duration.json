@@ -1,0 +1,92 @@
+{
+  "source": "OLMo 3 7B, HarmBench control and MMLU-Pro capability (%); Prefix/results/fig_prefix_duration.csv",
+  "prefix": [
+    {
+      "tokens": 1,
+      "capability": 39.1573,
+      "control": 80.05
+    },
+    {
+      "tokens": 2,
+      "capability": 39.1981,
+      "control": 81.1017
+    },
+    {
+      "tokens": 3,
+      "capability": 38.8518,
+      "control": 82.5593
+    },
+    {
+      "tokens": 4,
+      "capability": 37.5871,
+      "control": 82.229
+    },
+    {
+      "tokens": 5,
+      "capability": 38.5667,
+      "control": 85.4746
+    },
+    {
+      "tokens": 6,
+      "capability": 37.4852,
+      "control": 85.4407
+    },
+    {
+      "tokens": 7,
+      "capability": 37.4241,
+      "control": 85.1509
+    },
+    {
+      "tokens": 8,
+      "capability": 37.3019,
+      "control": 85.1509
+    },
+    {
+      "tokens": 9,
+      "capability": 36.2205,
+      "control": 84.2831
+    },
+    {
+      "tokens": 10,
+      "capability": 36.1186,
+      "control": 84.5085
+    },
+    {
+      "tokens": 11,
+      "capability": 36.0372,
+      "control": 82.5424
+    },
+    {
+      "tokens": 12,
+      "capability": 35.7724,
+      "control": 84.5085
+    },
+    {
+      "tokens": 13,
+      "capability": 35.6909,
+      "control": 84.8305
+    },
+    {
+      "tokens": 14,
+      "capability": 35.5484,
+      "control": 84.1864
+    },
+    {
+      "tokens": 15,
+      "capability": 35.2429,
+      "control": 85.4746
+    }
+  ],
+  "full": {
+    "capability": 34.2376,
+    "control": 86.305
+  },
+  "prompting": {
+    "capability": 39.0999,
+    "control": 75.733
+  },
+  "unsteered": {
+    "capability": 39.2999,
+    "control": 36.271
+  }
+}

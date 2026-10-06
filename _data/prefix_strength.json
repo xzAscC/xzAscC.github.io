@@ -1,0 +1,139 @@
+{
+ "source": "OLMo 3 7B; Prefix/results/fig_strength_tradeoff.json and fig_strength_matching.json",
+ "tradeoff": [
+  {
+   "method": "Prefix-1",
+   "strength": 10,
+   "general_capability": 39.123,
+   "behavioral_control": 80.127
+  },
+  {
+   "method": "Prefix-1",
+   "strength": 1,
+   "general_capability": 39.124,
+   "behavioral_control": 79.341
+  },
+  {
+   "method": "Prefix-1",
+   "strength": 0.1,
+   "general_capability": 39.187,
+   "behavioral_control": 70.214
+  },
+  {
+   "method": "Prefix-1",
+   "strength": 0.01,
+   "general_capability": 39.286,
+   "behavioral_control": 48.173
+  },
+  {
+   "method": "Prefix-1",
+   "strength": 0.0001,
+   "general_capability": 39.298,
+   "behavioral_control": 41.842
+  },
+  {
+   "method": "Prefix-5",
+   "strength": 10,
+   "general_capability": 35.591,
+   "behavioral_control": 92.238
+  },
+  {
+   "method": "Prefix-5",
+   "strength": 1,
+   "general_capability": 37.476,
+   "behavioral_control": 85.154
+  },
+  {
+   "method": "Prefix-5",
+   "strength": 0.1,
+   "general_capability": 38.714,
+   "behavioral_control": 73.286
+  },
+  {
+   "method": "Prefix-5",
+   "strength": 0.01,
+   "general_capability": 39.183,
+   "behavioral_control": 50.127
+  },
+  {
+   "method": "Prefix-5",
+   "strength": 0.0001,
+   "general_capability": 39.294,
+   "behavioral_control": 47.106
+  },
+  {
+   "method": "Full",
+   "strength": 10,
+   "general_capability": 22.042,
+   "behavioral_control": 91.317
+  },
+  {
+   "method": "Full",
+   "strength": 1,
+   "general_capability": 34.487,
+   "behavioral_control": 89.424
+  },
+  {
+   "method": "Full",
+   "strength": 0.1,
+   "general_capability": 35.216,
+   "behavioral_control": 88.283
+  },
+  {
+   "method": "Full",
+   "strength": 0.01,
+   "general_capability": 38.374,
+   "behavioral_control": 74.195
+  },
+  {
+   "method": "Full",
+   "strength": 0.0001,
+   "general_capability": 38.741,
+   "behavioral_control": 49.527
+  },
+  {
+   "method": "Prompt",
+   "strength": null,
+   "general_capability": 39.1,
+   "behavioral_control": 75.733
+  },
+  {
+   "method": "Unsteered",
+   "strength": null,
+   "general_capability": 39.3,
+   "behavioral_control": 36.271
+  }
+ ],
+ "matching": [
+  {
+   "relative_strength": 0.001,
+   "error_mean": 0.13683024963364004,
+   "error_std": 0.09757453145560606,
+   "examples": 100
+  },
+  {
+   "relative_strength": 0.01,
+   "error_mean": 0.11603124692104758,
+   "error_std": 0.08716405449501408,
+   "examples": 100
+  },
+  {
+   "relative_strength": 0.1,
+   "error_mean": 0.08288122325669973,
+   "error_std": 0.0463953296672038,
+   "examples": 100
+  },
+  {
+   "relative_strength": 1.0,
+   "error_mean": 0.0618255411228165,
+   "error_std": 0.036354551554968,
+   "examples": 100
+  },
+  {
+   "relative_strength": 10.0,
+   "error_mean": 0.1345523192640394,
+   "error_std": 0.08897744220567634,
+   "examples": 100
+  }
+ ]
+}

@@ -45,6 +45,9 @@ h1 { font-size: clamp(46px, 7.5vw, 84px); letter-spacing: -.03em; text-wrap: bal
 .project-lede { max-width: 640px; margin: 26px auto 30px; color: var(--color-ink-soft); font-size: 19px; line-height: 1.65; text-wrap: pretty; }
 .project-authors, .project-affiliations { display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style: none; }
 .project-authors { gap: 12px 24px; margin: 0 0 6px; font-size: 15px; }
+.project-subtitle + .project-authors { margin-top: 30px; }
+.project-authors a { color: var(--color-ink); text-decoration: underline transparent; transition: text-decoration-color var(--transition-fast); }
+.project-authors a:hover { text-decoration-color: var(--color-accent); }
 sup { margin-left: 2px; color: var(--color-accent); font-size: 10px; }
 .project-affiliations { gap: 4px 18px; margin: 0; color: var(--color-ink-soft); font-size: 13px; }
 .project-author-notes { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; margin-top: 4px; color: var(--color-ink-soft); font-size: 12px; }
@@ -52,6 +55,29 @@ sup { margin-left: 2px; color: var(--color-accent); font-size: 10px; }
 .project-resource { display: inline-flex; gap: 10px; padding: 10px 18px; border: 1px solid var(--color-border); border-radius: 5px; color: var(--color-ink); text-decoration: none; font-size: 13px; font-weight: 600; background: var(--color-surface); transition: transform var(--transition-fast), border-color var(--transition-fast); }
 .project-resource:hover { transform: translateY(-1px); border-color: var(--color-accent); }
 .project-resource--primary { background: var(--color-accent); color: var(--color-on-accent); border-color: var(--color-accent); }
+// TL;DR card: the label sits on the top border of a raised summary.
+.project-tldr { position: relative; max-width: 720px; margin: 46px auto 0; padding: 30px 34px 26px; border: 1px solid var(--color-border); border-radius: 14px; background: var(--color-surface); }
+.project-tldr__label { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); padding: 3px 14px; border-radius: 999px; background: var(--color-accent); color: var(--color-on-accent); font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+.project-tldr p { color: var(--color-ink); font-size: 21px; line-height: 1.6; text-wrap: pretty; }
+.project-tldr strong { font-weight: 650; background: linear-gradient(transparent 62%, var(--color-accent-soft) 62%); }
+html[data-theme='dark'] .project-tldr strong { background-image: linear-gradient(transparent 62%, color-mix(in srgb, var(--color-accent) 40%, transparent) 62%); }
+.project-status { margin-top: 18px; color: var(--color-ink-soft); font-size: 12px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; }
+.project-icon { width: 1.1em; height: 1.1em; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.project-resource { align-items: center; }
+.project-resource--pending { border-style: dashed; border-color: color-mix(in srgb, var(--color-ink-soft) 45%, transparent); background: none; color: var(--color-ink-soft); cursor: default; }
+.project-resource--pending:hover { transform: none; border-color: color-mix(in srgb, var(--color-ink-soft) 45%, transparent); }
+.project-resource--pending small { font-size: .78em; font-weight: 500; opacity: .8; }
+// Section index pinned to the left margin; shown only where the margin can hold it.
+.project-toc { display: none; }
+@media (min-width: 1540px) {
+  .project-toc { display: block; transition: opacity var(--transition-fast), visibility var(--transition-fast); position: fixed; top: 50%; left: max(16px, calc((100vw - 1056px) / 2 - 216px)); width: 210px; transform: translateY(-50%); }
+  .project-toc[data-hidden] { opacity: 0; visibility: hidden; }
+  .project-page:has(.project-toc) .project-nav > div a { display: none; }
+  .project-toc ol { margin: 0; padding: 0; list-style: none; }
+  .project-toc a { display: flex; gap: 12px; padding: 7px 0 7px 14px; border-left: 2px solid var(--color-border); color: var(--color-ink-soft); font-size: 12px; letter-spacing: .08em; white-space: nowrap; text-transform: uppercase; text-decoration: none; transition: color var(--transition-fast), border-color var(--transition-fast); }
+  .project-toc a span { font-variant-numeric: tabular-nums; }
+  .project-toc a:hover, .project-toc a[aria-current] { color: var(--color-accent-strong); border-left-color: var(--color-accent); }
+}
 .project-teaser { padding: 26px; border: 1px solid var(--color-border); border-radius: 12px; background: var(--color-surface); }
 .project-teaser img { display: block; width: 100%; height: auto; }
 .project-teaser figcaption { color: var(--color-ink-soft); font-size: 12px; text-align: center; margin-top: 16px; }
@@ -88,6 +114,12 @@ main { counter-reset: project-section; }
 .project-citation pre { overflow-x: auto; clear: both; padding-top: 12px; font-size: 12px; line-height: 1.8; }
 .project-copy-status { min-height: 1.75em; font-size: 12px; }
 .project-footer { margin-top: 70px; padding-block: 30px; border-top: 1px solid var(--color-border); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--color-ink-soft); }
+// Optional site logo beside the footer note, swapped with the page theme.
+.project-footer__note { display: inline-flex; align-items: center; gap: 8px; }
+.project-footer__home { display: inline-flex; }
+.project-footer__logo { display: block; width: 22px; height: 22px; border-radius: 5px; }
+.project-footer__logo--dark, html[data-theme='dark'] .project-footer__logo--light { display: none; }
+html[data-theme='dark'] .project-footer__logo--dark { display: block; }
 .project-skip { position: absolute; z-index: 20; left: 12px; top: -100px; padding: 10px; background: var(--color-surface-raised); color: var(--color-ink); }
 .project-skip:focus { top: 12px; }
 @media(max-width:600px) {
@@ -97,6 +129,8 @@ main { counter-reset: project-section; }
  .project-nav > div { gap: 18px; }
  .project-hero { padding-block: 54px 36px; }
  .project-lede { font-size: 17px; }
+ .project-tldr { padding: 26px 20px 20px; }
+ .project-tldr p { font-size: 18px; }
  .project-teaser { padding: 12px; }
  .project-section { margin-top: 52px; }
  .project-steps { grid-template-columns: 1fr; }

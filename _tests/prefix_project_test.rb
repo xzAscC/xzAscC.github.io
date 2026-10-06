@@ -18,7 +18,7 @@ assert page.include?('noindex, nofollow'), 'Local preview must stay unindexed'
 assert page.include?('data-theme-toggle'), 'Keep the template theme switch'
 assert !page.include?('id="citation"') && !page.include?('href="#citation"'), 'Leave citation empty until the arXiv submission'
 page.scan(/(?:href|src)="(\/[^"]+)"/).flatten.each do |url|
-  path = url.split('#').first
+  path = url.split(/[?#]/).first
   path += 'index.html' if path.end_with?('/')
   assert File.file?(File.join(SITE, path)), "Missing local project resource: #{url}"
 end
@@ -34,12 +34,20 @@ assert !page.include?('class="project-eyebrow"'), 'Prefix page should omit the t
 authors = page[%r{<ul class="project-authors".*?</ul>}m]
 affiliations = page[%r{<ul class="project-affiliations".*?</ul>}m]
 assert !authors.include?('<sup>') && !affiliations.include?('<sup>'), 'A shared affiliation needs no numeric markers'
-assert page.include?('more favorable control–capability Pareto frontier'), 'Teaser should explain the observed Pareto trade-off'
+overview = page[%r{<section class="prefix-overview".*?</section>}m]
+assert overview && overview.include?('data-duration-chart') && overview.include?('OLMo 3 7B'), 'Overview should chart the duration trade-off and name its setting'
+assert overview.include?('fixed-state attention assumptions'), 'Overview must keep the scope of the matching result'
+assert overview.scan('<tr>').length == 19, 'Overview data table should list 15 prefix lengths, full, prompting, unsteered, and a header'
+assert !page.include?('class="project-teaser"'), 'The split overview replaces the single teaser figure'
 
 body = page[%r{<div class="project-body".*?<section id="paper"}m]
-assert body.scan('class="paper-figure"').length == 4, 'Show duration, matching, DiM, and model/task figures'
-assert body.index('prefix-duration-strength.svg') < body.index('prefix-attention-matching.svg'), 'Start with duration and strength'
-assert body.index('prefix-attention-matching.svg') < body.index('prefix-models-tasks.svg'), 'Put matching before cross-model results'
+assert !body.include?('class="paper-figure"'), 'Every figure is redrawn as a native chart'
+%w[data-matching-geometry data-dim-chart data-models-chart].each { |hook| assert body.include?(hook), "Missing native chart: #{hook}" }
+assert body.include?('prefix-attention-matching-figure.pdf') && body.include?('prefix-models-tasks-figure.pdf'), 'Keep links to the paper figures'
+order = ['id="connection"', 'id="duration"', 'id="results"'].map { |id| body.index(id) }
+assert order.all? && order == order.sort, 'Follow the paper: connection, then duration and strength, then cross-model results'
+assert body.include?('data-strength-chart') && body.include?('data-matching-chart'), 'Duration section should chart strength trade-off and Lemma 5 matching'
+assert body.include?('policy-table') && body.include?('It depends on the task'), 'Results should report strength policies and the task-dependent comparison with prompting'
 assert !body.include?('project-steps') && !body.include?('project-facts'), 'Remove the long method walkthrough and statistics cards'
 assert body.include?('linear error bound'), 'Describe a linear upper bound, not guaranteed linear growth'
 footer = page[%r{<footer class="project-footer".*?</footer>}m]

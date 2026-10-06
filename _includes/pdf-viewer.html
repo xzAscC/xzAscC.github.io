@@ -14,5 +14,5 @@
     <a class="pdf-viewer__fallback" href="{{ viewer_src | escape }}">{% if include.preview %}<img src="{{ include.preview | relative_url }}" alt="First page of {{ viewer_title | escape }}" loading="lazy">{% endif %}<span>Open the PDF <span aria-hidden="true">↗</span></span></a>
   </div>
   <script>if (navigator.pdfViewerEnabled === false) document.documentElement.classList.add('no-pdf-viewer');</script>
-  <figcaption>{{ include.caption | default: 'Scroll to explore the complete document.' | escape }}</figcaption>
+  {% unless include.caption == false %}<figcaption>{{ include.caption | default: 'Scroll to explore the complete document.' | escape }}</figcaption>{% endunless %}
 </figure>

@@ -33,17 +33,24 @@ if (themeToggle) {
   });
 }
 
-// Highlight the navigation link of the section being read.
-const navLinks = [...document.querySelectorAll('.project-nav > div a')];
-const sections = navLinks.map((link) => document.querySelector(link.hash)).filter(Boolean);
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.filter((entry) => entry.isIntersecting).forEach((entry) => {
-      navLinks.forEach((link) => {
-        if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
-        else link.removeAttribute('aria-current');
-      });
-    });
-  }, { rootMargin: '-30% 0px -60% 0px' });
-  sections.forEach((section) => observer.observe(section));
-}
+// Highlight the link of the section being read: the last one whose top has passed 40% of the viewport.
+// The sidebar index stays hidden until the reader reaches the first section.
+const navLinks = [...document.querySelectorAll('.project-nav > div a, .project-toc a')];
+const sections = [...new Set(navLinks.map((link) => document.querySelector(link.hash)).filter(Boolean))];
+const toc = document.querySelector('.project-toc');
+let spyQueued = false;
+const updateCurrentSection = () => {
+  spyQueued = false;
+  const line = innerHeight * 0.4;
+  const current = sections.filter((section) => section.getBoundingClientRect().top <= line).pop();
+  navLinks.forEach((link) => {
+    if (current && link.hash === `#${current.id}`) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+  if (toc) toc.toggleAttribute('data-hidden', !current);
+};
+addEventListener('scroll', () => {
+  if (!spyQueued) { spyQueued = true; requestAnimationFrame(updateCurrentSection); }
+}, { passive: true });
+addEventListener('resize', updateCurrentSection);
+updateCurrentSection();

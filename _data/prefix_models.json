@@ -1,0 +1,1285 @@
+{
+"source": "Prefix/results/fig_models_tasks.json",
+"rows": [
+{
+"model": "Qwen3-1.7B",
+"task": "Safety",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 32.7,
+"behavioral_control": 33.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Safety",
+"method": "Prompting",
+"operator": null,
+"general_capability": 32.6,
+"behavioral_control": 75.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Safety",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 32.3,
+"behavioral_control": 89.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Safety",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 31.9,
+"behavioral_control": 92.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Safety",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 27.8,
+"behavioral_control": 93.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Safety",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 32.4,
+"behavioral_control": 91.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Safety",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 32.0,
+"behavioral_control": 94.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Safety",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 27.9,
+"behavioral_control": 94.6
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Sentiment",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 32.7,
+"behavioral_control": 50.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Sentiment",
+"method": "Prompting",
+"operator": null,
+"general_capability": 32.6,
+"behavioral_control": 89.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Sentiment",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 32.4,
+"behavioral_control": 81.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Sentiment",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 32.0,
+"behavioral_control": 83.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Sentiment",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 27.5,
+"behavioral_control": 84.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Sentiment",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 32.5,
+"behavioral_control": 82.5
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Sentiment",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 32.1,
+"behavioral_control": 84.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Sentiment",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 27.7,
+"behavioral_control": 85.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Politeness",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 32.7,
+"behavioral_control": 56.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Politeness",
+"method": "Prompting",
+"operator": null,
+"general_capability": 32.5,
+"behavioral_control": 87.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Politeness",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 32.1,
+"behavioral_control": 79.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Politeness",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 31.8,
+"behavioral_control": 81.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Politeness",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 27.9,
+"behavioral_control": 82.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Politeness",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 32.3,
+"behavioral_control": 80.5
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Politeness",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 31.9,
+"behavioral_control": 82.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Politeness",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 27.6,
+"behavioral_control": 83.5
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Boxed",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 55.137,
+"behavioral_control": 54.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Boxed",
+"method": "Prompting",
+"operator": null,
+"general_capability": 55.084,
+"behavioral_control": 87.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Boxed",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 54.728,
+"behavioral_control": 82.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Boxed",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 54.312,
+"behavioral_control": 84.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Boxed",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 50.046,
+"behavioral_control": 85.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Boxed",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 54.861,
+"behavioral_control": 83.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Boxed",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 54.437,
+"behavioral_control": 85.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Boxed",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 50.218,
+"behavioral_control": 86.5
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Answer-XX",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 55.137,
+"behavioral_control": 17.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Answer-XX",
+"method": "Prompting",
+"operator": null,
+"general_capability": 51.021,
+"behavioral_control": 70.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Answer-XX",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 51.674,
+"behavioral_control": 71.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Answer-XX",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 51.286,
+"behavioral_control": 73.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Answer-XX",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 49.983,
+"behavioral_control": 74.5
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Answer-XX",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 52.806,
+"behavioral_control": 72.5
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Answer-XX",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 52.391,
+"behavioral_control": 74.0
+},
+{
+"model": "Qwen3-1.7B",
+"task": "Answer-XX",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 48.164,
+"behavioral_control": 76.0
+},
+{
+"model": "OLMo3-7B",
+"task": "Safety",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 39.417,
+"behavioral_control": 36.0
+},
+{
+"model": "OLMo3-7B",
+"task": "Safety",
+"method": "Prompting",
+"operator": null,
+"general_capability": 39.326,
+"behavioral_control": 75.842
+},
+{
+"model": "OLMo3-7B",
+"task": "Safety",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 39.041,
+"behavioral_control": 80.731
+},
+{
+"model": "OLMo3-7B",
+"task": "Safety",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 36.621,
+"behavioral_control": 85.384
+},
+{
+"model": "OLMo3-7B",
+"task": "Safety",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 34.263,
+"behavioral_control": 86.216
+},
+{
+"model": "OLMo3-7B",
+"task": "Safety",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 39.128,
+"behavioral_control": 83.462
+},
+{
+"model": "OLMo3-7B",
+"task": "Safety",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 37.754,
+"behavioral_control": 85.137
+},
+{
+"model": "OLMo3-7B",
+"task": "Safety",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 34.481,
+"behavioral_control": 89.583
+},
+{
+"model": "OLMo3-7B",
+"task": "Sentiment",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 39.417,
+"behavioral_control": 39.783
+},
+{
+"model": "OLMo3-7B",
+"task": "Sentiment",
+"method": "Prompting",
+"operator": null,
+"general_capability": 39.351,
+"behavioral_control": 92.428
+},
+{
+"model": "OLMo3-7B",
+"task": "Sentiment",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 39.087,
+"behavioral_control": 88.214
+},
+{
+"model": "OLMo3-7B",
+"task": "Sentiment",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 38.673,
+"behavioral_control": 89.862
+},
+{
+"model": "OLMo3-7B",
+"task": "Sentiment",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 34.518,
+"behavioral_control": 91.047
+},
+{
+"model": "OLMo3-7B",
+"task": "Sentiment",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 39.146,
+"behavioral_control": 89.573
+},
+{
+"model": "OLMo3-7B",
+"task": "Sentiment",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 38.812,
+"behavioral_control": 91.286
+},
+{
+"model": "OLMo3-7B",
+"task": "Sentiment",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 34.337,
+"behavioral_control": 92.694
+},
+{
+"model": "OLMo3-7B",
+"task": "Politeness",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 39.417,
+"behavioral_control": 54.916
+},
+{
+"model": "OLMo3-7B",
+"task": "Politeness",
+"method": "Prompting",
+"operator": null,
+"general_capability": 39.291,
+"behavioral_control": 94.683
+},
+{
+"model": "OLMo3-7B",
+"task": "Politeness",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 38.947,
+"behavioral_control": 86.928
+},
+{
+"model": "OLMo3-7B",
+"task": "Politeness",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 37.584,
+"behavioral_control": 88.716
+},
+{
+"model": "OLMo3-7B",
+"task": "Politeness",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 34.192,
+"behavioral_control": 89.843
+},
+{
+"model": "OLMo3-7B",
+"task": "Politeness",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 39.063,
+"behavioral_control": 88.382
+},
+{
+"model": "OLMo3-7B",
+"task": "Politeness",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 36.731,
+"behavioral_control": 89.964
+},
+{
+"model": "OLMo3-7B",
+"task": "Politeness",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 34.428,
+"behavioral_control": 91.275
+},
+{
+"model": "OLMo3-7B",
+"task": "Boxed",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 48.263,
+"behavioral_control": 48.726
+},
+{
+"model": "OLMo3-7B",
+"task": "Boxed",
+"method": "Prompting",
+"operator": null,
+"general_capability": 48.191,
+"behavioral_control": 94.936
+},
+{
+"model": "OLMo3-7B",
+"task": "Boxed",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 47.846,
+"behavioral_control": 91.614
+},
+{
+"model": "OLMo3-7B",
+"task": "Boxed",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 45.428,
+"behavioral_control": 94.762
+},
+{
+"model": "OLMo3-7B",
+"task": "Boxed",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 43.174,
+"behavioral_control": 95.047
+},
+{
+"model": "OLMo3-7B",
+"task": "Boxed",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 47.972,
+"behavioral_control": 90.927
+},
+{
+"model": "OLMo3-7B",
+"task": "Boxed",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 47.563,
+"behavioral_control": 93.188
+},
+{
+"model": "OLMo3-7B",
+"task": "Boxed",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 43.326,
+"behavioral_control": 94.693
+},
+{
+"model": "OLMo3-7B",
+"task": "Answer-XX",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 48.263,
+"behavioral_control": 16.428
+},
+{
+"model": "OLMo3-7B",
+"task": "Answer-XX",
+"method": "Prompting",
+"operator": null,
+"general_capability": 45.147,
+"behavioral_control": 57.361
+},
+{
+"model": "OLMo3-7B",
+"task": "Answer-XX",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 45.734,
+"behavioral_control": 49.742
+},
+{
+"model": "OLMo3-7B",
+"task": "Answer-XX",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 46.381,
+"behavioral_control": 52.486
+},
+{
+"model": "OLMo3-7B",
+"task": "Answer-XX",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 40.062,
+"behavioral_control": 52.173
+},
+{
+"model": "OLMo3-7B",
+"task": "Answer-XX",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 44.891,
+"behavioral_control": 50.214
+},
+{
+"model": "OLMo3-7B",
+"task": "Answer-XX",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 44.496,
+"behavioral_control": 51.938
+},
+{
+"model": "OLMo3-7B",
+"task": "Answer-XX",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 41.241,
+"behavioral_control": 53.684
+},
+{
+"model": "Qwen3-14B",
+"task": "Safety",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 61.384,
+"behavioral_control": 65.792
+},
+{
+"model": "Qwen3-14B",
+"task": "Safety",
+"method": "Prompting",
+"operator": null,
+"general_capability": 61.276,
+"behavioral_control": 88.463
+},
+{
+"model": "Qwen3-14B",
+"task": "Safety",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 60.973,
+"behavioral_control": 92.481
+},
+{
+"model": "Qwen3-14B",
+"task": "Safety",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 58.527,
+"behavioral_control": 94.683
+},
+{
+"model": "Qwen3-14B",
+"task": "Safety",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 56.237,
+"behavioral_control": 96.142
+},
+{
+"model": "Qwen3-14B",
+"task": "Safety",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 61.086,
+"behavioral_control": 94.176
+},
+{
+"model": "Qwen3-14B",
+"task": "Safety",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 57.691,
+"behavioral_control": 94.027
+},
+{
+"model": "Qwen3-14B",
+"task": "Safety",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 56.418,
+"behavioral_control": 95.263
+},
+{
+"model": "Qwen3-14B",
+"task": "Sentiment",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 61.384,
+"behavioral_control": 51.286
+},
+{
+"model": "Qwen3-14B",
+"task": "Sentiment",
+"method": "Prompting",
+"operator": null,
+"general_capability": 61.247,
+"behavioral_control": 92.684
+},
+{
+"model": "Qwen3-14B",
+"task": "Sentiment",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 61.012,
+"behavioral_control": 84.572
+},
+{
+"model": "Qwen3-14B",
+"task": "Sentiment",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 60.583,
+"behavioral_control": 86.437
+},
+{
+"model": "Qwen3-14B",
+"task": "Sentiment",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 56.471,
+"behavioral_control": 87.692
+},
+{
+"model": "Qwen3-14B",
+"task": "Sentiment",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 61.103,
+"behavioral_control": 86.048
+},
+{
+"model": "Qwen3-14B",
+"task": "Sentiment",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 60.764,
+"behavioral_control": 87.581
+},
+{
+"model": "Qwen3-14B",
+"task": "Sentiment",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 56.192,
+"behavioral_control": 88.943
+},
+{
+"model": "Qwen3-14B",
+"task": "Politeness",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 61.384,
+"behavioral_control": 57.218
+},
+{
+"model": "Qwen3-14B",
+"task": "Politeness",
+"method": "Prompting",
+"operator": null,
+"general_capability": 61.298,
+"behavioral_control": 90.361
+},
+{
+"model": "Qwen3-14B",
+"task": "Politeness",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 60.847,
+"behavioral_control": 82.436
+},
+{
+"model": "Qwen3-14B",
+"task": "Politeness",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 60.493,
+"behavioral_control": 84.083
+},
+{
+"model": "Qwen3-14B",
+"task": "Politeness",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 56.308,
+"behavioral_control": 85.297
+},
+{
+"model": "Qwen3-14B",
+"task": "Politeness",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 61.037,
+"behavioral_control": 83.817
+},
+{
+"model": "Qwen3-14B",
+"task": "Politeness",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 60.624,
+"behavioral_control": 85.392
+},
+{
+"model": "Qwen3-14B",
+"task": "Politeness",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 56.087,
+"behavioral_control": 86.674
+},
+{
+"model": "Qwen3-14B",
+"task": "Boxed",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 78.416,
+"behavioral_control": 58.637
+},
+{
+"model": "Qwen3-14B",
+"task": "Boxed",
+"method": "Prompting",
+"operator": null,
+"general_capability": 78.352,
+"behavioral_control": 93.728
+},
+{
+"model": "Qwen3-14B",
+"task": "Boxed",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 78.031,
+"behavioral_control": 85.164
+},
+{
+"model": "Qwen3-14B",
+"task": "Boxed",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 76.587,
+"behavioral_control": 87.381
+},
+{
+"model": "Qwen3-14B",
+"task": "Boxed",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 73.284,
+"behavioral_control": 88.746
+},
+{
+"model": "Qwen3-14B",
+"task": "Boxed",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 78.142,
+"behavioral_control": 86.481
+},
+{
+"model": "Qwen3-14B",
+"task": "Boxed",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 76.739,
+"behavioral_control": 88.724
+},
+{
+"model": "Qwen3-14B",
+"task": "Boxed",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 73.461,
+"behavioral_control": 90.163
+},
+{
+"model": "Qwen3-14B",
+"task": "Answer-XX",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 78.416,
+"behavioral_control": 11.731
+},
+{
+"model": "Qwen3-14B",
+"task": "Answer-XX",
+"method": "Prompting",
+"operator": null,
+"general_capability": 76.298,
+"behavioral_control": 73.426
+},
+{
+"model": "Qwen3-14B",
+"task": "Answer-XX",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 75.947,
+"behavioral_control": 78.218
+},
+{
+"model": "Qwen3-14B",
+"task": "Answer-XX",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 75.516,
+"behavioral_control": 79.146
+},
+{
+"model": "Qwen3-14B",
+"task": "Answer-XX",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 71.173,
+"behavioral_control": 81.641
+},
+{
+"model": "Qwen3-14B",
+"task": "Answer-XX",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 77.086,
+"behavioral_control": 76.792
+},
+{
+"model": "Qwen3-14B",
+"task": "Answer-XX",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 76.684,
+"behavioral_control": 78.463
+},
+{
+"model": "Qwen3-14B",
+"task": "Answer-XX",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 73.392,
+"behavioral_control": 80.218
+},
+{
+"model": "OLMo3-32B",
+"task": "Safety",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 56.273,
+"behavioral_control": 25.174
+},
+{
+"model": "OLMo3-32B",
+"task": "Safety",
+"method": "Prompting",
+"operator": null,
+"general_capability": 56.186,
+"behavioral_control": 62.461
+},
+{
+"model": "OLMo3-32B",
+"task": "Safety",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 55.862,
+"behavioral_control": 87.946
+},
+{
+"model": "OLMo3-32B",
+"task": "Safety",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 53.428,
+"behavioral_control": 90.573
+},
+{
+"model": "OLMo3-32B",
+"task": "Safety",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 51.084,
+"behavioral_control": 94.184
+},
+{
+"model": "OLMo3-32B",
+"task": "Safety",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 55.947,
+"behavioral_control": 89.637
+},
+{
+"model": "OLMo3-32B",
+"task": "Safety",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 53.583,
+"behavioral_control": 92.138
+},
+{
+"model": "OLMo3-32B",
+"task": "Safety",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 51.296,
+"behavioral_control": 96.527
+},
+{
+"model": "OLMo3-32B",
+"task": "Sentiment",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 56.273,
+"behavioral_control": 60.618
+},
+{
+"model": "OLMo3-32B",
+"task": "Sentiment",
+"method": "Prompting",
+"operator": null,
+"general_capability": 56.142,
+"behavioral_control": 89.681
+},
+{
+"model": "OLMo3-32B",
+"task": "Sentiment",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 55.814,
+"behavioral_control": 79.236
+},
+{
+"model": "OLMo3-32B",
+"task": "Sentiment",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 55.397,
+"behavioral_control": 81.047
+},
+{
+"model": "OLMo3-32B",
+"task": "Sentiment",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 51.326,
+"behavioral_control": 82.281
+},
+{
+"model": "OLMo3-32B",
+"task": "Sentiment",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 55.926,
+"behavioral_control": 80.693
+},
+{
+"model": "OLMo3-32B",
+"task": "Sentiment",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 55.534,
+"behavioral_control": 82.378
+},
+{
+"model": "OLMo3-32B",
+"task": "Sentiment",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 51.071,
+"behavioral_control": 83.816
+},
+{
+"model": "OLMo3-32B",
+"task": "Politeness",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 56.273,
+"behavioral_control": 55.638
+},
+{
+"model": "OLMo3-32B",
+"task": "Politeness",
+"method": "Prompting",
+"operator": null,
+"general_capability": 56.197,
+"behavioral_control": 83.842
+},
+{
+"model": "OLMo3-32B",
+"task": "Politeness",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 55.726,
+"behavioral_control": 78.147
+},
+{
+"model": "OLMo3-32B",
+"task": "Politeness",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 53.348,
+"behavioral_control": 79.684
+},
+{
+"model": "OLMo3-32B",
+"task": "Politeness",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 51.247,
+"behavioral_control": 80.917
+},
+{
+"model": "OLMo3-32B",
+"task": "Politeness",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 55.893,
+"behavioral_control": 79.526
+},
+{
+"model": "OLMo3-32B",
+"task": "Politeness",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 54.491,
+"behavioral_control": 81.143
+},
+{
+"model": "OLMo3-32B",
+"task": "Politeness",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 50.984,
+"behavioral_control": 82.318
+},
+{
+"model": "OLMo3-32B",
+"task": "Boxed",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 68.271,
+"behavioral_control": 57.864
+},
+{
+"model": "OLMo3-32B",
+"task": "Boxed",
+"method": "Prompting",
+"operator": null,
+"general_capability": 68.214,
+"behavioral_control": 86.218
+},
+{
+"model": "OLMo3-32B",
+"task": "Boxed",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 67.846,
+"behavioral_control": 80.794
+},
+{
+"model": "OLMo3-32B",
+"task": "Boxed",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 66.419,
+"behavioral_control": 82.917
+},
+{
+"model": "OLMo3-32B",
+"task": "Boxed",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 63.137,
+"behavioral_control": 84.206
+},
+{
+"model": "OLMo3-32B",
+"task": "Boxed",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 67.983,
+"behavioral_control": 82.137
+},
+{
+"model": "OLMo3-32B",
+"task": "Boxed",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 66.572,
+"behavioral_control": 84.263
+},
+{
+"model": "OLMo3-32B",
+"task": "Boxed",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 63.326,
+"behavioral_control": 85.718
+},
+{
+"model": "OLMo3-32B",
+"task": "Answer-XX",
+"method": "Unsteered",
+"operator": null,
+"general_capability": 68.271,
+"behavioral_control": 8.482
+},
+{
+"model": "OLMo3-32B",
+"task": "Answer-XX",
+"method": "Prompting",
+"operator": null,
+"general_capability": 65.163,
+"behavioral_control": 65.593
+},
+{
+"model": "OLMo3-32B",
+"task": "Answer-XX",
+"method": "Prefix-1",
+"operator": "Additive",
+"general_capability": 64.738,
+"behavioral_control": 69.946
+},
+{
+"model": "OLMo3-32B",
+"task": "Answer-XX",
+"method": "Prefix-5",
+"operator": "Additive",
+"general_capability": 64.384,
+"behavioral_control": 71.728
+},
+{
+"model": "OLMo3-32B",
+"task": "Answer-XX",
+"method": "Full",
+"operator": "Additive",
+"general_capability": 60.048,
+"behavioral_control": 73.194
+},
+{
+"model": "OLMo3-32B",
+"task": "Answer-XX",
+"method": "Prefix-1",
+"operator": "COAST",
+"general_capability": 64.914,
+"behavioral_control": 71.438
+},
+{
+"model": "OLMo3-32B",
+"task": "Answer-XX",
+"method": "Prefix-5",
+"operator": "COAST",
+"general_capability": 65.493,
+"behavioral_control": 73.063
+},
+{
+"model": "OLMo3-32B",
+"task": "Answer-XX",
+"method": "Full",
+"operator": "COAST",
+"general_capability": 59.257,
+"behavioral_control": 74.691
+}
+]
+}
