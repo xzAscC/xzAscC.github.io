@@ -107,7 +107,8 @@ end
 publication_pages = Dir.glob(site_file('publications/*/index.html')).reject do |path|
   File.read(path).include?('http-equiv="refresh"')
 end
-assert publication_pages.length == 5, "Expected 5 publication detail pages, found #{publication_pages.length}"
+# Prefix Steering has no detail page; its URL redirects to the project page.
+assert publication_pages.length == 4, "Expected 4 publication detail pages, found #{publication_pages.length}"
 publication_html = publication_pages.map { |path| CGI.unescapeHTML(File.read(path)) }
 
 paper_titles = [
@@ -192,7 +193,9 @@ assert publication_html.all? { |html| html.match?(/class="[^"]*\bpublication-det
        'Publication detail pages must expose a scoped title style hook'
 
 Dir.glob(File.join(ROOT, '_publications', '*.md')).each do |source|
-  title = File.read(source)[/^title:\s*["']?(.*?)["']?\s*$/, 1]
+  front = File.read(source)
+  next if front.match?(/^redirect_to:/)
+  title = front[/^title:\s*["']?(.*?)["']?\s*$/, 1]
   detail_exists = title && publication_html.any? { |html| html.include?(title) }
   assert detail_exists, "Missing publication detail page for: #{title || source}"
 end

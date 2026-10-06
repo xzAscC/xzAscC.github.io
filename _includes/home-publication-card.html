@@ -22,7 +22,7 @@
     </p>
 
     <h3 class="home-publication-card__title" itemprop="headline">
-      <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title | markdownify | remove: "<p>" | remove: "</p>" }}</a>
+      <a href="{% if post.projecturl %}{{ post.projecturl | relative_url }}{% else %}{{ base_path }}{{ post.url }}{% endif %}" rel="permalink">{{ post.title | markdownify | remove: "<p>" | remove: "</p>" }}</a>
     </h3>
 
     <p class="home-publication-card__authors">

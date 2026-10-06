@@ -66,7 +66,7 @@
       {% if equal_authors.size > 0 or corresponding_authors.size > 0 %}<p class="project-author-notes">{% if equal_authors.size > 0 %}<span>* Equal contribution</span>{% endif %}{% if corresponding_authors.size > 0 %}<span>† Corresponding author</span>{% endif %}</p>{% endif %}
       {% if page.status %}<p class="project-status">{{ page.status | escape }}</p>{% endif %}
       <div class="project-resources">
-        {% for resource in page.resources %}{% capture icon %}{% include project-icon.html name=resource.icon %}{% endcapture %}{% assign icon = icon | strip %}{% if resource.pending %}<span class="project-resource project-resource--pending" aria-disabled="true">{{ icon }}{{ resource.label | escape }} <small>In progress</small></span>{% else %}{% if resource.url contains '://' %}{% assign external = true %}{% else %}{% assign external = false %}{% endif %}<a class="project-resource{% if forloop.first %} project-resource--primary{% endif %}" href="{% if external %}{{ resource.url | escape }}{% else %}{{ resource.url | relative_url }}{% endif %}">{{ icon }}{{ resource.label | escape }}{% if external %} <span aria-hidden="true">↗</span>{% endif %}</a>{% endif %}{% endfor %}
+        {% for resource in page.resources %}{% capture icon %}{% include project-icon.html name=resource.icon %}{% endcapture %}{% assign icon = icon | strip %}{% if resource.pending %}<span class="project-resource project-resource--pending" aria-disabled="true">{{ icon }}{{ resource.label | escape }} <small>In progress</small></span>{% else %}{% if resource.url contains '://' %}{% assign external = true %}{% else %}{% assign external = false %}{% endif %}<a class="project-resource{% if forloop.first %} project-resource--primary{% endif %}" href="{% if external %}{{ resource.url | escape }}{% else %}{{ resource.url | relative_url }}{% endif %}">{{ icon }}{{ resource.label | escape }}{% if external %} <span aria-hidden="true">↗</span>{% endif %}</a>{% endif %}{% endfor %}{% if page.bibtex %}{% capture icon %}{% include project-icon.html name='cite' %}{% endcapture %}<a class="project-resource" href="#citation" data-copy-citation>{{ icon | strip }}<span data-copy-label>BibTeX</span></a>{% endif %}
       </div>
       {% if page.tldr %}<div class="project-tldr"><span class="project-tldr__label">TL;DR</span><p>{{ page.tldr | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p></div>{% endif %}
     </header>
@@ -85,7 +85,7 @@
     </section>{% endif %}
     {% if page.bibtex %}<section id="citation" class="project-section">
       <h2>Citation</h2>
-      <div class="project-citation"><button type="button" data-copy-citation hidden>Copy BibTeX</button><pre><code id="project-bibtex">{{ page.bibtex | escape }}</code></pre></div>
+      <div class="project-citation"><button type="button" data-copy-citation hidden><span data-copy-label>Copy BibTeX</span></button><pre><code id="project-bibtex">{{ page.bibtex | escape }}</code></pre></div>
       <p class="project-copy-status" role="status" aria-live="polite"></p>
     </section>{% endif %}
   </main>

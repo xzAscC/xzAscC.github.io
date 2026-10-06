@@ -15,6 +15,9 @@ pdfurl: /files/papers/prefix-steering.pdf
 codeurl: https://github.com/xzAscC/Prefix
 projecturl: /projects/prefix-steering/
 permalink: /publications/prefix-steering/
+# No standalone page: the old URL redirects and listings link the project page.
+redirect_to: /projects/prefix-steering/
+sitemap: false
 bibtex: |
   @misc{zhu2026tokenenoughbridgingprompting,
         title={One Token Can Be Enough: Bridging Prompting and Activation Steering with Prefix Steering},

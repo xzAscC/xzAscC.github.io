@@ -1,16 +1,24 @@
-const copyButton = document.querySelector('[data-copy-citation]');
-if (copyButton && navigator.clipboard) {
-  copyButton.hidden = false;
-  copyButton.addEventListener('click', async () => {
-    const status = document.querySelector('.project-copy-status');
+// Copy the BibTeX from the hero link or the citation box. Without clipboard
+// access the hero link falls back to jumping to the citation section.
+const copyStatus = document.querySelector('.project-copy-status');
+document.querySelectorAll('[data-copy-citation]').forEach((control) => {
+  if (!navigator.clipboard) return;
+  control.hidden = false;
+  const label = control.querySelector('[data-copy-label]');
+  const text = label.textContent;
+  control.addEventListener('click', async (event) => {
+    event.preventDefault();
     try {
       await navigator.clipboard.writeText(document.querySelector('#project-bibtex').textContent.trim());
-      status.textContent = 'BibTeX copied.';
+      label.textContent = 'Copied';
+      copyStatus.textContent = 'BibTeX copied.';
+      setTimeout(() => { label.textContent = text; }, 1600);
     } catch (error) {
-      status.textContent = 'Select the citation text to copy it.';
+      copyStatus.textContent = 'Select the citation text to copy it.';
+      if (control.hash) location.hash = control.hash;
     }
   });
-}
+});
 
 // Switch themes; the choice is saved under the same key as the rest of the site.
 const themeToggle = document.querySelector('[data-theme-toggle]');

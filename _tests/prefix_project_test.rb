@@ -9,6 +9,10 @@ home = CGI.unescapeHTML(File.read(File.join(SITE, 'index.html')))
 title = 'One Token Can Be Enough: Bridging Prompting and Activation Steering with Prefix Steering'
 assert page.include?(title) && listing.include?(title), 'Paper must be present in project and publications pages'
 assert listing.include?('/projects/prefix-steering/'), 'Publication must link the project page'
+assert listing.include?('href="/projects/prefix-steering/" rel="permalink"'), 'Paper title must open the project page'
+detail = File.read(File.join(SITE, 'publications/prefix-steering/index.html'))
+assert detail.include?('http-equiv="refresh"') && detail.include?('/projects/prefix-steering/'), 'Old publication URL must redirect to the project page'
+assert page.include?('class="project-resource" href="#citation" data-copy-citation'), 'Hero offers a BibTeX copy link'
 assert page.include?('href="https://zhihuizhu.github.io/">Zhihui Zhu</a>'), 'Zhihui Zhu must link to his homepage'
 assert page.include?('Zhihui Zhu') && page.include?('Xudong Zhu'), 'Project must credit both authors'
 assert page.include?('fixed-state') && page.include?('often'), 'Project must preserve the scope of the paper claims'
