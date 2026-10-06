@@ -12,11 +12,12 @@ Welcome to my personal academic website repository! This site showcases my resea
 I am a PhD student in Computer Science at The Ohio State University, advised by Prof. [Zhihui Zhu](https://zhihuizhu.github.io/). My research studies how large language models represent concepts and how these representations evolve during generation and training.
 
 - **Concept representations:** linear structure and bidirectional features, including AbsTopK (ICLR 2026).
-- **Generation dynamics:** self-reflection and behavioral steering (TMLR 2026), with ongoing work on [Prefix Steering](https://github.com/xzAscC/RobustDiM-PrefixSteering).
+- **Generation dynamics:** self-reflection and behavioral steering (TMLR 2026), and [Prefix Steering](https://arxiv.org/abs/2610.04967) (arXiv 2026).
 - **Training dynamics:** how SFT and RL reshape representations, investigated in [Post-training Dynamics](https://github.com/xzAscC/PostDyn).
 
 ## 🔬 Publications
 
+- **One Token Can Be Enough: Bridging Prompting and Activation Steering with Prefix Steering** (arXiv 2026)
 - **AbsTopK: Rethinking Sparse Autoencoders for Bidirectional Features** (ICLR 2026)
 - **From Emergence to Control: Probing and Modulating Self-Reflection in Language Models** (TMLR 2026)
 - **Alleviating Subgraph-Induced Oversmoothing in Link Prediction via Coarse Graining** (Neurocomputing 2025)

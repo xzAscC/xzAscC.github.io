@@ -57,8 +57,8 @@
             },
             {
               "title": "Prefix Steering",
-              "status": "ongoing",
-              "url": "https://github.com/xzAscC/RobustDiM-PrefixSteering"
+              "status": "arXiv 2026",
+              "url": "https://xudongzhu.com/projects/prefix-steering/"
             }
           ]
         },
@@ -118,6 +118,13 @@
     }
   ],
   "publications": [
+    {
+      "name": "One Token Can Be Enough: Bridging Prompting and Activation Steering with Prefix Steering",
+      "publisher": "arXiv 2026",
+      "releaseDate": "2026-10-04",
+      "website": "https://arxiv.org/abs/2610.04967",
+      "summary": "Bridging prompting and activation steering, short initial interventions often retain much of full steering’s behavioral control while better preserving general capabilities."
+    },
     {
       "name": "AbsTopK: Rethinking Sparse Autoencoders For Bidirectional Features",
       "publisher": "ICLR 2026",
