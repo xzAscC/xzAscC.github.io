@@ -1,0 +1,27 @@
+images/logo-light.svg
+  s_8ecae3c9f9cda3::t_1455fe0be1a4be 1-15
+images/manifest.json
+  s_8ecae3c9f9cda3::t_4cb72cbf4106df 2
+images/logo-dark.svg
+  s_8ecae3c9f9cda3::t_1455fe0be1a4be 1-15
+images/favicon.svg
+  s_8ecae3c9f9cda3::t_1455fe0be1a4be 1-19
+_includes/head/custom.html
+  s_8ecae3c9f9cda3::t_4cb72cbf4106df 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "99dc2fb49ec90fe0f2fe6f97d162b91b127c70cc",
+  "prompts": {},
+  "sessions": {
+    "s_8ecae3c9f9cda3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d8d99ccb-c7f2-4f9a-8303-574bfffd95db",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
