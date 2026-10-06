@@ -1,8 +1,6 @@
 ---
 layout: project
 permalink: /projects/prefix-steering/
-sitemap: false
-noindex: true
 project_name: Prefix Steering
 title: "One Token Can Be Enough: Bridging Prompting and Activation Steering with Prefix Steering"
 hero_title: "One Token Can Be Enough"
@@ -11,7 +9,7 @@ subtitle: |-
   with Prefix Steering
 description: "Bridging prompting and activation steering, short initial interventions often retain much of full steering’s behavioral control while better preserving general capabilities."
 tldr: "Like a prompt, a brief steering intervention at the start can **shape what follows**. Prefix Steering, even over a single token, often retains much of full steering’s control while better preserving general capabilities."
-status: "In submission · 2026"
+status: "arXiv preprint · 2026"
 toc: true
 katex: true
 accent: "#a83024"
@@ -46,7 +44,7 @@ resources:
     url: https://github.com/xzAscC/Prefix
   - label: arXiv
     icon: arxiv
-    pending: true
+    url: https://arxiv.org/abs/2610.04967
   - label: Thread
     icon: thread
     pending: true
@@ -60,7 +58,17 @@ footer_logo:
   light: /images/logo-light.svg
   dark: /images/logo-dark.svg
 favicon: /images/favicon.svg
-bibtex:
+bibtex: |
+  @article{zhu2026prefix,
+    title         = {One Token Can Be Enough: Bridging Prompting and Activation Steering with Prefix Steering},
+    author        = {Zhu, Xudong and Zhu, Zhihui},
+    journal       = {arXiv preprint arXiv:2610.04967},
+    year          = {2026},
+    eprint        = {2610.04967},
+    archivePrefix = {arXiv},
+    primaryClass  = {cs.LG},
+    url           = {https://arxiv.org/abs/2610.04967}
+  }
 ---
 
 {% assign duration = site.data.prefix_duration %}

@@ -13,10 +13,10 @@ assert page.include?('href="https://zhihuizhu.github.io/">Zhihui Zhu</a>'), 'Zhi
 assert page.include?('Zhihui Zhu') && page.include?('Xudong Zhu'), 'Project must credit both authors'
 assert page.include?('fixed-state') && page.include?('often'), 'Project must preserve the scope of the paper claims'
 assert !page.include?('2601.00000') && !page.include?('your-project'), 'Project must not retain template placeholders'
-assert !page.include?('arxiv.org/abs/'), 'Do not invent an arXiv identifier before publication'
-assert page.include?('noindex, nofollow'), 'Local preview must stay unindexed'
+assert page.include?('https://arxiv.org/abs/2610.04967') && listing.include?('https://arxiv.org/abs/2610.04967'), 'Link the arXiv paper from the project and publications pages'
+assert !page.include?('noindex, nofollow'), 'Published paper page should be indexable'
 assert page.include?('data-theme-toggle'), 'Keep the template theme switch'
-assert !page.include?('id="citation"') && !page.include?('href="#citation"'), 'Leave citation empty until the arXiv submission'
+assert page.include?('id="citation"') && page.include?('eprint        = {2610.04967}'), 'Cite the arXiv submission'
 page.scan(/(?:href|src)="(\/[^"]+)"/).flatten.each do |url|
   path = url.split(/[?#]/).first
   path += 'index.html' if path.end_with?('/')
@@ -27,8 +27,8 @@ nav.scan(/href="#([\w-]+)"/).flatten.each do |id|
   assert page.include?(%(id="#{id}")), "Missing navigation target: #{id}"
 end
 working = home[%r{<section class="showcase-section showcase-section--preprints".*?</section>}m]
-assert working && working.include?(title), 'Unpublished manuscript belongs in working papers'
-assert !home[%r{<section class="showcase-section showcase-section--publications".*?</section>}m].include?(title), 'Manuscript must not be labeled peer reviewed'
+assert working && working.include?(title), 'arXiv preprint belongs in preprints'
+assert !home[%r{<section class="showcase-section showcase-section--publications".*?</section>}m].include?(title), 'Preprint must not be labeled peer reviewed'
 
 assert !page.include?('class="project-eyebrow"'), 'Prefix page should omit the template status label'
 authors = page[%r{<ul class="project-authors".*?</ul>}m]
