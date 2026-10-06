@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<title>Xudong Zhu</title>
+<rect width="100" height="100" rx="24" fill="#c8453a"/>
+<path d="M17 33.5Q22.25 22.25 33.5 17M33.5 33.5Q38.75 22.25 50 17M50 33.5Q55.25 22.25 66.5 17M66.5 33.5Q71.75 22.25 83 17M17 50Q22.25 38.75 33.5 33.5M33.5 50Q38.75 38.75 50 33.5M50 50Q55.25 38.75 66.5 33.5M66.5 50Q71.75 38.75 83 33.5M17 66.5Q22.25 55.25 33.5 50M33.5 66.5Q38.75 55.25 50 50M50 66.5Q55.25 55.25 66.5 50M66.5 66.5Q71.75 55.25 83 50M17 83Q22.25 71.75 33.5 66.5M33.5 83Q38.75 71.75 50 66.5M50 83Q55.25 71.75 66.5 66.5M66.5 83Q71.75 71.75 83 66.5" fill="none" stroke="#fff7f2" stroke-width=".8" opacity=".3"/>
+<path d="M17 17V83M33.5 17V83M50 17V83M66.5 17V83M83 17V83" stroke="#fff7f2" stroke-width="1.2" opacity=".25"/>
+<g fill="#fff7f2" opacity=".32"><rect x="14.00" y="14.00" width="6" height="6" rx="1.6"/><rect x="14.00" y="30.50" width="6" height="6" rx="1.6"/><rect x="14.00" y="47.00" width="6" height="6" rx="1.6"/><rect x="14.00" y="63.50" width="6" height="6" rx="1.6"/><rect x="30.50" y="14.00" width="6" height="6" rx="1.6"/><rect x="30.50" y="63.50" width="6" height="6" rx="1.6"/><rect x="47.00" y="14.00" width="6" height="6" rx="1.6"/><rect x="47.00" y="63.50" width="6" height="6" rx="1.6"/><rect x="63.50" y="14.00" width="6" height="6" rx="1.6"/><rect x="63.50" y="30.50" width="6" height="6" rx="1.6"/><rect x="63.50" y="47.00" width="6" height="6" rx="1.6"/><rect x="80.00" y="14.00" width="6" height="6" rx="1.6"/><rect x="80.00" y="30.50" width="6" height="6" rx="1.6"/><rect x="80.00" y="47.00" width="6" height="6" rx="1.6"/><rect x="80.00" y="63.50" width="6" height="6" rx="1.6"/></g>
+<g fill="#fff7f2" opacity=".6"><rect x="14.00" y="80.00" width="6" height="6" rx="1.6"/><rect x="30.50" y="80.00" width="6" height="6" rx="1.6"/><rect x="47.00" y="80.00" width="6" height="6" rx="1.6"/><rect x="63.50" y="80.00" width="6" height="6" rx="1.6"/></g>
+<circle cx="41.5" cy="41.5" r="20" fill="#c8453a"/>
+<path d="M34.0 34.0L49.0 49.0" stroke="#fff7f2" stroke-width="2.2" opacity=".5"/>
+<path d="M34.0 34.0L49.0 34.0L34.0 49.0L49.0 49.0" fill="none" stroke="#fff7f2" stroke-width="3" stroke-linejoin="round"/>
+<g fill="#fff7f2"><rect x="31.00" y="31.00" width="6" height="6" rx="1.6"/><rect x="46.00" y="31.00" width="6" height="6" rx="1.6"/><rect x="31.00" y="46.00" width="6" height="6" rx="1.6"/><rect x="46.00" y="46.00" width="6" height="6" rx="1.6"/></g><circle cx="41.5" cy="41.5" r="20" fill="none" stroke="#c8453a" stroke-width="10"/>
+<path d="M56.5 56.5L80 80" stroke="#c8453a" stroke-width="14" stroke-linecap="round"/>
+<circle cx="41.5" cy="41.5" r="20" fill="none" stroke="#fff7f2" stroke-width="5"/>
+<path d="M56.5 56.5L80 80" stroke="#fff7f2" stroke-width="9" stroke-linecap="round"/>
+</svg>
