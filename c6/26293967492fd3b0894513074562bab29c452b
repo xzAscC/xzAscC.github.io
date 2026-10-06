@@ -1,0 +1,30 @@
+.claude/skills/paper-release/SKILL.md
+  s_2d8d1d675c94a0::t_b6f51e47a1c142 1-42
+.claude/skills/project-page/SKILL.md
+  s_2d8d1d675c94a0::t_afad78e4490f63 1-38
+.claude/skills/web-figures/SKILL.md
+  s_2d8d1d675c94a0::t_478e41bc44dd5b 1-57
+.claude/skills/site-verify/SKILL.md
+  s_2d8d1d675c94a0::t_a3bb72eed91e26 1-49
+.claude/skills/site-verify/scripts/shoot.mjs
+  s_2d8d1d675c94a0::t_ea572030a1f7c2 1-45,48-80
+  s_2d8d1d675c94a0::t_db50b2d90adf70 46-47
+.agents/skills
+  s_2d8d1d675c94a0::t_6c0dee854e852b 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c626293967492fd3b0894513074562bab29c452b",
+  "prompts": {},
+  "sessions": {
+    "s_2d8d1d675c94a0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6d333e70-e008-4e9d-a671-7ce221460853",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
