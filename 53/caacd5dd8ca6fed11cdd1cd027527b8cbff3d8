@@ -1,0 +1,39 @@
+_includes/project-icon.html
+  s_b35c99097b74f0::t_2b0158434d253e 1
+_includes/home-publication-card.html
+  s_b35c99097b74f0::t_e9ab5113f5a001 25
+_includes/publication-card.html
+  s_b35c99097b74f0::t_e9ab5113f5a001 16
+_includes/cv-template.html
+  s_b35c99097b74f0::t_e9ab5113f5a001 95
+_publications/2026-10-02-prefix-steering.md
+  s_b35c99097b74f0::t_e9ab5113f5a001 18-20
+_tests/prefix_project_test.rb
+  s_b35c99097b74f0::t_e9ab5113f5a001 12-15
+assets/js/project.js
+  s_b35c99097b74f0::t_2b0158434d253e 1-10,13-15,17-18,21
+_layouts/project.html
+  s_b35c99097b74f0::t_2b0158434d253e 69,88
+assets/css/project.scss
+  s_b35c99097b74f0::t_53d4e413a35d61 114,126
+  s_b35c99097b74f0::t_2b0158434d253e 112-113
+_tests/structural_content_test.rb
+  s_b35c99097b74f0::t_2fbd7d52230aa7 196-198
+  s_b35c99097b74f0::t_966a98bc602f87 110-111
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "53caacd5dd8ca6fed11cdd1cd027527b8cbff3d8",
+  "prompts": {},
+  "sessions": {
+    "s_b35c99097b74f0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "63ff4385-4bcd-41f1-b883-844ac3de119c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
