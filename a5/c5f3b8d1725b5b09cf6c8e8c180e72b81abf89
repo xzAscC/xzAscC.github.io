@@ -1,0 +1,23 @@
+_publications/2026-10-02-prefix-steering.md
+  s_b35c99097b74f0::t_6b7e402e6e681c 19-26
+_tests/prefix_project_test.rb
+  s_b35c99097b74f0::t_6b7e402e6e681c 19
+_pages/prefix-steering.md
+  s_b35c99097b74f0::t_6b7e402e6e681c 62-69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a5c5f3b8d1725b5b09cf6c8e8c180e72b81abf89",
+  "prompts": {},
+  "sessions": {
+    "s_b35c99097b74f0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "63ff4385-4bcd-41f1-b883-844ac3de119c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
