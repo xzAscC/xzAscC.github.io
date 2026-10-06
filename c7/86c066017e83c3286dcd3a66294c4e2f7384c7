@@ -1,0 +1,19 @@
+_pages/prefix-steering.md
+  s_ef6756d2a8b3d4::t_738edc10e496ed 271,280,291,302
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c786c066017e83c3286dcd3a66294c4e2f7384c7",
+  "prompts": {},
+  "sessions": {
+    "s_ef6756d2a8b3d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5f85a60c-0d09-4c53-8ffb-dd22ca96462d",
+        "model": "unknown"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
