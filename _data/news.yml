@@ -1,4 +1,6 @@
 # Homepage news, newest first. `date` is shown as written; `text` accepts Markdown.
+- date: Oct 2026
+  text: Released [One Token Can Be Enough](/projects/prefix-steering/) on **arXiv**, studying Prefix Steering, which steers only a short initial span of generation.
 - date: 2026
   text: Received the **MMLS 2026 Travel Award** from the [Midwest Machine Learning Symposium](https://midwest-ml.org/2026/).
 - date: Jan 2026
