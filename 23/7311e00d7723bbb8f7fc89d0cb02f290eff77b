@@ -1,0 +1,19 @@
+_data/news.yml
+  s_b35c99097b74f0::t_4dfa39ba62ae61 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "237311e00d7723bbb8f7fc89d0cb02f290eff77b",
+  "prompts": {},
+  "sessions": {
+    "s_b35c99097b74f0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "63ff4385-4bcd-41f1-b883-844ac3de119c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
