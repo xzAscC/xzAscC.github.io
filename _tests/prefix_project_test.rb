@@ -16,7 +16,7 @@ assert !page.include?('2601.00000') && !page.include?('your-project'), 'Project 
 assert page.include?('https://arxiv.org/abs/2610.04967') && listing.include?('https://arxiv.org/abs/2610.04967'), 'Link the arXiv paper from the project and publications pages'
 assert !page.include?('noindex, nofollow'), 'Published paper page should be indexable'
 assert page.include?('data-theme-toggle'), 'Keep the template theme switch'
-assert page.include?('id="citation"') && page.include?('eprint        = {2610.04967}'), 'Cite the arXiv submission'
+assert page.include?('id="citation"') && page.include?('eprint={2610.04967}'), 'Cite the arXiv submission'
 page.scan(/(?:href|src)="(\/[^"]+)"/).flatten.each do |url|
   path = url.split(/[?#]/).first
   path += 'index.html' if path.end_with?('/')

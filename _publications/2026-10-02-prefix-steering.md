@@ -16,15 +16,14 @@ codeurl: https://github.com/xzAscC/Prefix
 projecturl: /projects/prefix-steering/
 permalink: /publications/prefix-steering/
 bibtex: |
-  @article{zhu2026prefix,
-    title         = {One Token Can Be Enough: Bridging Prompting and Activation Steering with Prefix Steering},
-    author        = {Zhu, Xudong and Zhu, Zhihui},
-    journal       = {arXiv preprint arXiv:2610.04967},
-    year          = {2026},
-    eprint        = {2610.04967},
-    archivePrefix = {arXiv},
-    primaryClass  = {cs.LG},
-    url           = {https://arxiv.org/abs/2610.04967}
+  @misc{zhu2026tokenenoughbridgingprompting,
+        title={One Token Can Be Enough: Bridging Prompting and Activation Steering with Prefix Steering},
+        author={Xudong Zhu and Zhihui Zhu},
+        year={2026},
+        eprint={2610.04967},
+        archivePrefix={arXiv},
+        primaryClass={cs.LG},
+        url={https://arxiv.org/abs/2610.04967},
   }
 ---
 
