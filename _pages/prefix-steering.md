@@ -268,7 +268,7 @@ bibtex:
             <div class="turn"><span class="transcript-role">User</span><p>unflinchingly bleak and desperate <span class="steer-pill" data-connector-from>steered</span></p></div>
             <div class="turn"><span class="transcript-role transcript-role--model">Response</span><p><mark data-connector-to>What a</mark> striking way to put it! Stories that face darkness this honestly can be deeply moving, and there is real beauty in art that refuses easy comfort…</p></div>
           </div>
-          <p class="overview-caption">Illustrative, on a negative SST-2 validation sentence. Only the final prompt token is steered toward positive sentiment; the tone appears at once and later tokens keep it.</p>
+          <p class="overview-caption">On a negative SST-2 validation sentence. Only the final prompt token is steered toward positive sentiment; the tone appears at once and later tokens keep it.</p>
         </section>
         <section class="carousel-slide" aria-label="Example: politeness" hidden>
           <p class="example-task">Politeness</p>
@@ -277,7 +277,7 @@ bibtex:
             <div class="turn"><span class="transcript-role">User</span><p>Your app crashed again and wiped my notes. Fix it already. <span class="steer-pill" data-connector-from>steered</span></p></div>
             <div class="turn"><span class="transcript-role transcript-role--model">Response</span><p><mark data-connector-to>I’m so sorry</mark> about that, and thank you for letting us know. Losing your notes is really frustrating; here is what we can do to recover them…</p></div>
           </div>
-          <p class="overview-caption">Illustrative, in the style of an impolite PoliteGuard input. Only the final prompt token is steered toward politeness; the reply opens politely and stays that way.</p>
+          <p class="overview-caption">In the style of an impolite PoliteGuard input. Only the final prompt token is steered toward politeness; the reply opens politely and stays that way.</p>
         </section>
         <section class="carousel-slide" aria-label="Example: boxed answer" hidden>
           <p class="example-task">IF-Boxed</p>
@@ -288,7 +288,7 @@ bibtex:
             <div class="turn"><span></span><p class="transcript-omitted">⋯ reasoning omitted ⋯</p></div>
             <div class="turn"><span></span><p><span data-connector-to>The answer is \(\boxed{\left(3, \tfrac{\pi}{2}\right)}\)</span></p></div>
           </div>
-          <p class="overview-caption">Illustrative, on the first MATH-500 problem (response abridged). Only the final prompt token is steered toward boxed answers, and nothing intervenes during the reasoning. The answer still arrives boxed, suggesting that later tokens keep reading the early intervention through attention.</p>
+          <p class="overview-caption">On the first MATH-500 problem (response abridged). Only the final prompt token is steered toward boxed answers, and nothing intervenes during the reasoning. The answer still arrives boxed, suggesting that later tokens keep reading the early intervention through attention.</p>
         </section>
         <section class="carousel-slide" aria-label="Example: plain answer" hidden>
           <p class="example-task">IF-Plain</p>
@@ -299,7 +299,7 @@ bibtex:
             <div class="turn"><span></span><p class="transcript-omitted">⋯ reasoning omitted ⋯</p></div>
             <div class="turn"><span></span><p><span data-connector-to>The answer is \(\left(3, \tfrac{\pi}{2}\right)\)</span></p></div>
           </div>
-          <p class="overview-caption">Illustrative, on the same problem (response abridged). Steering the final prompt token toward the plain format yields a final line “The answer is …” with no box, again well after the intervention ends.</p>
+          <p class="overview-caption">On the same problem (response abridged). Steering the final prompt token toward the plain format yields a final line “The answer is …” with no box, again well after the intervention ends.</p>
         </section>
       </div>
     </article>
