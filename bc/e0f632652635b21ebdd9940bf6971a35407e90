@@ -1,0 +1,20 @@
+_layouts/project.html
+  s_b35c99097b74f0::t_30bf10511a7074 69
+  s_b35c99097b74f0::t_400f7bc78e03dc 70
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bce0f632652635b21ebdd9940bf6971a35407e90",
+  "prompts": {},
+  "sessions": {
+    "s_b35c99097b74f0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "63ff4385-4bcd-41f1-b883-844ac3de119c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
