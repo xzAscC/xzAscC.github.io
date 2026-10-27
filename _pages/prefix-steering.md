@@ -284,7 +284,7 @@ bibtex: |
             <div class="turn"><span class="transcript-role">User</span><p>Your app crashed again and wiped my notes. Fix it already. <span class="steer-pill" data-connector-from>steered</span></p></div>
             <div class="turn"><span class="transcript-role transcript-role--model">Response</span><p><mark data-connector-to>I’m so sorry</mark> about that, and thank you for letting us know. Losing your notes is really frustrating; here is what we can do to recover them…</p></div>
           </div>
-          <p class="overview-caption">In the style of an impolite PoliteGuard input. Only the final prompt token is steered toward politeness; the reply opens politely and stays that way.</p>
+          <p class="overview-caption">On an impolite PoliteGuard input. Only the final prompt token is steered toward politeness; the reply opens politely and stays that way.</p>
         </section>
         <section class="carousel-slide" aria-label="Example: boxed answer" hidden>
           <p class="example-task">IF-Boxed</p>
