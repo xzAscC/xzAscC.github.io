@@ -1,0 +1,19 @@
+_pages/prefix-steering.md
+  s_8458f9c3870b17::t_70c2086a36e7eb 287
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ba4e2ea9057af785804fc91763484aa55f9220f8",
+  "prompts": {},
+  "sessions": {
+    "s_8458f9c3870b17": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2c8d8482-b2b4-44e6-ae4c-61569bcc4012",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
