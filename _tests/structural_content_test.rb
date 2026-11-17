@@ -379,3 +379,9 @@ sitemap_page = CGI.unescapeHTML(File.read(site_file('sitemap/index.html')))
 end
 assert homepage.match?(/"sameAs"\s*:\s*\["https:/), 'Structured data must list the profile links'
 assert !homepage.match?(/"@type"\s*:\s*"Organization"/), 'A personal site is a Person, not an Organization'
+
+# The sitemap page lists only pages a reader can open, each with a title.
+assert !sitemap_page.match?(%r{<a href="[^"]*"[^>]*>\s*</a>}), 'Sitemap must not list untitled entries'
+assert sitemap_page.include?('rel="permalink">Home</a>'), 'Sitemap must list the home page'
+assert !sitemap_page.include?('/publications/prefix-steering/'), 'Sitemap must not list redirect-only entries'
+assert sitemap_page.include?('Published in <i>TMLR 2026</i></p>'), 'Sitemap must show a publication year once'

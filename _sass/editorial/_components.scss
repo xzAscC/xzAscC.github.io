@@ -172,6 +172,12 @@ input[type='submit']:focus-visible {
   transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
 }
 
+// Sitemap entries stack their title, date, and summary; side by side, the title wraps into a narrow column.
+.archive__item {
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
 .publication-card:hover,
 .archive__item:hover {
   border-color: var(--color-warm);
