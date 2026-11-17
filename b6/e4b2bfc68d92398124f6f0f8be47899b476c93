@@ -1,0 +1,29 @@
+_includes/archive-single.html
+  s_03aa86a28008cc::t_3c9c3552404f15 54-55
+  s_03aa86a28008cc::t_1d82a94a161df7 14-15
+  s_03aa86a28008cc::t_5f1c7714aaa03c 46-48
+  s_03aa86a28008cc::t_dd46eba02e5b5f 77,79
+_tests/structural_content_test.rb
+  s_03aa86a28008cc::t_1ed116eb07d4e6 382-387
+_pages/sitemap.md
+  s_03aa86a28008cc::t_271beecbd25691 30,35-36
+  s_03aa86a28008cc::t_584bb4d8dda4cf 13,15-16
+_sass/editorial/_components.scss
+  s_03aa86a28008cc::t_9cb3245d7c8a1d 175-180
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b6e4b2bfc68d92398124f6f0f8be47899b476c93",
+  "prompts": {},
+  "sessions": {
+    "s_03aa86a28008cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae74a4c5-818e-4575-8e41-362d0231823e",
+        "model": "claude-fable-5-2"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
