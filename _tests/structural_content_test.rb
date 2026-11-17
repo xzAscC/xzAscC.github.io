@@ -377,7 +377,9 @@ sitemap_page = CGI.unescapeHTML(File.read(site_file('sitemap/index.html')))
   assert html.include?('<meta property="og:image"') && html.include?('<meta name="twitter:card"'),
          'Every page needs a link-preview image and card type'
 end
-assert homepage.match?(/"sameAs"\s*:\s*\["https:/), 'Structured data must list the profile links'
+same_as = homepage[/"sameAs"\s*:\s*\[(.*?)\]/m, 1]
+assert same_as && same_as.include?('"https://') && !same_as.include?('"http://'),
+       'Structured data must list the profile links, all over https'
 assert !homepage.match?(/"@type"\s*:\s*"Organization"/), 'A personal site is a Person, not an Organization'
 
 # The sitemap page lists only pages a reader can open, each with a title.
@@ -388,5 +390,6 @@ assert sitemap_page.include?('Published in <i>TMLR 2026</i></p>'), 'Sitemap must
 
 assert main_css.include?('body>main{flex:1 0 auto}'), 'Footer must stay at the bottom of short pages'
 project_js = File.read(File.join(ROOT, 'assets', 'js', 'project.js'))
-assert dark_toggle_source.include?('addEventListener("storage"') && project_js.include?("addEventListener('storage'"),
+storage_listener = /addEventListener\((["'])storage\1/ # either quote style
+assert dark_toggle_source.match?(storage_listener) && project_js.match?(storage_listener),
        'A theme change must reach other tabs and embedded project pages'

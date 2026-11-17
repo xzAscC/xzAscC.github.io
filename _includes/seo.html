@@ -68,7 +68,7 @@
   {% endif %}
 {% else %}
   {% comment %} No site account: X still needs the card type; it reads the title, text, and image from the Open Graph tags. {% endcomment %}
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="{% if page.header.image %}summary_large_image{% else %}summary{% endif %}">
 {% endif %}
 
 {% if site.facebook %}
