@@ -56,4 +56,6 @@ assert !body.include?('project-steps') && !body.include?('project-facts'), 'Remo
 assert body.include?('linear error bound'), 'Describe a linear upper bound, not guaranteed linear growth'
 footer = page[%r{<footer class="project-footer".*?</footer>}m]
 assert footer.include?('Xudong Zhu') && !footer.include?('Zhihui Zhu'), 'Page footer must credit its creator only'
+assert File.read(File.join(SITE, 'assets/css/prefix-project.css')).match?(/\.carousel-slide \{[^}]*min-width: 0/),
+       'Carousel slides must shrink so a wide formula cannot widen the page on phones'
 puts 'Prefix project checks passed.'

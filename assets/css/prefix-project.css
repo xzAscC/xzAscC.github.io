@@ -297,7 +297,8 @@ html[data-theme='dark'] .pdf-viewer__document { filter: brightness(.82); }
 .example-nav button { width: 32px; height: 32px; padding: 0; border: 1px solid var(--color-border); border-radius: 50%; background: none; color: var(--color-ink); font-size: 18px; line-height: 1; cursor: pointer; }
 .example-nav button:hover { border-color: var(--color-accent); color: var(--color-accent-strong); }
 .carousel-slides { display: grid; }
-.carousel-slide { grid-area: 1 / 1; }
+/* min-width: 0 lets a slide shrink below its widest formula, which then scrolls inside the slide instead of widening the page. */
+.carousel-slide { grid-area: 1 / 1; min-width: 0; }
 .carousel-slide[data-inactive] { visibility: hidden; }
 .carousel-slide h3 { margin: 8px 0 18px; font-size: 27px; }
 .transcript { position: relative; }
