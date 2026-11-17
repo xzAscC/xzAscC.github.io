@@ -1,0 +1,26 @@
+_tests/structural_content_test.rb
+  s_03aa86a28008cc::t_1ed116eb07d4e6 371-381
+_config.yml
+  s_03aa86a28008cc::t_2a1340f66f6fec 120-123
+_includes/seo.html
+  s_03aa86a28008cc::t_298a0ee0151785 69-71
+  s_03aa86a28008cc::t_ecafd42a481979 97-99
+  s_03aa86a28008cc::t_5c86f61bc54609 23
+  s_03aa86a28008cc::t_78c3c9334a1c95 125-126,137-138
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a8ec92813feac129b596dc824bdb35f882137561",
+  "prompts": {},
+  "sessions": {
+    "s_03aa86a28008cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae74a4c5-818e-4575-8e41-362d0231823e",
+        "model": "claude-fable-5-2"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
