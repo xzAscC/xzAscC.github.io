@@ -1,0 +1,21 @@
+assets/css/prefix-project.css
+  s_03aa86a28008cc::t_209956c302dfd8 300-301
+_tests/prefix_project_test.rb
+  s_03aa86a28008cc::t_d6432dd9ce9dcb 59-60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ba81c6fea6dca84d1ae9a1358903594ad59b7e8b",
+  "prompts": {},
+  "sessions": {
+    "s_03aa86a28008cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae74a4c5-818e-4575-8e41-362d0231823e",
+        "model": "claude-fable-5-2"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
