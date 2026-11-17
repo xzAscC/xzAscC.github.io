@@ -1,0 +1,23 @@
+_tests/structural_content_test.rb
+  s_03aa86a28008cc::t_1ed116eb07d4e6 390-392
+assets/js/project.js
+  s_03aa86a28008cc::t_daacf65fed3cea 42-48
+assets/js/dark-toggle.js
+  s_03aa86a28008cc::t_d09f62952c5f6d 45-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "159d4d304c744ff1ae8d50bdf905d216ef3fedf2",
+  "prompts": {},
+  "sessions": {
+    "s_03aa86a28008cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae74a4c5-818e-4575-8e41-362d0231823e",
+        "model": "claude-fable-5-2"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
