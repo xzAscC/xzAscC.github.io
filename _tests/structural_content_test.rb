@@ -368,3 +368,14 @@ project_template = File.read(site_file('blog/2026/research-templates/project/ind
 assert project_template.include?('noindex'), 'Project template demo must stay out of search results'
 assert !File.read(site_file('sitemap.xml')).include?('/blog/2026/research-templates/project/'), 'Project template demo must stay out of the sitemap'
 assert !File.exist?(site_file('templates/project/index.html')), 'Project template must live under its blog post'
+
+# Search results and link previews: every page describes itself and offers an image.
+sitemap_page = CGI.unescapeHTML(File.read(site_file('sitemap/index.html')))
+[homepage, publications_page, cv_page, blog_page, sitemap_page].each do |html|
+  assert html.match?(/<meta property="og:description" name="description" content="[^"]+">/),
+         'Every page needs a meta description'
+  assert html.include?('<meta property="og:image"') && html.include?('<meta name="twitter:card"'),
+         'Every page needs a link-preview image and card type'
+end
+assert homepage.match?(/"sameAs"\s*:\s*\["https:/), 'Structured data must list the profile links'
+assert !homepage.match?(/"@type"\s*:\s*"Organization"/), 'A personal site is a Person, not an Organization'
