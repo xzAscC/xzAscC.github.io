@@ -385,3 +385,5 @@ assert !sitemap_page.match?(%r{<a href="[^"]*"[^>]*>\s*</a>}), 'Sitemap must not
 assert sitemap_page.include?('rel="permalink">Home</a>'), 'Sitemap must list the home page'
 assert !sitemap_page.include?('/publications/prefix-steering/'), 'Sitemap must not list redirect-only entries'
 assert sitemap_page.include?('Published in <i>TMLR 2026</i></p>'), 'Sitemap must show a publication year once'
+
+assert main_css.include?('body>main{flex:1 0 auto}'), 'Footer must stay at the bottom of short pages'
