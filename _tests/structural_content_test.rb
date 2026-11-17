@@ -387,3 +387,6 @@ assert !sitemap_page.include?('/publications/prefix-steering/'), 'Sitemap must n
 assert sitemap_page.include?('Published in <i>TMLR 2026</i></p>'), 'Sitemap must show a publication year once'
 
 assert main_css.include?('body>main{flex:1 0 auto}'), 'Footer must stay at the bottom of short pages'
+project_js = File.read(File.join(ROOT, 'assets', 'js', 'project.js'))
+assert dark_toggle_source.include?('addEventListener("storage"') && project_js.include?("addEventListener('storage'"),
+       'A theme change must reach other tabs and embedded project pages'

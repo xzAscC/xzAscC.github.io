@@ -39,6 +39,13 @@ if (themeToggle) {
       // Private browsing can block storage; the theme still applies to this page.
     }
   });
+  // Follow a theme change made in another tab or in the page that embeds this one.
+  addEventListener('storage', (event) => {
+    if (event.key === 'theme' && (event.newValue === 'dark' || event.newValue === 'light')) {
+      root.dataset.theme = event.newValue;
+      updateThemeToggle();
+    }
+  });
 }
 
 // Highlight the link of the section being read: the last one whose top has passed 40% of the viewport.
