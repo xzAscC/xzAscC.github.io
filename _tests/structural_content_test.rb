@@ -384,6 +384,7 @@ news_section = homepage[%r{<section class="showcase-section showcase-section--ne
 assert news_section, 'Homepage must include a News section'
 assert homepage.index('showcase-section--news') < homepage.index('showcase-section--publications'),
        'News must appear before Publications'
+assert !homepage.include?('From Emergence to Control'), 'News must name the Self-Reflection paper by its published title'
 assert !blog_page.include?('archive__lead'), 'Blog page must not render a subtitle line'
 
 assert publications_page.scan('>Code</a>').length == 5, 'Publications page must link code for every paper'
