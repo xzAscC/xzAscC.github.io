@@ -429,6 +429,15 @@ assert !sitemap_page.include?('/publications/prefix-steering/'), 'Sitemap must n
 assert sitemap_page.include?('Published in <i>TMLR 2026</i></p>'), 'Sitemap must show a publication year once'
 
 assert main_css.include?('body>main{flex:1 0 auto}'), 'Footer must stay at the bottom of short pages'
+
+# Keyboard users can skip the navigation on every page built from the default layout.
+post_page = File.read(site_file('blog/2026/research-templates/index.html'))
+[homepage, publications_page, cv_page, blog_page, sitemap_page, abstopk_page, post_page].each do |html|
+  target = html[/<a class="skip-link" href="#([\w-]+)">/, 1]
+  assert target && html.include?(%(<main id="#{target}")), 'Every page needs a skip link that points at its main content'
+end
+assert homepage.include?('<main id="content"'), 'The home page must not take the inner pages\' #main column styles'
+assert main_css.include?('.skip-link:focus{top:'), 'The skip link must appear when it receives focus'
 project_js = File.read(File.join(ROOT, 'assets', 'js', 'project.js'))
 storage_listener = /addEventListener\((["'])storage\1/ # either quote style
 assert dark_toggle_source.match?(storage_listener) && project_js.match?(storage_listener),

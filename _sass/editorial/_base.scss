@@ -35,6 +35,23 @@ body > main {
   flex: 1 0 auto;
 }
 
+// The first stop for keyboard users: it jumps past the navigation, and shows only while it has focus.
+.skip-link {
+  position: absolute;
+  z-index: calc(var(--z-nav) + 1);
+  top: -100px;
+  left: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-ink);
+  background: var(--color-surface-raised);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.skip-link:focus {
+  top: var(--space-3);
+}
+
 body.overflow--hidden {
   overflow: hidden;
 }

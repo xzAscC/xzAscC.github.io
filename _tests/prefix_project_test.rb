@@ -58,4 +58,7 @@ footer = page[%r{<footer class="project-footer".*?</footer>}m]
 assert footer.include?('Xudong Zhu') && !footer.include?('Zhihui Zhu'), 'Page footer must credit its creator only'
 assert File.read(File.join(SITE, 'assets/css/prefix-project.css')).match?(/\.carousel-slide \{[^}]*min-width: 0/),
        'Carousel slides must shrink so a wide formula cannot widen the page on phones'
+heading_levels = page.scan(/<h([1-6])[\s>]/).flatten.map(&:to_i)
+assert heading_levels.first == 1 && heading_levels.each_cons(2).all? { |above, below| below <= above + 1 },
+       'Headings must not skip a level, so the page outline reads in order'
 puts 'Prefix project checks passed.'
