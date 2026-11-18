@@ -19,7 +19,7 @@ I am a PhD student in Computer Science at The Ohio State University, advised by 
 
 - **One Token Can Be Enough: Bridging Prompting and Activation Steering with Prefix Steering** (arXiv 2026)
 - **AbsTopK: Rethinking Sparse Autoencoders for Bidirectional Features** (ICLR 2026)
-- **From Emergence to Control: Probing and Modulating Self-Reflection in Language Models** (TMLR 2026)
+- **Probing and Controlling Self-Reflection in Language Models** (TMLR 2026)
 - **Alleviating Subgraph-Induced Oversmoothing in Link Prediction via Coarse Graining** (Neurocomputing 2025)
 - **FCDS: Fusing Constituency and Dependency Syntax into Document-Level Relation Extraction** (LREC-COLING 2024)
 

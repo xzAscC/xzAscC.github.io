@@ -114,7 +114,7 @@ publication_html = publication_pages.map { |path| CGI.unescapeHTML(File.read(pat
 paper_titles = [
   'AbsTopK: Rethinking Sparse Autoencoders For Bidirectional Features',
   'Alleviating subgraph-induced oversmoothing in link prediction via coarse graining',
-  'From Emergence to Control: Probing and Modulating Self-Reflection in Language Models',
+  'Probing and Controlling Self-Reflection in Language Models',
   'FCDS: Fusing Constituency and Dependency Syntax into Document-Level Relation Extraction'
 ]
 project_names = %w[LLMUsage dotfiles]
@@ -198,6 +198,15 @@ Dir.glob(File.join(ROOT, '_publications', '*.md')).each do |source|
   title = front[/^title:\s*["']?(.*?)["']?\s*$/, 1]
   detail_exists = title && publication_html.any? { |html| html.include?(title) }
   assert detail_exists, "Missing publication detail page for: #{title || source}"
+end
+
+# A paper's page title is the one in its BibTeX, which comes from the venue.
+Dir.glob(File.join(ROOT, '_publications', '*.md')).each do |source|
+  front = File.read(source)
+  title = front[/^title:\s*["']?(.*?)["']?\s*$/, 1]
+  bibtex_title = front[/^\s+title\s*=\s*\{(.*)\},?\s*$/, 1]
+  assert bibtex_title && bibtex_title.delete('{}').casecmp?(title),
+         "Page title and BibTeX title differ: #{File.basename(source)}"
 end
 
 nav_source = File.read(File.join(ROOT, '_includes', 'editorial-nav.html'))
