@@ -249,6 +249,7 @@ compress_html:
 # The ids come from https://giscus.app; with an empty repo_id, posts show no comments.
 # giscus.json at the repository root lists the sites that may show these threads.
 giscus:
+  site_url: "https://xudongzhu.com" # threads link back here, also when a comment is written from a local preview
   repo_id: "R_kgDOPjMqAA"
   category: "Announcements" # only the owner and giscus can start a thread in this category
   category_id: "DIC_kwDOPjMqAM4DLZZU"

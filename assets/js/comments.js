@@ -5,55 +5,73 @@ const holder = document.querySelector("[data-comments]");
 if (holder) {
   const root = document.documentElement;
   const giscusOrigin = "https://giscus.app";
+  const errorLine = document.querySelector("#comments-error");
   const siteTheme = () => (root.dataset.theme === "dark" ? "dark" : "light");
-  let ready = false; // the frame has sent its first message, so it can receive ours
-  let shownTheme = null; // the theme the widget shows now
+  let startTheme = null; // the theme giscus starts its frame with, and again when it reloads the frame on sign-out
+  let themeMoved = false; // the site theme has differed from startTheme, so a frame may need to be told
+  let listening = false; // the frame has sent a message, so it is there to receive ours
+  let silenceTimer = null;
 
-  const syncTheme = () => {
+  // Tell the frame the site's theme. This runs on a theme change and on every message from the frame:
+  // a frame that has just loaded or reloaded announces itself with a message and gets the current theme back.
+  // The frame sends messages only for its height, sign-out, and errors, so an answer never starts a loop.
+  const sendTheme = () => {
     const frame = holder.querySelector("iframe.giscus-frame");
-    if (!ready || !frame || shownTheme === siteTheme()) return;
-    shownTheme = siteTheme();
-    frame.contentWindow.postMessage({ giscus: { setConfig: { theme: shownTheme } } }, giscusOrigin);
+    if (siteTheme() !== startTheme) themeMoved = true;
+    if (!listening || !frame || !themeMoved) return;
+    frame.contentWindow.postMessage({ giscus: { setConfig: { theme: siteTheme() } } }, giscusOrigin);
   };
 
   window.addEventListener("message", (event) => {
     if (event.origin !== giscusOrigin) return;
-    ready = true;
-    syncTheme(); // the theme may have changed while the frame was loading
+    listening = true;
+    clearTimeout(silenceTimer);
+    errorLine.hidden = true;
+    sendTheme();
   });
-  new MutationObserver(syncTheme).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+  new MutationObserver(sendTheme).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
 
   const load = () => {
-    shownTheme = siteTheme();
+    startTheme = siteTheme();
+    // A thread links back to its post. Name the live address, or a first comment written from a local preview
+    // would leave a localhost link in the thread for good.
+    const backlink = document.createElement("meta");
+    backlink.name = "giscus:backlink";
+    backlink.content = holder.dataset.backlink;
+    document.head.append(backlink);
+
     const script = document.createElement("script");
     script.src = `${giscusOrigin}/client.js`;
     script.async = true;
     script.crossOrigin = "anonymous";
-    // pathname + strict: one thread per post URL, matched exactly, so similar addresses cannot share a thread.
+    // The thread belongs to the post's own address (term), matched exactly (strict): the post keeps its thread
+    // when it is opened through another address, and posts with similar addresses cannot share one.
     Object.assign(script.dataset, {
       repo: holder.dataset.repo,
       repoId: holder.dataset.repoId,
       category: holder.dataset.category,
       categoryId: holder.dataset.categoryId,
-      mapping: "pathname",
+      mapping: "specific",
+      term: holder.dataset.term,
       strict: "1",
-      reactionsEnabled: "1",
-      emitMetadata: "0",
-      inputPosition: "bottom",
-      theme: shownTheme,
+      theme: startTheme,
       lang: holder.dataset.lang,
     });
-    script.addEventListener("error", () => {
-      document.querySelector("#comments-error").hidden = false;
-    });
+    const showError = () => {
+      errorLine.hidden = false;
+    };
+    script.addEventListener("error", showError);
+    // The frame can fail while the script loads fine (a site that giscus.json does not list, a blocked frame);
+    // it then never sends a message.
+    silenceTimer = setTimeout(showError, 10000);
     // client.js puts its frame into the element with the class "giscus", which is the holder.
     document.body.append(script);
   };
 
   if (new URLSearchParams(location.search).has("giscus")) {
-    // Back from GitHub's sign-in page, which returns to the top of the post: load now and go to the comments.
+    // Back from GitHub's sign-in page, at #comments: load now, so that giscus keeps the session and
+    // takes it out of the address.
     load();
-    holder.scrollIntoView();
   } else if ("IntersectionObserver" in window) {
     // Otherwise fetch the widget only when the reader is within one screen of the comments.
     const observer = new IntersectionObserver(

@@ -72,7 +72,7 @@ docker start xz-blog-preview
 
 博客首页支持标题、正文和标签搜索；点击文章标签会进入 `/blog/?tag=...`，搜索链接可直接分享。搜索只包含当前构建的文章，正式构建不会索引草稿。
 
-文章底部的评论使用 [giscus](https://giscus.app)：每篇文章对应本仓库 GitHub Discussions（Announcements 分类）里的一个讨论，读者用 GitHub 账号留言，也可以直接在 GitHub 上回复和管理。前提是仓库开启了 Discussions 并安装了 [giscus 应用](https://github.com/apps/giscus)。配置在 `_config.yml` 的 `giscus` 一节，`repo_id` 留空时文章不显示评论区；根目录的 `giscus.json` 限定只有 `xudongzhu.com` 和本机预览可以显示这些讨论。读者滚动到评论区附近时才加载 giscus。
+文章底部的评论使用 [giscus](https://giscus.app)：每篇文章对应本仓库 GitHub Discussions（Announcements 分类）里的一个讨论，读者用 GitHub 账号留言，也可以直接在 GitHub 上回复和管理。前提是仓库开启了 Discussions 并安装了 [giscus 应用](https://github.com/apps/giscus)。配置在 `_config.yml` 的 `giscus` 一节，`repo_id` 留空时文章不显示评论区；根目录的 `giscus.json` 限定只有 `xudongzhu.com` 和本机预览（`localhost`、`127.0.0.1`、`0.0.0.0`）可以显示这些讨论，所以手机经局域网地址访问预览时看不到评论。读者滚动到评论区附近时才加载 giscus。
 
 评论不需要本地服务：本地预览的文章连到的是同一个讨论，在预览里留的言会出现在正式站点上。草稿预览使用 `--drafts --port 4001 --destination /tmp/template-preview-site`；已创建的预览容器可用 `docker start xz-template-preview` 恢复。
 
