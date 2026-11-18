@@ -1,0 +1,23 @@
+README.md
+  s_03aa86a28008cc::t_402ce70323134c 22
+_publications/2025-06-13-self-reflection.md
+  s_03aa86a28008cc::t_4427bc0608ae61 2
+_tests/structural_content_test.rb
+  s_03aa86a28008cc::t_b2f476ce2074eb 117,203-211
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2a7241fd3d529843c6c9ffef65d0d64c97fc4ab7",
+  "prompts": {},
+  "sessions": {
+    "s_03aa86a28008cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae74a4c5-818e-4575-8e41-362d0231823e",
+        "model": "claude-fable-5-2"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
