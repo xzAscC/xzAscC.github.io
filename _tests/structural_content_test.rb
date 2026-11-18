@@ -71,6 +71,10 @@ assert cv_page.scan(/class="cv-award-card"/).length == 2, 'CV must render exactl
 assert cv_page.scan(/class="cv-publication-card"/).length == 5, 'CV must render exactly five publication cards'
 assert cv_page.include?('Sparse autoencoders (SAEs) are widely used'),
        'CV publication cards must retain their research summaries'
+cv_publication_years = cv_page[/id="cv-publications-title".*?id="cv-teaching-title"/m]
+                       .scan(%r{<time class="cv-card__date"[^>]*>\s*(\d{4})\s*</time>}).flatten
+assert cv_publication_years.length == 5 && cv_publication_years == cv_publication_years.sort.reverse,
+       "CV publications must run from the newest year to the oldest, got #{cv_publication_years.join(', ')}"
 assert !File.read(File.join(ROOT, '_data', 'cv.json')).include?('"publications"'),
        'CV publications come from _publications/; cv.json must not keep a second list'
 cv_style_source = File.read(File.join(ROOT, '_sass', 'editorial', '_cv.scss'))

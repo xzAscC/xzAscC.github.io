@@ -87,10 +87,20 @@
       <h2 id="cv-publications-title">Publications</h2>
     </header>
     <ol class="cv-list cv-publication-list">
+      {% comment %}
+        Newest year first, and the curated order within a year. The year is the one each card shows (the venue's),
+        so a paper published the year after its preprint sits with its publication year; sorting by date would not do that.
+      {% endcomment %}
+      {% assign cv_years = "" %}
+      {% for post in cv_publications %}{% capture paper_year %}{% include paper-year.html post=post %}{% endcapture %}{% assign cv_years = cv_years | append: paper_year | append: "," %}{% endfor %}
+      {% assign cv_years = cv_years | split: "," | uniq | sort | reverse %}
+      {% for cv_year in cv_years %}
       {% for post in cv_publications %}
+      {% capture paper_year %}{% include paper-year.html post=post %}{% endcapture %}
+      {% if paper_year != cv_year %}{% continue %}{% endif %}
       <li>
         <article class="cv-publication-card" itemscope itemtype="https://schema.org/ScholarlyArticle">
-          <time class="cv-card__date" datetime="{{ post.date | date: '%Y-%m-%d' }}" itemprop="datePublished">{% include paper-year.html post=post %}</time>
+          <time class="cv-card__date" datetime="{{ post.date | date: '%Y-%m-%d' }}" itemprop="datePublished">{{ paper_year }}</time>
           <div>
             <h3 itemprop="headline"><a href="{% if post.projecturl %}{{ post.projecturl | relative_url }}{% else %}{{ base_path }}{{ post.url }}{% endif %}" rel="bookmark">{{ post.title }}</a></h3>
             <p class="cv-card__meta" itemprop="publisher">{{ post.venue }}</p>
@@ -102,6 +112,7 @@
           </div>
         </article>
       </li>
+      {% endfor %}
       {% endfor %}
     </ol>
   </section>
