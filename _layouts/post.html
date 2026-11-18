@@ -42,7 +42,8 @@ layout: default
       </div>
     </div>
 
-    {% if site.giscus.repo_id and site.giscus.repo_id != '' %}
+    {% comment %} Not on drafts: the widget would send a draft's address and first paragraph to giscus, and a comment in a preview would open a public thread for it. {% endcomment %}
+    {% if site.giscus.repo_id and site.giscus.repo_id != '' and page.draft != true %}
     <footer class="post__footer">
       {% include post-comments.html %}
     </footer>

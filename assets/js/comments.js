@@ -60,7 +60,16 @@ if (holder) {
     const showError = () => {
       errorLine.hidden = false;
     };
-    script.addEventListener("error", showError);
+    script.addEventListener("error", () => {
+      showError();
+      // client.js would have taken a sign-in session out of the address; without it, do that here,
+      // so that the reader cannot pass the session on by sharing the address.
+      const address = new URL(location.href);
+      if (address.searchParams.has("giscus")) {
+        address.searchParams.delete("giscus");
+        history.replaceState(null, "", address);
+      }
+    });
     // The frame can fail while the script loads fine (a site that giscus.json does not list, a blocked frame);
     // it then never sends a message.
     silenceTimer = setTimeout(showError, 10000);

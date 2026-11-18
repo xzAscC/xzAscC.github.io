@@ -1,7 +1,7 @@
 {% comment %} Comments by giscus: each post's thread is a GitHub Discussion in this repository. post.html prints this only when _config.yml has the giscus ids. {% endcomment %}
 <section class="post-comments" aria-labelledby="comments-title">
   <h2 id="comments-title">Comments</h2>
-  <p class="post-comments__intro">Join the conversation with your GitHub account. The thread is also in this site’s <a href="https://github.com/{{ site.repository }}/discussions" rel="external">GitHub Discussions</a>.</p>
+  <p class="post-comments__intro">Join the conversation with your GitHub account. The thread is also in this site’s <a href="https://github.com/{{ site.repository | escape }}/discussions" rel="external">GitHub Discussions</a>.</p>
   {% comment %} The id is where GitHub's sign-in page returns to. The term names the thread: the post's address without its first slash. {% endcomment %}
   {% assign post_lang = page.lang | slice: 0, 2 %}
   <div class="giscus" id="comments" data-comments data-repo="{{ site.repository | escape }}" data-repo-id="{{ site.giscus.repo_id | escape }}" data-category="{{ site.giscus.category | escape }}" data-category-id="{{ site.giscus.category_id | escape }}" data-term="{{ page.url | remove_first: '/' | escape }}" data-backlink="{{ site.giscus.site_url | escape }}{{ page.url | escape }}" data-lang="{% if post_lang == 'zh' %}zh-CN{% else %}en{% endif %}"></div>

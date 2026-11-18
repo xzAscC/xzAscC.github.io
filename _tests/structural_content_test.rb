@@ -471,6 +471,9 @@ assert comments_js.include?('mapping: "specific"') && comments_js.include?('stri
   assert !html.include?('/assets/js/comments.js'), 'Only posts load the comment script'
 end
 assert !File.exist?(site_file('giscus.json')), 'giscus.json is repository configuration, not a page'
+assert post_layout.include?('page.draft != true'), 'Drafts must not load comments: that would send unpublished text to giscus'
+assert comments_js.include?('searchParams.delete("giscus")'),
+       'If the giscus script cannot load, the sign-in session must still leave the address'
 giscus_rules = JSON.parse(File.read(File.join(ROOT, 'giscus.json')))
 allowed = lambda do |origin|
   giscus_rules['origins'].include?(origin) || giscus_rules['originsRegex'].any? { |pattern| Regexp.new(pattern).match?(origin) }
