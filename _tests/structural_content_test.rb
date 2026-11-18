@@ -236,8 +236,8 @@ assert nav_source.scan('{% for link in site.data.navigation.main %}').length == 
 assert scripts_source.scan('dark-toggle.js').length == 1, 'Dark toggle module must load exactly once'
 site_nav_source = File.read(File.join(ROOT, 'assets', 'js', 'site-nav.js'))
 assert scripts_source.scan('site-nav.js').length == 1 && site_nav_source.include?('"Escape"') &&
-       site_nav_source.include?('menu.contains(event.target)'),
-       'The phone menu must close on Escape and on a click outside it'
+       site_nav_source.include?('"pointerdown"') && site_nav_source.include?('menu.contains(event.target)'),
+       'The phone menu must close on Escape and on a press outside it (pointerdown also fires on iOS)'
 assert !scripts_source.include?('plotly-render.js'), 'Plotly renderer must load only on pages with Plotly blocks'
 assert !scripts_source.include?('main.min.js'), 'Editorial pages must not load the legacy theme bundle'
 assert !archive_item_source.include?('class="fa'),
@@ -352,7 +352,9 @@ assert main_css.include?('--color-accent'), 'Missing indigo accent token'
 assert main_css.include?('--color-warm'), 'Missing terracotta accent token'
 # Small warm labels must stay readable on every light background they sit on (WCAG AA, 4.5:1).
 light_tokens = File.read(File.join(ROOT, '_sass', 'editorial', '_tokens.scss'))[/:root \{.*?\n\}/m]
-token = ->(name) { light_tokens[/--color-#{name}: (#\h{6});/, 1] }
+token = lambda do |name|
+  light_tokens[/--color-#{name}: (#\h{6});/, 1] or abort "--color-#{name} must be a six-digit hex colour for the contrast check"
+end
 luminance = lambda do |hex|
   red, green, blue = hex.delete('#').scan(/../).map do |channel|
     value = channel.to_i(16) / 255.0
@@ -442,7 +444,8 @@ assert main_css.include?('body>main{flex:1 0 auto}'), 'Footer must stay at the b
 
 # Keyboard users can skip the navigation on every page built from the default layout.
 post_page = File.read(site_file('blog/2026/research-templates/index.html'))
-[homepage, publications_page, cv_page, blog_page, sitemap_page, abstopk_page, post_page].each do |html|
+not_found_page = File.read(site_file('404.html'))
+[homepage, publications_page, cv_page, blog_page, sitemap_page, abstopk_page, post_page, not_found_page].each do |html|
   target = html[/<a class="skip-link" href="#([\w-]+)">/, 1]
   assert target && html.include?(%(<main id="#{target}")), 'Every page needs a skip link that points at its main content'
 end
