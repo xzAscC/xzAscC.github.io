@@ -17,7 +17,7 @@ if (holder) {
   // The frame sends messages only for its height, sign-out, and errors, so an answer never starts a loop.
   const sendTheme = () => {
     const frame = holder.querySelector("iframe.giscus-frame");
-    if (siteTheme() !== startTheme) themeMoved = true;
+    if (startTheme !== null && siteTheme() !== startTheme) themeMoved = true;
     if (!listening || !frame || !themeMoved) return;
     frame.contentWindow.postMessage({ giscus: { setConfig: { theme: siteTheme() } } }, giscusOrigin);
   };
@@ -71,14 +71,20 @@ if (holder) {
       }
     });
     // The frame can fail while the script loads fine (a site that giscus.json does not list, a blocked frame);
-    // it then never sends a message.
-    silenceTimer = setTimeout(showError, 10000);
+    // it then never sends a message. A healthy frame may also stay silent until it is on screen, so count
+    // the ten seconds only while the comments are in view.
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((entries) => {
+        clearTimeout(silenceTimer);
+        if (!listening && entries.some((entry) => entry.isIntersecting)) silenceTimer = setTimeout(showError, 10000);
+      }).observe(holder);
+    }
     // client.js puts its frame into the element with the class "giscus", which is the holder.
     document.body.append(script);
   };
 
   if (new URLSearchParams(location.search).has("giscus")) {
-    // Back from GitHub's sign-in page, at #comments: load now, so that giscus keeps the session and
+    // Back from GitHub's sign-in page, at the holder's id: load now, so that giscus keeps the session and
     // takes it out of the address.
     load();
   } else if ("IntersectionObserver" in window) {
