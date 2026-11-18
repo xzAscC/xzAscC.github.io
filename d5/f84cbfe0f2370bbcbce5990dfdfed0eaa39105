@@ -1,0 +1,23 @@
+.claude/skills/project-page/SKILL.md
+  s_03aa86a28008cc::t_e571f759bab669 16
+_pages/prefix-steering.md
+  s_03aa86a28008cc::t_86ba18316ef4f4 61
+_tests/prefix_project_test.rb
+  s_03aa86a28008cc::t_a13f5562f94582 61-66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d5f84cbfe0f2370bbcbce5990dfdfed0eaa39105",
+  "prompts": {},
+  "sessions": {
+    "s_03aa86a28008cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae74a4c5-818e-4575-8e41-362d0231823e",
+        "model": "unknown"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
