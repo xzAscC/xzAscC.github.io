@@ -1,0 +1,21 @@
+_tests/structural_content_test.rb
+  s_03aa86a28008cc::t_89af551ff6cf63 436-437
+assets/js/project.js
+  s_03aa86a28008cc::t_cf325e4969b8ba 32-39,43,51-55,60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f784873ebc025873d4bf6510bc18a519bc37d84f",
+  "prompts": {},
+  "sessions": {
+    "s_03aa86a28008cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae74a4c5-818e-4575-8e41-362d0231823e",
+        "model": "claude-fable-5-2"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
