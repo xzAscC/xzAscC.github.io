@@ -58,6 +58,7 @@ footer_logo:
   light: /images/logo-light.svg
   dark: /images/logo-dark.svg
 favicon: /images/favicon.svg
+social_image: /assets/images/publications/prefix-steering-social.png   # 1200×630: the title block and the first schematic of this page
 bibtex: |
   @misc{zhu2026tokenenoughbridgingprompting,
         title={One Token Can Be Enough: Bridging Prompting and Activation Steering with Prefix Steering},

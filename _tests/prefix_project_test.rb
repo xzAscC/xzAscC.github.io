@@ -58,6 +58,12 @@ footer = page[%r{<footer class="project-footer".*?</footer>}m]
 assert footer.include?('Xudong Zhu') && !footer.include?('Zhihui Zhu'), 'Page footer must credit its creator only'
 assert File.read(File.join(SITE, 'assets/css/prefix-project.css')).match?(/\.carousel-slide \{[^}]*min-width: 0/),
        'Carousel slides must shrink so a wide formula cannot widen the page on phones'
+social_image = 'assets/images/publications/prefix-steering-social.png'
+assert page.include?(%(<meta property="og:image" content="https://xudongzhu.com/#{social_image}">)) &&
+       page.include?('<meta name="twitter:card" content="summary_large_image">'),
+       'A shared link to the project page must show a large preview image'
+# Bytes 16 to 23 of a PNG hold its width and height.
+assert File.binread(File.join(SITE, social_image))[16, 8].unpack('N2') == [1200, 630], 'Link-preview image must be 1200×630'
 heading_levels = page.scan(/<h([1-6])[\s>]/).flatten.map(&:to_i)
 assert heading_levels.first == 1 && heading_levels.each_cons(2).all? { |above, below| below <= above + 1 },
        'Headings must not skip a level, so the page outline reads in order'
