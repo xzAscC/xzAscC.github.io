@@ -1,0 +1,25 @@
+_includes/cv-template.html
+  s_03aa86a28008cc::t_38c1d8c2f8fafe 106
+_includes/paper-venue.html
+  s_03aa86a28008cc::t_ca217f1a23433c 1-3
+_includes/publication-card.html
+  s_03aa86a28008cc::t_b3fe8dccec8415 12
+_tests/structural_content_test.rb
+  s_03aa86a28008cc::t_8fdd3c16b34837 196-201
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c3dfe2fa099eed81f751aee99a6e52596ac8bd63",
+  "prompts": {},
+  "sessions": {
+    "s_03aa86a28008cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae74a4c5-818e-4575-8e41-362d0231823e",
+        "model": "claude-fable-5-2"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
