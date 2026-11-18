@@ -14,7 +14,8 @@ $portrait-column: 200px;
   --color-accent: #404b91;
   --color-accent-strong: #303971;
   --color-accent-soft: #e4e5f1;
-  --color-warm: #b65f45;
+  // Dark enough for small labels: at least 4.5:1 on the page, the cards, and --color-warm-soft.
+  --color-warm: #98503a;
   --color-warm-soft: #f0ddd4;
   --color-border: #d8d0c4;
   --color-focus: #404b91;

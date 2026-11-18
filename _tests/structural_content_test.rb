@@ -340,6 +340,20 @@ assert main_css.include?('Inter'), 'Missing Inter typography'
 assert main_css.include?('--color-bg'), 'Missing background design token'
 assert main_css.include?('--color-accent'), 'Missing indigo accent token'
 assert main_css.include?('--color-warm'), 'Missing terracotta accent token'
+# Small warm labels must stay readable on every light background they sit on (WCAG AA, 4.5:1).
+light_tokens = File.read(File.join(ROOT, '_sass', 'editorial', '_tokens.scss'))[/:root \{.*?\n\}/m]
+token = ->(name) { light_tokens[/--color-#{name}: (#\h{6});/, 1] }
+luminance = lambda do |hex|
+  red, green, blue = hex.delete('#').scan(/../).map do |channel|
+    value = channel.to_i(16) / 255.0
+    value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055)**2.4
+  end
+  0.2126 * red + 0.7152 * green + 0.0722 * blue
+end
+%w[bg surface surface-raised warm-soft].each do |background|
+  contrast = (luminance.call(token.call(background)) + 0.05) / (luminance.call(token.call('warm')) + 0.05)
+  assert contrast >= 4.5, "Warm text on --color-#{background} has contrast #{contrast.round(2)}, below 4.5"
+end
 assert main_css.include?('64rem'), 'Missing 1024px container'
 assert main_css.include?('overflow-x:hidden'), 'Missing horizontal overflow guard'
 
