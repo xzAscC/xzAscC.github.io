@@ -71,6 +71,8 @@ assert cv_page.scan(/class="cv-award-card"/).length == 2, 'CV must render exactl
 assert cv_page.scan(/class="cv-publication-card"/).length == 5, 'CV must render exactly five publication cards'
 assert cv_page.include?('Sparse autoencoders (SAEs) are widely used'),
        'CV publication cards must retain their research summaries'
+assert !File.read(File.join(ROOT, '_data', 'cv.json')).include?('"publications"'),
+       'CV publications come from _publications/; cv.json must not keep a second list'
 cv_style_source = File.read(File.join(ROOT, '_sass', 'editorial', '_cv.scss'))
 assert cv_style_source.include?(".cv-timeline__content {\n    grid-row: 2;"),
        'Mobile CV timeline content must render below its date row'
