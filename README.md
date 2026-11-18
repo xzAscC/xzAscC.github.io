@@ -87,7 +87,7 @@ docker start xz-blog-preview
 ---
 
 <div align="center">
-  <p>Built with ❤️ using <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/alshedivat/al-folio">al-folio</a></p>
+  <p>Built with ❤️ using <a href="https://jekyllrb.com/">Jekyll</a>, starting from <a href="https://github.com/academicpages/academicpages.github.io">Academic Pages</a>, a fork of <a href="https://github.com/mmistakes/minimal-mistakes">Minimal Mistakes</a></p>
   <p>Hosted on <a href="https://pages.github.com/">GitHub Pages</a></p>
 </div>
 
