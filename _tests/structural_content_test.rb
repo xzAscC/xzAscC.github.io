@@ -1,4 +1,5 @@
 require 'cgi'
+require 'json'
 
 ROOT = File.expand_path('..', __dir__)
 SITE = File.join(ROOT, '_site')
@@ -101,7 +102,7 @@ assert nav_positions == nav_positions.sort, 'Primary navigation must order Publi
 
 # Issue #2: pages must not load client libraries they do not use.
 [homepage, publications_page, cv_page, blog_page].each do |html|
-  %w[mathjax plotly mermaid polyfill academicons].each do |library|
+  %w[mathjax plotly mermaid polyfill academicons giscus].each do |library|
     assert !html.downcase.include?(library), "Page without #{library} content still loads it"
   end
 end
@@ -453,6 +454,29 @@ not_found_page = File.read(site_file('404.html'))
 end
 assert homepage.include?('<main id="content"'), 'The home page must not take the inner pages\' #main column styles'
 assert main_css.include?('.skip-link:focus{top:'), 'The skip link must appear when it receives focus'
+
+# Comments: giscus shows each post's GitHub Discussion, on posts only, fetched on demand.
+assert post_page.match?(%r{<div class="giscus" data-comments data-repo="xzAscC/xzAscC\.github\.io" data-repo-id="R_\w+" data-category="Announcements" data-category-id="DIC_\w+" data-lang="en">}),
+       'Posts must carry the giscus settings from _config.yml'
+assert !post_page.include?('Comments are not available yet'), 'Posts must not show a placeholder in place of comments'
+comments_js = File.read(File.join(ROOT, 'assets', 'js', 'comments.js'))
+assert comments_js.include?('${giscusOrigin}/client.js') && comments_js.include?('"https://giscus.app"') &&
+       comments_js.include?('IntersectionObserver') && comments_js.include?('setConfig') &&
+       comments_js.include?('event.origin !== giscusOrigin'),
+       'Comments must load on demand, follow the site theme, and accept messages from giscus only'
+assert !File.read(site_file('index.html')).include?('comments.js') && !File.exist?(site_file('giscus.json')),
+       'Only posts load the comment script, and giscus.json is repository configuration, not a page'
+giscus_rules = JSON.parse(File.read(File.join(ROOT, 'giscus.json')))
+allowed = lambda do |origin|
+  giscus_rules['origins'].include?(origin) || giscus_rules['originsRegex'].any? { |pattern| Regexp.new(pattern).match?(origin) }
+end
+assert allowed.call(config_yaml[/^url\s*:\s*(\S+)/, 1]) && allowed.call('http://127.0.0.1:4000') && allowed.call('http://localhost:4001'),
+       'giscus.json must allow the live site and local previews'
+assert !allowed.call('https://example.com') && !allowed.call('http://localhost:4000.example.com'),
+       'giscus.json must not let other sites show these threads'
+[config_yaml, File.read(File.join(ROOT, 'README.md')), main_css].each do |text|
+  assert !text.match?(/waline/i), 'The unused Waline setup must be gone'
+end
 project_js = File.read(File.join(ROOT, 'assets', 'js', 'project.js'))
 storage_listener = /addEventListener\((["'])storage\1/ # either quote style
 assert dark_toggle_source.match?(storage_listener) && project_js.match?(storage_listener),
