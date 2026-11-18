@@ -433,3 +433,5 @@ project_js = File.read(File.join(ROOT, 'assets', 'js', 'project.js'))
 storage_listener = /addEventListener\((["'])storage\1/ # either quote style
 assert dark_toggle_source.match?(storage_listener) && project_js.match?(storage_listener),
        'A theme change must reach other tabs and embedded project pages'
+assert project_js.include?("matchMedia('(prefers-color-scheme: dark)').addEventListener('change'"),
+       'A project page without a saved theme must follow operating-system changes, as the site does'
