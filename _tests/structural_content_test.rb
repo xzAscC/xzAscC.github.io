@@ -234,6 +234,10 @@ assert nav_source.include?('site-nav__menu'), 'Primary navigation must provide a
 assert nav_source.scan('{% for link in site.data.navigation.main %}').length == 1,
        'Desktop and mobile navigation must share one generated link list'
 assert scripts_source.scan('dark-toggle.js').length == 1, 'Dark toggle module must load exactly once'
+site_nav_source = File.read(File.join(ROOT, 'assets', 'js', 'site-nav.js'))
+assert scripts_source.scan('site-nav.js').length == 1 && site_nav_source.include?('"Escape"') &&
+       site_nav_source.include?('menu.contains(event.target)'),
+       'The phone menu must close on Escape and on a click outside it'
 assert !scripts_source.include?('plotly-render.js'), 'Plotly renderer must load only on pages with Plotly blocks'
 assert !scripts_source.include?('main.min.js'), 'Editorial pages must not load the legacy theme bundle'
 assert !archive_item_source.include?('class="fa'),
