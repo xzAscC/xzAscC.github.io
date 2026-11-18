@@ -193,6 +193,12 @@ assert publications_page.scan(/class="publication-card__excerpt"/).length == 5,
 paper_titles.each do |title|
   assert publications_page.include?(title), "Dedicated publications page lost paper: #{title}"
 end
+# The year has its own column in these two lists, so the venue line leaves it out.
+[publications_page, cv_page].each do |html|
+  assert html.include?('>ICLR</p>') && html.include?('>Neurocomputing</p>') && html.include?('>arXiv preprint</p>'),
+         'Publication lists must name each venue'
+  assert !html.match?(/__meta"[^>]*>[^<]*\b(19|20)\d\d\s*</), 'A venue beside a year column must not repeat the year'
+end
 assert !publications_page.include?('home-publication-card'),
        'Dedicated publications page must not use homepage-only research cards'
 assert publication_html.all? { |html| html.match?(/class="[^"]*\bpublication-detail\b[^"]*"/) },
