@@ -1,0 +1,21 @@
+_sass/editorial/_tokens.scss
+  s_03aa86a28008cc::t_9e921c52dabc0b 17-18
+_tests/structural_content_test.rb
+  s_03aa86a28008cc::t_97d4fbdd958b9c 343-356
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6c58b5304406925afd9f664cd7e0453dc6a0674a",
+  "prompts": {},
+  "sessions": {
+    "s_03aa86a28008cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae74a4c5-818e-4575-8e41-362d0231823e",
+        "model": "claude-fable-5-2"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
