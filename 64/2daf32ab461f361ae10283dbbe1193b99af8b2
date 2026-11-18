@@ -1,0 +1,23 @@
+_layouts/archive.html
+  s_03aa86a28008cc::t_ca0770b0f2e468 8
+_sass/editorial/_typography.scss
+  s_03aa86a28008cc::t_73373eaa238aa0 27
+_tests/structural_content_test.rb
+  s_03aa86a28008cc::t_311db4bcef81c7 185-187
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "642daf32ab461f361ae10283dbbe1193b99af8b2",
+  "prompts": {},
+  "sessions": {
+    "s_03aa86a28008cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae74a4c5-818e-4575-8e41-362d0231823e",
+        "model": "unknown"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
