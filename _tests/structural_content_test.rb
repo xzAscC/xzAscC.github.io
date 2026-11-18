@@ -60,7 +60,7 @@ cv_section_positions = cv_section_ids.map { |id| cv_page.index(%(id="#{id}")) }
 assert cv_section_positions.all?, 'CV must render education, research, publications, teaching, service, honors, and open source'
 assert cv_section_positions == cv_section_positions.sort,
        'CV sections must follow the academic CV order'
-['MMLS 2026 Traveling Award', 'NAIRR Pilot Project NAIRR260106',
+['MMLS 2026 Travel Award', 'NAIRR Pilot Project NAIRR260106',
  'Geometry and Training Dynamics of Representations in Large Language Models'].each do |content|
   assert cv_page.include?(content), "CV lost honor content: #{content}"
 end
