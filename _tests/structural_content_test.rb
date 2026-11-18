@@ -270,6 +270,12 @@ end
   assets/js/plugins
   assets/webfonts
   package.json
+  _data/authors.yml
+  _data/ui-text.yml
+  _includes/analytics.html
+  _includes/analytics-providers
+  images/profile.jpg
+  .github/ISSUE_TEMPLATE
 ].each do |legacy_path|
   assert !File.exist?(File.join(ROOT, legacy_path)), "Dormant legacy path must be removed: #{legacy_path}"
 end
