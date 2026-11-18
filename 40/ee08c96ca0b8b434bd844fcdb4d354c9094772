@@ -1,0 +1,29 @@
+README.md
+  s_03aa86a28008cc::t_1b1fdc3d7808d2 75
+_config.yml
+  s_03aa86a28008cc::t_eca64993960bdb 254
+_includes/post-comments.html
+  s_03aa86a28008cc::t_6a8c1b1b01d0ba 4
+_layouts/post.html
+  s_03aa86a28008cc::t_add440e8223c3a 45-46
+_tests/structural_content_test.rb
+  s_03aa86a28008cc::t_aa2ac3ad8146c8 474-476
+assets/js/comments.js
+  s_03aa86a28008cc::t_1a948faf39716e 63-72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "40ee08c96ca0b8b434bd844fcdb4d354c9094772",
+  "prompts": {},
+  "sessions": {
+    "s_03aa86a28008cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae74a4c5-818e-4575-8e41-362d0231823e",
+        "model": "claude-fable-5-2"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
