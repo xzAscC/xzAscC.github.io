@@ -24,18 +24,11 @@ h1 {
   line-height: var(--leading-tight);
 }
 
-.publications-archive .page__title,
+// A paper's title is a full sentence, so its page sets it smaller than the one-word titles of the other pages.
 .publication-detail .page__title {
   font-family: var(--font-body);
   font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
   line-height: var(--leading-heading);
-  letter-spacing: normal;
-}
-
-.publications-archive > h2,
-.publications-archive > section > h2 {
-  font-family: var(--font-body);
-  font-size: var(--text-2xl);
   letter-spacing: normal;
 }
 

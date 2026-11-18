@@ -182,8 +182,9 @@ assert homepage.scan('>Project Page</a>').length == 5, 'Every homepage paper car
 
 assert publications_page.scan(/<article class="publication-card"/).length == 5,
        'Dedicated publications page must retain exactly five shared publication cards'
-assert publications_page.include?('class="archive publications-archive"'),
-       'Publications listing must expose a scoped typography hook'
+assert publications_page.include?('<h1 id="archive-title" class="page__title">Publications</h1>') &&
+       !File.read(File.join(ROOT, '_sass', 'editorial', '_typography.scss')).include?('publications-archive'),
+       'Publications must use the same title style as Blog, CV, and Sitemap'
 conference_position = publications_page.index('publications-conferences')
 journal_position = publications_page.index('publications-manuscripts')
 assert conference_position && journal_position && conference_position < journal_position,
