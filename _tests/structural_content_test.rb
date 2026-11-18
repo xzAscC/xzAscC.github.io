@@ -417,6 +417,10 @@ sitemap_page = CGI.unescapeHTML(File.read(site_file('sitemap/index.html')))
   assert html.include?('<meta property="og:image"') && html.include?('<meta name="twitter:card"'),
          'Every page needs a link-preview image and card type'
 end
+descriptions = [homepage, publications_page, cv_page, blog_page].map do |html|
+  html[/<meta property="og:description" name="description" content="([^"]+)">/, 1]
+end
+assert descriptions.uniq.length == 4, 'Home, Publications, CV, and Blog must each describe themselves in their own words'
 same_as = homepage[/"sameAs"\s*:\s*\[(.*?)\]/m, 1]
 assert same_as && same_as.include?('"https://') && !same_as.include?('"http://'),
        'Structured data must list the profile links, all over https'
