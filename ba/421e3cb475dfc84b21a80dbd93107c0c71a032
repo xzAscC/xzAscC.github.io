@@ -1,0 +1,21 @@
+_includes/cv-template.html
+  s_03aa86a28008cc::t_f72fc261856060 90-97,99-100,103,116
+_tests/structural_content_test.rb
+  s_03aa86a28008cc::t_5d8c2299bb8d28 74-77
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ba421e3cb475dfc84b21a80dbd93107c0c71a032",
+  "prompts": {},
+  "sessions": {
+    "s_03aa86a28008cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae74a4c5-818e-4575-8e41-362d0231823e",
+        "model": "claude-fable-5-2"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
