@@ -1,0 +1,25 @@
+_includes/paper-venue.html
+  s_03aa86a28008cc::t_48428d29c88c1a 1-13
+_sass/editorial/_blog.scss
+  s_03aa86a28008cc::t_98959f2eed7e4f 494
+_tests/structural_content_test.rb
+  s_03aa86a28008cc::t_a9103eb99bed9e 239-240,355-357,447-448
+assets/js/site-nav.js
+  s_03aa86a28008cc::t_204db4bdc06944 1-2,6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4803c1e8ae0d0e67d970b18c51b197dcf5d54ccb",
+  "prompts": {},
+  "sessions": {
+    "s_03aa86a28008cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae74a4c5-818e-4575-8e41-362d0231823e",
+        "model": "unknown"
+      },
+      "human_author": "xzascc <xudongzhu3944@gmail.com>"
+    }
+  }
+}
