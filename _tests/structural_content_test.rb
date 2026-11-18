@@ -236,8 +236,9 @@ assert nav_source.scan('{% for link in site.data.navigation.main %}').length == 
 assert scripts_source.scan('dark-toggle.js').length == 1, 'Dark toggle module must load exactly once'
 site_nav_source = File.read(File.join(ROOT, 'assets', 'js', 'site-nav.js'))
 assert scripts_source.scan('site-nav.js').length == 1 && site_nav_source.include?('"Escape"') &&
-       site_nav_source.include?('"pointerdown"') && site_nav_source.include?('menu.contains(event.target)'),
-       'The phone menu must close on Escape and on a press outside it (pointerdown also fires on iOS)'
+       site_nav_source.include?('"pointerdown"') && site_nav_source.include?('"click"') &&
+       site_nav_source.include?('menu.contains(event.target)'),
+       'The phone menu must close on Escape and on a press or activation outside it (touch on iOS, and keyboard)'
 assert !scripts_source.include?('plotly-render.js'), 'Plotly renderer must load only on pages with Plotly blocks'
 assert !scripts_source.include?('main.min.js'), 'Editorial pages must not load the legacy theme bundle'
 assert !archive_item_source.include?('class="fa'),
