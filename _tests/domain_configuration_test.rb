@@ -13,6 +13,7 @@ unless File.file?(cname_path) && File.read(cname_path).strip == 'xudongzhu.com'
   abort 'Expected CNAME to contain xudongzhu.com'
 end
 abort 'Expected CV data to use xudongzhu.com' unless cv.dig('basics', 'website') == 'https://xudongzhu.com'
+abort 'Expected comment threads to link back to the site URL' unless config.dig('giscus', 'site_url') == config['url']
 abort 'README still references the old site URL' if readme.match?(%r{https://(?:xzAscC|xudongzhu)\.github\.io}i)
 
 puts 'Domain configuration is valid'

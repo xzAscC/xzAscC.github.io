@@ -1,13 +1,11 @@
+{% comment %} Comments by giscus: each post's thread is a GitHub Discussion in this repository. post.html prints this only when _config.yml has the giscus ids. {% endcomment %}
 <section class="post-comments" aria-labelledby="comments-title">
   <h2 id="comments-title">Comments</h2>
-  {% if site.waline.server_url and site.waline.server_url != '' %}
-    <p class="post-comments__intro">Join the conversation. Sign in or leave a comment as a guest.</p>
-    <p class="post-comments__intro"><a href="{{ site.waline.server_url | escape }}/ui/register?lng=en" target="_blank" rel="noopener">Create an account</a> · <a href="{{ site.waline.server_url | escape }}/ui/login?lng=en" target="_blank" rel="noopener">Account &amp; password recovery</a></p>
-    <div id="waline" data-server-url="{{ site.waline.server_url | escape }}" data-path="{{ page.url | escape }}"></div>
-    <p id="comments-error" role="status" hidden>Comments could not load. Please try again later.</p>
-    <noscript>Please enable JavaScript to read and leave comments.</noscript>
-    <script type="module" src="{{ '/assets/js/comments.js' | relative_url }}"></script>
-  {% else %}
-    <p class="post-comments__intro">Comments are not available yet.</p>
-  {% endif %}
+  <p class="post-comments__intro">Join the conversation with your GitHub account. The thread is also in this site’s <a href="https://github.com/{{ site.repository | escape }}/discussions" rel="external">GitHub Discussions</a>.</p>
+  {% comment %} The id is where GitHub's sign-in page returns to; its underscore keeps it apart from the ids that headings in a post get. The term names the thread: the post's address without its first slash. {% endcomment %}
+  {% assign post_lang = page.lang | slice: 0, 2 %}
+  <div class="giscus" id="comments_thread" data-comments data-repo="{{ site.repository | escape }}" data-repo-id="{{ site.giscus.repo_id | escape }}" data-category="{{ site.giscus.category | escape }}" data-category-id="{{ site.giscus.category_id | escape }}" data-term="{{ page.url | remove_first: '/' | escape }}" data-backlink="{{ site.giscus.site_url | escape }}{{ page.url | escape }}" data-lang="{% if post_lang == 'zh' %}zh-CN{% else %}en{% endif %}"></div>
+  <p id="comments-error" role="status" hidden>Comments could not load. Please try again later.</p>
+  <noscript>Please enable JavaScript to read and leave comments.</noscript>
+  <script type="module" src="{{ '/assets/js/comments.js' | relative_url }}"></script>
 </section>

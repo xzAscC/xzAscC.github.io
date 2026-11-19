@@ -144,6 +144,7 @@ exclude:
   - Gemfile.lock
   - LICENSE
   - README.md
+  - giscus.json
   - post-template.md
 keep_files:
   - .git
@@ -244,7 +245,11 @@ compress_html:
   ignore:
     envs: development
 
-# Waline: set the deployed HTTPS server URL when comments are ready to publish.
-# Local preview overrides this in ignored local/comments.yml.
-waline:
-  server_url: ""
+# Comments: giscus keeps each post's thread in the GitHub Discussions of `repository` (above).
+# The ids come from https://giscus.app; with an empty repo_id, posts show no comments.
+# giscus.json at the repository root lists the sites that may show these threads.
+giscus:
+  site_url: "https://xudongzhu.com" # threads link back here, also when a comment is written from a local preview
+  repo_id: "R_kgDOPjMqAA"
+  category: "Announcements" # readers cannot post here on GitHub; giscus opens a post's thread for the first reader who comments or reacts
+  category_id: "DIC_kwDOPjMqAM4DLZZU"

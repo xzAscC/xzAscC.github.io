@@ -72,9 +72,9 @@ docker start xz-blog-preview
 
 博客首页支持标题、正文和标签搜索；点击文章标签会进入 `/blog/?tag=...`，搜索链接可直接分享。搜索只包含当前构建的文章，正式构建不会索引草稿。
 
-文章底部使用 [Waline](https://waline.js.org/en/guide/get-started/)，允许登录或以游客身份留言。正式部署后，在 `_config.yml` 中设置 `waline.server_url`，并在服务端限制允许访问的站点域名。地址留空时不加载评论客户端。
+文章底部的评论使用 [giscus](https://giscus.app)：每篇文章对应本仓库 GitHub Discussions（Announcements 分类）里的一个讨论，读者用 GitHub 账号留言，也可以直接在 GitHub 上回复和管理。前提是仓库开启了 Discussions 并安装了 [giscus 应用](https://github.com/apps/giscus)。配置在 `_config.yml` 的 `giscus` 一节，`repo_id` 留空时文章不显示评论区；根目录的 `giscus.json` 限定只有 `xudongzhu.com` 和本机预览（`localhost`、`127.0.0.1`、`0.0.0.0`）可以显示这些讨论，所以手机经局域网地址访问预览时看不到评论。读者滚动到评论区附近时才加载 giscus；草稿不显示评论区。任何登录了 GitHub 的人都能通过 giscus 为一篇还没有讨论的文章建讨论，所以发布新文章后最好自己先留一条评论或点一个表情，把讨论建好。
 
-本地评论预览使用独立服务 `xz-waline-preview`（`http://localhost:8360`），SQLite 数据和配置位于已忽略的 `local/`，不提交到 Git。`local/comments.yml` 覆盖评论地址；Jekyll 预览使用 `--drafts --config _config.yml,local/comments.yml --port 4001 --destination /tmp/template-preview-site`。已创建的预览容器可用 `docker start xz-waline-preview xz-template-preview` 恢复。
+评论不需要本地服务：本地预览的文章连到的是同一个讨论，在预览里留的言会出现在正式站点上。草稿预览使用 `--drafts --port 4001 --destination /tmp/template-preview-site`；已创建的预览容器可用 `docker start xz-template-preview` 恢复。
 
 支持的写作功能（模板里都有示例）：
 
@@ -113,11 +113,3 @@ python scripts/export_project_template.py local/project-export
 ```
 
 The resulting `files/project-template.zip` contains HTML, CSS, JavaScript, and example assets. Its README explains customization and deployment. Re-export after changing the project layout, example, or PDF reader.
-
-## Verification and password recovery
-
-Waline enables email verification for ordinary registrations when `SMTP_HOST` or `SMTP_SERVICE` is configured. Its first account is the administrator and bypasses the ordinary verification flow. Password recovery is available through the Login dialog's **Forgot Password** link.
-
-The local preview sends only to Mailpit at http://localhost:8025/; these emails are captured locally and are not delivered to real inboxes. Start the three local services with `docker start xz-mailpit-preview xz-waline-preview xz-template-preview`.
-
-For real delivery, set `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`, `SENDER_NAME`, and `SENDER_EMAIL` in the Waline server environment, then restart it. Also set its public `SERVER_URL`, `SITE_URL`, and `SECURE_DOMAINS`; email links must use the public HTTPS address. Keep secrets in environment files or the hosting platform, never Jekyll configuration. See [Waline email configuration](https://waline.js.org/en/guide/features/notification.html).

@@ -779,18 +779,3 @@ a.post-tag:hover, a.post-tag:focus-visible { text-decoration: underline; }
 .blog-search__status { margin-top: var(--space-3); color: var(--color-ink-soft); font-size: var(--text-sm); }
 .post-comments h2 { font-size: var(--text-2xl); }
 .post-comments__intro { color: var(--color-ink-soft); font-size: var(--text-sm); }
-.post-comments {
-  --waline-font-size: 1rem;
-  --waline-theme-color: var(--color-accent);
-  --waline-active-color: var(--color-accent-strong);
-  --waline-text-color: var(--color-ink);
-  --waline-bg-color: var(--color-surface);
-  --waline-bg-color-light: var(--color-bg);
-  --waline-border-color: var(--color-border);
-}
-
-.post-comments .wl-btn {
-  border-radius: var(--radius-sm);
-  padding: 0.5rem 1rem;
-  min-height: 2.5rem;
-}

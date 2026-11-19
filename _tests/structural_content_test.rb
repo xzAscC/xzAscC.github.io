@@ -1,4 +1,5 @@
 require 'cgi'
+require 'json'
 
 ROOT = File.expand_path('..', __dir__)
 SITE = File.join(ROOT, '_site')
@@ -453,6 +454,42 @@ not_found_page = File.read(site_file('404.html'))
 end
 assert homepage.include?('<main id="content"'), 'The home page must not take the inner pages\' #main column styles'
 assert main_css.include?('.skip-link:focus{top:'), 'The skip link must appear when it receives focus'
+
+# Comments: giscus shows each post's GitHub Discussion, on posts only, fetched on demand.
+assert post_page.match?(%r{<div class="giscus" id="comments_thread" data-comments data-repo="xzAscC/xzAscC\.github\.io" data-repo-id="R_[\w-]+" data-category="Announcements" data-category-id="DIC_[\w-]+" data-term="blog/2026/research-templates/" data-backlink="https://xudongzhu\.com/blog/2026/research-templates/" data-lang="en">}),
+       'Posts must carry the giscus settings, their own thread name, and the live address to link back to'
+assert !post_page.include?('Comments are not available yet'), 'Posts must not show a placeholder in place of comments'
+comments_js = File.read(File.join(ROOT, 'assets', 'js', 'comments.js'))
+assert comments_js.include?('${giscusOrigin}/client.js') && comments_js.include?('"https://giscus.app"') &&
+       comments_js.include?('IntersectionObserver') && comments_js.include?('setConfig') &&
+       comments_js.include?('event.origin !== giscusOrigin'),
+       'Comments must load on demand, follow the site theme, and accept messages from giscus only'
+assert comments_js.include?('mapping: "specific"') && comments_js.include?('strict: "1"') &&
+       comments_js.include?('"giscus:backlink"'),
+       'A thread must be named by the post address, matched exactly, and link back to the live post'
+# The files as written, not unescaped: the blog index carries every post's text, which may mention the script.
+%w[index.html publications/index.html cv-json/index.html blog/index.html].each do |path|
+  assert !File.read(site_file(path)).include?('<script type="module" src="/assets/js/comments.js"'),
+         "Only posts load the comment script, but #{path} does"
+end
+assert !File.exist?(site_file('giscus.json')), 'giscus.json is repository configuration, not a page'
+assert post_layout.include?("page.draft != true and page.published != false") &&
+       post_layout.include?("{% if page.path contains '_drafts/' %}{% assign show_comments = false %}"),
+       'Drafts and unpublished posts must not load comments: that would send unpublished text to giscus'
+assert comments_js.include?('searchParams.delete("giscus")'),
+       'If the giscus script cannot load, the sign-in session must still leave the address'
+giscus_rules = JSON.parse(File.read(File.join(ROOT, 'giscus.json')))
+allowed = lambda do |origin|
+  giscus_rules['origins'].include?(origin) || giscus_rules['originsRegex'].any? { |pattern| Regexp.new(pattern).match?(origin) }
+end
+assert allowed.call(config_yaml[/^url\s*:\s*(\S+)/, 1]) && allowed.call('http://127.0.0.1:4000') &&
+       allowed.call('http://localhost:4001') && allowed.call('http://0.0.0.0:4000'),
+       'giscus.json must allow the live site and local previews'
+assert !allowed.call('https://example.com') && !allowed.call('http://localhost:4000.example.com'),
+       'giscus.json must not let other sites show these threads'
+[config_yaml, File.read(File.join(ROOT, 'README.md')), main_css].each do |text|
+  assert !text.match?(/waline/i), 'The unused Waline setup must be gone'
+end
 project_js = File.read(File.join(ROOT, 'assets', 'js', 'project.js'))
 storage_listener = /addEventListener\((["'])storage\1/ # either quote style
 assert dark_toggle_source.match?(storage_listener) && project_js.match?(storage_listener),
