@@ -11,7 +11,7 @@ locale                   : "en-US"
 title                    : "Xudong Zhu"
 title_separator          : "-"
 name                     : &name "Xudong Zhu"
-description              : &description "Second-year PhD student in Ohio State University"
+description              : &description "PhD student at The Ohio State University, studying how large language models represent concepts and how these representations evolve during generation and training."
 url                      : https://xudongzhu.com
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "xzAscC/xzAscC.github.io"
@@ -21,7 +21,7 @@ author:
   avatar           : "profile-upscaled.png"
   name             : "Xudong Zhu"
   pronouns         : "he/him"  
-  bio              : "Second-year PhD student in Ohio State University"
+  bio              : "PhD student at The Ohio State University"
   location         : "Columbus, OH"
   employer         : "The Ohio State University"
   uri              : "https://xudongzhu.com/"
@@ -117,13 +117,10 @@ social:
   type                   : # Person or Organization (defaults to Person)
   name                   : # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
-
-
-# Analytics
-analytics:
-  provider               :  "false" # false (default), "google", "google-universal", "google-analytics-4", "custom"
-  google:
-    tracking_id          :
+    - "https://github.com/xzAscC"
+    - "https://scholar.google.com/citations?user=U55yracAAAAJ"
+    - "https://orcid.org/0009-0000-3068-0754"
+    - "https://x.com/XudongZhu3944"
 
 
 # Reading Files
@@ -147,6 +144,7 @@ exclude:
   - Gemfile.lock
   - LICENSE
   - README.md
+  - giscus.json
   - post-template.md
 keep_files:
   - .git
@@ -247,7 +245,11 @@ compress_html:
   ignore:
     envs: development
 
-# Waline: set the deployed HTTPS server URL when comments are ready to publish.
-# Local preview overrides this in ignored local/comments.yml.
-waline:
-  server_url: ""
+# Comments: giscus keeps each post's thread in the GitHub Discussions of `repository` (above).
+# The ids come from https://giscus.app; with an empty repo_id, posts show no comments.
+# giscus.json at the repository root lists the sites that may show these threads.
+giscus:
+  site_url: "https://xudongzhu.com" # threads link back here, also when a comment is written from a local preview
+  repo_id: "R_kgDOPjMqAA"
+  category: "Announcements" # readers cannot post here on GitHub; giscus opens a post's thread for the first reader who comments or reacts
+  category_id: "DIC_kwDOPjMqAM4DLZZU"

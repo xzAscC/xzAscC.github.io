@@ -1,6 +1,7 @@
 ---
 layout: archive
 title: "Blog"
+description: "Blog posts by Xudong Zhu, a PhD student at The Ohio State University, searchable by title, text, and tag."
 blog_search: true
 permalink: /blog/
 ---

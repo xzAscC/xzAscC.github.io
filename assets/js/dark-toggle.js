@@ -42,4 +42,13 @@ if (toggle) {
       updateToggle();
     }
   });
+
+  // Another tab, or a same-origin frame such as an embedded project page, changed the saved theme.
+  window.addEventListener("storage", (event) => {
+    if (event.key === "theme" && (event.newValue === "dark" || event.newValue === "light")) {
+      root.dataset.theme = event.newValue;
+      followsSystem = false;
+      updateToggle();
+    }
+  });
 }

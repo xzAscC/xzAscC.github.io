@@ -5,7 +5,8 @@ layout: default
 {% include base_path %}
 
 {% if page.url == "/" %}
-  <main role="main">
+  {% comment %} Not #main: that id gives the inner pages their column width and top padding, which the hero must not get. {% endcomment %}
+  <main id="content" role="main">
     <section class="site-hero" aria-labelledby="site-hero-title">
       <div class="site-hero__content">
         <h1 id="site-hero-title">{{ site.author.name | default: "Xudong Zhu" }}</h1>

@@ -42,9 +42,15 @@ layout: default
       </div>
     </div>
 
+    {% comment %} Not on drafts or unpublished posts, however they are marked: the widget would send their address and first paragraph to giscus, and a comment in a preview would open a public thread for them. {% endcomment %}
+    {% assign show_comments = false %}
+    {% if site.giscus.repo_id and site.giscus.repo_id != '' and page.draft != true and page.published != false %}{% assign show_comments = true %}{% endif %}
+    {% if page.path contains '_drafts/' %}{% assign show_comments = false %}{% endif %}
+    {% if show_comments %}
     <footer class="post__footer">
       {% include post-comments.html %}
     </footer>
+    {% endif %}
   </article>
 </main>
 {% if page.toc != false %}<script type="module" src="{{ '/assets/js/post-toc.js' | relative_url }}"></script>{% endif %}

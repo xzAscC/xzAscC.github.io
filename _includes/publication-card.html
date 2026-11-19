@@ -9,7 +9,7 @@
 
   <div class="publication-card__content">
     {% if post.venue %}
-      <p class="publication-card__meta">{{ post.venue }}</p>
+      <p class="publication-card__meta">{% include paper-venue.html post=post %}</p>
     {% endif %}
 
     <h3 class="publication-card__title" itemprop="headline">

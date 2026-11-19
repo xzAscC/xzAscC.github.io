@@ -30,6 +30,7 @@ layout: compress
 
   <body>
 
+    <a class="skip-link" href="#{% if page.url == '/' %}content{% else %}main{% endif %}">Skip to content</a>
     {% include editorial-nav.html %}
 
     {{ content }}

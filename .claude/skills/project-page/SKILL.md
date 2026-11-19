@@ -13,6 +13,7 @@ The reference is the Prefix Steering page: `_pages/prefix-steering.md`, `_layout
 - `assets/css/<slug>-project.css`, `assets/js/<slug>-*.js` — page-specific; shared fixes go into `project.scss` / `project.js` so other pages and the exported template get them.
 - `_data/<slug>_*.json` — one per chart (see the `web-figures` skill).
 - `_publications/<date>-<slug>.md` — set `projecturl`; if the project page is the canonical page, add `redirect_to: /projects/<slug>/` and `sitemap: false`.
+- `assets/images/publications/<slug>-social.png` — the 1200×630 link-preview image, set as `social_image`; without it a shared link shows text only. The Prefix Steering one is the page's own title, subtitle, authors, and first schematic, screenshotted at that size with the rest of the page hidden.
 - `_tests/<slug>_project_test.rb`, added to `_tests/run.sh`.
 - Unreleased paper: add `noindex: true` until it is public.
 

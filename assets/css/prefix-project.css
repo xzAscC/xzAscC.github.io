@@ -74,7 +74,8 @@ html[data-theme='dark'] .project-page { --c-prefix: #1fa3a3; --c-full: #bf7a45; 
 }
 .overview-card { position: relative; display: flex; flex-direction: column; padding: 26px 28px 24px; border: 1px solid var(--color-border); border-radius: 14px; background: var(--color-surface); }
 .overview-label { color: var(--color-accent-strong); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-.overview-card h3 { margin: 8px 0 18px; font-size: 27px; }
+/* The overview cards under the hero use h2, the cards inside a section h3; both look the same. */
+.overview-card :is(h2, h3) { margin: 8px 0 18px; font-size: 27px; }
 .overview-steps { margin: 18px 0 0; padding-left: 22px; color: var(--color-ink-soft); font-size: 17px; line-height: 1.55; }
 .overview-steps li + li { margin-top: 10px; }
 .overview-steps li::marker { color: var(--color-accent-strong); font-weight: 700; }
@@ -145,7 +146,7 @@ html[data-theme='dark'] .project-page { --c-prefix: #1fa3a3; --c-full: #bf7a45; 
 @media (max-width: 860px) {
   .prefix-overview,   .overview-card { padding: 20px 12px 18px; }
   .overview-card > :not(svg, .duration-chart) { padding-inline: 6px; }
-  .overview-card h3 { font-size: 24px; }
+  .overview-card :is(h2, h3) { font-size: 24px; }
 }
 
 /* Section building blocks shared by 01–03. */
@@ -297,7 +298,8 @@ html[data-theme='dark'] .pdf-viewer__document { filter: brightness(.82); }
 .example-nav button { width: 32px; height: 32px; padding: 0; border: 1px solid var(--color-border); border-radius: 50%; background: none; color: var(--color-ink); font-size: 18px; line-height: 1; cursor: pointer; }
 .example-nav button:hover { border-color: var(--color-accent); color: var(--color-accent-strong); }
 .carousel-slides { display: grid; }
-.carousel-slide { grid-area: 1 / 1; }
+/* min-width: 0 lets a slide shrink below its widest formula, which then scrolls inside the slide instead of widening the page. */
+.carousel-slide { grid-area: 1 / 1; min-width: 0; }
 .carousel-slide[data-inactive] { visibility: hidden; }
 .carousel-slide h3 { margin: 8px 0 18px; font-size: 27px; }
 .transcript { position: relative; }

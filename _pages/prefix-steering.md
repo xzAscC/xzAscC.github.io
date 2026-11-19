@@ -58,6 +58,7 @@ footer_logo:
   light: /images/logo-light.svg
   dark: /images/logo-dark.svg
 favicon: /images/favicon.svg
+social_image: /assets/images/publications/prefix-steering-social.png   # 1200×630: the title block and the first schematic of this page
 bibtex: |
   @misc{zhu2026tokenenoughbridgingprompting,
         title={One Token Can Be Enough: Bridging Prompting and Activation Steering with Prefix Steering},
@@ -74,7 +75,7 @@ bibtex: |
 <section class="prefix-overview" aria-label="Overview">
   <article class="overview-card">
     <p class="overview-label">The idea</p>
-    <h3>Steering need not last all generation</h3>
+    <h2>Steering need not last all generation</h2>
     <svg class="overview-schematic" viewBox="0 0 440 236" role="img" aria-labelledby="schematic-title">
       <title id="schematic-title">Prompting adds a token at the start; full steering intervenes on every token, although its first intervention already reaches later tokens through attention; Prefix Steering intervenes only on a short span starting at the final prompt token, whose effect reaches later tokens through attention.</title>
       <text class="sch-head" x="149" y="12" text-anchor="middle">INPUT</text>
@@ -123,7 +124,7 @@ bibtex: |
   </article>
   <article class="overview-card" data-duration-chart>
     <p class="overview-label">What we find</p>
-    <h3>Control saturates early; capability keeps falling</h3>
+    <h2>Control saturates early; capability keeps falling</h2>
     <ul class="chart-legend" aria-label="Legend">
       <li><span class="chart-key chart-key--prefix"></span>Prefix Steering</li>
       <li><span class="chart-key chart-key--full"></span>Full steering</li>

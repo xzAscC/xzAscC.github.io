@@ -104,7 +104,7 @@
   ],
   "awards": [
     {
-      "title": "MMLS 2026 Traveling Award",
+      "title": "MMLS 2026 Travel Award",
       "date": "2026",
       "awarder": "Midwest Machine Learning Symposium",
       "website": "https://midwest-ml.org/2026/"
@@ -115,43 +115,6 @@
       "awarder": "National Artificial Intelligence Research Resource Pilot",
       "summary": "Geometry and Training Dynamics of Representations in Large Language Models",
       "website": "https://nairrpilot.org/projects/awarded?_requestNumber=NAIRR260106"
-    }
-  ],
-  "publications": [
-    {
-      "name": "One Token Can Be Enough: Bridging Prompting and Activation Steering with Prefix Steering",
-      "publisher": "arXiv 2026",
-      "releaseDate": "2026-10-04",
-      "website": "https://arxiv.org/abs/2610.04967",
-      "summary": "Bridging prompting and activation steering, short initial interventions often retain much of full steering’s behavioral control while better preserving general capabilities."
-    },
-    {
-      "name": "AbsTopK: Rethinking Sparse Autoencoders For Bidirectional Features",
-      "publisher": "ICLR 2026",
-      "releaseDate": "2026-01-01",
-      "website": "https://openreview.net/forum?id=EEs6I4cO7S&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3DICLR.cc%2F2026%2FConference%2FAuthors%23your-submissions)",
-      "summary": "Sparse autoencoders (SAEs) are widely used for LLM interpretability, but existing variants often impose non-negativity that prevents single features from representing bidirectional concepts. We derive SAE variants from unrolled proximal gradient updates, identify this structural limitation, and propose AbsTopK SAE with magnitude-based hard thresholding. Across four LLMs and seven probing/steering tasks, AbsTopK improves reconstruction and interpretability while enabling single features to encode contrasting concepts. OpenReview: https://openreview.net/forum?id=EEs6I4cO7S"
-    },
-    {
-      "name": "From Emergence to Control: Probing and Modulating Self-Reflection in Language Models",
-      "publisher": "TMLR 2026",
-      "releaseDate": "2025-06-13",
-      "website": "https://arxiv.org/abs/2506.12217",
-      "summary": "We study the emergence and control of self-reflection in large language models. Our probing method reveals that pretrained models already contain a latent capacity for reflection, which can be amplified without additional training. By identifying and manipulating a “self-reflection vector” in activation space, we achieve bidirectional control over reflective behavior, improving reasoning accuracy or reducing computation as needed. This work deepens understanding of self-reflection and demonstrates how model internals can enable precise behavioral control."
-    },
-    {
-      "name": "Alleviating subgraph-induced oversmoothing in link prediction via coarse graining",
-      "publisher": "Neurocomputing 2025",
-      "releaseDate": "2025-06-20",
-      "website": "https://www.sciencedirect.com/science/article/abs/pii/S0925231225013384",
-      "summary": "We address the oversmoothing problem in link prediction caused by repetitive high-degree nodes across subgraphs. Our method introduces a coarse-graining strategy that merges strongly correlated nodes, yielding more diverse receptive fields and reducing subgraph size. This not only mitigates oversmoothing but also improves scalability and efficiency of GNN-based link prediction."
-    },
-    {
-      "name": "FCDS: Fusing Constituency and Dependency Syntax into Document-Level Relation Extraction",
-      "publisher": "Coling 2024",
-      "releaseDate": "2024-03-04",
-      "website": "https://arxiv.org/abs/2403.01886",
-      "summary": "We introduce FCDS, a document-level relation extraction model that fuses constituency and dependency syntax. By combining sentence-level aggregation from constituency trees with dependency-based graph reasoning, FCDS better captures cross-sentence relations between entities. Experiments across multiple domains show significant performance gains, highlighting the effectiveness of integrating both syntactic views."
     }
   ],
   "teaching": [

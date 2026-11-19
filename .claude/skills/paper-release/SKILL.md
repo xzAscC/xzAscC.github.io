@@ -17,7 +17,7 @@ From the user or the arXiv abs page (fetch it): arXiv ID, final title, author li
 |---|---|
 | `_publications/<date>-<slug>.md` | `title`, `venue`, `date`, `category` (`preprints` for arXiv only; move to peer-reviewed on acceptance), `paperurl` (arXiv abs), `pdfurl`, `codeurl`, `projecturl`, `bibtex`, `excerpt`, body = the arXiv abstract word for word. Remove `noindex`/`sitemap: false` that only existed while unreleased; keep `redirect_to` if the project page is the canonical page. |
 | `_pages/<slug>.md` (project page, if any) | `status`, `venue`, `resources` (add arXiv; mark unreleased items `pending: true`), `bibtex`, `description`/`tldr` if wording changed, drop `noindex`. The hero orders resources automatically: available links, BibTeX, then pending. |
-| `_data/cv.json` | `publications` entry (name, publisher, releaseDate, website, summary) and the matching `research` project `status`/`url`. |
+| `_data/cv.json` | The paper's `related` entry under `work` → `highlights` (`title`, `status`, `url`). The CV's publication list is not here: it reads `_publications/`. |
 | PDF CV | Overleaf `resume/resume.tex`, rebuilt into `files/Xudong_Zhu_CV.pdf`. You cannot edit Overleaf: give the user the exact LaTeX lines to paste, and say this step is pending until they upload the new PDF. |
 | `README.md` | Publications list and the research summary line. |
 | `_data/news.yml` | One new item at the top: `date: Mon YYYY`, text links the project page (or publication page) and states the main finding in one sentence, in the same scoped wording as the abstract ("often", "under … assumptions"). |

@@ -1,0 +1,13 @@
+{%- comment -%}
+  Venue for listings that show the year in its own column. A venue that ends with that year loses it:
+  "ICLR 2026" gives "ICLR", "Neurocomputing, 2025" gives "Neurocomputing". Any other venue is printed as written.
+  The "|" marks the end so that only a trailing comma is removed.
+{%- endcomment -%}
+{%- capture shown_year -%}{% include paper-year.html post=include.post %}{%- endcapture -%}
+{%- assign venue_end = include.post.venue | slice: -4, 4 -%}
+{%- if venue_end == shown_year -%}
+  {%- assign venue_length = include.post.venue | size | minus: 4 -%}
+  {{- include.post.venue | slice: 0, venue_length | strip | append: "|" | remove: ",|" | remove: "|" -}}
+{%- else -%}
+  {{- include.post.venue -}}
+{%- endif -%}

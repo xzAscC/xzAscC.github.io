@@ -20,7 +20,7 @@
 
 <title>{{ seo_title | default: site.title }}{% if paginator %}{% unless paginator.page == 1 %} {{ site.title_separator }} {{ site.data.ui-text[site.locale].page | default: "Page" }} {{ paginator.page }}{% endunless %}{% endif %}</title>
 
-{% assign seo_description = page.description | default: page.excerpt | default: site.description %}
+{% assign seo_description = page.description | default: page.excerpt | default: site.og_description | default: site.description %}
 {% if seo_description %}
   {% assign seo_description = seo_description | markdownify | strip_html | strip_newlines | escape_once %}
 {% endif %}
@@ -66,6 +66,9 @@
   {% if seo_author_twitter %}
     <meta name="twitter:creator" content="@{{ seo_author_twitter }}">
   {% endif %}
+{% else %}
+  {% comment %} No site account: X still needs the card type; it reads the title, text, and image from the Open Graph tags. {% endcomment %}
+  <meta name="twitter:card" content="{% if page.header.image %}summary_large_image{% else %}summary{% endif %}">
 {% endif %}
 
 {% if site.facebook %}
@@ -91,8 +94,9 @@
       "@context" : "http://schema.org",
       "@type" : "{% if site.social.type %}{{ site.social.type }}{% else %}Person{% endif %}",
       "name" : "{{ site.social.name | default: site.name }}",
-      "url" : {{ seo_url | jsonify }},
-      "sameAs" : {{ site.social.links | jsonify }}
+      "url" : {{ seo_url | jsonify }}{% if site.og_image %},
+      "image" : {{ site.og_image | prepend: "/images/" | prepend: base_path | jsonify }}{% endif %}{% if site.social.links %},
+      "sameAs" : {{ site.social.links | jsonify }}{% endif %}
     }
   </script>
 {% endif %}
@@ -118,29 +122,19 @@
 {% if page.date %}
   <meta property="og:type" content="article">
 {% endif %}
-{% if page.excerpt %}
+{% comment %} Pages without their own description or excerpt use the site's, so every page has one. {% endcomment %}
+{% if seo_description %}
   <meta property="og:description" name="description" content="{{ seo_description }}">
-{% elsif site.og_description %}
-  <meta property="og:description" name="description" content="{{ site.og_description }}">
 {% endif %}
 {% if seo_url %}
   <meta property="og:url" content="{{ page.url | prepend: seo_url | replace: "/index.html", "/" }}">
-{% endif %}
-
-{% if site.og_image %}
-  <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "Organization",
-      "url": {{ seo_url | jsonify }},
-      "logo": {{ site.og_image | prepend: "/images/" | prepend: base_path | jsonify }}
-    }
-  </script>
 {% endif %}
 
 {% if page.header.image %}
   <meta property="og:image" content="{% if page.header.image contains "://" %}{{ page.header.image }}{% else %}{{ page.header.image | prepend: "/images/" | prepend: base_path }}{% endif %}">
 {% elsif page.header.overlay_image %}
   <meta property="og:image" content="{% if page.header.overlay_image contains "://" %}{{ page.header.overlay_image }}{% else %}{{ page.header.overlay_image | prepend: "/images/" | prepend: base_path }}{% endif %}">
+{% elsif site.og_image %}
+  <meta property="og:image" content="{{ site.og_image | prepend: "/images/" | prepend: base_path }}">
 {% endif %}
 <!-- end Open Graph protocol -->

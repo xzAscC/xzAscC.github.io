@@ -1,4 +1,5 @@
 require 'cgi'
+require 'json'
 
 ROOT = File.expand_path('..', __dir__)
 SITE = File.join(ROOT, '_site')
@@ -60,7 +61,7 @@ cv_section_positions = cv_section_ids.map { |id| cv_page.index(%(id="#{id}")) }
 assert cv_section_positions.all?, 'CV must render education, research, publications, teaching, service, honors, and open source'
 assert cv_section_positions == cv_section_positions.sort,
        'CV sections must follow the academic CV order'
-['MMLS 2026 Traveling Award', 'NAIRR Pilot Project NAIRR260106',
+['MMLS 2026 Travel Award', 'NAIRR Pilot Project NAIRR260106',
  'Geometry and Training Dynamics of Representations in Large Language Models'].each do |content|
   assert cv_page.include?(content), "CV lost honor content: #{content}"
 end
@@ -71,6 +72,12 @@ assert cv_page.scan(/class="cv-award-card"/).length == 2, 'CV must render exactl
 assert cv_page.scan(/class="cv-publication-card"/).length == 5, 'CV must render exactly five publication cards'
 assert cv_page.include?('Sparse autoencoders (SAEs) are widely used'),
        'CV publication cards must retain their research summaries'
+cv_publication_years = cv_page[/id="cv-publications-title".*?id="cv-teaching-title"/m]
+                       .scan(%r{<time class="cv-card__date"[^>]*>\s*(\d{4})\s*</time>}).flatten
+assert cv_publication_years.length == 5 && cv_publication_years == cv_publication_years.sort.reverse,
+       "CV publications must run from the newest year to the oldest, got #{cv_publication_years.join(', ')}"
+assert !File.read(File.join(ROOT, '_data', 'cv.json')).include?('"publications"'),
+       'CV publications come from _publications/; cv.json must not keep a second list'
 cv_style_source = File.read(File.join(ROOT, '_sass', 'editorial', '_cv.scss'))
 assert cv_style_source.include?(".cv-timeline__content {\n    grid-row: 2;"),
        'Mobile CV timeline content must render below its date row'
@@ -114,7 +121,7 @@ publication_html = publication_pages.map { |path| CGI.unescapeHTML(File.read(pat
 paper_titles = [
   'AbsTopK: Rethinking Sparse Autoencoders For Bidirectional Features',
   'Alleviating subgraph-induced oversmoothing in link prediction via coarse graining',
-  'From Emergence to Control: Probing and Modulating Self-Reflection in Language Models',
+  'Probing and Controlling Self-Reflection in Language Models',
   'FCDS: Fusing Constituency and Dependency Syntax into Document-Level Relation Extraction'
 ]
 project_names = %w[LLMUsage dotfiles]
@@ -176,8 +183,9 @@ assert homepage.scan('>Project Page</a>').length == 5, 'Every homepage paper car
 
 assert publications_page.scan(/<article class="publication-card"/).length == 5,
        'Dedicated publications page must retain exactly five shared publication cards'
-assert publications_page.include?('class="archive publications-archive"'),
-       'Publications listing must expose a scoped typography hook'
+assert publications_page.include?('<h1 id="archive-title" class="page__title">Publications</h1>') &&
+       !File.read(File.join(ROOT, '_sass', 'editorial', '_typography.scss')).include?('publications-archive'),
+       'Publications must use the same title style as Blog, CV, and Sitemap'
 conference_position = publications_page.index('publications-conferences')
 journal_position = publications_page.index('publications-manuscripts')
 assert conference_position && journal_position && conference_position < journal_position,
@@ -186,6 +194,12 @@ assert publications_page.scan(/class="publication-card__excerpt"/).length == 5,
        'Every publication card must use the readable excerpt style'
 paper_titles.each do |title|
   assert publications_page.include?(title), "Dedicated publications page lost paper: #{title}"
+end
+# The year has its own column in these two lists, so the venue line leaves it out.
+[publications_page, cv_page].each do |html|
+  assert html.include?('>ICLR</p>') && html.include?('>Neurocomputing</p>') && html.include?('>arXiv preprint</p>'),
+         'Publication lists must name each venue'
+  assert !html.match?(/__meta"[^>]*>[^<]*\b(19|20)\d\d\s*</), 'A venue beside a year column must not repeat the year'
 end
 assert !publications_page.include?('home-publication-card'),
        'Dedicated publications page must not use homepage-only research cards'
@@ -200,6 +214,15 @@ Dir.glob(File.join(ROOT, '_publications', '*.md')).each do |source|
   assert detail_exists, "Missing publication detail page for: #{title || source}"
 end
 
+# A paper's page title is the one in its BibTeX, which comes from the venue.
+Dir.glob(File.join(ROOT, '_publications', '*.md')).each do |source|
+  front = File.read(source)
+  title = front[/^title:\s*["']?(.*?)["']?\s*$/, 1]
+  bibtex_title = front[/^\s+title\s*=\s*\{(.*)\},?\s*$/, 1]
+  assert bibtex_title && bibtex_title.delete('{}').casecmp?(title),
+         "Page title and BibTeX title differ: #{File.basename(source)}"
+end
+
 nav_source = File.read(File.join(ROOT, '_includes', 'editorial-nav.html'))
 scripts_source = File.read(File.join(ROOT, '_includes', 'scripts.html'))
 archive_item_source = File.read(File.join(ROOT, '_includes', 'archive-single.html'))
@@ -212,6 +235,11 @@ assert nav_source.include?('site-nav__menu'), 'Primary navigation must provide a
 assert nav_source.scan('{% for link in site.data.navigation.main %}').length == 1,
        'Desktop and mobile navigation must share one generated link list'
 assert scripts_source.scan('dark-toggle.js').length == 1, 'Dark toggle module must load exactly once'
+site_nav_source = File.read(File.join(ROOT, 'assets', 'js', 'site-nav.js'))
+assert scripts_source.scan('site-nav.js').length == 1 && site_nav_source.include?('"Escape"') &&
+       site_nav_source.include?('"pointerdown"') && site_nav_source.include?('"click"') &&
+       site_nav_source.include?('menu.contains(event.target)'),
+       'The phone menu must close on Escape and on a press or activation outside it (touch on iOS, and keyboard)'
 assert !scripts_source.include?('plotly-render.js'), 'Plotly renderer must load only on pages with Plotly blocks'
 assert !scripts_source.include?('main.min.js'), 'Editorial pages must not load the legacy theme bundle'
 assert !archive_item_source.include?('class="fa'),
@@ -244,6 +272,12 @@ end
   assets/js/plugins
   assets/webfonts
   package.json
+  _data/authors.yml
+  _data/ui-text.yml
+  _includes/analytics.html
+  _includes/analytics-providers
+  images/profile.jpg
+  .github/ISSUE_TEMPLATE
 ].each do |legacy_path|
   assert !File.exist?(File.join(ROOT, legacy_path)), "Dormant legacy path must be removed: #{legacy_path}"
 end
@@ -318,6 +352,22 @@ assert main_css.include?('Inter'), 'Missing Inter typography'
 assert main_css.include?('--color-bg'), 'Missing background design token'
 assert main_css.include?('--color-accent'), 'Missing indigo accent token'
 assert main_css.include?('--color-warm'), 'Missing terracotta accent token'
+# Small warm labels must stay readable on every light background they sit on (WCAG AA, 4.5:1).
+light_tokens = File.read(File.join(ROOT, '_sass', 'editorial', '_tokens.scss'))[/:root \{.*?\n\}/m]
+token = lambda do |name|
+  light_tokens[/--color-#{name}: (#\h{6});/, 1] or abort "--color-#{name} must be a six-digit hex colour for the contrast check"
+end
+luminance = lambda do |hex|
+  red, green, blue = hex.delete('#').scan(/../).map do |channel|
+    value = channel.to_i(16) / 255.0
+    value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055)**2.4
+  end
+  0.2126 * red + 0.7152 * green + 0.0722 * blue
+end
+%w[bg surface surface-raised warm-soft].each do |background|
+  contrast = (luminance.call(token.call(background)) + 0.05) / (luminance.call(token.call('warm')) + 0.05)
+  assert contrast >= 4.5, "Warm text on --color-#{background} has contrast #{contrast.round(2)}, below 4.5"
+end
 assert main_css.include?('64rem'), 'Missing 1024px container'
 assert main_css.include?('overflow-x:hidden'), 'Missing horizontal overflow guard'
 
@@ -335,6 +385,7 @@ news_section = homepage[%r{<section class="showcase-section showcase-section--ne
 assert news_section, 'Homepage must include a News section'
 assert homepage.index('showcase-section--news') < homepage.index('showcase-section--publications'),
        'News must appear before Publications'
+assert !homepage.include?('From Emergence to Control'), 'News must name the Self-Reflection paper by its published title'
 assert !blog_page.include?('archive__lead'), 'Blog page must not render a subtitle line'
 
 assert publications_page.scan('>Code</a>').length == 5, 'Publications page must link code for every paper'
@@ -368,3 +419,80 @@ project_template = File.read(site_file('blog/2026/research-templates/project/ind
 assert project_template.include?('noindex'), 'Project template demo must stay out of search results'
 assert !File.read(site_file('sitemap.xml')).include?('/blog/2026/research-templates/project/'), 'Project template demo must stay out of the sitemap'
 assert !File.exist?(site_file('templates/project/index.html')), 'Project template must live under its blog post'
+
+# Search results and link previews: every page describes itself and offers an image.
+sitemap_page = CGI.unescapeHTML(File.read(site_file('sitemap/index.html')))
+[homepage, publications_page, cv_page, blog_page, sitemap_page].each do |html|
+  assert html.match?(/<meta property="og:description" name="description" content="[^"]+">/),
+         'Every page needs a meta description'
+  assert html.include?('<meta property="og:image"') && html.include?('<meta name="twitter:card"'),
+         'Every page needs a link-preview image and card type'
+end
+descriptions = [homepage, publications_page, cv_page, blog_page].map do |html|
+  html[/<meta property="og:description" name="description" content="([^"]+)">/, 1]
+end
+assert descriptions.uniq.length == 4, 'Home, Publications, CV, and Blog must each describe themselves in their own words'
+same_as = homepage[/"sameAs"\s*:\s*\[(.*?)\]/m, 1]
+assert same_as && same_as.include?('"https://') && !same_as.include?('"http://'),
+       'Structured data must list the profile links, all over https'
+assert !homepage.match?(/"@type"\s*:\s*"Organization"/), 'A personal site is a Person, not an Organization'
+
+# The sitemap page lists only pages a reader can open, each with a title.
+assert !sitemap_page.match?(%r{<a href="[^"]*"[^>]*>\s*</a>}), 'Sitemap must not list untitled entries'
+assert sitemap_page.include?('rel="permalink">Home</a>'), 'Sitemap must list the home page'
+assert !sitemap_page.include?('/publications/prefix-steering/'), 'Sitemap must not list redirect-only entries'
+assert sitemap_page.include?('Published in <i>TMLR 2026</i></p>'), 'Sitemap must show a publication year once'
+
+assert main_css.include?('body>main{flex:1 0 auto}'), 'Footer must stay at the bottom of short pages'
+
+# Keyboard users can skip the navigation on every page built from the default layout.
+post_page = File.read(site_file('blog/2026/research-templates/index.html'))
+not_found_page = File.read(site_file('404.html'))
+[homepage, publications_page, cv_page, blog_page, sitemap_page, abstopk_page, post_page, not_found_page].each do |html|
+  target = html[/<a class="skip-link" href="#([\w-]+)">/, 1]
+  assert target && html.include?(%(<main id="#{target}")), 'Every page needs a skip link that points at its main content'
+end
+assert homepage.include?('<main id="content"'), 'The home page must not take the inner pages\' #main column styles'
+assert main_css.include?('.skip-link:focus{top:'), 'The skip link must appear when it receives focus'
+
+# Comments: giscus shows each post's GitHub Discussion, on posts only, fetched on demand.
+assert post_page.match?(%r{<div class="giscus" id="comments_thread" data-comments data-repo="xzAscC/xzAscC\.github\.io" data-repo-id="R_[\w-]+" data-category="Announcements" data-category-id="DIC_[\w-]+" data-term="blog/2026/research-templates/" data-backlink="https://xudongzhu\.com/blog/2026/research-templates/" data-lang="en">}),
+       'Posts must carry the giscus settings, their own thread name, and the live address to link back to'
+assert !post_page.include?('Comments are not available yet'), 'Posts must not show a placeholder in place of comments'
+comments_js = File.read(File.join(ROOT, 'assets', 'js', 'comments.js'))
+assert comments_js.include?('${giscusOrigin}/client.js') && comments_js.include?('"https://giscus.app"') &&
+       comments_js.include?('IntersectionObserver') && comments_js.include?('setConfig') &&
+       comments_js.include?('event.origin !== giscusOrigin'),
+       'Comments must load on demand, follow the site theme, and accept messages from giscus only'
+assert comments_js.include?('mapping: "specific"') && comments_js.include?('strict: "1"') &&
+       comments_js.include?('"giscus:backlink"'),
+       'A thread must be named by the post address, matched exactly, and link back to the live post'
+# The files as written, not unescaped: the blog index carries every post's text, which may mention the script.
+%w[index.html publications/index.html cv-json/index.html blog/index.html].each do |path|
+  assert !File.read(site_file(path)).include?('<script type="module" src="/assets/js/comments.js"'),
+         "Only posts load the comment script, but #{path} does"
+end
+assert !File.exist?(site_file('giscus.json')), 'giscus.json is repository configuration, not a page'
+assert post_layout.include?("page.draft != true and page.published != false") &&
+       post_layout.include?("{% if page.path contains '_drafts/' %}{% assign show_comments = false %}"),
+       'Drafts and unpublished posts must not load comments: that would send unpublished text to giscus'
+assert comments_js.include?('searchParams.delete("giscus")'),
+       'If the giscus script cannot load, the sign-in session must still leave the address'
+giscus_rules = JSON.parse(File.read(File.join(ROOT, 'giscus.json')))
+allowed = lambda do |origin|
+  giscus_rules['origins'].include?(origin) || giscus_rules['originsRegex'].any? { |pattern| Regexp.new(pattern).match?(origin) }
+end
+assert allowed.call(config_yaml[/^url\s*:\s*(\S+)/, 1]) && allowed.call('http://127.0.0.1:4000') &&
+       allowed.call('http://localhost:4001') && allowed.call('http://0.0.0.0:4000'),
+       'giscus.json must allow the live site and local previews'
+assert !allowed.call('https://example.com') && !allowed.call('http://localhost:4000.example.com'),
+       'giscus.json must not let other sites show these threads'
+[config_yaml, File.read(File.join(ROOT, 'README.md')), main_css].each do |text|
+  assert !text.match?(/waline/i), 'The unused Waline setup must be gone'
+end
+project_js = File.read(File.join(ROOT, 'assets', 'js', 'project.js'))
+storage_listener = /addEventListener\((["'])storage\1/ # either quote style
+assert dark_toggle_source.match?(storage_listener) && project_js.match?(storage_listener),
+       'A theme change must reach other tabs and embedded project pages'
+assert project_js.include?("matchMedia('(prefers-color-scheme: dark)').addEventListener('change'"),
+       'A project page without a saved theme must follow operating-system changes, as the site does'

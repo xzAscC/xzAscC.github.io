@@ -29,14 +29,36 @@ const updateThemeToggle = () => {
   themeToggle.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} theme`);
 };
 if (themeToggle) {
+  // Until the reader picks a theme, the page follows the system setting, also when that changes later.
+  let followsSystem = true;
+  try {
+    const savedTheme = localStorage.getItem('theme');
+    followsSystem = savedTheme !== 'dark' && savedTheme !== 'light';
+  } catch (error) {
+    // Storage is blocked, so nothing was saved: keep following the system.
+  }
   updateThemeToggle();
   themeToggle.addEventListener('click', () => {
     root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    followsSystem = false;
     updateThemeToggle();
     try {
       localStorage.setItem('theme', root.dataset.theme);
     } catch (error) {
       // Private browsing can block storage; the theme still applies to this page.
+    }
+  });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+    if (!followsSystem) return;
+    root.dataset.theme = event.matches ? 'dark' : 'light';
+    updateThemeToggle();
+  });
+  // Follow a theme change made in another tab or in the page that embeds this one.
+  addEventListener('storage', (event) => {
+    if (event.key === 'theme' && (event.newValue === 'dark' || event.newValue === 'light')) {
+      root.dataset.theme = event.newValue;
+      followsSystem = false;
+      updateThemeToggle();
     }
   });
 }

@@ -11,6 +11,8 @@
 {% else %}
   {% assign title = post.title %}
 {% endif %}
+{% comment %} The home page has an empty title. {% endcomment %}
+{% if post.url == "/" %}{% assign title = "Home" %}{% endif %}
 
 <div class="{{ include.type | default: "list" }}__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
@@ -41,13 +43,16 @@
         {% if post.collection == 'teaching' %}
           <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif post.collection == 'publications' %}
-          <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+          {% comment %} The venue's year (TMLR 2026), not the entry's date (2025); added only when the venue does not name it. {% endcomment %}
+          {% capture paper_year %}{% include paper-year.html post=post %}{% endcapture %}
+          <p>Published in <i>{{ post.venue }}</i>{% unless post.venue contains paper_year %}, {{ paper_year }}{% endunless %}</p>
         {% elsif post.date %}
          <p class="page__date"><strong>{{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}
 
     {% if post.excerpt and site.read_more != 'enabled' %}
-    <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>
+    {% comment %} A div: markdownify returns its own <p>, and a <p> inside a <p> leaves empty paragraphs around the text. {% endcomment %}
+    <div class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</div>
     {% elsif post.excerpt and site.read_more == 'enabled' %}
     <p class="archive__item-excerpt" itemprop="description"><p>{{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}<strong><a href="{{ base_path }}{{ post.url }}" rel="permalink"> Read more</a></strong></p></p>
     {% endif %}
@@ -69,9 +74,9 @@
     {% elsif post.citation %}
       <p>Recommended citation: {{ post.citation }}</p>
     {% elsif post.paperurl and post.bibtexurl %}
-      <p><a href=" {{ post.paperurl }} ">Download Paper</a> | <a href="{{ post.bibtexurl }}">Download Bibtex</a></p>
+      <p><a href="{{ post.paperurl }}">Download Paper</a> | <a href="{{ post.bibtexurl }}">Download Bibtex</a></p>
     {% elsif post.paperurl %}
-      <p><a href=" {{ post.paperurl }} ">Download Paper</a></p>
+      <p><a href="{{ post.paperurl }}">Download Paper</a></p>
     {% elsif post.slidesurl and post.bibtexurl %}
       <p><a href="{{ post.slidesurl }}">Download Slides</a> | <a href="{{ post.bibtexurl }}">Download Bibtex</a></p>
     {% elsif post.slidesurl %}
